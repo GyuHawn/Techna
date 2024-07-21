@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Onyx
+  m_Name: Function
   m_Shader: {fileID: 4800000, guid: 65c37cd51cb211c458db3b4fe580c5f5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -65,6 +65,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _: 0.5213681
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -72,19 +73,24 @@ Material:
     - _EmissivePower: 1
     - _EmissoinPower: 1
     - _Glossiness: 0.5
-    - _Metallic: 1
+    - _Metallic: 0.347
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _Offset: 0.3890282
     - _Parallax: 0.02
-    - _Reflection: 0.314
+    - _Reflection: 0.902
     - _SrcBlend: 1
+    - _Transparency: 1
     - _UVSec: 0
     - _ZWrite: 1
+    - _node_1041: 2
+    - _node_2221: 0
     - _node_7741: 1
+    - _node_8143: 0
     m_Colors:
     - _BaseColor: {r: 0.3897059, g: 1, b: 0.89898574, a: 1}
     - _Color: {r: 0.52156866, g: 0.13333334, b: 0.4901961, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Emisson: {r: 0, g: 0, b: 0, a: 1}
-    - _TintColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Emisson: {r: 0.28676468, g: 0.28676468, b: 0.28676468, a: 1}
+    - _TintColor: {r: 0.43447232, g: 0.4956419, b: 0.7205882, a: 1}
   m_BuildTextureStacks: []

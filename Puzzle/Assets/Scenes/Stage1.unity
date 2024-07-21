@@ -1023,6 +1023,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Large_Short
       objectReference: {fileID: 0}
+    - target: {fileID: 8100418092906135679, guid: a677d7b0dee908945a9a08d523996fa9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13545,6 +13549,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1981860918171908, guid: c266c61b42ce56a4ca7e9190ef1209e3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4555062712112460, guid: c266c61b42ce56a4ca7e9190ef1209e3, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.5
@@ -15115,6 +15123,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Large_Square
       objectReference: {fileID: 0}
+    - target: {fileID: 685799677513650918, guid: 32f28275721445046b871161d10610a9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2144562262610791661, guid: 32f28275721445046b871161d10610a9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -15868,6 +15880,10 @@ PrefabInstance:
     - target: {fileID: 1819078070436078885, guid: 83b5f8fef08917b488f6e962806b7edb, type: 3}
       propertyPath: m_Name
       value: Wall_Large_Rocky
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819078070436078885, guid: 83b5f8fef08917b488f6e962806b7edb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3415399796974638902, guid: 83b5f8fef08917b488f6e962806b7edb, type: 3}
       propertyPath: m_LocalPosition.x
