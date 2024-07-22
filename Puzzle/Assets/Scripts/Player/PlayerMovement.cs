@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform gunPos;
     public Vector3 gunOffset;
 
+    private bool isCursorVisible = true; // 마우스 커서 활성화 여부
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -40,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
             Jump();
         }
         UpdateGunPosition();
+
+        OffCursorVisibility("`"); // 마우스 커서 비/활성화
     }
 
     void FixedUpdate()
@@ -89,6 +92,16 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Floor"))
         {
             isGrounded = true;
+        }
+    }
+
+    private void OffCursorVisibility(string KeyNum) // 커서 비활성화
+    {
+        if (Input.GetButtonDown(KeyNum)) // 키 입력 감지
+        {
+            isCursorVisible = !isCursorVisible; // 마우스 포인터 활성화 여부
+            Cursor.visible = isCursorVisible; // 마우스 포인터 활성화 상태 설정
+            Cursor.lockState = isCursorVisible ? CursorLockMode.None : CursorLockMode.Locked; // 마우스 포인터 잠금 상태 설정
         }
     }
 }

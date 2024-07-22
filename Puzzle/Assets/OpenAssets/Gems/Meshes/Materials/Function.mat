@@ -73,12 +73,12 @@ Material:
     - _EmissivePower: 1
     - _EmissoinPower: 1
     - _Glossiness: 0.5
-    - _Metallic: 0.347
+    - _Metallic: 1
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Offset: 0.3890282
     - _Parallax: 0.02
-    - _Reflection: 0.902
+    - _Reflection: 1
     - _SrcBlend: 1
     - _Transparency: 1
     - _UVSec: 0
@@ -91,6 +91,6 @@ Material:
     - _BaseColor: {r: 0.3897059, g: 1, b: 0.89898574, a: 1}
     - _Color: {r: 0.52156866, g: 0.13333334, b: 0.4901961, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Emisson: {r: 0.28676468, g: 0.28676468, b: 0.28676468, a: 1}
-    - _TintColor: {r: 0.43447232, g: 0.4956419, b: 0.7205882, a: 1}
+    - _Emisson: {r: 0, g: 0, b: 0, a: 1}
+    - _TintColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
