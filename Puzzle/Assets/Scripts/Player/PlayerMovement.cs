@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform gunPos;
     public Vector3 gunOffset;
 
-    private bool isCursorVisible = true; // 마우스 커서 활성화 여부
+    public bool isCursorVisible = true; // 마우스 커서 활성화 여부
     void Start()
     {
         rb = GetComponent<Rigidbody>();
