@@ -6,13 +6,20 @@ using UnityEngine;
 public class GemUI : MonoBehaviour
 {
     private GemCombination gemCombination;
+    private GemManager gemManager;
 
     public GameObject bulletUI; // 총알 보석 UI  
     public GameObject bulletMenuUI; // 총알 메뉴 UI  
+    public GameObject bulletGemUI; // 개별 총알 보석 UI  
+
     public GameObject attributeUI; // 속성 보석
     public GameObject attributeMenuUI; // 속성 메뉴 UI
+    public GameObject[] attributeGemUI; // 개별 속성 보석
+
     public GameObject functionUI; // 기능 보석
     public GameObject functionMenuUI; // 기능 메뉴 UI
+    public GameObject[] functionGemUI; // 개별 기능 보석
+
     public int selectGemNum;
 
     // 각 활성화 여부
@@ -22,6 +29,8 @@ public class GemUI : MonoBehaviour
     {
         if (!gemCombination)
             gemCombination = FindObjectOfType<GemCombination>();
+        if (!gemManager)
+            gemManager = FindObjectOfType<GemManager>();
     }
 
     void Update()
@@ -37,6 +46,23 @@ public class GemUI : MonoBehaviour
         {
             SelectFunction(); // 기능 선택
         }
+    }
+
+    public void ActivateGemUI() // 상태에 따른 UI 활성화
+    {
+        Debug.Log("활성화");
+        bulletGemUI.SetActive(gemManager.onLarge);
+
+        attributeGemUI[0].SetActive(gemManager.onControl);
+        attributeGemUI[1].SetActive(gemManager.onFire);
+        attributeGemUI[2].SetActive(gemManager.onWater);
+        attributeGemUI[3].SetActive(gemManager.onElectricity);
+
+        functionGemUI[0].SetActive(gemManager.onDestruction);
+        functionGemUI[1].SetActive(gemManager.onPenetrate);
+        functionGemUI[2].SetActive(gemManager.onDiffusion);
+        functionGemUI[3].SetActive(gemManager.onUpgrade);
+        functionGemUI[4].SetActive(gemManager.onQuick);
     }
 
     private void OpenGemUI(string KeyNum, GameObject menuUI, int menuNum) // 키 입력에 따른 UI 열고 닫기

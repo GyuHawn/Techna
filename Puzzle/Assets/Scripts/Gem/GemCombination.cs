@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class GemCombination : MonoBehaviour
 {
+    private GemManager gemManager;
+
     public int selectBulletNum; // 선택된 총알 값
     public int selectAttributeNum; // 선택된 속성 값
     public int selectFunctionNum; // 선택된 기능 값
@@ -16,6 +18,17 @@ public class GemCombination : MonoBehaviour
     public float currentGemNum; // 현재 선택된 보석 값
 
     public Sprite[] crossHair; // 조준점 배열
+
+    private void Awake()
+    {
+        if (!gemManager)
+            gemManager = FindObjectOfType<GemManager>();
+    }
+
+    private void Start()
+    {
+        currentGemNum = 1; // 가장 처음은 기본탄 설정
+    }
 
     void Update()
     {

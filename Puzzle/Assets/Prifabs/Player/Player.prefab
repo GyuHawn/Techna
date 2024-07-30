@@ -85,7 +85,7 @@ Transform:
   - {fileID: 8723166875498217287}
   - {fileID: 8111446994933709968}
   - {fileID: 6398775537973859750}
-  - {fileID: 1178050296655893768}
+  - {fileID: 5772909013241829562}
   - {fileID: 7669664825638358013}
   - {fileID: 4012567348737611560}
   - {fileID: 4196891857199021760}
@@ -742,7 +742,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fb9e9ec7b9da1f4ab046ab05124d3c1, type: 3}
---- !u!4 &1178050296655893768 stripped
+--- !u!4 &5772909013241829562 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6353561609865034002, guid: 1fb9e9ec7b9da1f4ab046ab05124d3c1, type: 3}
   m_PrefabInstance: {fileID: 590284595522331048}
@@ -4718,7 +4718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8597895849306906795, guid: 7a9229efab546f84ca712cc673d6c9c6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8942473290992990737, guid: 7a9229efab546f84ca712cc673d6c9c6, type: 3}
       propertyPath: m_LocalScale.x
