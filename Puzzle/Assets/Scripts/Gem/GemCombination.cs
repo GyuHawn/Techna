@@ -16,6 +16,7 @@ public class GemCombination : MonoBehaviour
     public GameObject[] B_F_Gems; // 총알 + 기능
     public GameObject[] B_A_F_Gems; // 총알 + 속성 + 기능
     public float currentGemNum; // 현재 선택된 보석 값
+    public int gemIndex; // 현재 보석 인덱스
 
     public Sprite[] crossHair; // 조준점 배열
 
@@ -55,7 +56,13 @@ public class GemCombination : MonoBehaviour
     {
         ResetGem(); // 모든 보석 비활성화
 
-        int gemIndex = GetGemIndex(bullet, attribute, function); // 보석 인덱스 계산
+        if (!CheckGemAvailability(bullet, attribute, function))
+        {
+            B_Gems[0].SetActive(true);
+            return;
+        }
+
+        gemIndex = GetGemIndex(bullet, attribute, function); // 보석 인덱스 계산
         currentGemNum = CalculateCurrentGem(bullet, attribute, function); // 선택한 보석 값 설정
 
         if (bullet == 1) // 기본탄
@@ -80,6 +87,21 @@ public class GemCombination : MonoBehaviour
             else // 속성o, 기능o
                 B_A_F_Gems[gemIndex + 20].SetActive(true);
         }
+    }
+
+    bool CheckGemAvailability(int bullet, int attribute, int function)
+    {
+        if (bullet == 2 && !gemManager.onLarge) return false;
+        if (attribute == 1 && !gemManager.onControl) return false;
+        if (attribute == 2 && !gemManager.onFire) return false;
+        if (attribute == 3 && !gemManager.onWater) return false;
+        if (attribute == 4 && !gemManager.onElectricity) return false;
+        if (function == 1 && !gemManager.onDestruction) return false;
+        if (function == 2 && !gemManager.onPenetrate) return false;
+        if (function == 3 && !gemManager.onDiffusion) return false;
+        if (function == 4 && !gemManager.onUpgrade) return false;
+        if (function == 5 && !gemManager.onQuick) return false;
+        return true;
     }
 
     int GetGemIndex(int bullet, int attribute, int function) // 보석 인덱스 계산
