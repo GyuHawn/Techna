@@ -1,20 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShortcutManagement;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GemCombination : MonoBehaviour
 {
     private GemManager gemManager;
 
-    public int selectBulletNum; // 선택된 총알 값
-    public int selectAttributeNum; // 선택된 속성 값
-    public int selectFunctionNum; // 선택된 기능 값
-    public GameObject[] B_Gems; // 총알
-    public GameObject[] B_A_Gems; // 총알 + 속성
-    public GameObject[] B_F_Gems; // 총알 + 기능
-    public GameObject[] B_A_F_Gems; // 총알 + 속성 + 기능
+    public int selectBulletNum; // 선택된 총알 번호
+    public int selectAttributeNum; // 선택된 속성 번호
+    public int selectFunctionNum; // 선택된 기능 번호
+    public GameObject[] B_Gems; // 총알 오브젝트 배열
+    public GameObject[] B_A_Gems; // 총알 + 속성 오브젝트 배열
+    public GameObject[] B_F_Gems; // 총알 + 기능 오브젝트 배열
+    public GameObject[] B_A_F_Gems; // 총알 + 속성 + 기능 오브젝트 배열
     public float currentGemNum; // 현재 선택된 보석 값
     public int gemIndex; // 현재 보석 인덱스
 
@@ -22,75 +20,121 @@ public class GemCombination : MonoBehaviour
 
     private void Awake()
     {
-        if (!gemManager)
-            gemManager = FindObjectOfType<GemManager>();
+        // GemManager를 찾아서 할당
+        gemManager = FindObjectOfType<GemManager>();
     }
 
     private void Start()
     {
-        currentGemNum = 1; // 가장 처음은 기본탄 설정
+        // 기본 보석 설정 초기화
+        InitializeDefaultGem();
     }
 
-    void Update()
+    private void Update()
     {
-        // 선택한 보석
+        // 선택된 보석 적용
         SelectGem(selectBulletNum, selectAttributeNum, selectFunctionNum);
     }
 
-    void ResetGem() // 모든 보석 비활성화
+    private void InitializeDefaultGem()
     {
+        // 기본 보석 설정
+        currentGemNum = 1; // 기본 값
+        selectBulletNum = 1; // 기본 탄환
+    }
+
+    private void ResetGem()
+    {
+        // 모든 보석 비활성화
         DeactivateAllGems(B_Gems);
         DeactivateAllGems(B_A_Gems);
         DeactivateAllGems(B_F_Gems);
         DeactivateAllGems(B_A_F_Gems);
     }
-    void DeactivateAllGems(GameObject[] gems) // 보석 비활성화
+
+    private void DeactivateAllGems(GameObject[] gems)
     {
+        // 전달된 보석 배열의 모든 오브젝트 비활성화
         foreach (var gem in gems)
         {
             gem.SetActive(false);
         }
     }
 
-    void SelectGem(int bullet, int attribute, int function) // 보석 선택
+    private void SelectGem(int bullet, int attribute, int function)
     {
-        ResetGem(); // 모든 보석 비활성화
+        // 모든 보석 비활성화
+        ResetGem();
 
+        // 보석 사용 가능 여부 체크
         if (!CheckGemAvailability(bullet, attribute, function))
         {
-            B_Gems[0].SetActive(true);
+            // 기본 보석 활성화
+            ActivateDefaultGem();
             return;
         }
 
-        gemIndex = GetGemIndex(bullet, attribute, function); // 보석 인덱스 계산
-        currentGemNum = CalculateCurrentGem(bullet, attribute, function); // 선택한 보석 값 설정
+        // 보석 인덱스 및 값 계산
+        gemIndex = GetGemIndex(bullet, attribute, function);
+        currentGemNum = CalculateCurrentGem(bullet, attribute, function);
 
-        if (bullet == 1) // 기본탄
+        // 보석 활성화
+        ActivateGem(bullet, attribute, function);
+    }
+
+    private void ActivateDefaultGem()
+    {
+        // 기본 보석 활성화
+        B_Gems[0].SetActive(true);
+        currentGemNum = 1;
+        gemIndex = -6;
+        selectBulletNum = 1;
+        selectAttributeNum = 0;
+        selectFunctionNum = 0;
+    }
+
+    private void ActivateGem(int bullet, int attribute, int function)
+    {
+        // 선택된 보석 활성화
+        if (bullet == 1)
         {
-            if (attribute == 0 && function == 0) // 속성x, 기능x
-                B_Gems[0].SetActive(true);
-            else if (attribute == 0) // 속성x, 기능o
-                B_F_Gems[function - 1].SetActive(true);
-            else if (function == 0) // 기능x, 속성o
-                B_A_Gems[attribute - 1].SetActive(true);
-            else // 속성o, 기능o
-                B_A_F_Gems[gemIndex].SetActive(true);
+            ActivateStandardGem(attribute, function); // 기본탄 보석 활성화
         }
-        else if (bullet == 2) // 대형탄
+        else if (bullet == 2)
         {
-            if (attribute == 0 && function == 0) // 속성x, 기능x
-                B_Gems[1].SetActive(true);
-            else if (attribute == 0) // 속성x, 기능o
-                B_F_Gems[function + 4].SetActive(true);
-            else if (function == 0) // 기능x, 속성o
-                B_A_Gems[attribute + 3].SetActive(true);
-            else // 속성o, 기능o
-                B_A_F_Gems[gemIndex + 20].SetActive(true);
+            ActivateLargeGem(attribute, function); // 대형탄 보석 활성화
         }
     }
 
-    bool CheckGemAvailability(int bullet, int attribute, int function)
+    private void ActivateStandardGem(int attribute, int function)
     {
+        // 기본탄 보석 활성화
+        if (attribute == 0 && function == 0)
+            B_Gems[0].SetActive(true); // 속성x, 기능x
+        else if (attribute == 0)
+            B_F_Gems[function - 1].SetActive(true); // 속성x, 기능o
+        else if (function == 0)
+            B_A_Gems[attribute - 1].SetActive(true); // 기능x, 속성o
+        else
+            B_A_F_Gems[gemIndex].SetActive(true); // 속성o, 기능o
+    }
+
+    private void ActivateLargeGem(int attribute, int function)
+    {
+        // 대형탄 보석 활성화
+        if (attribute == 0 && function == 0)
+            B_Gems[1].SetActive(true); // 속성x, 기능x
+        else if (attribute == 0)
+            B_F_Gems[function + 4].SetActive(true); // 속성x, 기능o
+        else if (function == 0)
+            B_A_Gems[attribute + 3].SetActive(true); // 기능x, 속성o
+        else
+            B_A_F_Gems[gemIndex + 20].SetActive(true); // 속성o, 기능o
+    }
+
+    private bool CheckGemAvailability(int bullet, int attribute, int function)
+    {
+        // 보석 사용 가능 여부 체크
         if (bullet == 2 && !gemManager.onLarge) return false;
         if (attribute == 1 && !gemManager.onControl) return false;
         if (attribute == 2 && !gemManager.onFire) return false;
@@ -104,16 +148,15 @@ public class GemCombination : MonoBehaviour
         return true;
     }
 
-    int GetGemIndex(int bullet, int attribute, int function) // 보석 인덱스 계산
+    private int GetGemIndex(int bullet, int attribute, int function)
     {
+        // 보석 인덱스 계산
         return (attribute - 1) * 5 + (function - 1);
     }
 
-    float CalculateCurrentGem(int bullet, int attribute, int function) // 선택한 보석 값 설정
+    private float CalculateCurrentGem(int bullet, int attribute, int function)
     {
-        float baseValue = bullet;
-        float attributeValue = attribute * 0.1f;
-        float functionValue = function * 0.01f;
-        return baseValue + attributeValue + functionValue;
+        // 보석 값 계산
+        return bullet + attribute * 0.1f + function * 0.01f;
     }
 }

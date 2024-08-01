@@ -150,6 +150,7 @@ public class GemUI : MonoBehaviour
 
     private void ResetUIStates()  // 모든 UI 상태 초기화 및 닫기
     {
+        // 메뉴 초기화
         bulletMenuUI.SetActive(false);
         attributeMenuUI.SetActive(false);
         functionMenuUI.SetActive(false);
