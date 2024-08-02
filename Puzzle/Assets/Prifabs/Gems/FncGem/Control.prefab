@@ -81,3 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22151a90400f18b4286d585539addb4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gemMaterials:
+  - {fileID: 2100000, guid: 73efe5c6a145118458e57585aa9a3172, type: 2}
+  - {fileID: 2100000, guid: 3b7aa6a27d0d15345a0828bc3ca973a6, type: 2}
+  onControl: 0
