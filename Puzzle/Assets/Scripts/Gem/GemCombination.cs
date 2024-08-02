@@ -5,6 +5,7 @@ using UnityEngine;
 public class GemCombination : MonoBehaviour
 {
     private GemManager gemManager;
+    private ProjectilesScript projectilesScript;
 
     public int selectBulletNum; // 선택된 총알 번호
     public int selectAttributeNum; // 선택된 속성 번호
@@ -22,6 +23,7 @@ public class GemCombination : MonoBehaviour
     {
         // GemManager를 찾아서 할당
         gemManager = FindObjectOfType<GemManager>();
+        projectilesScript = GameObject.Find("GunManager").GetComponent<ProjectilesScript>();
     }
 
     private void Start()
@@ -110,26 +112,74 @@ public class GemCombination : MonoBehaviour
     {
         // 기본탄 보석 활성화
         if (attribute == 0 && function == 0)
+        {
             B_Gems[0].SetActive(true); // 속성x, 기능x
+            projectilesScript.b_Bullet = true;
+            projectilesScript.b_A_Bullet = false;
+            projectilesScript.b_F_Bullet = false;
+            projectilesScript.b_A_F_Bullet = false;
+        }
         else if (attribute == 0)
+        {
             B_F_Gems[function - 1].SetActive(true); // 속성x, 기능o
+            projectilesScript.b_Bullet = false;
+            projectilesScript.b_A_Bullet = false;
+            projectilesScript.b_F_Bullet = true;
+            projectilesScript.b_A_F_Bullet = false;
+        }
         else if (function == 0)
+        {
             B_A_Gems[attribute - 1].SetActive(true); // 기능x, 속성o
+            projectilesScript.b_Bullet = false;
+            projectilesScript.b_A_Bullet = true;
+            projectilesScript.b_F_Bullet = false;
+            projectilesScript.b_A_F_Bullet = false;
+        }
         else
+        {
             B_A_F_Gems[gemIndex].SetActive(true); // 속성o, 기능o
+            projectilesScript.b_Bullet = false;
+            projectilesScript.b_A_Bullet = false;
+            projectilesScript.b_F_Bullet = false;
+            projectilesScript.b_A_F_Bullet = true;
+        }
     }
 
     private void ActivateLargeGem(int attribute, int function)
     {
         // 대형탄 보석 활성화
         if (attribute == 0 && function == 0)
+        {
             B_Gems[1].SetActive(true); // 속성x, 기능x
+            projectilesScript.b_Bullet = true;
+            projectilesScript.b_A_Bullet = false;
+            projectilesScript.b_F_Bullet = false;
+            projectilesScript.b_A_F_Bullet = false;
+        }
         else if (attribute == 0)
+        {
             B_F_Gems[function + 4].SetActive(true); // 속성x, 기능o
+            projectilesScript.b_Bullet = false;
+            projectilesScript.b_A_Bullet = false;
+            projectilesScript.b_F_Bullet = true;
+            projectilesScript.b_A_F_Bullet = false;
+        }
         else if (function == 0)
+        {
             B_A_Gems[attribute + 3].SetActive(true); // 기능x, 속성o
+            projectilesScript.b_Bullet = false;
+            projectilesScript.b_A_Bullet = true;
+            projectilesScript.b_F_Bullet = false;
+            projectilesScript.b_A_F_Bullet = false;
+        }
         else
+        {
             B_A_F_Gems[gemIndex + 20].SetActive(true); // 속성o, 기능o
+            projectilesScript.b_Bullet = false;
+            projectilesScript.b_A_Bullet = false;
+            projectilesScript.b_F_Bullet = false;
+            projectilesScript.b_A_F_Bullet = true;
+        }
     }
 
     private bool CheckGemAvailability(int bullet, int attribute, int function)

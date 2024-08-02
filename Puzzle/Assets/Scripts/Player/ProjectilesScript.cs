@@ -4,24 +4,38 @@ using UnityEngine;
 public class ProjectilesScript : MonoBehaviour
 {
     private PlayerMovement playerMovement;
-    public GameObject player;
-    public Camera camera; // 카메라를 Camera 타입으로 변경
-    public GameObject firePoint; // 발사 위치
-    public List<GameObject> bulletPrifabs = new List<GameObject>(); // 총알 프리팹 리스트
+    private GemCombination gemCombination;
 
-    private float timeToFire = 0f; // 발사 시간 추적 변수
-    private GameObject effectToSpawn; // 생성할 효과를 나타낼 변수
+    public GameObject player;
+    public Camera camera;
+    public GameObject firePoint; // 발사 위치
+
+    public float gemIndex;
+    public bool changeBullet;
+    public GameObject[] B_Bullets; // 총알 투사체 배열
+    public GameObject[] B_A_Bullets; // 총알 + 속성 투사체 배열
+    public GameObject[] B_F_Bullets; // 총알 + 기능 투사체 배열
+    public GameObject[] B_A_F_Bullets; // 총알 + 속성 + 기능 투사체 배열
+    public bool b_Bullet;
+    public bool b_A_Bullet;
+    public bool b_F_Bullet;
+    public bool b_A_F_Bullet;
+
+    private float timeToFire = 0f; // 발사 시간 추적
+    public GameObject effectToSpawn; // 생성할 투사체
 
     private void Awake()
     {
         if (!playerMovement)
             playerMovement = player.GetComponent<PlayerMovement>();
+        if (!gemCombination)
+            gemCombination = GameObject.Find("GemManager").GetComponent<GemCombination>();
     }
 
     void Start()
     {
-        if (bulletPrifabs.Count > 0) // 총알 프리팹 확인
-            effectToSpawn = bulletPrifabs[0]; // 첫 번째 효과 선택
+        if (B_Bullets.Length > 0) // 총알 프리팹 확인
+            effectToSpawn = B_Bullets[0]; // 첫 번째 효과 선택
     }
 
     void FindPlayer()
@@ -40,7 +54,64 @@ public class ProjectilesScript : MonoBehaviour
             timeToFire = Time.time + 1f / effectToSpawn.GetComponent<ProjectileMoveScript>().fireRate; // 발사 시간 업데이트
             ShotBullet(); // 효과 생성
         }
+
+        if(gemIndex != gemCombination.currentGemNum && !changeBullet)
+        {
+            changeBullet = true;
+            SelectProjectiles();
+        }
     }
+
+    void SelectProjectiles() // 투사체 선택
+    {
+        float gemIndex;
+        gemIndex = gemCombination.currentGemNum;
+        changeBullet = false;
+
+        // 정수부와 소수부 분리
+        int intPart = Mathf.FloorToInt(gemIndex);
+        float decimalPart = gemIndex - intPart;
+
+        // 배열 선택
+        GameObject[] bulletArray = null;
+        int index = -1; // 초기값을 -1로 설정하여 잘못된 경우를 확인할 수 있도록 함
+
+        if (b_Bullet)
+        {
+            bulletArray = B_Bullets;
+            index = intPart - 1;
+        }
+        else if (b_A_Bullet)
+        {
+            bulletArray = B_A_Bullets;
+            index = (intPart - 1) * 10 + Mathf.RoundToInt(decimalPart * 10) - 1;
+        }
+        else if (b_F_Bullet)
+        {
+            bulletArray = B_F_Bullets;
+            if(decimalPart > 0.01)
+            {
+                index = (intPart - 1) * 100 + Mathf.RoundToInt(decimalPart * 100) - 1;
+            }
+            else
+            {
+                index = 0;
+            }
+        }
+        else if (b_A_F_Bullet)
+        {
+            bulletArray = B_A_F_Bullets;
+            index = (intPart - 1) * 100 + Mathf.RoundToInt(decimalPart * 100);
+        }
+
+        Debug.Log("Index : " + index);
+
+        if (bulletArray != null && index >= 0 && index < bulletArray.Length)
+        {
+            effectToSpawn = bulletArray[index];
+        }
+    }
+
 
     public void ShotBullet() // 효과 생성
     {
