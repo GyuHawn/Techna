@@ -114,6 +114,7 @@ public class GemCombination : MonoBehaviour
         if (attribute == 0 && function == 0)
         {
             B_Gems[0].SetActive(true); // 속성x, 기능x
+            projectilesScript.effectToSpawn = projectilesScript.B_Bullets[0]; // 활성화된 보석에 따른 투사체 선택
             projectilesScript.b_Bullet = true;
             projectilesScript.b_A_Bullet = false;
             projectilesScript.b_F_Bullet = false;
@@ -122,6 +123,7 @@ public class GemCombination : MonoBehaviour
         else if (attribute == 0)
         {
             B_F_Gems[function - 1].SetActive(true); // 속성x, 기능o
+            projectilesScript.effectToSpawn = projectilesScript.B_F_Bullets[function - 1];
             projectilesScript.b_Bullet = false;
             projectilesScript.b_A_Bullet = false;
             projectilesScript.b_F_Bullet = true;
@@ -130,6 +132,7 @@ public class GemCombination : MonoBehaviour
         else if (function == 0)
         {
             B_A_Gems[attribute - 1].SetActive(true); // 기능x, 속성o
+            projectilesScript.effectToSpawn = projectilesScript.B_A_Bullets[attribute - 1];
             projectilesScript.b_Bullet = false;
             projectilesScript.b_A_Bullet = true;
             projectilesScript.b_F_Bullet = false;
@@ -138,6 +141,7 @@ public class GemCombination : MonoBehaviour
         else
         {
             B_A_F_Gems[gemIndex].SetActive(true); // 속성o, 기능o
+            projectilesScript.effectToSpawn = projectilesScript.B_A_F_Bullets[gemIndex];
             projectilesScript.b_Bullet = false;
             projectilesScript.b_A_Bullet = false;
             projectilesScript.b_F_Bullet = false;
@@ -151,6 +155,7 @@ public class GemCombination : MonoBehaviour
         if (attribute == 0 && function == 0)
         {
             B_Gems[1].SetActive(true); // 속성x, 기능x
+            projectilesScript.effectToSpawn = projectilesScript.B_Bullets[1];
             projectilesScript.b_Bullet = true;
             projectilesScript.b_A_Bullet = false;
             projectilesScript.b_F_Bullet = false;
@@ -159,6 +164,7 @@ public class GemCombination : MonoBehaviour
         else if (attribute == 0)
         {
             B_F_Gems[function + 4].SetActive(true); // 속성x, 기능o
+            projectilesScript.effectToSpawn = projectilesScript.B_F_Bullets[function + 4];
             projectilesScript.b_Bullet = false;
             projectilesScript.b_A_Bullet = false;
             projectilesScript.b_F_Bullet = true;
@@ -167,6 +173,7 @@ public class GemCombination : MonoBehaviour
         else if (function == 0)
         {
             B_A_Gems[attribute + 3].SetActive(true); // 기능x, 속성o
+            projectilesScript.effectToSpawn = projectilesScript.B_A_Bullets[attribute + 3];
             projectilesScript.b_Bullet = false;
             projectilesScript.b_A_Bullet = true;
             projectilesScript.b_F_Bullet = false;
@@ -175,6 +182,7 @@ public class GemCombination : MonoBehaviour
         else
         {
             B_A_F_Gems[gemIndex + 20].SetActive(true); // 속성o, 기능o
+            projectilesScript.effectToSpawn = projectilesScript.B_A_F_Bullets[gemIndex + 20];
             projectilesScript.b_Bullet = false;
             projectilesScript.b_A_Bullet = false;
             projectilesScript.b_F_Bullet = false;
