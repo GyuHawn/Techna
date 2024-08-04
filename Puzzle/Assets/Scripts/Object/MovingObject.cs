@@ -13,31 +13,44 @@ public class MovingObject : MonoBehaviour
 
     public GameObject gem;
 
-    private Vector3 crruntPosition; // 초기 위치
+    private Vector3 currentPosition; // 초기 위치
     private Vector3 targetPosition; // 목표 위치
     public float moveDuration; // 도착 시간
     private bool isMoving = false; // 이동 중 여부
 
+    public bool autoMoving; // 계속 이동
+    public bool controlMoving; // 제어 이동
+
     private void Start()
     {
-        controlGem = gem.GetComponent<ControlGem>();
+        if(gem != null)
+        {
+            controlGem = gem.GetComponent<ControlGem>();
+        }
 
-        crruntPosition = transform.localPosition; // 초기 위치 저장
+        currentPosition = transform.localPosition; // 초기 위치 저장
         targetPosition = CalculateTargetPosition(); // 목표 위치 설정
     }
 
     void Update()
     {
-        if (controlGem.onControl && !isMoving)
+        // 제어이동, 보석o, 제어 확인, 이동 중 여부
+        if (controlMoving && gem != null && controlGem.onControl && !isMoving)
         {
             isMoving = true;
-            StartCoroutine(Moving());
+            StartCoroutine(MovePosition(targetPosition, false));
+        }
+        // 반복이동, 이동 중 여부
+        if (autoMoving && !isMoving)
+        {     
+            isMoving = true;
+            StartCoroutine(RepeatMove());
         }
     }
 
     private Vector3 CalculateTargetPosition() // 목표 위치 계산
     {
-        Vector3 target = crruntPosition;
+        Vector3 target = currentPosition;
 
         if (x) // x방향으로 이동
         {
@@ -55,22 +68,32 @@ public class MovingObject : MonoBehaviour
         return target;
     }
 
-    IEnumerator Moving() // 이동
+    IEnumerator RepeatMove() // 반복이동
     {
-        Vector3 startPosition = transform.localPosition;
-        Vector3 move = targetPosition - startPosition;
-        Vector3 movePerSecond = move / moveDuration; // 3초 동안 이동하도록 속도 설정
+        while (true)
+        {
+            yield return MovePosition(targetPosition, false);
+            yield return MovePosition(currentPosition, false);
+        }
+    }
 
+    IEnumerator MovePosition(Vector3 targetPos, bool resetMovingFlag) // 이동
+    {
+        Vector3 startPosition = transform.localPosition; // 시작위치 설정
         float elapsedTime = 0f;
 
-        while (elapsedTime < moveDuration)
+        while (elapsedTime < moveDuration) // 천천히 이동
         {
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, movePerSecond.magnitude * Time.deltaTime);
+            transform.localPosition = Vector3.MoveTowards(startPosition, targetPos, (targetPos - startPosition).magnitude * (elapsedTime / moveDuration));
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        transform.localPosition = targetPosition; // 목표 도착
-        isMoving = false;
+        transform.localPosition = targetPos; // 목표 도착
+
+        if (resetMovingFlag) // 이동 여부
+        {
+            isMoving = false;
+        }
     }
 }

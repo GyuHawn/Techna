@@ -52,16 +52,7 @@ public class ProjectilesScript : MonoBehaviour
             Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
             RaycastHit hit;
 
-            Vector3 targetPoint;
-            if (Physics.Raycast(ray, out hit))
-            {
-                targetPoint = hit.point; // 레이가 맞은 지점
-            }
-            else
-            {
-                targetPoint = ray.GetPoint(1000); // 아무것도 맞지 않을시 먼 거리의 점을 목표로 설정
-            }
-
+            Vector3 targetPoint = Physics.Raycast(ray, out hit) ? hit.point : ray.GetPoint(1000); // 레이가 맞은 지점 또는 먼 거리의 점을 목표로 설정
             Vector3 direction = (targetPoint - firePoint.transform.position).normalized;
 
             // 총구에서 카메라 중앙 방향으로 총알 생성

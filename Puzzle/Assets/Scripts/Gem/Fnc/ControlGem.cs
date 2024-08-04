@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ControlGem : MonoBehaviour
 {
-    public Material[] gemMaterials;
-    public bool onControl;
+    public Material[] gemMaterials; // 재질
+    public bool onControl; // 제어 여부
 
     private Renderer render;
 
@@ -14,34 +14,25 @@ public class ControlGem : MonoBehaviour
         render = GetComponent<Renderer>();
     }
 
-    void Update()
+    void UpdateColor() // 재질 변경
     {
-        UpdateColor(); // 기능 시 색 변경
+        render.material = onControl ? gemMaterials[1] : gemMaterials[0];
     }
 
-    void UpdateColor()
-    {
-        if (!onControl)
-        {
-            render.material = gemMaterials[0];
-        }
-        else
-        {
-            render.material = gemMaterials[1];
-        }
-    }
-
-    IEnumerator ChangeColor(float changeTime)
+    IEnumerator ChangeColor(float changeTime) // 재질 변경후 다시 복구
     {
         onControl = true;
+        UpdateColor();
 
         yield return new WaitForSeconds(changeTime);
 
         onControl = false;
+        UpdateColor();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision) 
     {
+        // 충돌에 따른 시간 설정
         if (collision.gameObject.name == "BasicControl")
         {
             StartCoroutine(ChangeColor(3f));
