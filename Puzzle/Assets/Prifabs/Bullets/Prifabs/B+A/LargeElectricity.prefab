@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4502358049891788703}
   - component: {fileID: 2224733750653814430}
   - component: {fileID: 9053376969673611543}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CircleOutterAdd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4939,7 +4939,7 @@ GameObject:
   - component: {fileID: 1839808147252884156}
   - component: {fileID: 6698918409602390622}
   - component: {fileID: 5512820733974038337}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CircleOutterAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9867,7 +9867,7 @@ GameObject:
   - component: {fileID: 5609713434772416933}
   - component: {fileID: 5387783740555034161}
   - component: {fileID: 3320450097040263715}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14732,7 +14732,7 @@ GameObject:
   - component: {fileID: 6334515770142133835}
   - component: {fileID: 3061096228610287420}
   - component: {fileID: 2568192018340889569}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ParticlesWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19584,7 +19584,7 @@ GameObject:
   - component: {fileID: 453088420742900291}
   - component: {fileID: 6564768527346959136}
   - component: {fileID: 7106752850786518837}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24512,7 +24512,7 @@ GameObject:
   - component: {fileID: 4690129418035902998}
   - component: {fileID: 872742024059947117}
   - component: {fileID: 4628030627695587406}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BallAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29442,9 +29442,9 @@ GameObject:
   - component: {fileID: 4396847269026523923}
   - component: {fileID: 4346150589825415918}
   - component: {fileID: 2743807749229191486}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LargeElectricity
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29580,7 +29580,7 @@ GameObject:
   - component: {fileID: 7919675835024816701}
   - component: {fileID: 1433252726017881481}
   - component: {fileID: 1754527727520428872}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}

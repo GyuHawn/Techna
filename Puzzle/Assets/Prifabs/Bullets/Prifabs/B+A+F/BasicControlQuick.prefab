@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4889092947592086509}
   - component: {fileID: 9175361858052422231}
   - component: {fileID: 2690552980470410114}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4854,7 +4854,7 @@ GameObject:
   - component: {fileID: 2877611464639132191}
   - component: {fileID: 4502522025077476279}
   - component: {fileID: 8578405977597584125}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ParticlesAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9696,7 +9696,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7384418274053922997}
   - component: {fileID: 7771099668951060900}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail_Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9842,7 +9842,7 @@ GameObject:
   - component: {fileID: 4484098102604433938}
   - component: {fileID: 4317048549695170851}
   - component: {fileID: 7627047239352208702}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ProjectileAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14772,9 +14772,9 @@ GameObject:
   - component: {fileID: 2871313514731511783}
   - component: {fileID: 5676347598200403012}
   - component: {fileID: 323009275625840374}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BasicControlQuick
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14914,7 +14914,7 @@ GameObject:
   - component: {fileID: 1322208117808752729}
   - component: {fileID: 4300745084491965208}
   - component: {fileID: 8020000398804032590}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ProjectileAdd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19841,7 +19841,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8311910177873396021}
   - component: {fileID: 3593994205185600266}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail_AB_Bot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19986,7 +19986,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5625547919186977564}
   - component: {fileID: 7976161960477357893}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail_AB_Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}

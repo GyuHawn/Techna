@@ -6,6 +6,7 @@ public class MovingObject : MonoBehaviour
 {
     private ControlGem controlGem;
 
+    // 이동관련
     public float moveNum; // 이동 거리
     public bool x; // x축 이동 여부
     public bool y; // y축 이동 여부
@@ -18,8 +19,13 @@ public class MovingObject : MonoBehaviour
     public float moveDuration; // 도착 시간
     private bool isMoving = false; // 이동 중 여부
 
-    public bool autoMoving; // 계속 이동
-    public bool controlMoving; // 제어 이동
+    // 물체이동 관련
+    public GameObject movingObject; // 이동시킬 물체
+    public Transform objectMovePos; // 이동시킬 위치
+
+    public bool autoMoving; // 계속 이동 (반복적인 움직임)
+    public bool controlMoving; // 제어 이동 (한번만 움직이도록)
+    public bool objectMoving; // 물체 이동 (다른 오브젝트를 이동시키도록)
 
     private void Start()
     {
@@ -34,17 +40,32 @@ public class MovingObject : MonoBehaviour
 
     void Update()
     {
-        // 제어이동, 보석o, 제어 확인, 이동 중 여부
+        // 제어이동, 보석o, 자신제어, 이동 중 여부
         if (controlMoving && gem != null && controlGem.onControl && !isMoving)
         {
             isMoving = true;
-            StartCoroutine(MovePosition(targetPosition, false));
+            StartCoroutine(MovePosition(gameObject, targetPosition, false));
+        }
+        // 물체이동, 보석o, 물체제어, 이동 중 여부
+        if (objectMoving && gem != null && controlGem.onControl && !isMoving)
+        {
+            isMoving = true;
+            StartCoroutine(MovePosition(movingObject, objectMovePos.position, false));
         }
         // 반복이동, 이동 중 여부
         if (autoMoving && !isMoving)
         {     
             isMoving = true;
             StartCoroutine(RepeatMove());
+        }
+    }
+
+    public void MoveObject() // 타스크립트 사용 이동코드
+    {
+        if (!isMoving)
+        {
+            isMoving = true;
+            StartCoroutine(MovePosition(gameObject,targetPosition, false));
         }
     }
 
@@ -72,24 +93,34 @@ public class MovingObject : MonoBehaviour
     {
         while (true)
         {
-            yield return MovePosition(targetPosition, false);
-            yield return MovePosition(currentPosition, false);
+            yield return MovePosition(gameObject, targetPosition, false);
+            yield return MovePosition(gameObject, currentPosition, false);
         }
     }
 
-    IEnumerator MovePosition(Vector3 targetPos, bool resetMovingFlag) // 이동
+    IEnumerator MovePosition(GameObject obj, Vector3 targetPos, bool resetMovingFlag) // 이동
     {
-        Vector3 startPosition = transform.localPosition; // 시작위치 설정
+        Vector3 startPosition = Vector3.zero;
+
+        // 시작위치 설정
+        if (autoMoving || controlMoving)
+        {
+            startPosition = transform.localPosition; 
+        }
+        else if (objectMoving)
+        {
+            startPosition = obj.transform.localPosition;
+        }
         float elapsedTime = 0f;
 
         while (elapsedTime < moveDuration) // 천천히 이동
         {
-            transform.localPosition = Vector3.MoveTowards(startPosition, targetPos, (targetPos - startPosition).magnitude * (elapsedTime / moveDuration));
+            obj.transform.localPosition = Vector3.MoveTowards(startPosition, targetPos, (targetPos - startPosition).magnitude * (elapsedTime / moveDuration));
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        transform.localPosition = targetPos; // 목표 도착
+        obj.transform.localPosition = targetPos; // 목표 도착
 
         if (resetMovingFlag) // 이동 여부
         {

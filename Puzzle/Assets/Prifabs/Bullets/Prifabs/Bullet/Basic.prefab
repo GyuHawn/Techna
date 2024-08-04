@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7808489221030868173}
   - component: {fileID: 7845896398596514845}
   - component: {fileID: 43838208737576668}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4960,7 +4960,7 @@ GameObject:
   - component: {fileID: 1774315927327905094}
   - component: {fileID: 5822877769433330866}
   - component: {fileID: 2088255937034930121}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9909,7 +9909,7 @@ GameObject:
   - component: {fileID: 5214916001268052916}
   - component: {fileID: 4735743751541249315}
   - component: {fileID: 7626864338222188200}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14750,7 +14750,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7961747755478685876}
   - component: {fileID: 8883431334047323329}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail_Add
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14895,7 +14895,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8146624116208393348}
   - component: {fileID: 5093535597416928512}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail_AB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15042,9 +15042,9 @@ GameObject:
   - component: {fileID: 8516258833325123187}
   - component: {fileID: 5068680531244331658}
   - component: {fileID: 1748717474707918786}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Basic
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15081,12 +15081,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12ba759cd568c0e47a7018ab70867a0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotate: 0
   rotateAmount: 45
-  bounce: 0
-  bounceForce: 10
   speed: 25
-  accuracy: 95
   fireRate: 2
   muzzlePrefab: {fileID: 4193674313816520779, guid: 1aaa91d1880cbb9428365375720847d4, type: 3}
   hitPrefab: {fileID: 6787981790667782748, guid: 6e1ecf8eeffcc294cbf072c92995ac4c, type: 3}

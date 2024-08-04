@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4626097736889250044}
   - component: {fileID: 5369627981562010167}
   - component: {fileID: 8714972488736542975}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LargeControlPenetrate
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 4865958638122425726}
   - component: {fileID: 7015983172983667810}
   - component: {fileID: 9110206526811417103}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -4987,7 +4987,7 @@ GameObject:
   - component: {fileID: 5117008672150720219}
   - component: {fileID: 4021684288266720773}
   - component: {fileID: 3860726356620970901}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Stones
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9811,7 +9811,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2574285313489104935}
   - component: {fileID: 5797866097911185128}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail_AB_Bot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9957,7 +9957,7 @@ GameObject:
   - component: {fileID: 933507694852015137}
   - component: {fileID: 1830804337712535779}
   - component: {fileID: 8439906133672500704}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SmokeOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14799,7 +14799,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7115800085340124311}
   - component: {fileID: 3575126917092987950}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail_AB_Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14944,7 +14944,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1580210097862214230}
   - component: {fileID: 7943572327291436094}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

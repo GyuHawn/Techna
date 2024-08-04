@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8902117819068380844}
   - component: {fileID: 8154236998724724056}
   - component: {fileID: 5014214525975008259}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CircleOutterAdd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4939,7 +4939,7 @@ GameObject:
   - component: {fileID: 8301492863339726365}
   - component: {fileID: 8693688531718508876}
   - component: {fileID: 5010054983784157749}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ParticlesWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9793,9 +9793,9 @@ GameObject:
   - component: {fileID: 7880532333168197516}
   - component: {fileID: 5078509464321625314}
   - component: {fileID: 7399573412181448597}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LargeFire
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9931,7 +9931,7 @@ GameObject:
   - component: {fileID: 1135290849873733876}
   - component: {fileID: 5443466447821146528}
   - component: {fileID: 4904276792593044415}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14859,7 +14859,7 @@ GameObject:
   - component: {fileID: 4112437757430535307}
   - component: {fileID: 888578357557135474}
   - component: {fileID: 5075562282474104840}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19787,7 +19787,7 @@ GameObject:
   - component: {fileID: 631621463336381037}
   - component: {fileID: 4505797116959587116}
   - component: {fileID: 9064874381125293294}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BallAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24715,7 +24715,7 @@ GameObject:
   - component: {fileID: 7755530498089246747}
   - component: {fileID: 8389555450234476300}
   - component: {fileID: 1155123522065021210}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CircleOutterAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29643,7 +29643,7 @@ GameObject:
   - component: {fileID: 3737297809165983713}
   - component: {fileID: 1839807541346978623}
   - component: {fileID: 5977420125760111175}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

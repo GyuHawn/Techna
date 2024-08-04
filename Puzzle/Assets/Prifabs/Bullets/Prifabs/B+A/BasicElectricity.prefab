@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2563619811343825176}
   - component: {fileID: 6829682314280074466}
   - component: {fileID: 1312026829616934804}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4853,7 +4853,7 @@ GameObject:
   - component: {fileID: 3893243042719935860}
   - component: {fileID: 3460648907699967384}
   - component: {fileID: 3017010158162207747}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9802,7 +9802,7 @@ GameObject:
   - component: {fileID: 1458502073750613392}
   - component: {fileID: 9087941978980151321}
   - component: {fileID: 946670290427817028}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14750,7 +14750,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6321397663720703927}
   - component: {fileID: 4659623896487023962}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail_AB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14897,9 +14897,9 @@ GameObject:
   - component: {fileID: 8807279253164970552}
   - component: {fileID: 3586223572750260509}
   - component: {fileID: 939471819030965807}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BasicElectricity
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15003,7 +15003,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8530090089692371595}
   - component: {fileID: 2940805977041009995}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail_Add
   m_TagString: Untagged
   m_Icon: {fileID: 0}

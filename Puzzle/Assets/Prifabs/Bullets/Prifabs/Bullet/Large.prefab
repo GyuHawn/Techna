@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8504565309532905368}
   - component: {fileID: 1309828232959856379}
   - component: {fileID: 5391689285700246347}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Large
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 1772744668512636114}
   - component: {fileID: 2595426496796219910}
   - component: {fileID: 473206976787261536}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CircleOutterAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5079,7 +5079,7 @@ GameObject:
   - component: {fileID: 1905364230675865350}
   - component: {fileID: 4861892815177538450}
   - component: {fileID: 1979851546863581115}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9944,7 +9944,7 @@ GameObject:
   - component: {fileID: 3296938754868361636}
   - component: {fileID: 532727279001870235}
   - component: {fileID: 7374574129152835054}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BallAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14872,7 +14872,7 @@ GameObject:
   - component: {fileID: 3418696540050931791}
   - component: {fileID: 92754418458457433}
   - component: {fileID: 5904386196703518783}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CircleOutterAdd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19800,7 +19800,7 @@ GameObject:
   - component: {fileID: 7445175817513659768}
   - component: {fileID: 7241600375745806155}
   - component: {fileID: 7068148585059351463}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24728,7 +24728,7 @@ GameObject:
   - component: {fileID: 6132305133606491248}
   - component: {fileID: 5187503010588948546}
   - component: {fileID: 7992072962061438330}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ParticlesWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29580,7 +29580,7 @@ GameObject:
   - component: {fileID: 6432442804839802054}
   - component: {fileID: 5183571593534359611}
   - component: {fileID: 8094666728366742040}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}

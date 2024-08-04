@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6919609814806273651}
   - component: {fileID: 7791223623576076128}
   - component: {fileID: 8907490969752235217}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rays
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4993,7 +4993,7 @@ GameObject:
   - component: {fileID: 1299552519646094300}
   - component: {fileID: 7266378344345323951}
   - component: {fileID: 2852790945192908754}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9836,7 +9836,7 @@ GameObject:
   - component: {fileID: 1357674739834518132}
   - component: {fileID: 2417212341557185243}
   - component: {fileID: 8945781856653705241}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ParticlesAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14679,7 +14679,7 @@ GameObject:
   - component: {fileID: 7240469116824299964}
   - component: {fileID: 5607451966687026008}
   - component: {fileID: 1672461683360644633}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beams
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19578,9 +19578,9 @@ GameObject:
   - component: {fileID: 1052296131396507619}
   - component: {fileID: 4136601658181739452}
   - component: {fileID: 5150127112781905233}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BasicFireUpgrade
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19721,7 +19721,7 @@ GameObject:
   - component: {fileID: 7152544392048540647}
   - component: {fileID: 3951507672866364459}
   - component: {fileID: 1464208904190867347}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24703,7 +24703,7 @@ GameObject:
   - component: {fileID: 8524195116209515219}
   - component: {fileID: 5029031761316745488}
   - component: {fileID: 7465049721820843577}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lines
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29568,7 +29568,7 @@ GameObject:
   - component: {fileID: 4877458444841064463}
   - component: {fileID: 7568446719763236407}
   - component: {fileID: 8805552576969531203}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34549,7 +34549,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8774036482025198566}
   - component: {fileID: 5093339676591844005}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5397985425018033826}
   - component: {fileID: 1578260414378579078}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 1632331443838389074}
   - component: {fileID: 4041106845107599779}
   - component: {fileID: 9018447785983514647}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BallFireOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5066,7 +5066,7 @@ GameObject:
   - component: {fileID: 4251119395248378978}
   - component: {fileID: 1558371547997714436}
   - component: {fileID: 5788193491483519932}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9909,7 +9909,7 @@ GameObject:
   - component: {fileID: 604215021505731414}
   - component: {fileID: 4981978544494639988}
   - component: {fileID: 3716794281998012154}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SmokeOutABLocal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14765,7 +14765,7 @@ GameObject:
   - component: {fileID: 2883168730561432472}
   - component: {fileID: 2784894839056425117}
   - component: {fileID: 5971773106301631951}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireInOrange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19608,7 +19608,7 @@ GameObject:
   - component: {fileID: 7181156016722358122}
   - component: {fileID: 607533351202497959}
   - component: {fileID: 1447325454681742658}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SmokeOutLocal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24464,7 +24464,7 @@ GameObject:
   - component: {fileID: 5114797218501671144}
   - component: {fileID: 233912695251634505}
   - component: {fileID: 8740520974658982845}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SmokeOutAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29320,7 +29320,7 @@ GameObject:
   - component: {fileID: 2502750626097808092}
   - component: {fileID: 7607324469512967094}
   - component: {fileID: 5098983118561895559}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34163,7 +34163,7 @@ GameObject:
   - component: {fileID: 457264356305703806}
   - component: {fileID: 1707190208713231119}
   - component: {fileID: 6973397785635951699}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BallFireIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39073,7 +39073,7 @@ GameObject:
   - component: {fileID: 6396260359957565023}
   - component: {fileID: 4337796822232166568}
   - component: {fileID: 5831108231213097598}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43938,7 +43938,7 @@ GameObject:
   - component: {fileID: 672986326065811722}
   - component: {fileID: 8445071949284253872}
   - component: {fileID: 1816951952770666305}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SmokeOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48796,7 +48796,7 @@ GameObject:
   - component: {fileID: 6423704709750675637}
   - component: {fileID: 8995629229009634403}
   - component: {fileID: 272082294461572442}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BasicWaterDestruction
   m_TagString: Bullet
   m_Icon: {fileID: 0}

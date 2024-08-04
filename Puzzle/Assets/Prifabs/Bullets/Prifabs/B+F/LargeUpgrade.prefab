@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3691645354696561559}
   - component: {fileID: 5027550126796034998}
   - component: {fileID: 8009736521198980852}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GluieABLocal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4939,7 +4939,7 @@ GameObject:
   - component: {fileID: 6036083167253963701}
   - component: {fileID: 3617108778602838926}
   - component: {fileID: 7379299503099469886}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BallAdd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9867,7 +9867,7 @@ GameObject:
   - component: {fileID: 1898636007495378950}
   - component: {fileID: 5412275600183214835}
   - component: {fileID: 5736781266482885319}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ParticlesAdd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14719,7 +14719,7 @@ GameObject:
   - component: {fileID: 1578744728233617354}
   - component: {fileID: 751942325633002478}
   - component: {fileID: 8776286625127667243}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19649,9 +19649,9 @@ GameObject:
   - component: {fileID: 353910524417832314}
   - component: {fileID: 7502696791637409341}
   - component: {fileID: 7897133746848030753}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LargeUpgrade
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19693,7 +19693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12ba759cd568c0e47a7018ab70867a0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateAmount: 45
+  rotateAmount: 0
   speed: 25
   fireRate: 2
   muzzlePrefab: {fileID: 2628472212587139749, guid: 58b296e7cf5c709489e290c7dbe4d16d, type: 3}
@@ -19795,7 +19795,7 @@ GameObject:
   - component: {fileID: 5345261139133529763}
   - component: {fileID: 7442195728310892613}
   - component: {fileID: 2667932394579931525}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BallAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24723,7 +24723,7 @@ GameObject:
   - component: {fileID: 5855218607617433855}
   - component: {fileID: 7731812300545272357}
   - component: {fileID: 6139156799707706452}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29651,7 +29651,7 @@ GameObject:
   - component: {fileID: 3206005181466713659}
   - component: {fileID: 5849173646631368299}
   - component: {fileID: 2381980612811341795}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ParticlesAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34503,7 +34503,7 @@ GameObject:
   - component: {fileID: 1315218016025616861}
   - component: {fileID: 5384350041295593645}
   - component: {fileID: 6025915095631688250}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GluieABWorld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39346,7 +39346,7 @@ GameObject:
   - component: {fileID: 5617465706012449585}
   - component: {fileID: 2088151452942199893}
   - component: {fileID: 3584485958015038953}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CircleOutter02AB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44274,7 +44274,7 @@ GameObject:
   - component: {fileID: 4929305317893723520}
   - component: {fileID: 219854217774341584}
   - component: {fileID: 1110239810220149377}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CircleOutterAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}

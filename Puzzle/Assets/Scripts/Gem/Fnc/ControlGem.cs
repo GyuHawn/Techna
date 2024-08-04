@@ -5,7 +5,7 @@ using UnityEngine;
 public class ControlGem : MonoBehaviour
 {
     public Material[] gemMaterials; // 재질
-    public bool onControl; // 제어 여부
+    public bool onControl; // 자신 제어 여부
 
     private Renderer render;
 

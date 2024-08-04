@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5676881538165330094}
   - component: {fileID: 5189715996815404195}
   - component: {fileID: 7471877791904270651}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4960,7 +4960,7 @@ GameObject:
   - component: {fileID: 1990935676142601932}
   - component: {fileID: 5403967010693421446}
   - component: {fileID: 8122055097109576040}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9801,7 +9801,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4266069444941900736}
   - component: {fileID: 5366145306509603304}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail_AB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9948,9 +9948,9 @@ GameObject:
   - component: {fileID: 3481041679022596747}
   - component: {fileID: 3193837702098301750}
   - component: {fileID: 3346266531493298193}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BasicControl
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10054,7 +10054,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2429463596950557482}
   - component: {fileID: 4659099968343091328}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail_Add
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10200,7 +10200,7 @@ GameObject:
   - component: {fileID: 3831809080440834497}
   - component: {fileID: 1539059461794084110}
   - component: {fileID: 4832971169291203790}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}

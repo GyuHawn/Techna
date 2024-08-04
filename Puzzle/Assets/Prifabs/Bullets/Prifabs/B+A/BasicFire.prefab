@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5343697689277593346}
   - component: {fileID: 1363987365481627012}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail_AB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 2012544790762897863}
   - component: {fileID: 4861078742965375605}
   - component: {fileID: 7442266229787310819}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4997,7 +4997,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8325728765263272275}
   - component: {fileID: 3161739765465995084}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail_Add
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5143,7 +5143,7 @@ GameObject:
   - component: {fileID: 668304724021812266}
   - component: {fileID: 1525050598967369757}
   - component: {fileID: 3806659802310789655}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10092,7 +10092,7 @@ GameObject:
   - component: {fileID: 237469886411334934}
   - component: {fileID: 7475242487939316663}
   - component: {fileID: 3557518956747244876}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15042,9 +15042,9 @@ GameObject:
   - component: {fileID: 7658986247518239927}
   - component: {fileID: 6144240459833103364}
   - component: {fileID: 4459974132351273304}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BasicFire
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15081,12 +15081,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12ba759cd568c0e47a7018ab70867a0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotate: 0
   rotateAmount: 45
-  bounce: 0
-  bounceForce: 10
   speed: 25
-  accuracy: 95
   fireRate: 2
   muzzlePrefab: {fileID: 8394751718367563734, guid: d0d04675ed00f214f8e78e64fff7d1a4, type: 3}
   hitPrefab: {fileID: 7110245688252022729, guid: b17b57eab420b674eae9877eaf44b359, type: 3}

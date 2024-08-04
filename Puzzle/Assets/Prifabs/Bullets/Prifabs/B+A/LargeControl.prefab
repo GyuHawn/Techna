@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7554077845420855826}
   - component: {fileID: 5126598769272531730}
   - component: {fileID: 8586674622300378662}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ParticlesWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4863,7 +4863,7 @@ GameObject:
   - component: {fileID: 8145898619468347770}
   - component: {fileID: 8515261747049637578}
   - component: {fileID: 7142113317944380808}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CircleOutterAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9791,7 +9791,7 @@ GameObject:
   - component: {fileID: 2456796761552100848}
   - component: {fileID: 7234512891179587989}
   - component: {fileID: 1845156789426132364}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BallAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14719,7 +14719,7 @@ GameObject:
   - component: {fileID: 5218384918033363917}
   - component: {fileID: 4236279702911550248}
   - component: {fileID: 9092358584797082598}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CircleOutterAdd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19647,7 +19647,7 @@ GameObject:
   - component: {fileID: 4827391396679786460}
   - component: {fileID: 4652564641524601675}
   - component: {fileID: 1217371406412815335}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24575,7 +24575,7 @@ GameObject:
   - component: {fileID: 6498219641792140181}
   - component: {fileID: 5997893310114691174}
   - component: {fileID: 6816112316923146869}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29503,7 +29503,7 @@ GameObject:
   - component: {fileID: 3361879116423022126}
   - component: {fileID: 2117524786841669957}
   - component: {fileID: 154976271378621381}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34370,9 +34370,9 @@ GameObject:
   - component: {fileID: 1827262363927226326}
   - component: {fileID: 3260871073473727391}
   - component: {fileID: 3227704094762427805}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LargeControl
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

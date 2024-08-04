@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1176990813782997914}
   - component: {fileID: 9212936702770157505}
   - component: {fileID: 5672452727012198869}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4877,9 +4877,9 @@ GameObject:
   - component: {fileID: 408477458777720288}
   - component: {fileID: 1201992808145167664}
   - component: {fileID: 7838150920291872902}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LargeControlDiffusion
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4986,7 +4986,7 @@ GameObject:
   - component: {fileID: 82330361264802136}
   - component: {fileID: 475241879849013411}
   - component: {fileID: 7256586777954907965}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Electricity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9829,7 +9829,7 @@ GameObject:
   - component: {fileID: 7394256541673032834}
   - component: {fileID: 1946888035303747901}
   - component: {fileID: 7693147250904329964}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SmokeWorld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14672,7 +14672,7 @@ GameObject:
   - component: {fileID: 5882439371738522627}
   - component: {fileID: 6057177283294547000}
   - component: {fileID: 6758233245596334546}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19515,7 +19515,7 @@ GameObject:
   - component: {fileID: 8921130130165495444}
   - component: {fileID: 5122637855814412810}
   - component: {fileID: 2795026233988024086}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24380,7 +24380,7 @@ GameObject:
   - component: {fileID: 7279551339915475806}
   - component: {fileID: 3868313750620565711}
   - component: {fileID: 4460780720279537415}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29245,7 +29245,7 @@ GameObject:
   - component: {fileID: 3353591626455951011}
   - component: {fileID: 8863852370495341523}
   - component: {fileID: 5789811931631102800}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ParticlesIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
