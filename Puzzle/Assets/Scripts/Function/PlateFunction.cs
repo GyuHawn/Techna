@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonFunction : MonoBehaviour
+public class PlateFunction : MonoBehaviour
 {
     public GameObject[] movingObj; // 이동하는 오브젝트
     public GameObject[] rotateObj; // 회전하는 오브젝트
@@ -21,7 +21,7 @@ public class ButtonFunction : MonoBehaviour
     {
         if (movingObj != null)
         {
-            for(int i = 0; i < movingObj.Length; i++)
+            for (int i = 0; i < movingObj.Length; i++)
             {
                 MovingObject obj = movingObj[i].GetComponent<MovingObject>();
                 obj.MoveObject();
@@ -30,17 +30,17 @@ public class ButtonFunction : MonoBehaviour
 
         if (rotateObj != null)
         {
-            for (int i = 0; i < rotateObj.Length; i++)
+            foreach (var r_Obj in rotateObj)
             {
-
+                // RotateObject obj = r_Obj.GetComponent<RotateObject>();
             }
         }
     }
 
-    private void OnCollisionEnter(Collision collision) 
+    private void OnCollisionEnter(Collision collision)
     {
-        // 총알에 충돌시 3초간 작동
-        if (collision.gameObject.CompareTag("Bullet"))
+        // 충돌시 3초간 작동
+        if (collision.gameObject.CompareTag("GrabObject"))
         {
             StartCoroutine(OnButton(3f));
         }

@@ -19694,7 +19694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateAmount: 45
-  speed: 25
+  speed: 40
   fireRate: 2
   muzzlePrefab: {fileID: 2628472212587139749, guid: c359aa46601a246459cd5f9aaf21d782, type: 3}
   hitPrefab: {fileID: 4266263360342114105, guid: 87f77ab9945b5e540895e4b7337f37f0, type: 3}

@@ -44,13 +44,13 @@ public class MovingObject : MonoBehaviour
         if (controlMoving && gem != null && controlGem.onControl && !isMoving)
         {
             isMoving = true;
-            StartCoroutine(MovePosition(gameObject, targetPosition, false));
+            StartCoroutine(MovePosition(gameObject, targetPosition));
         }
         // 물체이동, 보석o, 물체제어, 이동 중 여부
         if (objectMoving && gem != null && controlGem.onControl && !isMoving)
         {
             isMoving = true;
-            StartCoroutine(MovePosition(movingObject, objectMovePos.position, false));
+            StartCoroutine(MovePosition(movingObject, objectMovePos.position));
         }
         // 반복이동, 이동 중 여부
         if (autoMoving && !isMoving)
@@ -65,7 +65,7 @@ public class MovingObject : MonoBehaviour
         if (!isMoving)
         {
             isMoving = true;
-            StartCoroutine(MovePosition(gameObject,targetPosition, false));
+            StartCoroutine(MovePosition(gameObject, targetPosition));
         }
     }
 
@@ -93,24 +93,25 @@ public class MovingObject : MonoBehaviour
     {
         while (true)
         {
-            yield return MovePosition(gameObject, targetPosition, false);
-            yield return MovePosition(gameObject, currentPosition, false);
+            yield return MovePosition(gameObject, targetPosition);
+            yield return MovePosition(gameObject, currentPosition);
         }
     }
 
-    IEnumerator MovePosition(GameObject obj, Vector3 targetPos, bool resetMovingFlag) // 이동
+    IEnumerator MovePosition(GameObject obj, Vector3 targetPos) // 이동
     {
         Vector3 startPosition = Vector3.zero;
 
         // 시작위치 설정
-        if (autoMoving || controlMoving)
-        {
-            startPosition = transform.localPosition; 
-        }
-        else if (objectMoving)
+        if (objectMoving)
         {
             startPosition = obj.transform.localPosition;
         }
+        else
+        {
+            startPosition = transform.localPosition;
+        }
+
         float elapsedTime = 0f;
 
         while (elapsedTime < moveDuration) // 천천히 이동
@@ -122,9 +123,6 @@ public class MovingObject : MonoBehaviour
 
         obj.transform.localPosition = targetPos; // 목표 도착
 
-        if (resetMovingFlag) // 이동 여부
-        {
-            isMoving = false;
-        }
+        isMoving = false;
     }
 }
