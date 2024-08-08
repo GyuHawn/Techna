@@ -10,6 +10,7 @@ public class Stage1Map5 : MonoBehaviour
     public GameObject[] plates;
 
     public bool activate;
+    public bool open;
 
     public GameObject player;
 
@@ -45,7 +46,7 @@ public class Stage1Map5 : MonoBehaviour
     void Update()
     {
         // Stage에 진입했을 때만 판 활성화 확인
-        CheckAllPlatesActivated(false); // 초기화용으로 false를 전달합니다.
+        CheckAllPlatesActivated(false);
     }
 
     void CheckAllPlatesActivated(bool dummy)
@@ -80,6 +81,27 @@ public class Stage1Map5 : MonoBehaviour
     void OpenDoor()
     {
         activate = false;
-        Destroy(gameObject);
+        if(!open)
+        {
+            open = true;
+            StartCoroutine(MovingDoor());
+        }
+    }
+
+    IEnumerator MovingDoor()
+    {
+        float elapsedTime = 0f;
+        float duration = 3f;
+        Vector3 startPos = transform.position;
+        Vector3 endPos = startPos + new Vector3(0, 16, 0);
+
+        while (elapsedTime < duration)
+        {
+            transform.position = Vector3.Lerp(startPos, endPos, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = endPos;
     }
 }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 633438585539178843}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: GemPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,11 +101,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1611369964411022691}
   - component: {fileID: 4720015824208031398}
+  - component: {fileID: 6407792517600832009}
   - component: {fileID: 2006697472176731607}
   - component: {fileID: 2267540582913722012}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,6 +145,22 @@ MonoBehaviour:
   gunPos: {fileID: 7772416671682099070}
   gunOffset: {x: 0, y: 1.2, z: 0}
   isCursorVisible: 1
+--- !u!114 &6407792517600832009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3634729431055673026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e44b2cf36837ab74981a4225495e1345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  holdPosition: {fileID: 1544185108917906474}
+  grab: 0
+  grabRange: 2
+  throwForce: 10
 --- !u!65 &2006697472176731607
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -202,7 +219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3025746628585439490}
   - component: {fileID: 926114967042142020}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +235,7 @@ Transform:
   m_GameObject: {fileID: 4329136917796573007}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.103, y: -0.006, z: -0.005}
+  m_LocalPosition: {x: 0.248, y: -0.006, z: -0.005}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -238,6 +255,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maximumLenght: 150
   cam: {fileID: 441872610695194894}
+--- !u!1 &7703522369307496962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1544185108917906474}
+  m_Layer: 7
+  m_Name: GrabPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1544185108917906474
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7703522369307496962}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.42, z: 3.27}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7772416671682099070}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8222774734401879181
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,6 +319,7 @@ Transform:
   m_Children:
   - {fileID: 8889523289140647497}
   - {fileID: 6767366994430533713}
+  - {fileID: 1544185108917906474}
   m_Father: {fileID: 1611369964411022691}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8230729741148378889
@@ -336,7 +385,7 @@ GameObject:
   - component: {fileID: 5245932238738568413}
   - component: {fileID: 4406628269436440035}
   - component: {fileID: 8270655918847158756}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -367,8 +416,8 @@ Camera:
   m_GameObject: {fileID: 8560183134688783610}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -456,6 +505,10 @@ PrefabInstance:
       value: LargeElectricityQuick
       objectReference: {fileID: 0}
     - target: {fileID: 1433195128672262714, guid: c714a09208edb074ba5296a29189ef8d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433195128672262714, guid: c714a09208edb074ba5296a29189ef8d, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -532,6 +585,10 @@ PrefabInstance:
     - target: {fileID: 457002392872273380, guid: a6e18ae98be63a64c850ca210b709e2a, type: 3}
       propertyPath: m_Name
       value: BasicWaterQuick
+      objectReference: {fileID: 0}
+    - target: {fileID: 457002392872273380, guid: a6e18ae98be63a64c850ca210b709e2a, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 457002392872273380, guid: a6e18ae98be63a64c850ca210b709e2a, type: 3}
       propertyPath: m_IsActive
@@ -664,6 +721,10 @@ PrefabInstance:
       value: BasicElectricity
       objectReference: {fileID: 0}
     - target: {fileID: 844662450393549436, guid: 60a573979ae70df4c8d417607fc6c44d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 844662450393549436, guid: 60a573979ae70df4c8d417607fc6c44d, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -690,8 +751,16 @@ PrefabInstance:
       value: LargeWaterPenetrate
       objectReference: {fileID: 0}
     - target: {fileID: 176123963839435804, guid: 1fb9e9ec7b9da1f4ab046ab05124d3c1, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 176123963839435804, guid: 1fb9e9ec7b9da1f4ab046ab05124d3c1, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5319530672525486865, guid: 1fb9e9ec7b9da1f4ab046ab05124d3c1, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6353561609865034002, guid: 1fb9e9ec7b9da1f4ab046ab05124d3c1, type: 3}
       propertyPath: m_LocalScale.y
@@ -758,6 +827,10 @@ PrefabInstance:
     - target: {fileID: 3990536104148589523, guid: 36b56e7e71ac9da4899f2d40a60e1d64, type: 3}
       propertyPath: m_Name
       value: LargeWaterUpgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990536104148589523, guid: 36b56e7e71ac9da4899f2d40a60e1d64, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3990536104148589523, guid: 36b56e7e71ac9da4899f2d40a60e1d64, type: 3}
       propertyPath: m_IsActive
@@ -890,6 +963,10 @@ PrefabInstance:
       value: LargeWaterQuick
       objectReference: {fileID: 0}
     - target: {fileID: 4456661104238221542, guid: e3e52b306ee3d844abe1e818811b951b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456661104238221542, guid: e3e52b306ee3d844abe1e818811b951b, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -914,6 +991,10 @@ PrefabInstance:
     - target: {fileID: 5173486177555906649, guid: 4834c63c7ef1440418e24c1c34d2b922, type: 3}
       propertyPath: m_Name
       value: LargeControlUpgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173486177555906649, guid: 4834c63c7ef1440418e24c1c34d2b922, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5173486177555906649, guid: 4834c63c7ef1440418e24c1c34d2b922, type: 3}
       propertyPath: m_IsActive
@@ -992,6 +1073,10 @@ PrefabInstance:
     - target: {fileID: 4685350858064455156, guid: bc75ac874b9e72549b148c6290fdd77f, type: 3}
       propertyPath: m_Name
       value: BasicFireDiffusion
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685350858064455156, guid: bc75ac874b9e72549b148c6290fdd77f, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4685350858064455156, guid: bc75ac874b9e72549b148c6290fdd77f, type: 3}
       propertyPath: m_IsActive
@@ -1111,9 +1196,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2541981276879565250, guid: fbe7b074f27e27940ac8f208eb9886ae, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5897334756661359772, guid: fbe7b074f27e27940ac8f208eb9886ae, type: 3}
       propertyPath: m_Name
       value: LargeElectricityPenetrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897334756661359772, guid: fbe7b074f27e27940ac8f208eb9886ae, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5897334756661359772, guid: fbe7b074f27e27940ac8f208eb9886ae, type: 3}
       propertyPath: m_IsActive
@@ -1194,6 +1287,10 @@ PrefabInstance:
       value: BasicWaterDiffusion
       objectReference: {fileID: 0}
     - target: {fileID: 4482001996392485068, guid: 2dd900cdc604da1478d1a9ca8e3e3345, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4482001996392485068, guid: 2dd900cdc604da1478d1a9ca8e3e3345, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -1218,6 +1315,10 @@ PrefabInstance:
     - target: {fileID: 2657786666031937937, guid: 3967bd9232ec8bc42a47539e99642f90, type: 3}
       propertyPath: m_Name
       value: LargeDestruction
+      objectReference: {fileID: 0}
+    - target: {fileID: 2657786666031937937, guid: 3967bd9232ec8bc42a47539e99642f90, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2657786666031937937, guid: 3967bd9232ec8bc42a47539e99642f90, type: 3}
       propertyPath: m_IsActive
@@ -1342,6 +1443,10 @@ PrefabInstance:
       value: BasicFireDestruction
       objectReference: {fileID: 0}
     - target: {fileID: 7622707494517097355, guid: d31d90cb150d07648a2a08a167f4bb9a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622707494517097355, guid: d31d90cb150d07648a2a08a167f4bb9a, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -1418,6 +1523,10 @@ PrefabInstance:
     - target: {fileID: 8849575438225286327, guid: 14f589f7075a82547858dec12307161f, type: 3}
       propertyPath: m_Name
       value: BasicQuick
+      objectReference: {fileID: 0}
+    - target: {fileID: 8849575438225286327, guid: 14f589f7075a82547858dec12307161f, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8849575438225286327, guid: 14f589f7075a82547858dec12307161f, type: 3}
       propertyPath: m_IsActive
@@ -1498,6 +1607,10 @@ PrefabInstance:
       value: BasicControlDiffusion
       objectReference: {fileID: 0}
     - target: {fileID: 4300453431047449822, guid: fd085b013b0c03f47a505a16ee0a8061, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300453431047449822, guid: fd085b013b0c03f47a505a16ee0a8061, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -1568,6 +1681,10 @@ PrefabInstance:
       value: LargeWaterDestruction
       objectReference: {fileID: 0}
     - target: {fileID: 8756446454897869001, guid: 36a837c9cfc975546a61383913a8bd84, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8756446454897869001, guid: 36a837c9cfc975546a61383913a8bd84, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -1592,6 +1709,10 @@ PrefabInstance:
     - target: {fileID: 2424019611786971196, guid: 21490e35fca559c45b5bcbb31595b67b, type: 3}
       propertyPath: m_Name
       value: BasicFireQuick
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424019611786971196, guid: 21490e35fca559c45b5bcbb31595b67b, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2424019611786971196, guid: 21490e35fca559c45b5bcbb31595b67b, type: 3}
       propertyPath: m_IsActive
@@ -1670,6 +1791,10 @@ PrefabInstance:
     - target: {fileID: 1523500954744692843, guid: 37bc01782091f174686b3b8991eb1d0f, type: 3}
       propertyPath: m_Name
       value: LargeQuick
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523500954744692843, guid: 37bc01782091f174686b3b8991eb1d0f, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1523500954744692843, guid: 37bc01782091f174686b3b8991eb1d0f, type: 3}
       propertyPath: m_IsActive
@@ -1802,6 +1927,10 @@ PrefabInstance:
       value: BasicControlPenetrate
       objectReference: {fileID: 0}
     - target: {fileID: 2235068476452417356, guid: f66b82244481ed9499dba7ce0ff4b2df, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235068476452417356, guid: f66b82244481ed9499dba7ce0ff4b2df, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -1824,6 +1953,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 633438585539178843}
     m_Modifications:
     - target: {fileID: 8630154256413035131, guid: fb462131e3a9064428887c36a81d55d2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630154256413035131, guid: fb462131e3a9064428887c36a81d55d2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630154256413035131, guid: fb462131e3a9064428887c36a81d55d2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630154256413035131, guid: fb462131e3a9064428887c36a81d55d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1837,27 +1978,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8630154256413035131, guid: fb462131e3a9064428887c36a81d55d2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.000000021855694
+      value: 0.45451948
       objectReference: {fileID: 0}
     - target: {fileID: 8630154256413035131, guid: fb462131e3a9064428887c36a81d55d2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 1
+      value: -0.45451948
       objectReference: {fileID: 0}
     - target: {fileID: 8630154256413035131, guid: fb462131e3a9064428887c36a81d55d2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1.3382752e-24
+      value: 0.5416752
       objectReference: {fileID: 0}
     - target: {fileID: 8630154256413035131, guid: fb462131e3a9064428887c36a81d55d2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 6.123234e-17
+      value: 0.5416752
       objectReference: {fileID: 0}
     - target: {fileID: 8630154256413035131, guid: fb462131e3a9064428887c36a81d55d2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 8630154256413035131, guid: fb462131e3a9064428887c36a81d55d2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8630154256413035131, guid: fb462131e3a9064428887c36a81d55d2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1866,6 +2007,10 @@ PrefabInstance:
     - target: {fileID: 8975576470338621633, guid: fb462131e3a9064428887c36a81d55d2, type: 3}
       propertyPath: m_Name
       value: LargeUpgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 8975576470338621633, guid: fb462131e3a9064428887c36a81d55d2, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8975576470338621633, guid: fb462131e3a9064428887c36a81d55d2, type: 3}
       propertyPath: m_IsActive
@@ -1892,6 +2037,10 @@ PrefabInstance:
     - target: {fileID: 277471618381286489, guid: 68c3bfdd300ecd649b5c3d3f2b8addd1, type: 3}
       propertyPath: m_Name
       value: BasicDiffusion
+      objectReference: {fileID: 0}
+    - target: {fileID: 277471618381286489, guid: 68c3bfdd300ecd649b5c3d3f2b8addd1, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 277471618381286489, guid: 68c3bfdd300ecd649b5c3d3f2b8addd1, type: 3}
       propertyPath: m_IsActive
@@ -1970,6 +2119,10 @@ PrefabInstance:
     - target: {fileID: 6033340941383886872, guid: a865ba541799e8c4abacad435e7a4269, type: 3}
       propertyPath: m_Name
       value: BasicWater
+      objectReference: {fileID: 0}
+    - target: {fileID: 6033340941383886872, guid: a865ba541799e8c4abacad435e7a4269, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6033340941383886872, guid: a865ba541799e8c4abacad435e7a4269, type: 3}
       propertyPath: m_IsActive
@@ -2094,6 +2247,10 @@ PrefabInstance:
       value: LargeFireDestruction
       objectReference: {fileID: 0}
     - target: {fileID: 4465305415554861321, guid: d3419c3b0c5878747b0059f7b4939415, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465305415554861321, guid: d3419c3b0c5878747b0059f7b4939415, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -2162,6 +2319,10 @@ PrefabInstance:
     - target: {fileID: 5232377253873680977, guid: dfbd0eeab3a1c184f8cdd576b1daa883, type: 3}
       propertyPath: m_Name
       value: LargeControlDestruction
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232377253873680977, guid: dfbd0eeab3a1c184f8cdd576b1daa883, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5232377253873680977, guid: dfbd0eeab3a1c184f8cdd576b1daa883, type: 3}
       propertyPath: m_IsActive
@@ -2242,6 +2403,10 @@ PrefabInstance:
       value: Large
       objectReference: {fileID: 0}
     - target: {fileID: 3026847216404089706, guid: 3cf6a5257bba9224698f062240877851, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3026847216404089706, guid: 3cf6a5257bba9224698f062240877851, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -2318,6 +2483,10 @@ PrefabInstance:
     - target: {fileID: 7870528583515778794, guid: 50ec6d2522f6bac4891cbd54645f37cc, type: 3}
       propertyPath: m_Name
       value: BasicElectricityPenetrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870528583515778794, guid: 50ec6d2522f6bac4891cbd54645f37cc, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7870528583515778794, guid: 50ec6d2522f6bac4891cbd54645f37cc, type: 3}
       propertyPath: m_IsActive
@@ -2398,6 +2567,10 @@ PrefabInstance:
       value: LargeDiffusion
       objectReference: {fileID: 0}
     - target: {fileID: 3260248852321257494, guid: 171f933d9a0ac5f48aa5f107536264c7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260248852321257494, guid: 171f933d9a0ac5f48aa5f107536264c7, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -2422,6 +2595,10 @@ PrefabInstance:
     - target: {fileID: 8209118290588691886, guid: 833415b1c0ee864429f0282657850b4d, type: 3}
       propertyPath: m_Name
       value: BasicWaterUpgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209118290588691886, guid: 833415b1c0ee864429f0282657850b4d, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8209118290588691886, guid: 833415b1c0ee864429f0282657850b4d, type: 3}
       propertyPath: m_IsActive
@@ -2554,6 +2731,10 @@ PrefabInstance:
       value: LargeControlDiffusion
       objectReference: {fileID: 0}
     - target: {fileID: 4199104795556319687, guid: 71b6504729fe11a478f8a7ae87225b7b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4199104795556319687, guid: 71b6504729fe11a478f8a7ae87225b7b, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -2578,6 +2759,10 @@ PrefabInstance:
     - target: {fileID: 8371811176713539309, guid: 0af32eec94a75a54d8031f6c8366e43c, type: 3}
       propertyPath: m_Name
       value: BasicElectricityDiffusion
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371811176713539309, guid: 0af32eec94a75a54d8031f6c8366e43c, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8371811176713539309, guid: 0af32eec94a75a54d8031f6c8366e43c, type: 3}
       propertyPath: m_IsActive
@@ -2656,6 +2841,10 @@ PrefabInstance:
     - target: {fileID: 1154846966442725030, guid: 93b3882a84e1f214c8a9366b7873d5ed, type: 3}
       propertyPath: m_Name
       value: BasicWaterPenetrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 1154846966442725030, guid: 93b3882a84e1f214c8a9366b7873d5ed, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1154846966442725030, guid: 93b3882a84e1f214c8a9366b7873d5ed, type: 3}
       propertyPath: m_IsActive
@@ -2788,6 +2977,10 @@ PrefabInstance:
       value: BasicElectricityDestruction
       objectReference: {fileID: 0}
     - target: {fileID: 6672307090550031060, guid: 5f24802b04c23ef47a56715670e40995, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6672307090550031060, guid: 5f24802b04c23ef47a56715670e40995, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -2812,6 +3005,10 @@ PrefabInstance:
     - target: {fileID: 7191801567606808932, guid: 7a1bcdf3c6cbd51468bf149623b8ade8, type: 3}
       propertyPath: m_Name
       value: BasicFireUpgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 7191801567606808932, guid: 7a1bcdf3c6cbd51468bf149623b8ade8, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7191801567606808932, guid: 7a1bcdf3c6cbd51468bf149623b8ade8, type: 3}
       propertyPath: m_IsActive
@@ -2892,6 +3089,10 @@ PrefabInstance:
       value: LargeWater
       objectReference: {fileID: 0}
     - target: {fileID: 4625049968760403807, guid: 7422792291ea08d498426d1188e00e97, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4625049968760403807, guid: 7422792291ea08d498426d1188e00e97, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -2968,6 +3169,10 @@ PrefabInstance:
     - target: {fileID: 7271009905882806302, guid: b4639dda4a6b8e246a6d252e6ba71324, type: 3}
       propertyPath: m_Name
       value: LargeElectricity
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271009905882806302, guid: b4639dda4a6b8e246a6d252e6ba71324, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7271009905882806302, guid: b4639dda4a6b8e246a6d252e6ba71324, type: 3}
       propertyPath: m_IsActive
@@ -3048,8 +3253,16 @@ PrefabInstance:
       value: LargePenetrate
       objectReference: {fileID: 0}
     - target: {fileID: 2569462072897219031, guid: 37f50440184afd645ad2d3810e95a612, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2569462072897219031, guid: 37f50440184afd645ad2d3810e95a612, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2885878263576153152, guid: 37f50440184afd645ad2d3810e95a612, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3678401366035131797, guid: 37f50440184afd645ad2d3810e95a612, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3120,6 +3333,10 @@ PrefabInstance:
     - target: {fileID: 8258062638432803655, guid: 3cabf7773e8023945a9c1a5159f49893, type: 3}
       propertyPath: m_Name
       value: BasicControlQuick
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258062638432803655, guid: 3cabf7773e8023945a9c1a5159f49893, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8258062638432803655, guid: 3cabf7773e8023945a9c1a5159f49893, type: 3}
       propertyPath: m_IsActive
@@ -3252,6 +3469,10 @@ PrefabInstance:
       value: BasicControlUpgrade
       objectReference: {fileID: 0}
     - target: {fileID: 8648060058808319281, guid: 51586f9b02efb7d439c5238c6a48bcc4, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648060058808319281, guid: 51586f9b02efb7d439c5238c6a48bcc4, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -3328,6 +3549,10 @@ PrefabInstance:
     - target: {fileID: 4336723599224940776, guid: 75b6d28120377c94a921f46fa4522567, type: 3}
       propertyPath: m_Name
       value: LargeFireUpgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 4336723599224940776, guid: 75b6d28120377c94a921f46fa4522567, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4336723599224940776, guid: 75b6d28120377c94a921f46fa4522567, type: 3}
       propertyPath: m_IsActive
@@ -3408,6 +3633,10 @@ PrefabInstance:
       value: BasicDestruction
       objectReference: {fileID: 0}
     - target: {fileID: 4264550519903196674, guid: 7b24826f01f0915419de06c1f5fb52d3, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4264550519903196674, guid: 7b24826f01f0915419de06c1f5fb52d3, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -3429,6 +3658,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 633438585539178843}
     m_Modifications:
+    - target: {fileID: 1859549339587086440, guid: 6c7b96a8e9c40fd4bb1b9311fc900281, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2731621037728967309, guid: 6c7b96a8e9c40fd4bb1b9311fc900281, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.1
@@ -3476,6 +3709,10 @@ PrefabInstance:
     - target: {fileID: 5189973530206353797, guid: 6c7b96a8e9c40fd4bb1b9311fc900281, type: 3}
       propertyPath: m_Name
       value: LargeControlPenetrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189973530206353797, guid: 6c7b96a8e9c40fd4bb1b9311fc900281, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5189973530206353797, guid: 6c7b96a8e9c40fd4bb1b9311fc900281, type: 3}
       propertyPath: m_IsActive
@@ -3556,6 +3793,10 @@ PrefabInstance:
       value: LargeControl
       objectReference: {fileID: 0}
     - target: {fileID: 4430387090383768980, guid: e7f1833017cac774eb91f94fc18380b0, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430387090383768980, guid: e7f1833017cac774eb91f94fc18380b0, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -3580,6 +3821,10 @@ PrefabInstance:
     - target: {fileID: 7493958072049362655, guid: 59ed36dfadd881a43b17cc56f21ef021, type: 3}
       propertyPath: m_Name
       value: BasicControlDestruction
+      objectReference: {fileID: 0}
+    - target: {fileID: 7493958072049362655, guid: 59ed36dfadd881a43b17cc56f21ef021, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7493958072049362655, guid: 59ed36dfadd881a43b17cc56f21ef021, type: 3}
       propertyPath: m_IsActive
@@ -3660,6 +3905,10 @@ PrefabInstance:
       value: LargeControlQuick
       objectReference: {fileID: 0}
     - target: {fileID: 7128199444425993246, guid: cced5a8e1fc5dc5438b8bbb7df16ff65, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7128199444425993246, guid: cced5a8e1fc5dc5438b8bbb7df16ff65, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -3736,6 +3985,10 @@ PrefabInstance:
     - target: {fileID: 2687225103054326258, guid: 698932121ad66454cb5c2acff6923795, type: 3}
       propertyPath: m_Name
       value: BasicElectricityQuick
+      objectReference: {fileID: 0}
+    - target: {fileID: 2687225103054326258, guid: 698932121ad66454cb5c2acff6923795, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2687225103054326258, guid: 698932121ad66454cb5c2acff6923795, type: 3}
       propertyPath: m_IsActive
@@ -3816,6 +4069,10 @@ PrefabInstance:
       value: LargeFirePenetrate
       objectReference: {fileID: 0}
     - target: {fileID: 603033188445595826, guid: f92ff8e6361b5f442bf259228dc38aed, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 603033188445595826, guid: f92ff8e6361b5f442bf259228dc38aed, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -3863,6 +4120,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8478919175202387001, guid: f92ff8e6361b5f442bf259228dc38aed, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3884,6 +4145,10 @@ PrefabInstance:
     - target: {fileID: 8096990579853093302, guid: e57d011c30ae9bd4aac5d9df04203634, type: 3}
       propertyPath: m_Name
       value: LargeFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 8096990579853093302, guid: e57d011c30ae9bd4aac5d9df04203634, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8096990579853093302, guid: e57d011c30ae9bd4aac5d9df04203634, type: 3}
       propertyPath: m_IsActive
@@ -3964,6 +4229,10 @@ PrefabInstance:
       value: LargeFireQuick
       objectReference: {fileID: 0}
     - target: {fileID: 2801778008246536602, guid: 4a912ad76bf55ac4ca4b030ad10c2c85, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2801778008246536602, guid: 4a912ad76bf55ac4ca4b030ad10c2c85, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -4040,6 +4309,10 @@ PrefabInstance:
     - target: {fileID: 415039237231862302, guid: df7257c4171a91b49929b4104f4038a0, type: 3}
       propertyPath: m_Name
       value: BasicPenetrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 415039237231862302, guid: df7257c4171a91b49929b4104f4038a0, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 415039237231862302, guid: df7257c4171a91b49929b4104f4038a0, type: 3}
       propertyPath: m_IsActive
@@ -4172,6 +4445,10 @@ PrefabInstance:
       value: BasicWaterDestruction
       objectReference: {fileID: 0}
     - target: {fileID: 5682815193529518920, guid: a0819767ae4839c419323c5186e04bd4, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682815193529518920, guid: a0819767ae4839c419323c5186e04bd4, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -4196,6 +4473,10 @@ PrefabInstance:
     - target: {fileID: 3850863678494554788, guid: dfc3db89ebbcfc645b110e7c6b5382c0, type: 3}
       propertyPath: m_Name
       value: LargeElectricityDiffusion
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850863678494554788, guid: dfc3db89ebbcfc645b110e7c6b5382c0, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3850863678494554788, guid: dfc3db89ebbcfc645b110e7c6b5382c0, type: 3}
       propertyPath: m_IsActive
@@ -4328,6 +4609,10 @@ PrefabInstance:
       value: BasicElectricityUpgrade
       objectReference: {fileID: 0}
     - target: {fileID: 5484867538883306318, guid: 18cbb64e52586f848a86d318fb2a93ef, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484867538883306318, guid: 18cbb64e52586f848a86d318fb2a93ef, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -4351,15 +4636,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3832703582346906254, guid: bceefb2a39f6db74d9bc9d006687b7f1, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3832703582438931031, guid: bceefb2a39f6db74d9bc9d006687b7f1, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3832703582474617314, guid: bceefb2a39f6db74d9bc9d006687b7f1, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3832703582600944448, guid: bceefb2a39f6db74d9bc9d006687b7f1, type: 3}
       propertyPath: m_LocalScale.x
@@ -4419,7 +4704,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3832703582600972128, guid: bceefb2a39f6db74d9bc9d006687b7f1, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3832703582600972128, guid: bceefb2a39f6db74d9bc9d006687b7f1, type: 3}
       propertyPath: m_TagString
@@ -4427,23 +4712,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3832703582600972130, guid: bceefb2a39f6db74d9bc9d006687b7f1, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3832703582600972132, guid: bceefb2a39f6db74d9bc9d006687b7f1, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3832703582600972134, guid: bceefb2a39f6db74d9bc9d006687b7f1, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3832703582600972136, guid: bceefb2a39f6db74d9bc9d006687b7f1, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3832703582705633601, guid: bceefb2a39f6db74d9bc9d006687b7f1, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3832703582705633604, guid: bceefb2a39f6db74d9bc9d006687b7f1, type: 3}
       propertyPath: m_PresetInfoIsWorld
@@ -4535,6 +4820,10 @@ PrefabInstance:
       value: BasicFirePenetrate
       objectReference: {fileID: 0}
     - target: {fileID: 6741953990296722612, guid: 1d634b3d6cef752489001821e597c7c2, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6741953990296722612, guid: 1d634b3d6cef752489001821e597c7c2, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -4559,6 +4848,10 @@ PrefabInstance:
     - target: {fileID: 2481151423688237651, guid: e86848adc23dcad4897c27ea174cc899, type: 3}
       propertyPath: m_Name
       value: BasicUpgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 2481151423688237651, guid: e86848adc23dcad4897c27ea174cc899, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2481151423688237651, guid: e86848adc23dcad4897c27ea174cc899, type: 3}
       propertyPath: m_IsActive
@@ -4691,6 +4984,10 @@ PrefabInstance:
       value: LargeWaterDiffusion
       objectReference: {fileID: 0}
     - target: {fileID: 882959618852083121, guid: ef0584eac4eceab48bd3450f9d8f6713, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 882959618852083121, guid: ef0584eac4eceab48bd3450f9d8f6713, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -4715,6 +5012,10 @@ PrefabInstance:
     - target: {fileID: 8597895849306906795, guid: 7a9229efab546f84ca712cc673d6c9c6, type: 3}
       propertyPath: m_Name
       value: Basic
+      objectReference: {fileID: 0}
+    - target: {fileID: 8597895849306906795, guid: 7a9229efab546f84ca712cc673d6c9c6, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8597895849306906795, guid: 7a9229efab546f84ca712cc673d6c9c6, type: 3}
       propertyPath: m_IsActive
@@ -4793,6 +5094,10 @@ PrefabInstance:
     - target: {fileID: 3884011637290764255, guid: a0dcc0ffc0014314783cbb48b8b24385, type: 3}
       propertyPath: m_Name
       value: LargeElectricityDestruction
+      objectReference: {fileID: 0}
+    - target: {fileID: 3884011637290764255, guid: a0dcc0ffc0014314783cbb48b8b24385, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3884011637290764255, guid: a0dcc0ffc0014314783cbb48b8b24385, type: 3}
       propertyPath: m_IsActive
@@ -4917,6 +5222,10 @@ PrefabInstance:
       value: BasicFire
       objectReference: {fileID: 0}
     - target: {fileID: 648148638981463495, guid: 41753ff905641e64db9dc7bde46a37a7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 648148638981463495, guid: 41753ff905641e64db9dc7bde46a37a7, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -4941,6 +5250,10 @@ PrefabInstance:
     - target: {fileID: 6007228385425470746, guid: 73e9615b82db8b149a32ee8a6c220fc9, type: 3}
       propertyPath: m_Name
       value: LargeElectricityUpgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007228385425470746, guid: 73e9615b82db8b149a32ee8a6c220fc9, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6007228385425470746, guid: 73e9615b82db8b149a32ee8a6c220fc9, type: 3}
       propertyPath: m_IsActive
@@ -5073,6 +5386,10 @@ PrefabInstance:
       value: BasicControl
       objectReference: {fileID: 0}
     - target: {fileID: 905516809443741908, guid: 614d63ab3d0923240983110e6cff90af, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 905516809443741908, guid: 614d63ab3d0923240983110e6cff90af, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -5097,6 +5414,10 @@ PrefabInstance:
     - target: {fileID: 7242127940972060864, guid: ddb4f8a85c7a1e3459e0c2d9bc413c79, type: 3}
       propertyPath: m_Name
       value: LargeFireDiffusion
+      objectReference: {fileID: 0}
+    - target: {fileID: 7242127940972060864, guid: ddb4f8a85c7a1e3459e0c2d9bc413c79, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7242127940972060864, guid: ddb4f8a85c7a1e3459e0c2d9bc413c79, type: 3}
       propertyPath: m_IsActive
