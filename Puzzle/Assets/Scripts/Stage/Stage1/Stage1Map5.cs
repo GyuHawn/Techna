@@ -5,19 +5,10 @@ using UnityEngine;
 
 public class Stage1Map5 : MonoBehaviour
 {
-    private PlayerMovement playerMovement;
+    public GameObject[] plates; // 확인할 발판
 
-    public GameObject[] plates;
-
-    public bool activate;
-    public bool open;
-
-    public GameObject player;
-
-    void Awake()
-    {
-        playerMovement = player.GetComponent<PlayerMovement>();
-    }
+    public bool activate; // 활성화 여부
+    public bool open; // 오픈 여부 
 
     void Start()
     {
@@ -26,7 +17,8 @@ public class Stage1Map5 : MonoBehaviour
             PlateFunction plateFunction = plate.GetComponent<PlateFunction>();
             if (plateFunction != null)
             {
-                plateFunction.OnActivationChanged += CheckAllPlatesActivated;
+                // 각 발판의 activationChanged 이벤트 구독, 활성화 상태 감지
+                plateFunction.activationChanged += CheckAllPlatesActivated;
             }
         }
     }
@@ -38,70 +30,66 @@ public class Stage1Map5 : MonoBehaviour
             PlateFunction plateFunction = plate.GetComponent<PlateFunction>();
             if (plateFunction != null)
             {
-                plateFunction.OnActivationChanged -= CheckAllPlatesActivated;
+                // 이벤트 구독 해지
+                plateFunction.activationChanged -= CheckAllPlatesActivated;
             }
         }
     }
 
     void Update()
     {
-        // Stage에 진입했을 때만 판 활성화 확인
         CheckAllPlatesActivated(false);
     }
 
-    void CheckAllPlatesActivated(bool dummy)
+    void CheckAllPlatesActivated(bool dummy) // 모든 발판 활성화 시 문 열기
     {
         bool allPlatesActivated = true;
 
-        foreach (GameObject plate in plates)
+        foreach (GameObject plate in plates) // 모든 발판 활성화 확인
         {
             PlateFunction plateFunction = plate.GetComponent<PlateFunction>();
             if (plateFunction != null)
             {
                 if (!plateFunction.activate)
                 {
+                    // 발판 비활성화 시 전체 상태 false
                     allPlatesActivated = false;
                     break;
                 }
             }
-            else
-            {
-                allPlatesActivated = false;
-                break;
-            }
         }
 
-        if (allPlatesActivated)
+        if (allPlatesActivated) // 모든 발판 활성화 시 문 열기
         {
             activate = true;
             OpenDoor();
         }
     }
 
-    void OpenDoor()
+    void OpenDoor() // 문 열기
     {
         activate = false;
-        if(!open)
+        if (!open)
         {
             open = true;
             StartCoroutine(MovingDoor());
         }
-    }
 
-    IEnumerator MovingDoor()
-    {
-        float elapsedTime = 0f;
-        float duration = 3f;
-        Vector3 startPos = transform.position;
-        Vector3 endPos = startPos + new Vector3(0, 16, 0);
-
-        while (elapsedTime < duration)
+        IEnumerator MovingDoor()
         {
-            transform.position = Vector3.Lerp(startPos, endPos, elapsedTime / duration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
+            float elapsedTime = 0f;
+            float duration = 3f;
+            Vector3 startPos = transform.position;
+            Vector3 endPos = startPos + new Vector3(0, 16, 0);
 
-        transform.position = endPos;
+            while (elapsedTime < duration)
+            {
+                transform.position = Vector3.Lerp(startPos, endPos, elapsedTime / duration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            transform.position = endPos;
+        }
     }
 }

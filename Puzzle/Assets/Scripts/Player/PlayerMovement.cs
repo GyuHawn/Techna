@@ -92,6 +92,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // 바닥에 있을때 점프 가능
         if (collision.gameObject.CompareTag("Floor"))
         {
             isGrounded = true;

@@ -22,13 +22,11 @@ public class ControlGem : MonoBehaviour
     IEnumerator ChangeColor(float changeTime) // 재질 변경후 다시 복구
     {
         onControl = true;
-        Debug.Log("onControl(참): " + onControl);
         UpdateColor();
 
         yield return new WaitForSeconds(changeTime);
 
         onControl = false;
-        Debug.Log("onControl(거짓): " + onControl);
         UpdateColor();
     }
 
@@ -37,12 +35,10 @@ public class ControlGem : MonoBehaviour
         // 충돌에 따른 시간 설정
         if (collision.gameObject.name == "BasicControl")
         {
-        Debug.Log("BasicControl");
             StartCoroutine(ChangeColor(3f));
         }
         else if (collision.gameObject.name == "LargeControl")
         {
-        Debug.Log("LargeControl");
             StartCoroutine(ChangeColor(5f));
         }
     }

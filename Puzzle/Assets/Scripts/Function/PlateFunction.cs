@@ -11,22 +11,23 @@ public class PlateFunction : MonoBehaviour
 
     public bool activate; // 활성화
 
-    public delegate void ActivationChangedHandler(bool activate);
-    public event ActivationChangedHandler OnActivationChanged;
+    public delegate void CheckActivationChange(bool activate);
+    public event CheckActivationChange activationChanged; // 이벤트 호출
 
     private void Update()
     {
+        // 이동, 회전할 오브젝트가 있고 활성화 시
         if ((movingObj != null || rotateObj != null) && activate)
         {
-            OnActivate();
+            OnActivate(); // 이동, 회전
         }
     }
 
-    void OnActivate() // 이동 or 회전
+    void OnActivate() // 이동, 회전
     {
         if (movingObj != null)
         {
-            for (int i = 0; i < movingObj.Length; i++)
+            for (int i = 0; i < movingObj.Length; i++) // 모든 오브젝트 이동
             {
                 MovingObject obj = movingObj[i].GetComponent<MovingObject>();
                 obj.MoveObject();
@@ -35,7 +36,7 @@ public class PlateFunction : MonoBehaviour
 
         if (rotateObj != null)
         {
-            foreach (var r_Obj in rotateObj)
+            foreach (var r_Obj in rotateObj) // 모든 오브젝트 회전
             {
                 // RotateObject obj = r_Obj.GetComponent<RotateObject>();
             }
@@ -47,7 +48,7 @@ public class PlateFunction : MonoBehaviour
         if (collision.gameObject.CompareTag("GrabObject"))
         {
             activate = true;
-            OnActivationChanged?.Invoke(true);
+            activationChanged?.Invoke(true);
         }
     }
 
@@ -56,7 +57,7 @@ public class PlateFunction : MonoBehaviour
         if (collision.gameObject.CompareTag("GrabObject"))
         {
             activate = false;
-            OnActivationChanged?.Invoke(false);
+            activationChanged?.Invoke(false);
         }
     }
 }
