@@ -6,6 +6,7 @@ using TMPro;
 public class ObjectHintDisplay : MonoBehaviour
 {
     public string hintText; // 힌트
+    public GameObject hintUI; // 힌트 UI
     public TMP_Text showText; // 표시 텍스트
     public bool showUI; // 표시 중 여부
 
@@ -22,6 +23,7 @@ public class ObjectHintDisplay : MonoBehaviour
             if (!showUI)
             {
                 showUI = true;
+                hintUI.gameObject.SetActive(true);
                 showText.gameObject.SetActive(true);
                 showText.text = hintText; // 힌트 적용
             }
@@ -36,6 +38,7 @@ public class ObjectHintDisplay : MonoBehaviour
             if (showUI)
             {
                 showUI = false;
+                hintUI.gameObject.SetActive(false);
                 showText.gameObject.SetActive(false);
                 showText.text = ""; // 텍스트 초기화
             }

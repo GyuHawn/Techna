@@ -8,6 +8,7 @@ public class GemInfor : MonoBehaviour
     private GemManager gemManager;
 
     public string infor; // 정보 
+    public GameObject inforUI; // 정보 UI
     public TMP_Text inforText; // 정보 텍스트
     public Color textColor; // 색 
 
@@ -35,11 +36,13 @@ public class GemInfor : MonoBehaviour
 
     IEnumerator ShowInforText(float time) // 정보 표시 후 비활성화 
     {
+        inforUI.gameObject.SetActive(true);
         inforText.gameObject.SetActive(true);
         inforText.text = infor;
 
         yield return new WaitForSeconds(time);
 
+        inforUI.gameObject.SetActive(false);
         inforText.gameObject.SetActive(false);
         inforText.text = "";
     }

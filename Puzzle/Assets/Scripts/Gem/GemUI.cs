@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -11,14 +12,17 @@ public class GemUI : MonoBehaviour
     public GameObject bulletUI; // 총알 보석 UI  
     public GameObject bulletMenuUI; // 총알 메뉴 UI  
     public GameObject bulletGemUI; // 개별 총알 보석 UI  
+    public GameObject[] currentBullet;
 
     public GameObject attributeUI; // 속성 보석
     public GameObject attributeMenuUI; // 속성 메뉴 UI
     public GameObject[] attributeGemUI; // 개별 속성 보석
+    public GameObject[] currentAttribute;
 
     public GameObject functionUI; // 기능 보석
     public GameObject functionMenuUI; // 기능 메뉴 UI
     public GameObject[] functionGemUI; // 개별 기능 보석
+    public GameObject[] currentFunction;
 
     public int selectGemNum;
 
@@ -102,6 +106,8 @@ public class GemUI : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha1 + (i - 1)))
             {
                 selectedFunction = i;
+                CurrentGemUI(selectedFunction - 1);
+                CheckCurrentGem();
                 ConfirmSelection();
                 return;
             }
@@ -109,8 +115,83 @@ public class GemUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1 + choiceNum)) // 마지막 선택지를 0으로 처리
         {
             selectedFunction = 0;
+            ResetCurrentGemUI();
             ConfirmSelection();
         }
+    }
+
+    void CurrentGemUI(int num)
+    {
+        if (selectGemNum == 1)
+        {
+            for(int i = 0; i < currentBullet.Length; i++)
+            {
+                currentBullet[i].SetActive(false);
+            }
+            currentBullet[num].SetActive(true);
+        }
+        else if(selectGemNum == 2)
+        {
+            for (int i = 0; i < currentAttribute.Length; i++)
+            {
+                currentAttribute[i].SetActive(false);
+            }
+            currentAttribute[num].SetActive(true);
+        }
+        else if(selectGemNum == 3)
+        {
+            for (int i = 0; i < currentFunction.Length; i++)
+            {
+                currentFunction[i].SetActive(false);
+            }
+            currentFunction[num].SetActive(true);
+        }
+    }
+    void ResetCurrentGemUI()
+    {
+        if (selectGemNum == 1)
+        {
+            for (int i = 0; i < currentBullet.Length; i++)
+            {
+                currentBullet[i].SetActive(false);
+            }
+            currentBullet[0].SetActive(true);
+        }
+        else if (selectGemNum == 2)
+        {
+            for (int i = 0; i < currentAttribute.Length; i++)
+            {
+                currentAttribute[i].SetActive(false);
+            }
+        }
+        else if (selectGemNum == 3)
+        {
+            for (int i = 0; i < currentFunction.Length; i++)
+            {
+                currentFunction[i].SetActive(false);
+            }
+        }      
+    }
+
+    void CheckCurrentGem()
+    {
+        if (!gemManager.onLarge) 
+        {
+            currentBullet[1].SetActive(false);
+            currentBullet[0].SetActive(true);
+            
+        }
+
+        if(!gemManager.onControl) currentAttribute[0].SetActive(false);
+        if(!gemManager.onFire) currentAttribute[1].SetActive(false);
+        if(!gemManager.onWater) currentAttribute[2].SetActive(false);
+        if(!gemManager.onElectricity) currentAttribute[3].SetActive(false);
+
+        if(!gemManager.onDestruction) currentFunction[0].SetActive(false);
+        if(!gemManager.onPenetrate) currentFunction[1].SetActive(false);
+        if(!gemManager.onDiffusion) currentFunction[2].SetActive(false);
+        if(!gemManager.onUpgrade) currentFunction[3].SetActive(false);
+        if(!gemManager.onQuick) currentFunction[4].SetActive(false);
     }
 
     private void ConfirmSelection() // 선택 확인 처리
