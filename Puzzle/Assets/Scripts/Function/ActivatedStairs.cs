@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class ActivatedStairs : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public bool activated; // 활성화 여부
+
+    private Animator anim;
+
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        if(activated) // 활성화시 작동 및 애니메이션 실행
+        {
+            activated = false;
+            anim.SetTrigger("Activeted");
+        }
     }
 }
