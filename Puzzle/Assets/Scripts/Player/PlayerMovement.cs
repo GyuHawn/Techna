@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
         moveSpeed = 15f; 
         mouseSensitivity = 300f;
-        jumpPower = 7f;
+        jumpPower = 5f;
 
         gunOffset = new Vector3(0, 1.2f, 0);
 
