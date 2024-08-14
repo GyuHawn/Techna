@@ -195,9 +195,9 @@ public class GemCombination : MonoBehaviour
         // 보석 사용 가능 여부 체크
         if (bullet == 2 && !gemManager.onLarge) return false;
         if (attribute == 1 && !gemManager.onControl) return false;
-        if (attribute == 2 && !gemManager.onFire) return false;
-        if (attribute == 3 && !gemManager.onWater) return false;
-        if (attribute == 4 && !gemManager.onElectricity) return false;
+        if (attribute == 2 && !gemManager.onElectricity) return false;
+        if (attribute == 3 && !gemManager.onExpansion) return false;
+        if (attribute == 4 && !gemManager.onGravity) return false;
         if (function == 1 && !gemManager.onDestruction) return false;
         if (function == 2 && !gemManager.onPenetrate) return false;
         if (function == 3 && !gemManager.onDiffusion) return false;

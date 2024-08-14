@@ -72,9 +72,9 @@ public class GemUI : MonoBehaviour
         bulletGemUI.SetActive(gemManager.onLarge);
 
         attributeGemUI[0].SetActive(gemManager.onControl);
-        attributeGemUI[1].SetActive(gemManager.onFire);
-        attributeGemUI[2].SetActive(gemManager.onWater);
-        attributeGemUI[3].SetActive(gemManager.onElectricity);
+        attributeGemUI[1].SetActive(gemManager.onElectricity);
+        attributeGemUI[2].SetActive(gemManager.onExpansion);
+        attributeGemUI[3].SetActive(gemManager.onGravity);
 
         functionGemUI[0].SetActive(gemManager.onDestruction);
         functionGemUI[1].SetActive(gemManager.onPenetrate);
@@ -178,14 +178,13 @@ public class GemUI : MonoBehaviour
         if (!gemManager.onLarge) 
         {
             currentBullet[1].SetActive(false);
-            currentBullet[0].SetActive(true);
-            
+            currentBullet[0].SetActive(true);           
         }
 
         if(!gemManager.onControl) currentAttribute[0].SetActive(false);
-        if(!gemManager.onFire) currentAttribute[1].SetActive(false);
-        if(!gemManager.onWater) currentAttribute[2].SetActive(false);
         if(!gemManager.onElectricity) currentAttribute[3].SetActive(false);
+        if(!gemManager.onExpansion) currentAttribute[1].SetActive(false);
+        if(!gemManager.onGravity) currentAttribute[2].SetActive(false);
 
         if(!gemManager.onDestruction) currentFunction[0].SetActive(false);
         if(!gemManager.onPenetrate) currentFunction[1].SetActive(false);

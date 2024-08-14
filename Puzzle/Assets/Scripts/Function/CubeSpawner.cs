@@ -10,14 +10,28 @@ public class CubeSpawner : MonoBehaviour
     
     public bool open; // 활성화 여부
 
+    public bool plateObj;
+    public bool lightObj;
+
     void Start()
-    { 
-        // 일단 발판일때만 (상황에 따라 수정 예정)
-        PlateFunction plateFunction = checkObj.GetComponent<PlateFunction>();
-        if (plateFunction != null)
+    {
+        if (plateObj)
         {
-            // 각 발판의 activationChanged 이벤트 구독, 활성화 상태 감지
-            plateFunction.activationChanged += OpenSpawnerCheck;
+            PlateFunction plateFunction = checkObj.GetComponent<PlateFunction>();
+            if (plateFunction != null)
+            {
+                // 각 발판의 activationChanged 이벤트 구독, 활성화 상태 감지
+                plateFunction.activationChanged += OpenSpawnerCheck;
+            }
+        }
+        else if (lightObj)
+        {
+            LightningRod lightingFunction = checkObj.GetComponent<LightningRod>();
+            if (lightingFunction != null)
+            {
+                // 각 발판의 activationChanged 이벤트 구독, 활성화 상태 감지
+                lightingFunction.activationChanged += OpenSpawnerCheck;
+            }
         }
     }
     
@@ -30,11 +44,23 @@ public class CubeSpawner : MonoBehaviour
     {
         bool activated = true;
 
-        PlateFunction plateFunction = checkObj.GetComponent<PlateFunction>();
-        if (!plateFunction.activate)
+        if (plateObj)
         {
-            // 발판 비활성화 시 전체 상태 false
-            activated = false;
+            PlateFunction plateFunction = checkObj.GetComponent<PlateFunction>();
+            if (!plateFunction.activate)
+            {
+                // 발판 비활성화 시 전체 상태 false
+                activated = false;
+            }
+        }
+        else if(lightObj)
+        {
+            LightningRod lightingFunction = checkObj.GetComponent<LightningRod>();
+            if (!lightingFunction.activate)
+            {
+                // 발판 비활성화 시 전체 상태 false
+                activated = false;
+            }
         }
 
 

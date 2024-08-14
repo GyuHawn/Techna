@@ -14,8 +14,8 @@ public class GemManager : MonoBehaviour
 
     // ¼Ó¼® È¹µæ ¿©ºÎ
     public bool onControl;
-    public bool onFire;
-    public bool onWater;
+    public bool onExpansion;
+    public bool onGravity;
     public bool onElectricity;
 
     // ±â´É È¹µæ ¿©ºÎ
@@ -41,14 +41,14 @@ public class GemManager : MonoBehaviour
             case "Control":
                 onControl = true;
                 break;
-            case "Fire":
-                onFire = true;           
-                break;
-            case "Water":
-                onWater = true;
-                break;
             case "Electricity":
                 onElectricity = true;
+                break;
+            case "Expansion":
+                onExpansion = true;           
+                break;
+            case "Gravity":
+                onGravity = true;
                 break;
             case "Destruction":
                 onDestruction = true;

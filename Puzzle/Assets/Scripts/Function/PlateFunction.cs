@@ -12,38 +12,9 @@ public class PlateFunction : MonoBehaviour
 
     public bool activate; // 활성화
     public bool checkPlate; // 특정 오브젝트에만 활성화 되도록 
-
+    
     public delegate void CheckActivationChange(bool activate);
     public event CheckActivationChange activationChanged; // 이벤트 호출
-
-    private void Update()
-    {
-        // 이동, 회전할 오브젝트가 있고 활성화 시
-        if ((movingObj != null || rotateObj != null) && activate)
-        {
-            OnActivate(); // 이동, 회전
-        }
-    }
-
-    void OnActivate() // 이동, 회전
-    {
-        if (movingObj != null)
-        {
-            for (int i = 0; i < movingObj.Length; i++) // 모든 오브젝트 이동
-            {
-                MovingObject obj = movingObj[i].GetComponent<MovingObject>();
-                obj.MoveObject();
-            }
-        }
-
-        if (rotateObj != null)
-        {
-            foreach (var r_Obj in rotateObj) // 모든 오브젝트 회전
-            {
-                // RotateObject obj = r_Obj.GetComponent<RotateObject>();
-            }
-        }
-    }
 
     private void OnCollisionStay(Collision collision)
     {
