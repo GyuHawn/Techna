@@ -5,10 +5,13 @@ using UnityEngine;
 public class LightningRod : MonoBehaviour
 {
     public Material[] gemMaterials; // 재질
-    public GameObject lightObj;
-    public bool activate;
+    public GameObject lightObj; // 라이트 
+    public bool activate; // 활성화 여부
 
-    public GameObject changeMaterialObj;
+    public LEDNode lightLine; // 전기 선
+    public ActivateGem gem; // 연결된 보석
+    
+    public GameObject changeMaterialObj; // 재직변경 할 오브젝트
     private Renderer render;
 
     public delegate void CheckActivationChange(bool activate);
@@ -19,16 +22,9 @@ public class LightningRod : MonoBehaviour
         render = changeMaterialObj.GetComponent<Renderer>();
     }
 
-    private void Update()
+    void Update()
     {
-        if (!activate)
-        {
-            activationChanged?.Invoke(false);
-        }
-        else
-        {
-            activationChanged?.Invoke(true);
-        }
+        activationChanged?.Invoke(activate); // 이벤트 호출 여부
     }
 
     void UpdateColor() // 재질 변경
@@ -38,18 +34,19 @@ public class LightningRod : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // 충돌에 따른 시간 설정
-        if (collision.gameObject.name == "BasicElectricity")
+        if (collision.gameObject.name == "BasicElectricity" || collision.gameObject.name == "LargeElectricity")
         {
-            lightObj.SetActive(!activate);
-            activate = !activate;
-            UpdateColor();          
+            ToggleActivation(); 
         }
-        else if (collision.gameObject.name == "LargeElectricity")
-        {
-            lightObj.SetActive(!activate);
-            activate = !activate;
-            UpdateColor();
-        }
+    }
+
+    private void ToggleActivation()
+    {
+        activate = !activate; // 활성화 여부 변경
+        lightObj.SetActive(activate); // 라이트 활성화 변경
+        lightLine.activate = activate; // 전기선 활성화 변경
+        gem.activate = activate; // 보석 활성화 변경
+        gem.OnElectricityGem(); // 보석 재질 변경
+        UpdateColor(); // 재질 변경
     }
 }

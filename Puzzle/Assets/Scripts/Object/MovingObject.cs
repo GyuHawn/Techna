@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovingObject : MonoBehaviour
 {
-    private ControlGem controlGem;
+    private ActivateGem controlGem;
 
     // 이동관련
     public float moveNum; // 이동 거리
@@ -17,6 +17,7 @@ public class MovingObject : MonoBehaviour
     public GameObject checkObj; // 체크할 오브젝트
     public bool plateObj; // 발판 인지
     public bool lightObj; // 라이트 인지
+    public bool electrictyObj; // 전기 인지
 
     private Vector3 currentPosition; // 초기 위치
     private Vector3 targetPosition; // 목표 위치
@@ -36,7 +37,7 @@ public class MovingObject : MonoBehaviour
     {
         if(gem != null)
         {
-            controlGem = gem.GetComponent<ControlGem>();
+            controlGem = gem.GetComponent<ActivateGem>();
         }
 
         currentPosition = transform.localPosition; // 초기 위치 저장
@@ -46,7 +47,7 @@ public class MovingObject : MonoBehaviour
     void Update()
     {
         // 제어이동, 보석o, 자신제어, 이동 중 여부
-        if (gem != null && controlGem.onControl && !isMoving)
+        if (gem != null && controlGem.activate && !isMoving)
         {
             if (controlMoving) // 제어 이동
             {
@@ -55,7 +56,7 @@ public class MovingObject : MonoBehaviour
             }
             else if (objectMoving) // 물체 이동
             {
-                if (objectMoving && gem != null && controlGem.onControl && !isMoving)
+                if (objectMoving && gem != null && controlGem.activate && !isMoving)
                 {
                     isMoving = true;
                     StartCoroutine(MovePosition(movingObject, objectMovePos.position));
@@ -111,6 +112,14 @@ public class MovingObject : MonoBehaviour
             if (lightingFunction != null)
             {
                 return lightingFunction.activate;
+            }
+        }
+        else if (electrictyObj)
+        {
+            CheckElectricity electricityFunction = checkObj.GetComponent<CheckElectricity>();
+            if (electricityFunction != null)
+            {
+                return electricityFunction.activate;
             }
         }
         return false;
