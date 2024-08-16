@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class MovingObject : MonoBehaviour
 {
-    private ActivateGem controlGem;
+    public ActivateGem gem; // 보석 확인
 
     // 이동관련
     public float moveNum; // 이동 거리
     public bool x; // x축 이동 여부
     public bool y; // y축 이동 여부
     public bool z; // z축 이동 여부
-
-    public GameObject gem; // 보석 확인
 
     public GameObject checkObj; // 체크할 오브젝트
     public bool plateObj; // 발판 인지
@@ -35,11 +33,6 @@ public class MovingObject : MonoBehaviour
 
     private void Start()
     {
-        if(gem != null)
-        {
-            controlGem = gem.GetComponent<ActivateGem>();
-        }
-
         currentPosition = transform.localPosition; // 초기 위치 저장
         targetPosition = CalculateTargetPosition(); // 목표 위치 설정
     }
@@ -47,7 +40,7 @@ public class MovingObject : MonoBehaviour
     void Update()
     {
         // 제어이동, 보석o, 자신제어, 이동 중 여부
-        if (gem != null && controlGem.activate && !isMoving)
+        if (gem != null && gem.activate && !isMoving)
         {
             if (controlMoving) // 제어 이동
             {
@@ -56,7 +49,7 @@ public class MovingObject : MonoBehaviour
             }
             else if (objectMoving) // 물체 이동
             {
-                if (objectMoving && gem != null && controlGem.activate && !isMoving)
+                if (objectMoving && gem != null && gem.activate && !isMoving)
                 {
                     isMoving = true;
                     StartCoroutine(MovePosition(movingObject, objectMovePos.position));

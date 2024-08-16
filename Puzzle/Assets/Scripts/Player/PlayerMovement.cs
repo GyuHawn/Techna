@@ -20,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isCursorVisible; // 마우스 커서 활성화 여부
 
+    public Transform movingPlatform; // 이동 발판
+    private Vector3 lastPlatformPosition; // 마지막으로 기록된 발판의 위치
+
     private Rigidbody rb;
 
     void Start()
@@ -93,9 +96,25 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // 바닥에 있을때 점프 가능
-        if (collision.gameObject.CompareTag("Floor"))
+        if (collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("MovingObject"))
         {
             isGrounded = true;
+        }
+
+        // 이동 발판 위에 있을시 이동값 변화
+        if (collision.gameObject.CompareTag("MovingObject"))
+        {
+            movingPlatform = collision.transform; // 이동 발판
+            lastPlatformPosition = movingPlatform.position; // 마지막 위치 저장
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        // 이동 발판 충돌 해제
+        if (collision.gameObject.CompareTag("MovingObject"))
+        {
+            movingPlatform = null; // 연결 해제
         }
     }
 

@@ -8,6 +8,8 @@ TagManager:
   - Floor
   - Gun
   - GrabObject
+  - MovingObject
+  - RotateObject
   layers:
   - Default
   - TransparentFX

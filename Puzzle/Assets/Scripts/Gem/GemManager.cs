@@ -14,9 +14,9 @@ public class GemManager : MonoBehaviour
 
     // ¼Ó¼® È¹µæ ¿©ºÎ
     public bool onControl;
+    public bool onElectricity;
     public bool onExpansion;
     public bool onGravity;
-    public bool onElectricity;
 
     // ±â´É È¹µæ ¿©ºÎ
     public bool onDestruction;
