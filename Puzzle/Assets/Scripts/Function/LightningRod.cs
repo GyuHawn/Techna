@@ -45,8 +45,13 @@ public class LightningRod : MonoBehaviour
         activate = !activate; // 활성화 여부 변경
         lightObj.SetActive(activate); // 라이트 활성화 변경
         lightLine.activate = activate; // 전기선 활성화 변경
-        gem.activate = activate; // 보석 활성화 변경
-        gem.OnElectricityGem(); // 보석 재질 변경
+
+        if(gem != null) 
+        {
+            gem.activate = activate; // 보석 활성화 변경
+            gem.OnElectricityGem(); // 보석 재질 변경
+        }
+
         UpdateColor(); // 재질 변경
     }
 }
