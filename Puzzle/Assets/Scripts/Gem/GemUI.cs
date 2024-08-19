@@ -182,9 +182,9 @@ public class GemUI : MonoBehaviour
         }
 
         if(!gemManager.onControl) currentAttribute[0].SetActive(false);
-        if(!gemManager.onElectricity) currentAttribute[3].SetActive(false);
-        if(!gemManager.onExpansion) currentAttribute[1].SetActive(false);
-        if(!gemManager.onGravity) currentAttribute[2].SetActive(false);
+        if(!gemManager.onElectricity) currentAttribute[1].SetActive(false);
+        if(!gemManager.onExpansion) currentAttribute[2].SetActive(false);
+        if(!gemManager.onGravity) currentAttribute[3].SetActive(false);
 
         if(!gemManager.onDestruction) currentFunction[0].SetActive(false);
         if(!gemManager.onPenetrate) currentFunction[1].SetActive(false);

@@ -92,5 +92,5 @@ public class GrabObject : MonoBehaviour
         {
             grabbedObject.position = holdPosition.position; // 물체의 위치 계속 업데이트
         }
-    }
+    }  
 }

@@ -10,6 +10,7 @@ TagManager:
   - GrabObject
   - MovingObject
   - RotateObject
+  - Wall
   layers:
   - Default
   - TransparentFX

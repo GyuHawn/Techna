@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private float vAxis;
     private float rotationY;
     private bool isGrounded; // 점프 여부
-    
+
     // 총위치
     public Transform gunPos; 
     public Vector3 gunOffset;

@@ -15042,6 +15042,7 @@ GameObject:
   - component: {fileID: 7658986247518239927}
   - component: {fileID: 6144240459833103364}
   - component: {fileID: 4459974132351273304}
+  - component: {fileID: 5501086724837331719}
   m_Layer: 10
   m_Name: BasicExpansion
   m_TagString: Bullet
@@ -15138,3 +15139,16 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.35
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5501086724837331719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6581139218391416314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f602b48ebd7e5df499f61477404de144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gem: {fileID: 0}
