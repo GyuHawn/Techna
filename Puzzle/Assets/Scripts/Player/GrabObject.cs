@@ -60,6 +60,18 @@ public class GrabObject : MonoBehaviour
                 grab = true; // 잡은 상태로 변경
             }
         }
+        
+        // 잡은 물건의 무게가 2이상일때 바로 놓기
+        if (grabbedObject != null)
+        {
+
+            CheckCubeInfor cube = grabbedObject.GetComponent<CheckCubeInfor>();
+            if (cube.weight > 2)
+            {
+                ReleaseObject();
+            }
+        }
+
     }
 
     void ReleaseObject() // 놓기

@@ -62,6 +62,7 @@ public class ObjectExpansion : MonoBehaviour
             {
                 check.currentValue++;
                 ScaleOverTime(hitObject, hitObject.transform.localScale * 2, scaleChangeDuration);
+                check.weight = check.weight * 2;
             }
         }
         else
@@ -70,6 +71,7 @@ public class ObjectExpansion : MonoBehaviour
             {
                 check.currentValue--;
                 ScaleOverTime(hitObject, hitObject.transform.localScale * 0.5f, scaleChangeDuration);
+                check.weight = check.weight * 0.5f;
             }
         }
 

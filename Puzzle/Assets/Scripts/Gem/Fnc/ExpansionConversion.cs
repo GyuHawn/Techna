@@ -10,7 +10,9 @@ public class ExpansionConversion : MonoBehaviour
 
     void Start()
     {
-        plus = false;
+        plus = true;
+        state[0].gameObject.SetActive(true);
+        state[1].gameObject.SetActive(false);
     }
 
     void Update()
@@ -19,9 +21,18 @@ public class ExpansionConversion : MonoBehaviour
         {
             if (Input.GetButtonDown("Expansion"))
             {
-                state[0].gameObject.SetActive(plus);
-                state[1].gameObject.SetActive(!plus);
-                plus = !plus;
+                if (plus)
+                {
+                    plus = false;
+                    state[0].gameObject.SetActive(false);
+                    state[1].gameObject.SetActive(true);
+                }
+                else
+                {
+                    plus = true;
+                    state[0].gameObject.SetActive(true);
+                    state[1].gameObject.SetActive(false);
+                }
             }
         }
     }
