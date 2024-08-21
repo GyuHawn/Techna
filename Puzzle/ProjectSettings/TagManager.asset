@@ -11,6 +11,7 @@ TagManager:
   - MovingObject
   - RotateObject
   - Wall
+  - ExpansionBullet
   layers:
   - Default
   - TransparentFX

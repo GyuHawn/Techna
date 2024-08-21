@@ -4,64 +4,46 @@ using UnityEngine;
 
 public class ObjectExpansion : MonoBehaviour
 {
-    public ExpansionConversion gem; // 보석 상태 확인
-    public float scaleChangeDuration = 5.0f; // 스케일 변화 시간
-    public float freezeDuration = 5.0f; // 오브젝트 고정 시간
+    public ExpansionConversion gun; // 보석 상태 확인
+    public float scaleChangeDuration; // 스케일 변화 시간
+    public float freezeDuration; // 오브젝트 고정 시간
 
     private void Start()
     {
-        gem = GameObject.Find("Gun").GetComponent<ExpansionConversion>();
+        gun = GameObject.Find("Gun").GetComponent<ExpansionConversion>();
+
+        scaleChangeDuration = 2f;
+        freezeDuration = 3f;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        string[] checkTags = { "GrabObject" }; // 필요시 추가
-
-        if (collision.gameObject.CompareTag("GrabObject"))
+        if (collision.gameObject.CompareTag("ExpansionBullet"))
         {
-            CheckCubeInfor check = collision.gameObject.GetComponent<CheckCubeInfor>();
-
-            if (check.expansion)
+            CheckCubeInfor cube = gameObject.GetComponent<CheckCubeInfor>();
+            if (cube.expansion)
             {
                 // 오브젝트의 크기 증감
-                StartCoroutine(HandleCollision(collision.gameObject));
+                HandleCollision();
             }
             else { }
         }
     }
 
-    void ScaleOverTime(GameObject obj, Vector3 targetScale, float duration) // 크기 증감
+    void HandleCollision() // 크기 증감중 포지션 및 회전 고정, 오브젝트 최대 증감 값 확인
     {
-        Vector3 initialScale = obj.transform.localScale;
-        float elapsed = 0f;
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float progress = elapsed / duration;
-            obj.transform.localScale = Vector3.Lerp(initialScale, targetScale, progress);
-        }
-
-        // 최종 스케일 설정
-        obj.transform.localScale = targetScale;
-    }
-
-    private IEnumerator HandleCollision(GameObject hitObject) // 크기 증감중 포지션 및 회전 고정, 오브젝트 최대 증감 값 확인
-    {
-        Rigidbody rb = hitObject.GetComponent<Rigidbody>();
-
         // 위치, 회전 저장
-        Vector3 originalPosition = hitObject.transform.position;
-        Quaternion originalRotation = hitObject.transform.rotation;
+        Vector3 originalPosition = gameObject.transform.position;
+        Quaternion originalRotation = gameObject.transform.rotation;
 
-        CheckCubeInfor check = hitObject.GetComponent<CheckCubeInfor>();
+        CheckCubeInfor check = gameObject.GetComponent<CheckCubeInfor>();
         // 크기 증감
-        if (gem.plus)
+        if (gun.plus)
         {
             if (check.currentValue < check.expansValue)
             {
                 check.currentValue++;
-                ScaleOverTime(hitObject, hitObject.transform.localScale * 2, scaleChangeDuration);
+                StartCoroutine(ScaleOverTime(gameObject, gameObject.transform.localScale * 2));
                 check.weight = check.weight * 2;
             }
         }
@@ -70,10 +52,38 @@ public class ObjectExpansion : MonoBehaviour
             if (check.currentValue > check.reducedValue)
             {
                 check.currentValue--;
-                ScaleOverTime(hitObject, hitObject.transform.localScale * 0.5f, scaleChangeDuration);
+                StartCoroutine(ScaleOverTime(gameObject, gameObject.transform.localScale * 0.5f));
                 check.weight = check.weight * 0.5f;
             }
         }
+
+        StartCoroutine(FixedPostion()); // 포지션 고정
+
+        // 저장된 위치, 회전으로 복원
+        gameObject.transform.position = originalPosition;
+        gameObject.transform.rotation = originalRotation;
+    }
+
+    IEnumerator ScaleOverTime(GameObject obj, Vector3 targetScale) // 크기 증감
+    {
+        Vector3 initialScale = obj.transform.localScale;
+        float elapsed = 0f;
+
+        while (elapsed < scaleChangeDuration)
+        {
+            float progress = elapsed / scaleChangeDuration;
+            obj.transform.localScale = Vector3.Lerp(initialScale, targetScale, progress);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // 최종 스케일 설정
+        obj.transform.localScale = targetScale;
+    }
+
+    IEnumerator FixedPostion() // 포지션 고정
+    {
+        Rigidbody rb = gameObject.GetComponent<Rigidbody>();
 
         // 포지션과 회전을 고정
         if (rb != null)
@@ -98,9 +108,6 @@ public class ObjectExpansion : MonoBehaviour
             // Kinematic 상태일 경우
             yield return new WaitForSeconds(freezeDuration);
         }
-
-        // 저장된 위치, 회전으로 복원
-        hitObject.transform.position = originalPosition;
-        hitObject.transform.rotation = originalRotation;
     }
 }
+   
