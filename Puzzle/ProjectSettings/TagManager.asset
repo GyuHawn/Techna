@@ -12,6 +12,7 @@ TagManager:
   - RotateObject
   - Wall
   - ExpansionBullet
+  - BoardPuzzleCheck
   layers:
   - Default
   - TransparentFX

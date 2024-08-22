@@ -12,6 +12,7 @@ public class CubeSpawner : MonoBehaviour
 
     public bool plateObj;
     public bool lightObj;
+    public bool lEDLine;
 
     void Start()
     {
@@ -31,6 +32,14 @@ public class CubeSpawner : MonoBehaviour
             {
                 // 각 발판의 activationChanged 이벤트 구독, 활성화 상태 감지
                 lightingFunction.activationChanged += OpenSpawnerCheck;
+            }
+        }
+        else if (lEDLine)
+        {
+            LEDNode line = checkObj.GetComponent<LEDNode>();
+            if(line != null)
+            {
+                line.activationChanged += OpenSpawnerCheck;
             }
         }
     }
@@ -57,6 +66,15 @@ public class CubeSpawner : MonoBehaviour
         {
             LightningRod lightingFunction = checkObj.GetComponent<LightningRod>();
             if (!lightingFunction.activate)
+            {
+                // 발판 비활성화 시 전체 상태 false
+                activated = false;
+            }
+        }
+        else if(lEDLine)
+        {
+            LEDNode line = checkObj.GetComponent<LEDNode>();
+            if (!line.activate)
             {
                 // 발판 비활성화 시 전체 상태 false
                 activated = false;

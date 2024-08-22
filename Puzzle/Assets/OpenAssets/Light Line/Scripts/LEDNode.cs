@@ -36,6 +36,9 @@ public class LEDNode : MonoBehaviour
     private enum LightState { INCR, DECR, IDLE }
     private LightState lightState = LightState.IDLE;
 
+    public delegate void CheckActivationChange(bool activate);
+    public event CheckActivationChange activationChanged; // 이벤트 호출
+
     void Start()
     {
         // 연결된 컴포넌트 초기화.
@@ -51,6 +54,7 @@ public class LEDNode : MonoBehaviour
             {
                 ResolveNodeState();
                 UpdateColor();
+                activationChanged?.Invoke(true);
             }
         }
         else

@@ -17,7 +17,7 @@ public class GrabObject : MonoBehaviour
         grab = false;
 
         grabRange = 8.0f; 
-        throwForce = 10f;
+        throwForce = 20f;
     }
 
     void Update()
@@ -56,7 +56,7 @@ public class GrabObject : MonoBehaviour
                 grabbedObject = hit.transform; // 잡은 물체 설정
                 grabbedObject.GetComponent<Rigidbody>().isKinematic = true; // 움직임 중지
                 grabbedObject.position = holdPosition.position; // 물체 위치 설정
-                grabbedObject.parent = holdPosition; // 물체의 부모 설정
+                //grabbedObject.parent = holdPosition; // 물체의 부모 설정
                 grab = true; // 잡은 상태로 변경
             }
         }
@@ -79,7 +79,7 @@ public class GrabObject : MonoBehaviour
         if (grabbedObject != null) // 잡고있지 않을때
         {
             grabbedObject.GetComponent<Rigidbody>().isKinematic = false; // 움직임 재개
-            grabbedObject.parent = null; // 물체의 부모 설정 해제
+            //grabbedObject.parent = null; // 물체의 부모 설정 해제
             grabbedObject = null; // 잡은 물체 초기화
             grab = false; // 잡지 않은 상태로 변경
         }
@@ -90,7 +90,7 @@ public class GrabObject : MonoBehaviour
         if (grabbedObject != null) // 잡은 몰체가 있을때
         {
             grabbedObject.GetComponent<Rigidbody>().isKinematic = false; // 움직임 재게
-            grabbedObject.parent = null; // 부모 설정 해제
+            //grabbedObject.parent = null; // 부모 설정 해제
             // 전방으로 던지기
             grabbedObject.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * throwForce, ForceMode.Impulse);
             grabbedObject = null; // 잡은 물체 초기화
