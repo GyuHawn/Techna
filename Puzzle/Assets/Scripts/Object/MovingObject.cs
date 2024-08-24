@@ -12,6 +12,7 @@ public class MovingObject : MonoBehaviour
     public bool y; // y축 이동 여부
     public bool z; // z축 이동 여부
 
+    public bool activated; // 그냥 이동 준비
     public GameObject checkObj; // 체크할 오브젝트
     public bool plateObj; // 발판 인지
     public bool lightObj; // 라이트 인지
@@ -58,11 +59,19 @@ public class MovingObject : MonoBehaviour
         }
 
         // 물체이동, 오브젝트 체크, 이동 중 여부
-        if(objectMoving && checkObj != null && !isMoving)
+        if(objectMoving && !isMoving)
         {
-            bool activate = CheckObject();
+            if (checkObj != null)
+            {
+                bool activate = CheckObject();
 
-            if (activate)
+                if (activate)
+                {
+                    isMoving = true;
+                    StartCoroutine(MovePosition(gameObject, targetPosition));
+                }
+            }
+            else if(checkObj == null && activated)
             {
                 isMoving = true;
                 StartCoroutine(MovePosition(gameObject, targetPosition));

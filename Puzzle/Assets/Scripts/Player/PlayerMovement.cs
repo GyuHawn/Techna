@@ -8,6 +8,10 @@ public class PlayerMovement : MonoBehaviour
     public float mouseSensitivity; // 마우스 감도
     public float jumpPower; // 점프력
 
+    // 상태
+    public int maxHealth;
+    public int currentHealth;
+
     // 키입력
     private float hAxis;
     private float vAxis;
