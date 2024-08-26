@@ -13,6 +13,8 @@ TagManager:
   - Wall
   - ExpansionBullet
   - BoardPuzzleCheck
+  - Lever
+  - Monster
   layers:
   - Default
   - TransparentFX

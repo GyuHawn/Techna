@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,6 +13,12 @@ public class PlayerMovement : MonoBehaviour
     // 상태
     public int maxHealth;
     public int currentHealth;
+    public Image healthBar;
+    public TMP_Text healthText;
+
+    public int damage;
+
+    public bool hit; // 피격 가능 여부
 
     // 키입력
     private float hAxis;
@@ -27,6 +35,10 @@ public class PlayerMovement : MonoBehaviour
     public Transform movingPlatform; // 이동 발판
     private Vector3 lastPlatformPosition; // 마지막으로 기록된 발판의 위치
 
+    // 레버 작동
+    private bool checkLever = false;
+    private GameObject currentLever;
+
     private Rigidbody rb;
 
     void Start()
@@ -38,11 +50,14 @@ public class PlayerMovement : MonoBehaviour
         mouseSensitivity = 300f;
         jumpPower = 6f;
 
+        maxHealth = 100;
+        currentHealth = maxHealth;
+
         gunOffset = new Vector3(0, 1.2f, 0);
 
         isCursorVisible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        UnityEngine.Cursor.visible = false;
     }
 
     void Update()
@@ -50,14 +65,14 @@ public class PlayerMovement : MonoBehaviour
         GetInput(); // 키입력
         Move(); // 이동
         Rotate(); // 회전
-
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            Jump(); // 점프
-        }
+        Jump(); // 점프
 
         UpdateGunPosition(); // 총 위치 설정
-        OffCursorVisibility("`"); // 마우스 커서 비/활성화
+        OffCursorVisibility(); // 마우스 커서 비/활성화
+
+        FunctionLever(); // 레버 작동
+
+        UPdateInfor(); // 플레이어 정보 업데이트
     }
 
     void UpdateGunPosition() // 총 위치 설정
@@ -93,8 +108,35 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump() // 점프
     {
-        rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
-        isGrounded = false;
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+            isGrounded = false;
+        }
+    }
+
+    void FunctionLever()
+    {
+        if (checkLever && Input.GetButtonDown("lever")) // 레버 작동
+        {
+            if (currentLever != null)
+            {
+                LeverFunction lever = currentLever.GetComponent<LeverFunction>();
+                if (lever != null)
+                {
+                    lever.activate = true;
+                }
+            }
+        }
+    }
+
+    void UPdateInfor()
+    {
+        healthText.text = "HP " + currentHealth.ToString() + " / " + maxHealth.ToString();
+
+        // 현재 체력을 최대 체력으로 나눈 비율을 체력 바의 Fill Amount로 설정
+        float healthPercentage = (float)currentHealth / maxHealth;
+        healthBar.fillAmount = healthPercentage;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -120,15 +162,64 @@ public class PlayerMovement : MonoBehaviour
         {
             movingPlatform = null; // 연결 해제
         }
+
+
     }
 
-    private void OffCursorVisibility(string KeyNum) // 커서 비활성화
+    private void OnTriggerEnter(Collider other)
     {
-        if (Input.GetButtonDown(KeyNum)) // 키 입력 감지
+        // 레버 충돌, 레버 추가
+        if (other.gameObject.CompareTag("Lever"))
+        {
+            checkLever = true;
+            currentLever = other.gameObject;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        // 피격
+        if (other.gameObject.CompareTag("Monster"))
+        {
+            MonsterController monster = other.gameObject.GetComponent<MonsterController>();
+            HitDamage(other.gameObject, monster.damage);
+        }   
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // 레버 충돌 해제, 레버 삭제
+        if (other.gameObject.CompareTag("Lever"))
+        {
+            checkLever = false;
+            currentLever = null;
+        }
+    }
+
+    private void OffCursorVisibility() // 커서 비활성화
+    {
+        if (Input.GetButtonDown("CursorHide")) // 키 입력 감지
         {
             isCursorVisible = !isCursorVisible; // 마우스 포인터 활성화 여부
-            Cursor.visible = isCursorVisible; // 마우스 포인터 활성화 상태 설정
-            Cursor.lockState = isCursorVisible ? CursorLockMode.None : CursorLockMode.Locked; // 마우스 포인터 잠금 상태 설정
+            UnityEngine.Cursor.visible = isCursorVisible; // 마우스 포인터 활성화 상태 설정
+            UnityEngine.Cursor.lockState = isCursorVisible ? CursorLockMode.None : CursorLockMode.Locked; // 마우스 포인터 잠금 상태 설정
         }
+    }
+
+    private void HitDamage(GameObject obj, int damage) // 피격
+    {
+        if (!hit)
+        {
+            hit = true;
+            currentHealth -= damage;
+
+            StartCoroutine(HitInterval());
+        }
+    }
+
+    IEnumerator HitInterval() // 피격 간격
+    {
+        yield return new WaitForSeconds(1f);
+        hit = false;
     }
 }

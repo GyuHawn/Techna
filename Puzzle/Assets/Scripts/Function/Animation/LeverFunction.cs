@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LeverFunction : MonoBehaviour
 {
+    private MonsterSummon monsterSummon;
+
+    public bool activate;
 
     private Animator anim;
 
@@ -11,11 +14,15 @@ public class LeverFunction : MonoBehaviour
     {
         anim = GetComponent<Animator>();
 
-        anim.SetTrigger("Activate");
+        monsterSummon = GetComponent<MonsterSummon>();
     }
 
     void Update()
     {
-        
+        if (activate)
+        {
+            anim.SetTrigger("Activate");
+            monsterSummon.activate = true;
+        }
     }
 }
