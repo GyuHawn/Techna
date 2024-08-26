@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ButtonInfor : MonoBehaviour
 {
-    public ButtonController controller;
+    public ButtonsController controller;
     public bool trueButton; // 진짜 버튼
     public bool currentStatus; // 현재 상태
 
@@ -14,7 +14,7 @@ public class ButtonInfor : MonoBehaviour
 
     private void Awake()
     {
-        controller = GetComponentInParent<ButtonController>();
+        controller = GetComponentInParent<ButtonsController>();
         renderer = GetComponent<Renderer>();
     }
 

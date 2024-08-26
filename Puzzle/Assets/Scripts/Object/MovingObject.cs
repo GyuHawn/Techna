@@ -14,9 +14,11 @@ public class MovingObject : MonoBehaviour
 
     public bool activated; // 그냥 이동 준비
     public GameObject checkObj; // 체크할 오브젝트
+
     public bool plateObj; // 발판 인지
     public bool lightObj; // 라이트 인지
     public bool electrictyObj; // 전기 인지
+    public bool lockObj; // 잠금장치 인지
 
     private Vector3 currentPosition; // 초기 위치
     private Vector3 targetPosition; // 목표 위치
@@ -123,6 +125,15 @@ public class MovingObject : MonoBehaviour
             {
                 return electricityFunction.activate;
             }
+        }
+        else if (lockObj)
+        {
+            DigitalLock lockFunction = checkObj.GetComponent<DigitalLock>();
+            if(lockFunction != null)
+            {
+                return lockFunction.activate;
+            }
+
         }
         return false;
     }
