@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MonsterFactory
 {
+    // 몬스터 확인
     public I_Monster CreateMonster(string type, GameObject prefab, Transform spawnPoint)
     {
         switch (type)

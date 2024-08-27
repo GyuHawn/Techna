@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// 몬스터 타입을 정의하는 열거형
-public enum MonsterType { None, Fire }
+public enum MonsterType { None, Fire } // 몬스터 타입 열거형
 
 public class MonsterSummon : MonoBehaviour
 {
     public GameObject[] monsterPrefabs; // 몬스터 프리팹
     public Transform spawnPoint; // 소환 포인트
 
-    public float currentSpawnTime;
-    public float maxSpawnTime;
+    // 소환 시간
+    public float currentSpawnTime; 
+    public float maxSpawnTime; 
 
-    public bool activate;
+    public bool activate; // 활성화 여부
 
-    private MonsterFactory factory;
+    private MonsterFactory factory; // 몬스터 확인
 
     public MonsterType monsterType;
 
@@ -26,7 +26,7 @@ public class MonsterSummon : MonoBehaviour
 
     void Update()
     {
-        if (activate)
+        if (activate) // 활성화 시 일정 시간 마다 몬스터 생성
         {
             currentSpawnTime += Time.deltaTime;
 
@@ -39,7 +39,7 @@ public class MonsterSummon : MonoBehaviour
         }
     }
 
-    // 타입에 따라 프리팹을 반환하는 메서드
+    // 타입에 따라 프리팹 반환
     GameObject GetPrefabForType(MonsterType type)
     {
         switch (type)

@@ -18,7 +18,8 @@ public class MovingObject : MonoBehaviour
     public bool plateObj; // 발판 인지
     public bool lightObj; // 라이트 인지
     public bool electrictyObj; // 전기 인지
-    public bool lockObj; // 잠금장치 인지
+    public bool digitalLockObj; // 전자 잠금장치 인지
+    public bool keyLockObj; // 키 잠금장치 인지
 
     private Vector3 currentPosition; // 초기 위치
     private Vector3 targetPosition; // 목표 위치
@@ -102,7 +103,7 @@ public class MovingObject : MonoBehaviour
 
     bool CheckObject() // 특정 오브젝트의 활성화 상태 확인
     {
-        if (plateObj)
+        if (plateObj) // 발판
         {
             PlateFunction plateFunction = checkObj.GetComponent<PlateFunction>();
             if (plateFunction != null)
@@ -110,7 +111,7 @@ public class MovingObject : MonoBehaviour
                 return plateFunction.activate;
             }
         }
-        else if (lightObj)
+        else if (lightObj) // 라이트
         {
             LightningRod lightingFunction = checkObj.GetComponent<LightningRod>();
             if (lightingFunction != null)
@@ -118,7 +119,7 @@ public class MovingObject : MonoBehaviour
                 return lightingFunction.activate;
             }
         }
-        else if (electrictyObj)
+        else if (electrictyObj) // 전기
         {
             CheckElectricity electricityFunction = checkObj.GetComponent<CheckElectricity>();
             if (electricityFunction != null)
@@ -126,14 +127,22 @@ public class MovingObject : MonoBehaviour
                 return electricityFunction.activate;
             }
         }
-        else if (lockObj)
+        else if (digitalLockObj) // 전자 잠금장치
         {
-            DigitalLock lockFunction = checkObj.GetComponent<DigitalLock>();
-            if(lockFunction != null)
+            DigitalLock digitalLockFunction = checkObj.GetComponent<DigitalLock>();
+            if(digitalLockFunction != null)
             {
-                return lockFunction.activate;
+                return digitalLockFunction.activate;
             }
 
+        }
+        else if (keyLockObj) // 키 잠금장치
+        {
+            KeyLock keyLockFunction = checkObj.GetComponent<KeyLock>();
+            if (keyLockFunction != null)
+            {
+                return keyLockFunction.activate;
+            }
         }
         return false;
     }

@@ -65,7 +65,7 @@ public class GrabObject : MonoBehaviour
         if (grabbedObject != null)
         {
 
-            CheckCubeInfor cube = grabbedObject.GetComponent<CheckCubeInfor>();
+            CheckObjectInfor cube = grabbedObject.GetComponent<CheckObjectInfor>();
             if (cube.weight > 2)
             {
                 ReleaseObject();

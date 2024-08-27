@@ -20,7 +20,7 @@ public class ObjectExpansion : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ExpansionBullet"))
         {
-            CheckCubeInfor cube = gameObject.GetComponent<CheckCubeInfor>();
+            CheckObjectInfor cube = gameObject.GetComponent<CheckObjectInfor>();
             if (cube.expansion)
             {
                 // 오브젝트의 크기 증감
@@ -36,7 +36,7 @@ public class ObjectExpansion : MonoBehaviour
         Vector3 originalPosition = gameObject.transform.position;
         Quaternion originalRotation = gameObject.transform.rotation;
 
-        CheckCubeInfor check = gameObject.GetComponent<CheckCubeInfor>();
+        CheckObjectInfor check = gameObject.GetComponent<CheckObjectInfor>();
         // 크기 증감
         if (gun.plus)
         {

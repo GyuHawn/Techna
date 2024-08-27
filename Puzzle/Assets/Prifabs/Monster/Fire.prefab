@@ -107,7 +107,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -189,7 +189,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09c35f103c82cb348996d2c7475c51d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   damage: 0
+  maxHealth: 10
+  currentHealth: 10
+  dropItem: {fileID: 1171052579519983318, guid: 03f811a1f21271b40864eb2e15f92b5f, type: 3}
+  dropPercent: 50
 --- !u!1 &5938398737376406125
 GameObject:
   m_ObjectHideFlags: 0
