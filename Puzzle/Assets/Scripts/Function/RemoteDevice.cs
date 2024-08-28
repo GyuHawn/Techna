@@ -12,10 +12,15 @@ public class RemoteDevice : MonoBehaviour
 
     public GameObject[] objs; // 제어할 오브젝트 
 
-    public bool activated; // 활성화 시킬지
     public bool destroy; // 제거할지
+    public bool activate; // 활성화 시킬지
+    public bool stairs; // 계단 활성화
+
 
     private Renderer render;
+
+    public delegate void CheckActivationChange(bool activate);
+    public event CheckActivationChange activationChanged;
 
     void Start()
     {
@@ -49,6 +54,17 @@ public class RemoteDevice : MonoBehaviour
             if (destroy) // 제어할 오브젝트 제거
             {
                 Destroy();
+            }
+            else if (activate)
+            {
+                if (stairs)
+                {
+                    foreach(GameObject stairs in objs)
+                    {
+                        ActivatedStairs staireFunction = stairs.GetComponent<ActivatedStairs>();
+                        staireFunction.activated = true;
+                    }
+                }
             }
         }
     }

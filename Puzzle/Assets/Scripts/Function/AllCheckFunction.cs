@@ -5,11 +5,15 @@ using UnityEngine;
 
 public class AllCheckFunction : MonoBehaviour
 {
-    public GameObject[] plates; // 확인할 발판
+    public GameObject[] checkObjects; // 확인할 발판
 
     public bool activate; // 활성화 여부
     public bool on; // 오픈 여부 
 
+    // 확인할 타입
+    public bool plate; // 발판
+
+    // 제어할 타입
     public bool door; // 문
     public bool stairs; // 계단
     public bool controller; // 버튼
@@ -19,26 +23,32 @@ public class AllCheckFunction : MonoBehaviour
 
     void Start()
     {
-        foreach (GameObject plate in plates)
+        if (plate)
         {
-            PlateFunction plateFunction = plate.GetComponent<PlateFunction>();
-            if (plateFunction != null)
+            foreach (GameObject plate in checkObjects)
             {
-                // 각 발판의 activationChanged 이벤트 구독, 활성화 상태 감지
-                plateFunction.activationChanged += CheckAllPlatesActivated;
+                PlateFunction plateFunction = plate.GetComponent<PlateFunction>();
+                if (plateFunction != null)
+                {
+                    // 각 발판의 activationChanged 이벤트 구독, 활성화 상태 감지
+                    plateFunction.activationChanged += CheckAllPlatesActivated;
+                }
             }
         }
     }
 
     void OnDestroy()
     {
-        foreach (GameObject plate in plates)
+        if (plate)
         {
-            PlateFunction plateFunction = plate.GetComponent<PlateFunction>();
-            if (plateFunction != null)
+            foreach (GameObject plate in checkObjects)
             {
-                // 이벤트 구독 해지
-                plateFunction.activationChanged -= CheckAllPlatesActivated;
+                PlateFunction plateFunction = plate.GetComponent<PlateFunction>();
+                if (plateFunction != null)
+                {
+                    // 이벤트 구독 해지
+                    plateFunction.activationChanged -= CheckAllPlatesActivated;
+                }
             }
         }
     }
@@ -52,16 +62,19 @@ public class AllCheckFunction : MonoBehaviour
     {
         bool allPlatesActivated = true;
 
-        foreach (GameObject plate in plates) // 모든 발판 활성화 확인
+        if (plate)
         {
-            PlateFunction plateFunction = plate.GetComponent<PlateFunction>();
-            if (plateFunction != null)
+            foreach (GameObject plate in checkObjects) // 모든 발판 활성화 확인
             {
-                if (!plateFunction.activate)
+                PlateFunction plateFunction = plate.GetComponent<PlateFunction>();
+                if (plateFunction != null)
                 {
-                    // 발판 비활성화 시 전체 상태 false
-                    allPlatesActivated = false;
-                    break;
+                    if (!plateFunction.activate)
+                    {
+                        // 발판 비활성화 시 전체 상태 false
+                        allPlatesActivated = false;
+                        break;
+                    }
                 }
             }
         }
