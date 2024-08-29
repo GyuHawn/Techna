@@ -15,6 +15,7 @@ TagManager:
   - BoardPuzzleCheck
   - Lever
   - Monster
+  - Thorn
   layers:
   - Default
   - TransparentFX

@@ -156,6 +156,13 @@ public class PlayerMovement : MonoBehaviour
             movingPlatform = collision.transform; // 이동 발판
             lastPlatformPosition = movingPlatform.position; // 마지막 위치 저장
         }
+
+        // 함정
+        if (collision.gameObject.CompareTag("Thorn"))
+        {
+            TrapScript thorn = collision.gameObject.GetComponent<TrapScript>();
+            currentHealth -= thorn.damage;
+        }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -165,8 +172,6 @@ public class PlayerMovement : MonoBehaviour
         {
             movingPlatform = null; // 연결 해제
         }
-
-
     }
 
     private void OnTriggerEnter(Collider other)
