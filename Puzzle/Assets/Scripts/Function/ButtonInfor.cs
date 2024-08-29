@@ -14,7 +14,10 @@ public class ButtonInfor : MonoBehaviour
 
     private void Awake()
     {
-        controller = GetComponentInParent<ButtonsController>();
+        if(controller != null)
+        {
+            controller = GetComponentInParent<ButtonsController>();
+        }
         renderer = GetComponent<Renderer>();
     }
 
@@ -23,7 +26,10 @@ public class ButtonInfor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            controller.currentCheckCount--;
+            if(controller != null)
+            {
+                controller.currentCheckCount--;
+            }
             currentStatus = true;
             renderer.material = materials[1];
         }

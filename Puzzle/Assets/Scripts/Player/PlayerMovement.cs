@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public Image healthBar;
     public TMP_Text healthText;
 
-    public int damage;
+    public int damage; // 데미지
 
     public bool hit; // 피격 가능 여부
 
@@ -46,12 +46,15 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true; // 회전은 물리 엔진이 처리하지 않도록 고정
 
-        moveSpeed = 15f; 
-        mouseSensitivity = 300f;
+        //moveSpeed = 10f; 
+        moveSpeed = 20f; 
+        mouseSensitivity = 100f;
         jumpPower = 6f;
 
         maxHealth = 100;
         currentHealth = maxHealth;
+
+        damage = 3;
 
         gunOffset = new Vector3(0, 1.2f, 0);
 
