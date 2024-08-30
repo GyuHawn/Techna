@@ -28,9 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     // 총위치
     public Transform gunPos; 
-    public Vector3 gunOffset;
-
-    public bool isCursorVisible; // 마우스 커서 활성화 여부
+    public Vector3 gunOffset;  
 
     public Transform movingPlatform; // 이동 발판
     private Vector3 lastPlatformPosition; // 마지막으로 기록된 발판의 위치
@@ -57,10 +55,6 @@ public class PlayerMovement : MonoBehaviour
         damage = 3;
 
         gunOffset = new Vector3(0, 1.2f, 0);
-
-        isCursorVisible = false;
-        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
-        UnityEngine.Cursor.visible = false;
     }
 
     void Update()
@@ -71,7 +65,6 @@ public class PlayerMovement : MonoBehaviour
         Jump(); // 점프
 
         UpdateGunPosition(); // 총 위치 설정
-        OffCursorVisibility(); // 마우스 커서 비/활성화
 
         FunctionLever(); // 레버 작동
 
@@ -201,16 +194,6 @@ public class PlayerMovement : MonoBehaviour
         {
             checkLever = false;
             currentLever = null;
-        }
-    }
-
-    private void OffCursorVisibility() // 커서 비활성화
-    {
-        if (Input.GetButtonDown("CursorHide")) // 키 입력 감지
-        {
-            isCursorVisible = !isCursorVisible; // 마우스 포인터 활성화 여부
-            UnityEngine.Cursor.visible = isCursorVisible; // 마우스 포인터 활성화 상태 설정
-            UnityEngine.Cursor.lockState = isCursorVisible ? CursorLockMode.None : CursorLockMode.Locked; // 마우스 포인터 잠금 상태 설정
         }
     }
 
