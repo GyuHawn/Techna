@@ -198,8 +198,8 @@ public class GemCombination : MonoBehaviour
         if (attribute == 2 && !gemManager.onElectricity) return false;
         if (attribute == 3 && !gemManager.onExpansion) return false;
         if (attribute == 4 && !gemManager.onGravity) return false;
-        if (function == 1 && !gemManager.onDestruction) return false;
-        if (function == 2 && !gemManager.onPenetrate) return false;
+        if (function == 1 && !gemManager.onPenetrate) return false;
+        if (function == 2 && !gemManager.onDestruction) return false;
         if (function == 3 && !gemManager.onDiffusion) return false;
         if (function == 4 && !gemManager.onUpgrade) return false;
         if (function == 5 && !gemManager.onQuick) return false;

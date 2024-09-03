@@ -1,0 +1,688 @@
+Using pre-set license
+Built from '2022.3/staging' branch; Version is '2022.3.14f1 (eff2de9070d8) revision 15725278'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'ko' Physical Memory: 16319 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2022.3.14f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/Kim/Desktop/GameProject/Puzzle
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+49465
+Successfully changed project path to: C:/Users/Kim/Desktop/GameProject/Puzzle
+C:/Users/Kim/Desktop/GameProject/Puzzle
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [11880] Host "[IP] 14.46.94.161 [Port] 0 [Flags] 2 [Guid] 1588387148 [EditorId] 1588387148 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-5MEC467) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [11880] Host "[IP] 14.46.94.161 [Port] 0 [Flags] 2 [Guid] 1588387148 [EditorId] 1588387148 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-5MEC467) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[Physics::Module] Initialized MultithreadedJobDispatcher with 3 workers.
+Refreshing native plugins compatible for Editor in 27.13 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.14f1 (eff2de9070d8)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.14f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Kim/Desktop/GameProject/Puzzle/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1660 (ID=0x2184)
+    Vendor:   NVIDIA
+    VRAM:     5980 MB
+    Driver:   31.0.15.3623
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.14f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.14f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.14f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56876
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.14f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.14f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.14f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.036521 seconds.
+- Loaded All Assemblies, in  0.577 seconds
+Native extension for WindowsStandalone target not found
+[usbmuxd] Start listen thread
+[usbmuxd] Listen thread started
+Native extension for iOS target not found
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 414 ms
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.803 seconds
+Domain Reload Profiling: 1374ms
+	BeginReloadAssembly (187ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (47ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (117ms)
+	LoadAllAssembliesAndSetupDomain (206ms)
+		LoadAssemblies (184ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (200ms)
+			TypeCache.Refresh (199ms)
+				TypeCache.ScanAssembly (176ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (804ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (736ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (573ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (2ms)
+			ProcessInitializeOnLoadAttributes (99ms)
+			ProcessInitializeOnLoadMethodAttributes (57ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.843 seconds
+Refreshing native plugins compatible for Editor in 8.16 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for iOS target not found
+Native extension for Android target not found
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.675 seconds
+Domain Reload Profiling: 1508ms
+	BeginReloadAssembly (188ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (19ms)
+	RebuildCommonClasses (38ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (63ms)
+	LoadAllAssembliesAndSetupDomain (530ms)
+		LoadAssemblies (446ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (210ms)
+			TypeCache.Refresh (187ms)
+				TypeCache.ScanAssembly (168ms)
+			ScanForSourceGeneratedMonoScriptInfo (17ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (675ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (505ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (54ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (89ms)
+			ProcessInitializeOnLoadAttributes (313ms)
+			ProcessInitializeOnLoadMethodAttributes (23ms)
+			AfterProcessingInitializeOnLoad (22ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (19ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Refreshing native plugins compatible for Editor in 7.67 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3340 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 44 unused Assets / (1.3 MB). Loaded Objects now: 3818.
+Memory consumption went from 240.6 MB to 239.4 MB.
+Total: 2.921200 ms (FindLiveObjects: 0.312400 ms CreateObjectMapping: 0.217300 ms MarkObjects: 2.135000 ms  DeleteObjects: 0.255800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 2699.983025 seconds.
+  path: Assets/New Scene.unity
+  artifactKey: Guid(b5393a7f9b8e0ce4ca108d1875f4f668) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/New Scene.unity using Guid(b5393a7f9b8e0ce4ca108d1875f4f668) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '606c76a20e2a865ea789cab42b78ae7f') in 0.002419 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 2.809167 seconds.
+  path: Assets/Scenes/Game.unity
+  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Game.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c05515be8e868714d69549862b350dd7') in 0.001379 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.704 seconds
+Refreshing native plugins compatible for Editor in 37.04 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for iOS target not found
+Native extension for Android target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.594 seconds
+Domain Reload Profiling: 2287ms
+	BeginReloadAssembly (218ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (7ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (32ms)
+	RebuildCommonClasses (38ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (52ms)
+	LoadAllAssembliesAndSetupDomain (370ms)
+		LoadAssemblies (475ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (29ms)
+			TypeCache.Refresh (15ms)
+				TypeCache.ScanAssembly (6ms)
+			ScanForSourceGeneratedMonoScriptInfo (7ms)
+			ResolveRequiredComponents (7ms)
+	FinalizeReload (1595ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (515ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (61ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (99ms)
+			ProcessInitializeOnLoadAttributes (304ms)
+			ProcessInitializeOnLoadMethodAttributes (23ms)
+			AfterProcessingInitializeOnLoad (24ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (20ms)
+Refreshing native plugins compatible for Editor in 8.28 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3283 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 35 unused Assets / (1.3 MB). Loaded Objects now: 3821.
+Memory consumption went from 228.1 MB to 226.9 MB.
+Total: 2.655000 ms (FindLiveObjects: 0.230100 ms CreateObjectMapping: 0.180800 ms MarkObjects: 2.028300 ms  DeleteObjects: 0.214800 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 310.817883 seconds.
+  path: Assets/Cube1.fbx
+  artifactKey: Guid(337298fec01432b4d9b102da9ce3cb2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Cube1.fbx using Guid(337298fec01432b4d9b102da9ce3cb2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9557d2a148d6d7108a61a78372e915b') in 0.230311 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 25
+========================================================================
+Received Import Request.
+  Time since last request: 37.512293 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+F/BasicDestruction.prefab
+  artifactKey: Guid(d36bcd68d37ba7344b4e94182beeddb3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+F/BasicDestruction.prefab using Guid(d36bcd68d37ba7344b4e94182beeddb3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '804ab66ed017d9a673c3307a207206d1') in 0.369366 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 146
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+F/LargeQuick.prefab
+  artifactKey: Guid(01aebd8975d5c624e9fc4b58a9ba6e17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+F/LargeQuick.prefab using Guid(01aebd8975d5c624e9fc4b58a9ba6e17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f6d0e684b88bab745757804c09b1c8a') in 0.099067 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 148
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+F/BasicDiffusion.prefab
+  artifactKey: Guid(9a6181979a4a50f42a4985588b4cd740) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+F/BasicDiffusion.prefab using Guid(9a6181979a4a50f42a4985588b4cd740) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81461711d3f9e1700c6b87c8da318779') in 0.133492 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 99
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+F/BasicUpgrade.prefab
+  artifactKey: Guid(2f164dddd8c66b041b53876933ab5cd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+F/BasicUpgrade.prefab using Guid(2f164dddd8c66b041b53876933ab5cd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '957233180f5ff739f4876083c8a5375b') in 0.100673 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 73
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+F/LargeUpgrade.prefab
+  artifactKey: Guid(65351d9b16f377546a90c8a371ede6a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+F/LargeUpgrade.prefab using Guid(65351d9b16f377546a90c8a371ede6a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '642c32a381dcbd23cb6354d819842ff0') in 0.161039 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 128
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+F/BasicPenetrate.prefab
+  artifactKey: Guid(4a1e4cf1fa4bbac40a4fbfb1551d2d4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+F/BasicPenetrate.prefab using Guid(4a1e4cf1fa4bbac40a4fbfb1551d2d4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '286a33c1fbb3bc40d1e3c496f6f4fc4e') in 0.138002 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 85
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+F/LargeDestruction.prefab
+  artifactKey: Guid(4c85d0e1743b6f3428a9bcf9da11b609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+F/LargeDestruction.prefab using Guid(4c85d0e1743b6f3428a9bcf9da11b609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69b916416f4a62d8ec9b9f02c21da2b1') in 0.099004 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 123
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+F/LargePenetrate.prefab
+  artifactKey: Guid(85890d3129c30764dbd8cc57cabfb9d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+F/LargePenetrate.prefab using Guid(85890d3129c30764dbd8cc57cabfb9d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4717df9b77efc280ae6cee1af93a7028') in 0.137600 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 118
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+F/LargeDiffusion.prefab
+  artifactKey: Guid(b7a51e8b0b61c5f4db3aaf571f735385) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+F/LargeDiffusion.prefab using Guid(b7a51e8b0b61c5f4db3aaf571f735385) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aba8453ee35fa93eb2a174143a9dfeb4') in 0.080752 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 92
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+F/BasicQuick.prefab
+  artifactKey: Guid(ef4842f7d81c06a4e98d547143219b8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+F/BasicQuick.prefab using Guid(ef4842f7d81c06a4e98d547143219b8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de43fd9277f5e7da5eedcba5131b3a28') in 0.113470 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 107
+========================================================================
+Received Import Request.
+  Time since last request: 51.178668 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicControlDestruction.prefab
+  artifactKey: Guid(02280175795371f4cb87c40da05f8dd5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicControlDestruction.prefab using Guid(02280175795371f4cb87c40da05f8dd5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '18fabc9147074394f2db42cfc9a945db') in 0.201108 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 146
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicControlDiffusion.prefab
+  artifactKey: Guid(6b373154986e1c142903e02861ecf73c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicControlDiffusion.prefab using Guid(6b373154986e1c142903e02861ecf73c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e4d19b8567ffefd5c4a8ee29d2e3397b') in 0.088068 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 101
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicControlPenetrate.prefab
+  artifactKey: Guid(2888325917e8aed44b13b6557387eb60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicControlPenetrate.prefab using Guid(2888325917e8aed44b13b6557387eb60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6cb73fba1ff61074adc5a1bdaeb267cd') in 0.089938 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 85
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicExpansionDestruction.prefab
+  artifactKey: Guid(04c12408d7affbd4abf0af50c60de451) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicExpansionDestruction.prefab using Guid(04c12408d7affbd4abf0af50c60de451) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50f774c7414e455799fed844e61c0662') in 0.091296 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 146
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicElecrticityDiffusion.prefab
+  artifactKey: Guid(d37d3f90059783445ba7df959ba838dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicElecrticityDiffusion.prefab using Guid(d37d3f90059783445ba7df959ba838dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0014d181a36f56f19da1fbcd146b10be') in 0.089046 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 101
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicElecrticityQuick.prefab
+  artifactKey: Guid(f5a84c8078d106546b85565f75e306a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicElecrticityQuick.prefab using Guid(f5a84c8078d106546b85565f75e306a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1cc6a254cbbad9c82ba3da237319f630') in 0.106652 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 107
+========================================================================
+Received Import Request.
+  Time since last request: 0.000137 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicControlUpgrade.prefab
+  artifactKey: Guid(4e70648674b774f428e5cefcbfe525eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicControlUpgrade.prefab using Guid(4e70648674b774f428e5cefcbfe525eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff71a562b18f6e9055da26000b4e3f71') in 0.096831 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 101
+========================================================================
+Received Import Request.
+  Time since last request: 0.000082 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicElecrticityPenetrate.prefab
+  artifactKey: Guid(a73f3e111e2f3604c81fbe350e9f2ddf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicElecrticityPenetrate.prefab using Guid(a73f3e111e2f3604c81fbe350e9f2ddf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '376458be9019ce97adfe14c65be9e13e') in 0.089758 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 85
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicElecrticityUpgrade.prefab
+  artifactKey: Guid(0e5297fcb7ff7f4419e191d6f7637011) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicElecrticityUpgrade.prefab using Guid(0e5297fcb7ff7f4419e191d6f7637011) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39d9105ed906a2601a988906ef4d3744') in 0.082980 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 101
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicElecrticityDestruction.prefab
+  artifactKey: Guid(cf5ccfce011cba6478755dd8950df63d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicElecrticityDestruction.prefab using Guid(cf5ccfce011cba6478755dd8950df63d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30f69c4e8e424633e1271baba8ea03ec') in 0.097562 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 146
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicExpansionDiffusion.prefab
+  artifactKey: Guid(be4f8d5cfef9d3348b952f0905648586) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicExpansionDiffusion.prefab using Guid(be4f8d5cfef9d3348b952f0905648586) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3dc810d942c657c4b4c28ac86ea5322') in 0.093421 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 101
+========================================================================
+Received Import Request.
+  Time since last request: 0.000056 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicControlQuick.prefab
+  artifactKey: Guid(45d144ff2238f154d8426ed8a9b16c2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicControlQuick.prefab using Guid(45d144ff2238f154d8426ed8a9b16c2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c6e7012bd763e5b45e4e0d1e90d340d') in 0.097079 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 107
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicExpansionPenetrate.prefab
+  artifactKey: Guid(a1113fd8404d6a94da6c2d6ce3b5e8a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicExpansionPenetrate.prefab using Guid(a1113fd8404d6a94da6c2d6ce3b5e8a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b81324b7d6ba427344b8a25266b9301f') in 0.088559 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 85
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicExpansionQuick.prefab
+  artifactKey: Guid(b89dfecbba444ac41b044cfd15032935) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicExpansionQuick.prefab using Guid(b89dfecbba444ac41b044cfd15032935) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '397ee4c83e78863c8d885d2740db204a') in 0.093585 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 107
+========================================================================
+Received Import Request.
+  Time since last request: 23.213596 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicExpansionUpgrade.prefab
+  artifactKey: Guid(8d183ddac6abbc243abacaec9ef22683) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicExpansionUpgrade.prefab using Guid(8d183ddac6abbc243abacaec9ef22683) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '06f9f6d31c369c2387ce4d5d70834397') in 0.155761 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 101
+========================================================================
+Received Import Request.
+  Time since last request: 3.129753 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicGravityDestruction.prefab
+  artifactKey: Guid(7207d943a02257146942eaa016cf1492) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicGravityDestruction.prefab using Guid(7207d943a02257146942eaa016cf1492) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '976eacc351e10aa1665f49041c88283e') in 0.165740 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 146
+========================================================================
+Received Import Request.
+  Time since last request: 0.072725 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicGravityDiffusion.prefab
+  artifactKey: Guid(0f806eb061a8f6843a713005196925d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicGravityDiffusion.prefab using Guid(0f806eb061a8f6843a713005196925d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b01248e8d389a06ff73cb0075ceefd99') in 0.141265 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 101
+========================================================================
+Received Import Request.
+  Time since last request: 0.142552 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicGravityPenetrate.prefab
+  artifactKey: Guid(79257c4d8c5a7ac4aaaa99a6c697327f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicGravityPenetrate.prefab using Guid(79257c4d8c5a7ac4aaaa99a6c697327f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc0a01d534a09d71d47899c817e4bf3c') in 0.087613 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 85
+========================================================================
+Received Import Request.
+  Time since last request: 0.299783 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicGravityQuick.prefab
+  artifactKey: Guid(f5b447366c3fe7d46b6e4246bbb02d22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicGravityQuick.prefab using Guid(f5b447366c3fe7d46b6e4246bbb02d22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f64576d0a7e434a1e424ad82b04bbad') in 0.083717 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 107
+========================================================================
+Received Import Request.
+  Time since last request: 0.336114 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicGravityUpgrade.prefab
+  artifactKey: Guid(764a07dc8f1de434b9ece1a65afd9f89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/BasicGravityUpgrade.prefab using Guid(764a07dc8f1de434b9ece1a65afd9f89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c10e580fb61a712786aa6b5d36b77b43') in 0.082980 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 101
+========================================================================
+Received Import Request.
+  Time since last request: 2.637429 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeControlDestruction.prefab
+  artifactKey: Guid(27b78d22be000294fa3f440a85e980e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeControlDestruction.prefab using Guid(27b78d22be000294fa3f440a85e980e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c8e0894435498578f9deba4c2bffc1c7') in 0.185982 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 123
+========================================================================
+Received Import Request.
+  Time since last request: 16.497196 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeControlDiffusion.prefab
+  artifactKey: Guid(84191ae4d164d2f499302d8a24908b9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeControlDiffusion.prefab using Guid(84191ae4d164d2f499302d8a24908b9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b3e85493064979e4687cf70ee46a8b39') in 0.099752 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 92
+========================================================================
+Received Import Request.
+  Time since last request: 0.691025 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeControlPenetrate.prefab
+  artifactKey: Guid(208a27b6a9de24b4bbc15df19da4542d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeControlPenetrate.prefab using Guid(208a27b6a9de24b4bbc15df19da4542d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '18bdaa20d9f1f11fb3f08f279c3880ea') in 0.086996 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 118
+========================================================================
+Received Import Request.
+  Time since last request: 0.781647 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeControlQuick.prefab
+  artifactKey: Guid(51c7f7feb03d9fe43b978d02e98f29e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeControlQuick.prefab using Guid(51c7f7feb03d9fe43b978d02e98f29e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ca1c8ea5b7b83818163c2f683b2f65e') in 0.095727 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 148
+========================================================================
+Received Import Request.
+  Time since last request: 0.307963 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeControlUpgrade.prefab
+  artifactKey: Guid(e502a22c9fba51a4a9e32a44f85cd722) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeControlUpgrade.prefab using Guid(e502a22c9fba51a4a9e32a44f85cd722) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69b054e48f8eb317f50fb5a3bd852ef8') in 0.093857 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 128
+========================================================================
+Received Import Request.
+  Time since last request: 2.605877 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeElecrticityDestruction.prefab
+  artifactKey: Guid(57bcde7653c29b443b3b6b36509c7863) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeElecrticityDestruction.prefab using Guid(57bcde7653c29b443b3b6b36509c7863) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '747977e7e2fac1edf24be859d46bcaaf') in 0.157160 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 123
+========================================================================
+Received Import Request.
+  Time since last request: 0.023856 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeElecrticityDiffusion.prefab
+  artifactKey: Guid(85446f8a64cb43e419cc7d0554f087c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeElecrticityDiffusion.prefab using Guid(85446f8a64cb43e419cc7d0554f087c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01619bfa0cad96dc8fb5bae700481302') in 0.153186 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 92
+========================================================================
+Received Import Request.
+  Time since last request: 0.114795 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeElecrticityPenetrate.prefab
+  artifactKey: Guid(58f70b93020420d41be3fc297843f02b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeElecrticityPenetrate.prefab using Guid(58f70b93020420d41be3fc297843f02b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9393fd1283ade92fa4b0e9d9c0889c64') in 0.084694 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 118
+========================================================================
+Received Import Request.
+  Time since last request: 0.557670 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeElecrticityQuick.prefab
+  artifactKey: Guid(7b8f572104b696048aadd29bb8ff677a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeElecrticityQuick.prefab using Guid(7b8f572104b696048aadd29bb8ff677a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6283b4e71ef2f5052919d1cb443d11aa') in 0.087048 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 148
+========================================================================
+Received Import Request.
+  Time since last request: 0.364338 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeElecrticityUpgrade.prefab
+  artifactKey: Guid(d3f94c8262391484ca246ede3dbe5820) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeElecrticityUpgrade.prefab using Guid(d3f94c8262391484ca246ede3dbe5820) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4f5da65b701e3c181ad8ffc0b181cea') in 0.100028 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 128
+========================================================================
+Received Import Request.
+  Time since last request: 2.853735 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeExpansionDestruction.prefab
+  artifactKey: Guid(34e7232d4c3eda042bca36ca9eb6636c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeExpansionDestruction.prefab using Guid(34e7232d4c3eda042bca36ca9eb6636c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '82425d1e693cf6a2b31cb017f2caee80') in 0.155967 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 123
+========================================================================
+Received Import Request.
+  Time since last request: 0.025795 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeExpansionDiffusion.prefab
+  artifactKey: Guid(5ba7cb530a4cbea4cb1c852ad4cf8a61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeExpansionDiffusion.prefab using Guid(5ba7cb530a4cbea4cb1c852ad4cf8a61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e778a93eab89abb5cf7d0884b0bf590') in 0.117606 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 92
+========================================================================
+Received Import Request.
+  Time since last request: 0.140450 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeExpansionPenetrate.prefab
+  artifactKey: Guid(f034d12f285239c45a335a6e41b73bd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeExpansionPenetrate.prefab using Guid(f034d12f285239c45a335a6e41b73bd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17128a2db16c08756c9a8db7d8aedb2a') in 0.086861 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 118
+========================================================================
+Received Import Request.
+  Time since last request: 0.331298 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeExpansionQuick.prefab
+  artifactKey: Guid(7e60a453fad597d448d0d6cadb41caf1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeExpansionQuick.prefab using Guid(7e60a453fad597d448d0d6cadb41caf1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e4130e9d8f9e79884bccd427c64ea6d') in 0.087685 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 148
+========================================================================
+Received Import Request.
+  Time since last request: 0.394055 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeExpansionUpgrade.prefab
+  artifactKey: Guid(04e586344022bad4094d5564d1c3f77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeExpansionUpgrade.prefab using Guid(04e586344022bad4094d5564d1c3f77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e1ecbdceed9843dafc701eee655ac845') in 0.088853 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 128
+========================================================================
+Received Import Request.
+  Time since last request: 5.047486 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeGravityDestruction.prefab
+  artifactKey: Guid(a00fa65e5b5361043b4ab3ee9dbc6651) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeGravityDestruction.prefab using Guid(a00fa65e5b5361043b4ab3ee9dbc6651) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64e1470db68e310a71da9b4b13ca7ca2') in 0.097415 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 123
+========================================================================
+Received Import Request.
+  Time since last request: 0.084315 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeGravityDiffusion.prefab
+  artifactKey: Guid(8e825ff6ece80df44b65484154bb1e86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeGravityDiffusion.prefab using Guid(8e825ff6ece80df44b65484154bb1e86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '859a45fb86a55257be629dfb8656b370') in 0.079354 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 92
+========================================================================
+Received Import Request.
+  Time since last request: 0.183527 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeGravityPenetrate.prefab
+  artifactKey: Guid(10b04f332d73cb348b3264ae05498775) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeGravityPenetrate.prefab using Guid(10b04f332d73cb348b3264ae05498775) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd6e334ce46f32609fc1c7c8295f1aa40') in 0.087381 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 118
+========================================================================
+Received Import Request.
+  Time since last request: 0.179686 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeGravityQuick.prefab
+  artifactKey: Guid(cd57b92b74b82054eb7e3605e2a75b11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeGravityQuick.prefab using Guid(cd57b92b74b82054eb7e3605e2a75b11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3cc29a565473489d05d870bed6b54a90') in 0.087073 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 148
+========================================================================
+Received Import Request.
+  Time since last request: 0.355219 seconds.
+  path: Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeGravityUpgrade.prefab
+  artifactKey: Guid(3d1c569343f3d644a86486dd458ceb94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Prifabs/B+A+F/LargeGravityUpgrade.prefab using Guid(3d1c569343f3d644a86486dd458ceb94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4b45eb649568f1925b32aaef8320b28') in 0.092068 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 128
+========================================================================
+Received Import Request.
+  Time since last request: 58.140998 seconds.
+  path: Assets/Prifabs/Bullets/Muzzle/B+A+F/BasicGravityUpgrade.prefab
+  artifactKey: Guid(d5c45284526fec54284197c7a60ab66e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prifabs/Bullets/Muzzle/B+A+F/BasicGravityUpgrade.prefab using Guid(d5c45284526fec54284197c7a60ab66e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f71d4db665a96728b553d06c08f3fe7') in 0.075765 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 33

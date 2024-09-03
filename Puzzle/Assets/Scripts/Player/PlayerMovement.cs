@@ -11,10 +11,11 @@ public class PlayerMovement : MonoBehaviour
     public float jumpPower; // 점프력
 
     // 상태
-    public int maxHealth;
-    public int currentHealth;
-    public Image healthBar;
-    public TMP_Text healthText;
+    public int maxHealth; // 최대 체력
+    public int currentHealth; // 현재 체력
+    public Image healthBar; // 체력바
+    public TMP_Text healthText; // 체력 텍스트
+    public int currentStage; // 현재 스테이지
 
     public int damage; // 데미지
 
@@ -45,8 +46,8 @@ public class PlayerMovement : MonoBehaviour
         rb.freezeRotation = true; // 회전은 물리 엔진이 처리하지 않도록 고정
 
         //moveSpeed = 10f; 
-        moveSpeed = 20f; 
-        mouseSensitivity = 100f;
+        moveSpeed = 15f; 
+        mouseSensitivity = 80f;
         jumpPower = 6f;
 
         maxHealth = 100;

@@ -76,8 +76,8 @@ public class GemUI : MonoBehaviour
         attributeGemUI[2].SetActive(gemManager.onExpansion);
         attributeGemUI[3].SetActive(gemManager.onGravity);
 
-        functionGemUI[0].SetActive(gemManager.onDestruction);
-        functionGemUI[1].SetActive(gemManager.onPenetrate);
+        functionGemUI[0].SetActive(gemManager.onPenetrate);
+        functionGemUI[1].SetActive(gemManager.onDestruction);
         functionGemUI[2].SetActive(gemManager.onDiffusion);
         functionGemUI[3].SetActive(gemManager.onUpgrade);
         functionGemUI[4].SetActive(gemManager.onQuick);
@@ -186,8 +186,8 @@ public class GemUI : MonoBehaviour
         if(!gemManager.onExpansion) currentAttribute[2].SetActive(false);
         if(!gemManager.onGravity) currentAttribute[3].SetActive(false);
 
-        if(!gemManager.onDestruction) currentFunction[0].SetActive(false);
-        if(!gemManager.onPenetrate) currentFunction[1].SetActive(false);
+        if(!gemManager.onPenetrate) currentFunction[0].SetActive(false);
+        if(!gemManager.onDestruction) currentFunction[1].SetActive(false);
         if(!gemManager.onDiffusion) currentFunction[2].SetActive(false);
         if(!gemManager.onUpgrade) currentFunction[3].SetActive(false);
         if(!gemManager.onQuick) currentFunction[4].SetActive(false);

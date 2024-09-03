@@ -50,11 +50,11 @@ public class GemManager : MonoBehaviour
             case "Gravity":
                 onGravity = true;
                 break;
-            case "Destruction":
-                onDestruction = true;
-                break;
             case "Penetrate":
                 onPenetrate = true;
+                break;
+            case "Destruction":
+                onDestruction = true;
                 break;
             case "Diffusion":
                 onDiffusion = true;
