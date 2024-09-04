@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1635160772420398940}
   - component: {fileID: 2161267831127912556}
   - component: {fileID: 2802976207659599885}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: ProjectileAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4938,7 +4938,7 @@ GameObject:
   - component: {fileID: 8760039641782827510}
   - component: {fileID: 8031661276578902034}
   - component: {fileID: 6058732555494908885}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9782,7 +9782,7 @@ GameObject:
   - component: {fileID: 3208432373461644449}
   - component: {fileID: 2949386930006183631}
   - component: {fileID: 6128330518617128031}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: BasicControlPenetrate
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -9918,7 +9918,7 @@ GameObject:
   - component: {fileID: 5596729061938726618}
   - component: {fileID: 2316781465786887416}
   - component: {fileID: 8344742550344754134}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: ProjectileAdd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14844,7 +14844,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1762871334192043126}
   - component: {fileID: 1236126726106018886}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Trail_AB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14990,7 +14990,7 @@ GameObject:
   - component: {fileID: 882242413523965734}
   - component: {fileID: 12246222609611014}
   - component: {fileID: 1903535552595348275}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: ParticlesAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}

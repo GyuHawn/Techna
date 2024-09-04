@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8388735228020516429}
   - component: {fileID: 7485113799046452322}
   - component: {fileID: 428032848752998118}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4713,7 +4713,7 @@ GameObject:
   - component: {fileID: 6894267993461282105}
   - component: {fileID: 7278109950877676540}
   - component: {fileID: 5131039716822498221}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9577,7 +9577,7 @@ GameObject:
   - component: {fileID: 2593911542308083602}
   - component: {fileID: 3698444786018391356}
   - component: {fileID: 6108017396343453688}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14277,7 +14277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 287556798373403232}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BasicElectricity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14314,7 +14314,7 @@ GameObject:
   - component: {fileID: 3306083416441895402}
   - component: {fileID: 1737942709037797846}
   - component: {fileID: 3884268174854571372}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

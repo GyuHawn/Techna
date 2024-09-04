@@ -16,7 +16,6 @@ TagManager:
   - Lever
   - Monster
   - Thorn
-  - PenetrateWall
   layers:
   - Default
   - TransparentFX
@@ -30,8 +29,8 @@ TagManager:
   - Control
   - Bullet
   - GrabObject
-  - 
-  - 
+  - Penetrate
+  - PenetrateWall
   - 
   - 
   - 

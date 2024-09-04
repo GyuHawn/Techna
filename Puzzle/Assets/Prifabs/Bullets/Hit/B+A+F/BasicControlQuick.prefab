@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5289062217118769349}
   - component: {fileID: 1263848359443939315}
   - component: {fileID: 9202806454728549197}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4876,7 +4876,7 @@ GameObject:
   - component: {fileID: 8616042572367335567}
   - component: {fileID: 1832014702627465957}
   - component: {fileID: 15975376059806821}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9579,7 +9579,7 @@ GameObject:
   - component: {fileID: 2322337011941329012}
   - component: {fileID: 6935480344902675892}
   - component: {fileID: 3794132759407647660}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ParticlesAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14443,7 +14443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2677266450540094024}
   - component: {fileID: 2818905321701376263}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BasicControlQuick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14514,7 +14514,7 @@ GameObject:
   - component: {fileID: 4425694421528361477}
   - component: {fileID: 3657058492035311874}
   - component: {fileID: 8094556264750897172}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19433,7 +19433,7 @@ GameObject:
   - component: {fileID: 3396573131941205047}
   - component: {fileID: 1700073292793549368}
   - component: {fileID: 3668453423702659317}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CircleAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24298,7 +24298,7 @@ GameObject:
   - component: {fileID: 5263618625311306079}
   - component: {fileID: 5697884852111680415}
   - component: {fileID: 4439447900914244925}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29163,7 +29163,7 @@ GameObject:
   - component: {fileID: 8088479088887668497}
   - component: {fileID: 8022969657247875794}
   - component: {fileID: 4550993806935804834}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ParticlesShine
   m_TagString: Untagged
   m_Icon: {fileID: 0}

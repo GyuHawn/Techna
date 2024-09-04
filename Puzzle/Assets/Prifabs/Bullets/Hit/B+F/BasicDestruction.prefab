@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2018860635071619273}
   - component: {fileID: 7353299108298889640}
   - component: {fileID: 7104825375791836539}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4877,7 +4877,7 @@ GameObject:
   - component: {fileID: 2973393160657366763}
   - component: {fileID: 6223807556986530579}
   - component: {fileID: 5552454930518642347}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Impact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9741,7 +9741,7 @@ GameObject:
   m_Component:
   - component: {fileID: 616835681330130053}
   - component: {fileID: 8159351556661970105}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BasicDestruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9817,7 +9817,7 @@ GameObject:
   - component: {fileID: 3805886895854173719}
   - component: {fileID: 2784609766776622851}
   - component: {fileID: 8065483129043948224}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14682,7 +14682,7 @@ GameObject:
   - component: {fileID: 4727256390154703632}
   - component: {fileID: 4001634811133492046}
   - component: {fileID: 3154900812336653992}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Swirl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19547,7 +19547,7 @@ GameObject:
   - component: {fileID: 7529202151530826294}
   - component: {fileID: 1225119726609394224}
   - component: {fileID: 9211675544019115116}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24412,7 +24412,7 @@ GameObject:
   - component: {fileID: 7607345501652193834}
   - component: {fileID: 5420519956793361978}
   - component: {fileID: 484146673195515498}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29277,7 +29277,7 @@ GameObject:
   - component: {fileID: 8089249012211171780}
   - component: {fileID: 3222788806939749530}
   - component: {fileID: 2401429373218318917}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ParticlesStay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34151,7 +34151,7 @@ GameObject:
   - component: {fileID: 1560317631201892868}
   - component: {fileID: 5106834461015518119}
   - component: {fileID: 4062623329898097174}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DarkParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39016,7 +39016,7 @@ GameObject:
   - component: {fileID: 2636486772159019678}
   - component: {fileID: 3164440380313305691}
   - component: {fileID: 2056840574431403423}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43890,7 +43890,7 @@ GameObject:
   - component: {fileID: 2987544019712224166}
   - component: {fileID: 7770283869929973415}
   - component: {fileID: 5329898533149220857}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

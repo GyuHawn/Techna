@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9157706701937994238}
   - component: {fileID: 3874828808289030161}
   - component: {fileID: 3599882045253067772}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4714,7 +4714,7 @@ GameObject:
   - component: {fileID: 2751528956474095813}
   - component: {fileID: 648972581773938874}
   - component: {fileID: 3477033335187841400}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9579,7 +9579,7 @@ GameObject:
   - component: {fileID: 8514361991001719291}
   - component: {fileID: 2476316460265094126}
   - component: {fileID: 7755981027139351088}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GluieAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14444,7 +14444,7 @@ GameObject:
   - component: {fileID: 4756560301807324750}
   - component: {fileID: 5139528428754222413}
   - component: {fileID: 8335241686151207715}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CircleAddScroll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19309,7 +19309,7 @@ GameObject:
   - component: {fileID: 7810767999172259887}
   - component: {fileID: 7812421348922421829}
   - component: {fileID: 7921970916338142410}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24173,7 +24173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5805293186921278615}
   - component: {fileID: 5955660013583278368}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LargeUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24248,7 +24248,7 @@ GameObject:
   - component: {fileID: 1205815891302489131}
   - component: {fileID: 4167109518255673494}
   - component: {fileID: 65866240862793357}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ParticlesAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29113,7 +29113,7 @@ GameObject:
   - component: {fileID: 8787541859109888566}
   - component: {fileID: 3191832261774237845}
   - component: {fileID: 1499696362303173144}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CircleAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33978,7 +33978,7 @@ GameObject:
   - component: {fileID: 8869363875971902095}
   - component: {fileID: 1911897283026971965}
   - component: {fileID: 5260186350194826463}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38897,7 +38897,7 @@ GameObject:
   - component: {fileID: 1393371232617568017}
   - component: {fileID: 6518486968053778891}
   - component: {fileID: 5283095440427456235}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamLong
   m_TagString: Untagged
   m_Icon: {fileID: 0}

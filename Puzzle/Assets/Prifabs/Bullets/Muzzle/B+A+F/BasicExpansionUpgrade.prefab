@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7706519744911077001}
   - component: {fileID: 1431243731582702776}
   - component: {fileID: 5551629549921957799}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4876,7 +4876,7 @@ GameObject:
   - component: {fileID: 952853429801763335}
   - component: {fileID: 1223656347987367264}
   - component: {fileID: 6391955615876669487}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9579,7 +9579,7 @@ GameObject:
   - component: {fileID: 6682699270325298795}
   - component: {fileID: 5144103585934334264}
   - component: {fileID: 6835851076916827352}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lines
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14444,7 +14444,7 @@ GameObject:
   - component: {fileID: 162474010741959163}
   - component: {fileID: 1213011071547401491}
   - component: {fileID: 518554888532965824}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19147,7 +19147,7 @@ GameObject:
   - component: {fileID: 4767807370170090678}
   - component: {fileID: 4850508086166455948}
   - component: {fileID: 6313342931440819779}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rays
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23849,7 +23849,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1598332290372116666}
   - component: {fileID: 7218961984301403406}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BasicExpansionUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1117731311156071933}
   - component: {fileID: 2958706019568402837}
   - component: {fileID: 8313734102357249898}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Flakes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4885,7 +4885,7 @@ GameObject:
   - component: {fileID: 7285202953329932901}
   - component: {fileID: 8540717341910745757}
   - component: {fileID: 5719273901923021459}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BeamFlare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9750,7 +9750,7 @@ GameObject:
   - component: {fileID: 6600120349370794375}
   - component: {fileID: 8850921065501875637}
   - component: {fileID: 427943114038819902}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BeamIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14613,7 +14613,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1895490968866871015}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LargePenetrate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14653,7 +14653,7 @@ GameObject:
   - component: {fileID: 7030178929030188093}
   - component: {fileID: 797141534917823579}
   - component: {fileID: 5242019505360302073}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Impact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19518,7 +19518,7 @@ GameObject:
   - component: {fileID: 1074481274277343621}
   - component: {fileID: 6690666632180789356}
   - component: {fileID: 3820438143469515523}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24383,7 +24383,7 @@ GameObject:
   - component: {fileID: 1988763068023417698}
   - component: {fileID: 6223853320671651635}
   - component: {fileID: 9187669914268677426}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: DarkParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29248,7 +29248,7 @@ GameObject:
   - component: {fileID: 158530564699565412}
   - component: {fileID: 7308151091033911985}
   - component: {fileID: 7667559392785578496}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

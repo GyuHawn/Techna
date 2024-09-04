@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6066282779967672302}
   - component: {fileID: 5529632875117005935}
   - component: {fileID: 5840720883547814082}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireLocal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4876,7 +4876,7 @@ GameObject:
   - component: {fileID: 8394769606280130271}
   - component: {fileID: 5828243999410713526}
   - component: {fileID: 3777321687886535179}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Swirl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9741,7 +9741,7 @@ GameObject:
   - component: {fileID: 1878032355863126866}
   - component: {fileID: 899783822205343230}
   - component: {fileID: 7158583133507910052}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14606,7 +14606,7 @@ GameObject:
   - component: {fileID: 7149792867602034581}
   - component: {fileID: 8320838471829836907}
   - component: {fileID: 582317268783492648}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19471,7 +19471,7 @@ GameObject:
   - component: {fileID: 6135286544957335709}
   - component: {fileID: 3403180049297290697}
   - component: {fileID: 3138441874599266093}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24174,7 +24174,7 @@ GameObject:
   - component: {fileID: 2372788136196863778}
   - component: {fileID: 6481920469651745852}
   - component: {fileID: 4755396321868980152}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28876,7 +28876,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6792288420139905389}
   - component: {fileID: 6080577759034167522}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LargeControlQuick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28947,7 +28947,7 @@ GameObject:
   - component: {fileID: 2673007125426748047}
   - component: {fileID: 5058587987491503679}
   - component: {fileID: 9038071775164829956}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DarkParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

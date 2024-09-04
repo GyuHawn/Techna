@@ -55,11 +55,11 @@ public class ActivateGem : MonoBehaviour
         if (control) // 제어 속성 재질 변경
         {
             // 충돌에 따른 시간 설정
-            if (collision.gameObject.name == "BasicControl")
+            if (collision.gameObject.name == "BasicControl" || collision.gameObject.name == "BasicControlPenetrate")
             {
                 StartCoroutine(ChangeColor(3f));
             }
-            else if (collision.gameObject.name == "LargeControl")
+            else if (collision.gameObject.name == "LargeControl" || collision.gameObject.name == "LargeControlPenetrate")
             {
                 StartCoroutine(ChangeColor(5f));
             }

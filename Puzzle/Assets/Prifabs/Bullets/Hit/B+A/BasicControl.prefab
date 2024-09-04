@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8570585714992655684}
   - component: {fileID: 3391913173040331770}
   - component: {fileID: 4340210558178118351}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4875,7 +4875,7 @@ GameObject:
   - component: {fileID: 6787640833376302588}
   - component: {fileID: 1520773516069752690}
   - component: {fileID: 6019974307691993700}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9577,7 +9577,7 @@ GameObject:
   - component: {fileID: 4625101227350502868}
   - component: {fileID: 1728413299490715204}
   - component: {fileID: 4102427677125789560}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14441,7 +14441,7 @@ GameObject:
   - component: {fileID: 104497791291539427}
   - component: {fileID: 764497429380715198}
   - component: {fileID: 1587081210989090167}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19141,7 +19141,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7393079326784691226}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BasicControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -37,25 +37,22 @@ public class ProjectileMoveScript : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
-    {
-        // FixedUpdate에서의 이동 로직은 삭제했습니다.
-    }
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag != "Bullet" && !collided)
+        if (collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "Penetrate" && !collided)
         {
             collided = true; // 충돌 상태 설정
 
             // 충돌 지점 정보 전달
             ContactPoint contact = collision.contacts[0];
+
             DestroyBullet(gameObject, contact.point, contact.normal); // 충돌 지점과 표면의 법선을 전달
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != "Bullet" && !collided)
+        if (other.gameObject.tag != "Bullet" && other.gameObject.tag != "Penetrate" && !collided)
         {
             collided = true; // 충돌 상태 설정
 

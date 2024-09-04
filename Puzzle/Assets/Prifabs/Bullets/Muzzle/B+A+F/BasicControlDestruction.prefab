@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8580318230630779190}
   - component: {fileID: 2138730591770375342}
   - component: {fileID: 2597179405635297958}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4876,7 +4876,7 @@ GameObject:
   - component: {fileID: 6035746452481877638}
   - component: {fileID: 7651003174052000222}
   - component: {fileID: 6192595938205150364}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Impact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9741,7 +9741,7 @@ GameObject:
   - component: {fileID: 6199094674694837749}
   - component: {fileID: 1633293434428536402}
   - component: {fileID: 8621155981751664780}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14444,7 +14444,7 @@ GameObject:
   - component: {fileID: 7805046136536826689}
   - component: {fileID: 1528717999970792609}
   - component: {fileID: 176900126043388094}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19146,7 +19146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3455233776570285482}
   - component: {fileID: 2083542828100834441}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BasicControlDestruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19217,7 +19217,7 @@ GameObject:
   - component: {fileID: 2657696587125678319}
   - component: {fileID: 3197459218699742238}
   - component: {fileID: 5076796021543310508}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Swirl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24082,7 +24082,7 @@ GameObject:
   - component: {fileID: 3909999476654198962}
   - component: {fileID: 6638642872779406759}
   - component: {fileID: 2342446662024377398}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DarkParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28947,7 +28947,7 @@ GameObject:
   - component: {fileID: 8041860923484935847}
   - component: {fileID: 4565926928184210677}
   - component: {fileID: 3172449860610959966}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

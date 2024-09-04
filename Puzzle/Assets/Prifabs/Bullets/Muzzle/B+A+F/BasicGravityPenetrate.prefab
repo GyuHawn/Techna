@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3074885730990158675}
   - component: {fileID: 697713022121848551}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BasicGravityPenetrate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 6297832467541562628}
   - component: {fileID: 6059457917160605693}
   - component: {fileID: 8025827651725544423}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4777,7 +4777,7 @@ GameObject:
   - component: {fileID: 8499099830824115595}
   - component: {fileID: 1711919122058239198}
   - component: {fileID: 8149580372778016070}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9642,7 +9642,7 @@ GameObject:
   - component: {fileID: 1506312360692366390}
   - component: {fileID: 6274104732672899367}
   - component: {fileID: 7863339883625617640}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14506,7 +14506,7 @@ GameObject:
   - component: {fileID: 5534268695718040195}
   - component: {fileID: 7951896448654216668}
   - component: {fileID: 5275387630061629494}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}

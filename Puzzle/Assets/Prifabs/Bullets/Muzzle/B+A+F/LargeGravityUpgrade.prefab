@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 119215341754371032}
   - component: {fileID: 8034860995172830676}
   - component: {fileID: 1242056406408296268}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ParticlesAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4875,7 +4875,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7192326356889663362}
   - component: {fileID: 9094453405235458217}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LargeGravityUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4942,7 +4942,7 @@ GameObject:
   - component: {fileID: 1696546204724284432}
   - component: {fileID: 5246483291299928406}
   - component: {fileID: 7821749485672857210}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9807,7 +9807,7 @@ GameObject:
   - component: {fileID: 7035670443796280937}
   - component: {fileID: 3167120646338477920}
   - component: {fileID: 7050200999581694041}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14510,7 +14510,7 @@ GameObject:
   - component: {fileID: 972162784025303576}
   - component: {fileID: 5505578159557952593}
   - component: {fileID: 8070674988240582182}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19213,7 +19213,7 @@ GameObject:
   - component: {fileID: 7857849652513171162}
   - component: {fileID: 9033337934632958399}
   - component: {fileID: 2403397815092541651}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

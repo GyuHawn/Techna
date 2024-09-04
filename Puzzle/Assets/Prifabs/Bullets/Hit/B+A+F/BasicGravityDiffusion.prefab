@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 340910427444655240}
   - component: {fileID: 6847102480180939608}
   - component: {fileID: 4811703017046266434}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4714,7 +4714,7 @@ GameObject:
   - component: {fileID: 1867550768137162997}
   - component: {fileID: 6507606117381798697}
   - component: {fileID: 4281398084687085119}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9578,7 +9578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 636773852773974995}
   - component: {fileID: 3164922527279184788}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BasicGravityDiffusion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9647,7 +9647,7 @@ GameObject:
   - component: {fileID: 2824485563413529539}
   - component: {fileID: 956751296472671265}
   - component: {fileID: 2238791201623913734}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CircleAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14512,7 +14512,7 @@ GameObject:
   - component: {fileID: 65878428373672791}
   - component: {fileID: 3160020437808447610}
   - component: {fileID: 3338901336810389461}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ParticlesAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19377,7 +19377,7 @@ GameObject:
   - component: {fileID: 7803541534917515870}
   - component: {fileID: 6698841190519248739}
   - component: {fileID: 3359946966778102614}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rays
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24296,7 +24296,7 @@ GameObject:
   - component: {fileID: 1392565289418200874}
   - component: {fileID: 2097427240802656622}
   - component: {fileID: 8505057811760690728}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

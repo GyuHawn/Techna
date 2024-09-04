@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 720966849744103321}
   - component: {fileID: 6572646575241757551}
   - component: {fileID: 2190251749347099302}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireCenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4876,7 +4876,7 @@ GameObject:
   - component: {fileID: 1595927592458962314}
   - component: {fileID: 1484365891878195798}
   - component: {fileID: 4538385403871291834}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ParticlesAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9740,7 +9740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2177493685652678294}
   - component: {fileID: 6640864371327844137}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LargeElecrticityDestruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9811,7 +9811,7 @@ GameObject:
   - component: {fileID: 2207780739459128424}
   - component: {fileID: 1901054270303589510}
   - component: {fileID: 7127387233806867076}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ParticlesAdd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14676,7 +14676,7 @@ GameObject:
   - component: {fileID: 4851043420213264926}
   - component: {fileID: 8475746544986569305}
   - component: {fileID: 6150400330939595268}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ParticlesStay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19541,7 +19541,7 @@ GameObject:
   - component: {fileID: 3657121083333142343}
   - component: {fileID: 3321474675476410268}
   - component: {fileID: 2696548591340636317}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24244,7 +24244,7 @@ GameObject:
   - component: {fileID: 6882524932029439110}
   - component: {fileID: 3811231900550191641}
   - component: {fileID: 5093814697695067974}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CircleAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29109,7 +29109,7 @@ GameObject:
   - component: {fileID: 2149579081304924647}
   - component: {fileID: 9080923312912521580}
   - component: {fileID: 5903999679849086702}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}

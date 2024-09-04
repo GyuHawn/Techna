@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5346431488641224005}
   - component: {fileID: 529514670608720488}
   - component: {fileID: 5489761898919098361}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4898,7 +4898,7 @@ GameObject:
   - component: {fileID: 7622412834047870697}
   - component: {fileID: 3154816604343102454}
   - component: {fileID: 3656008359308698251}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Electricity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9783,7 +9783,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5408185099103686910}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LargeDiffusion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9822,7 +9822,7 @@ GameObject:
   - component: {fileID: 7556619398548358169}
   - component: {fileID: 2480906009870877410}
   - component: {fileID: 266948993636418833}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14741,7 +14741,7 @@ GameObject:
   - component: {fileID: 1317716149915211982}
   - component: {fileID: 7532644563364942613}
   - component: {fileID: 4867063216846947106}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19444,7 +19444,7 @@ GameObject:
   - component: {fileID: 8240753885253584325}
   - component: {fileID: 2251334673111765311}
   - component: {fileID: 2292387849400358728}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24309,7 +24309,7 @@ GameObject:
   - component: {fileID: 801607464900621571}
   - component: {fileID: 2923995624533934347}
   - component: {fileID: 4125942674761235142}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SmokeOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
