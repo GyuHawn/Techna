@@ -26,10 +26,11 @@ public class PlayerMovement : MonoBehaviour
     private float vAxis;
     private float rotationY;
     private bool isGrounded; // 점프 여부
+    private Vector3 velocity; // 중력 및 이동속도 관리
 
     // 총위치
-    public Transform gunPos; 
-    public Vector3 gunOffset;  
+    public Transform gunPos;
+    public Vector3 gunOffset;
 
     public Transform movingPlatform; // 이동 발판
     private Vector3 lastPlatformPosition; // 마지막으로 기록된 발판의 위치
@@ -38,17 +39,16 @@ public class PlayerMovement : MonoBehaviour
     private bool checkLever = false;
     private GameObject currentLever;
 
-    private Rigidbody rb;
+    private CharacterController controller;
+    private float gravity = -9.81f; // 중력
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true; // 회전은 물리 엔진이 처리하지 않도록 고정
+        controller = GetComponent<CharacterController>();
 
-        //moveSpeed = 10f; 
-        moveSpeed = 15f; 
+        moveSpeed = 12f;
         mouseSensitivity = 80f;
-        jumpPower = 6f;
+        jumpPower = 3f;
 
         maxHealth = 100;
         currentHealth = maxHealth;
@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
         GetInput(); // 키입력
         Move(); // 이동
         Rotate(); // 회전
-        Jump(); // 점프
+        Jump(); // 점프 및 중력 처리
 
         UpdateGunPosition(); // 총 위치 설정
 
@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
     void Move() // 이동
     {
         Vector3 moveDirection = transform.right * hAxis + transform.forward * vAxis;
-        rb.velocity = new Vector3(moveDirection.x * moveSpeed, rb.velocity.y, moveDirection.z * moveSpeed);
+        controller.Move(moveDirection * moveSpeed * Time.deltaTime);
     }
 
     void Rotate() // 회전
@@ -103,13 +103,22 @@ public class PlayerMovement : MonoBehaviour
         gunPos.localRotation = Camera.main.transform.localRotation;
     }
 
-    void Jump() // 점프
+    void Jump() // 점프 및 중력 처리
     {
+        if (controller.isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f; // 바닥에 닿으면 속도 초기화
+            isGrounded = true;
+        }
+
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+            velocity.y = Mathf.Sqrt(jumpPower * -2f * gravity);
             isGrounded = false;
         }
+
+        velocity.y += gravity * Time.deltaTime; // 중력 적용
+        controller.Move(velocity * Time.deltaTime); // 중력에 따른 이동
     }
 
     void FunctionLever()
@@ -136,35 +145,26 @@ public class PlayerMovement : MonoBehaviour
         healthBar.fillAmount = healthPercentage;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         // 바닥에 있을때 점프 가능
-        if (collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("MovingObject"))
+        if (hit.gameObject.CompareTag("Floor") || hit.gameObject.CompareTag("MovingObject"))
         {
             isGrounded = true;
         }
 
         // 이동 발판 위에 있을시 이동값 변화
-        if (collision.gameObject.CompareTag("MovingObject"))
+        if (hit.gameObject.CompareTag("MovingObject"))
         {
-            movingPlatform = collision.transform; // 이동 발판
+            movingPlatform = hit.transform; // 이동 발판
             lastPlatformPosition = movingPlatform.position; // 마지막 위치 저장
         }
 
         // 함정
-        if (collision.gameObject.CompareTag("Thorn"))
+        if (hit.gameObject.CompareTag("Thorn"))
         {
-            TrapScript thorn = collision.gameObject.GetComponent<TrapScript>();
+            TrapScript thorn = hit.gameObject.GetComponent<TrapScript>();
             currentHealth -= thorn.damage;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        // 이동 발판 충돌 해제
-        if (collision.gameObject.CompareTag("MovingObject"))
-        {
-            movingPlatform = null; // 연결 해제
         }
     }
 
@@ -185,7 +185,7 @@ public class PlayerMovement : MonoBehaviour
         {
             MonsterController monster = other.gameObject.GetComponent<MonsterController>();
             HitDamage(other.gameObject, monster.damage);
-        }   
+        }
     }
 
     private void OnTriggerExit(Collider other)
