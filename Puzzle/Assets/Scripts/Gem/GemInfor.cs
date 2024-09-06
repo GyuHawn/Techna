@@ -37,28 +37,15 @@ public class GemInfor : MonoBehaviour
         }       
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        // 플레이어 충돌 시
-        if (collision.gameObject.CompareTag("Player"))
-        {         
-            if (gem)
-            {
-                gemManager.CollectGem(gameObject.name); // 보석 이름 확인
-                Destroy(gameObject); // 보석 제거
-            }
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        // 플레이어 충돌 시 힌트 출력
+        // 플레이어와의 충돌 시
         if (other.gameObject.CompareTag("Player"))
         {
             if (gemInfor && !showUI)
             {
                 showUI = true;
-                inforUI.gameObject.SetActive(true);
+                inforUI.SetActive(true);
                 inforText.gameObject.SetActive(true);
                 inforText.color = textColor;
                 inforText.text = infor;
@@ -70,18 +57,24 @@ public class GemInfor : MonoBehaviour
                 // 폰트 크기 조절
                 inforText.fontSize = textSize;
             }
+
+            if (gem)
+            {
+                gemManager.CollectGem(gameObject.name); // 보석 이름 확인
+                Destroy(gameObject); // 보석 제거
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        // 플레이어 충돌 종료시 충돌 종료
+        // 플레이어와의 충돌 종료 시
         if (other.gameObject.CompareTag("Player"))
         {
             if (gemInfor && showUI)
             {
                 showUI = false;
-                inforUI.gameObject.SetActive(false);
+                inforUI.SetActive(false);
                 inforText.gameObject.SetActive(false);
                 inforText.text = "";
             }

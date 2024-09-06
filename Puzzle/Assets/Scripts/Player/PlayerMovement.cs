@@ -47,8 +47,8 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
 
         moveSpeed = 12f;
-        mouseSensitivity = 80f;
-        jumpPower = 3f;
+        mouseSensitivity = 100f;
+        jumpPower = 2f;
 
         maxHealth = 100;
         currentHealth = maxHealth;
