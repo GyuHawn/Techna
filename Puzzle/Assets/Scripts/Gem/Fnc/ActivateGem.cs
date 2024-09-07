@@ -21,6 +21,14 @@ public class ActivateGem : MonoBehaviour
         render = GetComponent<Renderer>();
     }
 
+    private void Update()
+    {
+        if (activate)
+        {
+            activationChanged?.Invoke(true);
+        }
+    }
+
     void UpdateColor() // 재질 변경
     {
         render.material = activate ? gemMaterials[1] : gemMaterials[0];

@@ -70,6 +70,28 @@ public class PlayerMovement : MonoBehaviour
         FunctionLever(); // 레버 작동
 
         UPdateInfor(); // 플레이어 정보 업데이트
+
+        ApplyPlatformMovement(); // 이동 발판의 이동값 적용
+    }
+
+    public void ApplyJump(Vector3 jump)
+    {
+        velocity = jump;
+    }
+    void ApplyPlatformMovement()
+    {
+        // 만약 이동 발판 위에 있다면
+        if (movingPlatform != null)
+        {
+            // 이동 발판의 현재 위치와 이전 위치의 차이를 계산하여 이동 값으로 사용
+            Vector3 platformMovement = movingPlatform.position - lastPlatformPosition;
+
+            // 플레이어에게 이동 발판의 이동 값을 추가
+            controller.Move(platformMovement);
+
+            // 마지막 위치를 현재 위치로 갱신
+            lastPlatformPosition = movingPlatform.position;
+        }
     }
 
     void UpdateGunPosition() // 총 위치 설정
@@ -115,10 +137,16 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpPower * -2f * gravity);
             isGrounded = false;
+
+            if (movingPlatform != null)
+            {
+                movingPlatform = null;
+            }
         }
 
         velocity.y += gravity * Time.deltaTime; // 중력 적용
         controller.Move(velocity * Time.deltaTime); // 중력에 따른 이동
+
     }
 
     void FunctionLever()
@@ -156,8 +184,18 @@ public class PlayerMovement : MonoBehaviour
         // 이동 발판 위에 있을시 이동값 변화
         if (hit.gameObject.CompareTag("MovingObject"))
         {
-            movingPlatform = hit.transform; // 이동 발판
-            lastPlatformPosition = movingPlatform.position; // 마지막 위치 저장
+            if (movingPlatform == null)
+            {
+                movingPlatform = hit.transform;
+                lastPlatformPosition = movingPlatform.position;
+            }
+        }
+        else
+        {
+            if (movingPlatform != null)
+            {
+                movingPlatform = null;
+            }
         }
 
         // 함정
@@ -167,6 +205,7 @@ public class PlayerMovement : MonoBehaviour
             currentHealth -= thorn.damage;
         }
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
