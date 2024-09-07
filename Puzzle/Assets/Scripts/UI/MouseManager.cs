@@ -4,10 +4,24 @@ using UnityEngine;
 
 public class MouseManager : MonoBehaviour
 {
+    public static MouseManager Instance { get; private set; }  // 싱글톤 적용
+
     public bool isCursorVisible; // 마우스 커서 활성화 여부
     public Sprite customCursorSprite; // 커서 이미지로 사용할 스프라이트
     private Texture2D customCursorTexture; // Texture2D로 변환된 커서 이미지
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     void Start()
     {
         // Sprite를 Texture2D로 변환

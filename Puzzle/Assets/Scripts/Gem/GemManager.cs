@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GemManager : MonoBehaviour
 {
+    public static GemManager Instance { get; private set; }  // ½Ì±ÛÅæ Àû¿ë
+
     private GemUI gemUI;
 
     public GameObject player;
@@ -25,8 +27,19 @@ public class GemManager : MonoBehaviour
     public bool onUpgrade;
     public bool onQuick;
 
+
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         if (!gemUI)
             gemUI = FindObjectOfType<GemUI>();
     }

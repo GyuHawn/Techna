@@ -1,6 +1,6 @@
 using System;
 
-public class IdleState : IMovingState,IRotateState
+public class IdleState : IMovingState, IRotateState
 {
     public void Update(MovingObject movingObject)
     {

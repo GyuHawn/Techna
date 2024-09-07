@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class GemUI : MonoBehaviour
 {
+    public static GemUI Instance { get; private set; } // 싱글톤 적용
+
     private GemCombination gemCombination;
     private GemManager gemManager;
 
@@ -29,8 +31,19 @@ public class GemUI : MonoBehaviour
     // 각 활성화 여부
     private bool selectBullet;
 
+
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         if (!gemCombination)
             gemCombination = FindObjectOfType<GemCombination>();
         if (!gemManager)

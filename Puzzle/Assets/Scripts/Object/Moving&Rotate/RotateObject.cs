@@ -32,6 +32,7 @@ public class RotateObject : MonoBehaviour
         currentState.Update(this); // 현재 상태의 Update 메소드 호출
     }
 
+    // 보석 활성화 이벤트
     private void OnEnable()
     {
         if (gem != null)
@@ -39,7 +40,6 @@ public class RotateObject : MonoBehaviour
             gem.activationChanged += HandleGemActivated;
         }
     }
-
     private void OnDisable()
     {
         if (gem != null)
@@ -48,6 +48,7 @@ public class RotateObject : MonoBehaviour
         }
     }
 
+    // 상태에 따른 기능 실행
     private void HandleGemActivated(bool activate)
     {
         if (activate)

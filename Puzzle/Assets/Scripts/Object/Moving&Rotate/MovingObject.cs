@@ -46,13 +46,15 @@ public class MovingObject : MonoBehaviour
 
     private void Update()
     {
-        currentState.Update(this);
+        currentState.Update(this); // 현재 상태의 Update 메소드 호출
     }
+
     public void SetCommand(ICommand command)
     {
         this.command = command;
     }
 
+    // 보석 활성화 이벤트
     private void OnEnable()
     {
         if(gem != null)
@@ -69,6 +71,7 @@ public class MovingObject : MonoBehaviour
         }
     }
 
+    // 상태에 따른 기능 실행
     private void HandleGemActivated(bool activate)
     {
         if (activate)
