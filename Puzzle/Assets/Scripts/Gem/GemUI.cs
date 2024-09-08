@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class GemUI : MonoBehaviour
 {
-    public static GemUI Instance { get; private set; } // ½Ì±ÛÅæ Àû¿ë
-
     private GemCombination gemCombination;
     private GemManager gemManager;
 
@@ -34,16 +32,6 @@ public class GemUI : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
         if (!gemCombination)
             gemCombination = FindObjectOfType<GemCombination>();
         if (!gemManager)

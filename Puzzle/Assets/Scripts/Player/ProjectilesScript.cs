@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class ProjectilesScript : MonoBehaviour
 {
-    public static ProjectilesScript Instance { get; private set; }  // 싱글톤 적용
-
     private MouseManager mouseManager;
 
     public GameObject player;
@@ -27,16 +25,6 @@ public class ProjectilesScript : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
         if (!mouseManager)
             mouseManager = GameObject.Find("MouseManager").GetComponent<MouseManager>();
     }

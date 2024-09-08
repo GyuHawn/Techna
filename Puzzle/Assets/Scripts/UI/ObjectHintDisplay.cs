@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class ObjectHintDisplay : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class ObjectHintDisplay : MonoBehaviour
 
     void Start()
     {
+        if (hintText != null)
+        {
+            hintText = hintText.Replace(@"\n", "\n"); // 줄바꿈 수동 설정
+        }
+
         showText.gameObject.SetActive(false); // 힌트 비활성화
     }
 

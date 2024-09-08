@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-    public static StageManager Instance { get; private set; } // 싱글톤 적용
-
     public PlayerMovement playerMovement;
 
     public GameObject[] fullStage; // 전체 스테이지
@@ -13,20 +11,6 @@ public class StageManager : MonoBehaviour
     public GameObject[] stageSetting; // 스테이지 값 설정
 
     private int previousStage; // 이전 스테이지 값 저장
-
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
 
     void Start()
     {

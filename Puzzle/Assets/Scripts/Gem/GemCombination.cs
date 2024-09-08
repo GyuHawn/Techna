@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GemCombination : MonoBehaviour
 {
-    public static GemCombination Instance { get; private set; } // 싱글톤 적용
-
     private GemManager gemManager;
     private ProjectilesScript projectilesScript;
 
@@ -24,16 +22,6 @@ public class GemCombination : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
         // GemManager를 찾아서 할당
         gemManager = FindObjectOfType<GemManager>();
         projectilesScript = GameObject.Find("GunManager").GetComponent<ProjectilesScript>();

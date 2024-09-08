@@ -26,6 +26,7 @@ public class ProjectileMoveScript : MonoBehaviour
         if (muzzlePrefab != null)
         {
             var muzzleVFX = Instantiate(muzzlePrefab, transform.position, Quaternion.identity);
+            muzzleVFX.name = muzzlePrefab.name;
             var ps = muzzleVFX.GetComponent<ParticleSystem>();
             if (ps != null)
                 Destroy(muzzleVFX, ps.main.duration);
@@ -93,6 +94,7 @@ public class ProjectileMoveScript : MonoBehaviour
         if (hitPrefab != null)
         {
             var hitVFX = Instantiate(hitPrefab, pos, rot);
+            hitVFX.name = hitPrefab.name;
 
             var ps = hitVFX.GetComponent<ParticleSystem>();
             if (ps == null)
