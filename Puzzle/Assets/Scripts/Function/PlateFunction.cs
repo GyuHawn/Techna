@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlateFunction : MonoBehaviour
 {
+    public Material[] plateMaterials;
+    private Renderer render;
+
     public GameObject[] movingObj; // 이동하는 오브젝트
     public GameObject[] rotateObj; // 회전하는 오브젝트
 
@@ -16,6 +19,16 @@ public class PlateFunction : MonoBehaviour
     public delegate void CheckActivationChange(bool activate);
     public event CheckActivationChange activationChanged; // 이벤트 호출
 
+    private void Start()
+    {
+        render = GetComponent<Renderer>();
+    }
+
+    void UpdateColor()
+    {
+        render.material = activate ? plateMaterials[1] : plateMaterials[0];
+    }
+
     private void OnCollisionStay(Collision collision)
     {
         // checkPlate 일때는 알맞은 오브젝트인지 확인
@@ -25,6 +38,7 @@ public class PlateFunction : MonoBehaviour
             {
                 activate = true;
                 activationChanged?.Invoke(true);
+                UpdateColor();
             }
         }
         else // 아닐시 태그 확인
@@ -33,6 +47,7 @@ public class PlateFunction : MonoBehaviour
             {
                 activate = true;
                 activationChanged?.Invoke(true);
+                UpdateColor();
             }
         }
     }
@@ -45,6 +60,7 @@ public class PlateFunction : MonoBehaviour
             {
                 activate = false;
                 activationChanged?.Invoke(false);
+                UpdateColor();
             }
         }
         else
@@ -53,6 +69,7 @@ public class PlateFunction : MonoBehaviour
             {
                 activate = false;
                 activationChanged?.Invoke(false);
+                UpdateColor();
             }
         }
     }

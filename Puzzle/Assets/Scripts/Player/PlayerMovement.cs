@@ -78,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
     {
         velocity = jump;
     }
+
     void ApplyPlatformMovement()
     {
         // 만약 이동 발판 위에 있다면
@@ -90,7 +91,10 @@ public class PlayerMovement : MonoBehaviour
             controller.Move(platformMovement);
 
             // 마지막 위치를 현재 위치로 갱신
-            lastPlatformPosition = movingPlatform.position;
+            if(movingPlatform != null)
+            {
+                lastPlatformPosition = movingPlatform.position;
+            }
         }
     }
 

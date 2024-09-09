@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-    public PlayerMovement playerMovement;
+    private PlayerMovement playerMovement;
+    public GameObject player; // 플레이어
 
     public GameObject[] fullStage; // 전체 스테이지
 
     public GameObject[] stageSetting; // 스테이지 값 설정
 
     private int previousStage; // 이전 스테이지 값 저장
+
+    private void Awake()
+    {
+        playerMovement = player.GetComponent<PlayerMovement>();    
+    }
 
     void Start()
     {
@@ -23,10 +29,32 @@ public class StageManager : MonoBehaviour
         if (playerMovement.currentStage != previousStage)
         {
             UpdateStage(); // 플레이어 위치에 따른 스테이지 비/활성화
-            StageSetting(); // 스테이지에 따른 플레이어 스테이지 값 설정 오브젝트 
+            NextStageSetting(); // 스테이지에 따른 플레이어 스테이지 값 설정 오브젝트 
             previousStage = playerMovement.currentStage; // 이전 스테이지 값 갱신
         }
     }
+
+    void NextStageSetting() // 다음 스테이지 이동시 스테이지 세팅
+    {
+        if (playerMovement.currentStage == 5)
+        {
+            CharacterController controller = player.GetComponent<CharacterController>();
+            if (controller != null)
+            {
+                Vector3 newPosition = new Vector3(1.5f, 4, 25);
+                Quaternion newRotation = Quaternion.Euler(0, 180, 0);
+                controller.enabled = false;
+                player.transform.position = newPosition;
+                player.transform.rotation = newRotation;
+                controller.enabled = true; 
+            }
+
+            playerMovement.currentStage = 6;
+            stageSetting[0].SetActive(false);
+            stageSetting[1].SetActive(true);
+        }
+    }
+
 
     void UpdateStage() // 플레이어 위치에 따른 스테이지 비/활성화
     {
@@ -45,28 +73,7 @@ public class StageManager : MonoBehaviour
             fullStage[i].SetActive(true);
         }
 
-        // 만약 currentStage가 4 이상이면 더 이상 업데이트하지 않음
-        if (playerMovement.currentStage >= 4){}
-    }
-
-    void StageSetting() // 스테이지에 따른 플레이어 스테이지 값 설정 오브젝트 
-    {
-        ResetStageSetting();
-
-        if (playerMovement.currentStage >= 0 && playerMovement.currentStage <= 5)
-        {
-            stageSetting[0].gameObject.SetActive(true);
-        }
-        else if(playerMovement.currentStage >= 5 && playerMovement.currentStage <= 13)
-        {
-            stageSetting[1].gameObject.SetActive(true);
-        }
-    }
-    void ResetStageSetting() // 스테이지 값 설정 오브젝트 초기화
-    {
-        foreach (GameObject stage in stageSetting)
-        {
-            stage.SetActive(false);
-        }
+        // currentStage가 15 이상이면 더 이상 업데이트 하지 않도록 (현재 최대값 15)
+        if (playerMovement.currentStage >= 15){}
     }
 }

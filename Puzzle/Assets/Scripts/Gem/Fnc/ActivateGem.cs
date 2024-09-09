@@ -5,9 +5,9 @@ using UnityEngine;
 public class ActivateGem : MonoBehaviour
 {
     public Material[] gemMaterials; // 재질
-    public bool activate; // 자신 제어 여부
-
     private Renderer render;
+
+    public bool activate; // 자신 제어 여부
 
     public bool control;
     public bool electricity;
