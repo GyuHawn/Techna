@@ -32,7 +32,7 @@ public class ButtonFunction : MonoBehaviour
         {
             for (int i = 0; i < rotateObj.Length; i++)
             {
-
+                // 사용시 추가
             }
         }
     }

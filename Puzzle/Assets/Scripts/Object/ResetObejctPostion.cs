@@ -11,8 +11,6 @@ public class ResetObjectPosition : MonoBehaviour
         // 잡은 오브젝트, 플레이어가 충돌시 리셋 위치로 이동
         if (other.CompareTag("GrabObject") || other.CompareTag("Player"))
         {
-            Debug.Log("!");
-
             // 플레이어가 CharacterController를 사용하고 있는 경우
             CharacterController characterController = other.GetComponent<CharacterController>();
             if (characterController != null)

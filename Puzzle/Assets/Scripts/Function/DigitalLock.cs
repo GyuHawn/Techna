@@ -8,17 +8,6 @@ public class DigitalLock : MonoBehaviour
     public Transform activatedCard; 
 
     public bool activate; // 활성화 여부
-    
-    void Start()
-    {
-        
-    }
-
-    
-    void Update()
-    {
-        
-    }
 
     private void OnCollisionEnter(Collision collision)
     {

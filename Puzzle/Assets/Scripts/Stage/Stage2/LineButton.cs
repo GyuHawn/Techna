@@ -12,45 +12,34 @@ public class LineButton : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (computer.on) // 전원이 켜있을때만
+        if (computer.on && collision.gameObject.CompareTag("Bullet")) // 전원이 켜져 있고 Bullet일 때
         {
-            if (collision.gameObject.CompareTag("Bullet"))
-            {
-                // 배열의 순서를 바꿉니다
+            // 배열 순서 변경 
+            if (line_Blocks.Length >= 3)
                 RotateArray(line_Blocks);
 
-                // 블록의 위치 업데이트를 호출합니다
-                computer.UpdateBlockPositions(line_Blocks);
+            // 블록 위치 업데이트
+            computer.UpdateBlockPositions(line_Blocks);
 
-                // 값 업데이트
-                if (curruntNum == -1)
-                {
-                    curruntNum = 0;
-                }
-                else if (curruntNum == 0)
-                {
-                    curruntNum = 1;
-                }
-                else if (curruntNum == 1)
-                {
-                    curruntNum = -1;
-                }
+            // 값 업데이트
+            curruntNum = (curruntNum + 2) % 3 - 1;
 
-                computer.lineNum[line] = curruntNum;
-            }
+            // 컴퓨터 lineNum 값 갱신
+            computer.lineNum[line] = curruntNum;
         }
     }
+
     void RotateArray(GameObject[] array)
     {
         if (array.Length < 3)
-            return; // 배열 길이가 3보다 작은 경우 처리하지 않음
+            return; // 배열 3미만일때 무시 (이후 변경 예정)
 
-        GameObject temp = array[0]; // 배열의 첫 번째 요소를 저장합니다
+        GameObject temp = array[0]; // 배열 첫 번째 요소 저장
         for (int i = 0; i < array.Length - 1; i++)
         {
-            array[i] = array[i + 1]; // 각 요소를 왼쪽으로 이동합니다
+            array[i] = array[i + 1]; // 각 요소를 왼쪽으로 이동
         }
-        array[array.Length - 1] = temp; // 저장된 첫 번째 요소를 배열의 마지막 위치에 삽입합니다
-    }
+        array[array.Length - 1] = temp; // 저장된 첫 번째 요소를 배열의 마지막 위치에 삽입
 
+    }
 }

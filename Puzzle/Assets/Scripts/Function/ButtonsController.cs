@@ -13,6 +13,7 @@ public class ButtonsController : MonoBehaviour
 
     private void Start()
     {
+        // 초기 카운트 설정
         currentCheckCount = checkCount;
     }
 
@@ -20,35 +21,48 @@ public class ButtonsController : MonoBehaviour
     {
         if (currentCheckCount == 0)
         {
-            bool allMatch = true;
+            CheckButtons();
+        }
+    }
 
-            foreach (GameObject buttonObj in buttons)
-            {
-                ButtonInfor buttonInfo = buttonObj.GetComponent<ButtonInfor>();
-                if (buttonInfo.trueButton != buttonInfo.currentStatus)
-                {
-                    allMatch = false;
-                    break;
-                }
-            }
+    private void CheckButtons()
+    {
+        bool allMatch = true;
 
-            if (allMatch)
+        // 모든 버튼 상태 확인
+        foreach (GameObject buttonObj in buttons)
+        {
+            ButtonInfor buttonInfo = buttonObj.GetComponent<ButtonInfor>();
+            if (buttonInfo.trueButton != buttonInfo.currentStatus)
             {
-                movingObject.activated = true;
+                allMatch = false;
+                break;
             }
-            else
-            {
-                currentCheckCount = checkCount;
-                player.currentHealth -= 5;
-            }
+        }
 
-            // 모든 버튼의 currentStatus를 false로 초기화
-            foreach (GameObject buttonObj in buttons)
-            {
-                ButtonInfor buttonInfo = buttonObj.GetComponent<ButtonInfor>();
-                buttonInfo.currentStatus = false;
-                buttonInfo.renderer.material = buttonInfo.materials[0];
-            }
+        // 모든 버튼 상태가 일치하는 경우
+        if (allMatch)
+        {
+            movingObject.activated = true;
+        }
+        else
+        {
+            // 상태 불일치 시 카운트 리셋 및 플레이어 체력 감소
+            currentCheckCount = checkCount;
+            player.currentHealth -= 5;
+        }
+
+        // 모든 버튼 상태 false로 초기화
+        ResetButtonStates();
+    }
+
+    private void ResetButtonStates()
+    {
+        foreach (GameObject buttonObj in buttons)
+        {
+            ButtonInfor buttonInfo = buttonObj.GetComponent<ButtonInfor>();
+            buttonInfo.currentStatus = false; // 버튼 상태 false로 설정
+            buttonInfo.renderer.material = buttonInfo.materials[0]; // 원래 재질로 복원
         }
     }
 }

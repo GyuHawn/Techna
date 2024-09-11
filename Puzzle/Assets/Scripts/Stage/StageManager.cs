@@ -5,6 +5,8 @@ using UnityEngine;
 public class StageManager : MonoBehaviour
 {
     private PlayerMovement playerMovement;
+    private CharacterController controller;
+
     public GameObject player; // 플레이어
 
     public GameObject[] stageSetting; // 스테이지 값 설정
@@ -13,7 +15,8 @@ public class StageManager : MonoBehaviour
 
     private void Awake()
     {
-        playerMovement = player.GetComponent<PlayerMovement>();    
+        playerMovement = player.GetComponent<PlayerMovement>();
+        controller = player.GetComponent<CharacterController>();
     }
 
     void Start()
@@ -32,22 +35,26 @@ public class StageManager : MonoBehaviour
 
     void NextStageSetting() // 다음 스테이지 이동시 스테이지 세팅
     {
-        if (playerMovement.currentStage == 2)
+        switch (playerMovement.currentStage)
         {
-            CharacterController controller = player.GetComponent<CharacterController>();
-            if (controller != null)
-            {
-                Vector3 newPosition = new Vector3(-400f, 4, -375);
-                Quaternion newRotation = Quaternion.Euler(0, 180, 0);
-                controller.enabled = false;
-                player.transform.position = newPosition;
-                player.transform.rotation = newRotation;
-                controller.enabled = true; 
-            }
+            case 2:
+                MovePlayer(new Vector3(-400f, 4, -375), Quaternion.Euler(0, 180, 0));
+                playerMovement.currentStage = 0;
+                stageSetting[0].SetActive(false);
+                stageSetting[1].SetActive(true);
+                break;
+             // 다음 스테이지 추가 시 값 추가
+        }
+    }
 
-            playerMovement.currentStage = 0;
-            stageSetting[0].SetActive(false);
-            stageSetting[1].SetActive(true);
+    void MovePlayer(Vector3 position, Quaternion rotation)
+    {
+        if (controller != null)
+        {
+            controller.enabled = false;
+            player.transform.position = position;
+            player.transform.rotation = rotation;
+            controller.enabled = true;
         }
     }
 }

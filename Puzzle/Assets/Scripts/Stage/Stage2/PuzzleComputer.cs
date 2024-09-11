@@ -22,19 +22,21 @@ public class PuzzleComputer : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i <= 6; i++)
+        // 리스트 초기화 및 리스트 값 추가
+        lineNum = new List<int>(line_Button.Length);
+        foreach (var button in line_Button)
         {
-            lineNum.Add(line_Button[i].curruntNum);
-        }     
+            lineNum.Add(button.curruntNum);
+        }
     }
 
     private void Update()
     {
-        if (on)
+        if (on) 
         {
             on = false;
-            barrier.SetActive(false);
-            OnLight();
+            barrier.SetActive(false); // 차단막 비활성 화
+            OnLight(); // 전기선 및 오브젝트 상태 업데이트 
         }
         else
         {
@@ -47,55 +49,36 @@ public class PuzzleComputer : MonoBehaviour
 
     void OnLight()
     {
-        // lineNum의 모든 값이 0인지 확인
-        bool allZero = true;
-        foreach (int num in lineNum)
-        {
-            if (num != 0)
-            {
-                allZero = false;
-                break;
-            }
-        }
+        // 모든 오브젝트 상태 확인 (전부 0인지)
+        bool allZero = lineNum.TrueForAll(num => num == 0);
 
-        // 모든 값이 0이면 활성화 
-        computerLightLine.activate = allZero; // 컴퓨터 전기선 활성화
-        activateLightLine.activate = allZero; // 활성화 전기선 활성화
-        ActivateGear(allZero); // 모든 기어 활성화
-        RotateFloor(allZero); // 클리어 발판 회전
-        jumpPad.SetActive(allZero); // 점프패드 활성화
+        // 전기선 상태 업데이트
+        computerLightLine.activate = allZero;
+        activateLightLine.activate = allZero;
+
+        // 관련 오브젝트 활성화 및 상태 업데이트
+        ActivateObjects(gears, allZero);
+        ActivateObjects(RotateFloors, allZero);
+        jumpPad.SetActive(allZero);
     }
 
-    void ActivateGear(bool on)
+    void ActivateObjects(RotateObject[] objects, bool activate) // 오브젝트 상태 활성화
     {
-        if (on)
+        foreach (var obj in objects)
         {
-            foreach (var gear in gears)
-            {
-                gear.activate = true;
-            }
-        }
-    }
-    
-    void RotateFloor(bool on)
-    {
-        if (on)
-        {
-            foreach (var flooor in RotateFloors)
-            {
-                flooor.activate = true;
-            }
+            obj.activate = activate;
         }
     }
 
-    // 블록의 위치를 업데이트
-    public void UpdateBlockPositions(GameObject[] blocks)
+    public void UpdateBlockPositions(GameObject[] blocks) // 블록 위치 업데이트
     {
-        if (blocks != null)
+        if (blocks != null && blocks.Length >= 3)
         {
-            blocks[0].transform.position += new Vector3(0, 1.7f, 0);
-            blocks[1].transform.position += new Vector3(0, 1.7f, 0);
-            blocks[2].transform.position += new Vector3(0, -3.4f, 0);
+            Vector3[] positions = { new Vector3(0, 1.7f, 0), new Vector3(0, 1.7f, 0), new Vector3(0, -3.4f, 0) };
+            for (int i = 0; i < blocks.Length && i < positions.Length; i++)
+            {
+                blocks[i].transform.position += positions[i];
+            }
         }
     }
 }

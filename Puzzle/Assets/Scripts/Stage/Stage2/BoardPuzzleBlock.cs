@@ -42,11 +42,8 @@ public class BoardPuzzleBlock : MonoBehaviour
 
     void HoldPostion(GameObject block) // 위치 고정
     {
-        if (check)
-        {
-            gameObject.transform.position = block.transform.position; // 위치 설정
-            gameObject.transform.rotation = block.transform.rotation; // 회전값 설정
-            rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
-        }
+        gameObject.transform.position = block.transform.position; // 위치 설정
+        gameObject.transform.rotation = block.transform.rotation; // 회전값 설정
+        rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
     }
 }

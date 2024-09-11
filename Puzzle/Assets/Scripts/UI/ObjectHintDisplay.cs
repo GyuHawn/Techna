@@ -17,48 +17,48 @@ public class ObjectHintDisplay : MonoBehaviour
 
     void Start()
     {
-        if (hintText != null)
+        if (!string.IsNullOrEmpty(hintText))
         {
             hintText = hintText.Replace(@"\n", "\n"); // 줄바꿈 수동 설정
         }
 
-        showText.gameObject.SetActive(false); // 힌트 비활성화
+        ToggleHintUI(false); // 힌트 UI 비활성화
     }
 
     private void OnTriggerStay(Collider other)
     {
-        // 플레이어 충돌 시 힌트 출력
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !showUI)
         {
-            if (!showUI)
-            {
-                showUI = true;
-                hintUI.gameObject.SetActive(true);
-                showText.gameObject.SetActive(true);
-                showText.text = hintText; // 힌트 적용
-
-                // UI 사이즈 조절
-                RectTransform hintUIRect = hintUI.GetComponent<RectTransform>();
-                hintUIRect.sizeDelta = new Vector2(hintUIWidthSize, hintUIHeightSize);
-
-                // 폰트 크기 조절
-                showText.fontSize = textSize;
-            }
+            ToggleHintUI(true);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        // 플레이어 충돌 종료시 충돌 종료
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && showUI)
         {
-            if (showUI)
-            {
-                showUI = false;
-                hintUI.gameObject.SetActive(false);
-                showText.gameObject.SetActive(false);
-                showText.text = ""; // 텍스트 초기화
-            }
+            ToggleHintUI(false);
+        }
+    }
+
+    // UI 활성화/비활성화 함수
+    private void ToggleHintUI(bool show)
+    {
+        showUI = show;
+        hintUI.gameObject.SetActive(show);
+        showText.gameObject.SetActive(show);
+
+        if (show)
+        {
+            showText.text = hintText; // 힌트 적용
+            // UI 크기 설정
+            RectTransform hintUIRect = hintUI.GetComponent<RectTransform>();
+            hintUIRect.sizeDelta = new Vector2(hintUIWidthSize, hintUIHeightSize);
+            showText.fontSize = textSize; // 폰트 크기 설정
+        }
+        else
+        {
+            showText.text = ""; // 텍스트 초기화
         }
     }
 }

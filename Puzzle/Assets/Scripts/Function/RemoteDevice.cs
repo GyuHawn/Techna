@@ -32,11 +32,6 @@ public class RemoteDevice : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        ActivatedCheck(false); // 활성화 체크
-    }
-
     void ActivatedCheck(bool dummy)
     {
         bool activated = true;

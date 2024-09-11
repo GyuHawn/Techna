@@ -10,32 +10,32 @@ public class MouseManager : MonoBehaviour
 
     void Start()
     {
-        // Sprite를 Texture2D로 변환
+        // Sprite를 Texture2D로 변환 및 커서 설정
         if (customCursorSprite != null)
         {
             customCursorTexture = SpriteToTexture2D(customCursorSprite);
             Cursor.SetCursor(customCursorTexture, Vector2.zero, CursorMode.Auto); // 커서 이미지 설정
         }
 
-        isCursorVisible = false;
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        // 커서 숨김 및 잠금 상태 설정
+        SetCursorState(false);
     }
 
     void Update()
     {
-        OffCursorVisibility(); // 마우스 커서 비/활성화
+        // 마우스 커서 활성화 여부를 토글
+        if (Input.GetButtonDown("CursorHide"))
+        {
+            SetCursorState(!isCursorVisible);
+        }
     }
 
-    private void OffCursorVisibility() // 커서 비활성화
+    // 커서 활성화 상태 설정 함수
+    private void SetCursorState(bool isVisible)
     {
-        if (Input.GetButtonDown("CursorHide")) // 키 입력 감지
-        {
-            isCursorVisible = !isCursorVisible; // 마우스 포인터 활성화 여부
-            Cursor.visible = isCursorVisible; // 마우스 포인터 활성화 상태 설정
-            Cursor.lockState = isCursorVisible ? CursorLockMode.None : CursorLockMode.Locked; // 마우스 포인터 잠금 상태 설정
-        }
+        isCursorVisible = isVisible;
+        Cursor.visible = isCursorVisible;
+        Cursor.lockState = isCursorVisible ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
     // Sprite를 Texture2D로 변환하는 함수
@@ -53,6 +53,8 @@ public class MouseManager : MonoBehaviour
             return newText;
         }
         else
+        {
             return sprite.texture;
+        }
     }
 }

@@ -9,8 +9,8 @@ public class GemInfor : MonoBehaviour
 
     public string infor; // 정보 
     public GameObject inforUI; // 정보 UI
-    public int inforUIWidthSize; // 힌트 UI 너비 사이즈
-    public int inforUIHeightSize; // 힌트 UI 높이 사이즈
+    public int inforUIWidthSize; // 정보 UI 너비 사이즈
+    public int inforUIHeightSize; // 정보 UI 높이 사이즈
     public TMP_Text inforText; // 정보 텍스트
     public int textSize; // 텍스트 사이즈
     public Color textColor; // 색 
@@ -21,41 +21,41 @@ public class GemInfor : MonoBehaviour
 
     private void Awake()
     {
-        if (!gemManager)
-            gemManager = GameObject.Find("GemManager").GetComponent<GemManager>();
+        gemManager = GameObject.Find("GemManager").GetComponent<GemManager>();
     }
 
     private void Start()
     {
-        if (infor != null)
+        // 줄바꿈 및 색상 설정
+        if (!string.IsNullOrEmpty(infor))
         {
-            infor = infor.Replace(@"\n", "\n"); // 줄바꿈 수동 설정
+            infor = infor.Replace(@"\n", "\n");
         }
+
         if (inforText != null)
         {
-            inforText.color = textColor; // 색 설정
-        }       
+            inforText.color = textColor; // 색상 설정
+            inforText.gameObject.SetActive(false); // 시작 시 비활성화
+        }
+
+        if (inforUI != null)
+        {
+            RectTransform inforUIRect = inforUI.GetComponent<RectTransform>();
+            inforUIRect.sizeDelta = new Vector2(inforUIWidthSize, inforUIHeightSize); // UI 크기 설정
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // 플레이어와의 충돌 시
-        if (other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            if (gemInfor && !showUI)
+            if (gemInfor)
             {
-                showUI = true;
-                inforUI.SetActive(true);
-                inforText.gameObject.SetActive(true);
-                inforText.color = textColor;
-                inforText.text = infor;
-
-                // UI 사이즈 조절
-                RectTransform inforUIRect = inforUI.GetComponent<RectTransform>();
-                inforUIRect.sizeDelta = new Vector2(inforUIWidthSize, inforUIHeightSize);
-
-                // 폰트 크기 조절
-                inforText.fontSize = textSize;
+                if (!showUI)
+                {
+                    showUI = true;
+                    DisplayInfoUI(); // 정보 표시
+                }
             }
 
             if (gem)
@@ -68,16 +68,25 @@ public class GemInfor : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        // 플레이어와의 충돌 종료 시
-        if (other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player") && gemInfor && showUI)
         {
-            if (gemInfor && showUI)
-            {
-                showUI = false;
-                inforUI.SetActive(false);
-                inforText.gameObject.SetActive(false);
-                inforText.text = "";
-            }
+            showUI = false; 
+            HideInfoUI(); // 정보 숨기기
         }
+    }
+
+    private void DisplayInfoUI() // 정보 표시
+    {
+        inforUI.SetActive(true);
+        inforText.gameObject.SetActive(true);
+        inforText.text = infor;
+        inforText.fontSize = textSize;
+    }
+
+    private void HideInfoUI() // 정보 숨기기
+    {
+        inforUI.SetActive(false);
+        inforText.gameObject.SetActive(false);
+        inforText.text = "";
     }
 }

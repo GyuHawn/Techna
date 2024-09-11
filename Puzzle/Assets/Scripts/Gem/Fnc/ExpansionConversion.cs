@@ -11,29 +11,23 @@ public class ExpansionConversion : MonoBehaviour
     void Start()
     {
         plus = true;
-        state[0].gameObject.SetActive(true);
-        state[1].gameObject.SetActive(false);
+        SetState(plus); // 초기 상태 설정
     }
 
     void Update()
     {
-        if (gem.currentGemNum == 1.3f) // 확장 보석일때 v(현재)키 입력시 상태 변화
+        // 보석 상태가 확장 보석(1.3f)일 때만 상태 변환 가능
+        if (gem.currentGemNum == 1.3f && Input.GetButtonDown("Expansion"))
         {
-            if (Input.GetButtonDown("Expansion"))
-            {
-                if (plus)
-                {
-                    plus = false;
-                    state[0].gameObject.SetActive(false);
-                    state[1].gameObject.SetActive(true);
-                }
-                else
-                {
-                    plus = true;
-                    state[0].gameObject.SetActive(true);
-                    state[1].gameObject.SetActive(false);
-                }
-            }
+            plus = !plus; // 상태를 반전
+            SetState(plus); // 상태 적용
         }
+    }
+
+    // 상태에 따라 오브젝트 활성/비활성화
+    private void SetState(bool isPlus)
+    {
+        state[0].SetActive(isPlus);
+        state[1].SetActive(!isPlus);
     }
 }

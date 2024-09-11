@@ -5,15 +5,4 @@ using UnityEngine;
 public class TrapScript : MonoBehaviour
 {
     public int damage;
-
-    void Start()
-    {
-        
-    }
-
-    
-    void Update()
-    {
-        
-    }
 }

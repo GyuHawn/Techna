@@ -10,26 +10,20 @@ public class ButtonInfor : MonoBehaviour
 
     public Material[] materials; // 0: False, 1: True
 
-    public Renderer renderer; // Material을 변경하기 위한 Renderer
+    public new Renderer renderer; // Material을 변경하기 위한 Renderer
 
     private void Awake()
     {
-        if(controller != null)
-        {
-            controller = GetComponentInParent<ButtonsController>();
-        }
+        controller = GetComponentInParent<ButtonsController>();
         renderer = GetComponent<Renderer>();
     }
 
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (collision.gameObject.CompareTag("Bullet")) // 총알 충돌시 재질 변경
         {
-            if(controller != null)
-            {
-                controller.currentCheckCount--;
-            }
+            controller.currentCheckCount--;
             currentStatus = true;
             renderer.material = materials[1];
         }
