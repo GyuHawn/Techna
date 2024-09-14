@@ -28,8 +28,7 @@ public class GemManager : MonoBehaviour
 
     private void Awake()
     {
-        if (!gemUI)
-            gemUI = FindObjectOfType<GemUI>();
+        gemUI = FindObjectOfType<GemUI>();
     }
 
     public void CollectGem(string gemName)

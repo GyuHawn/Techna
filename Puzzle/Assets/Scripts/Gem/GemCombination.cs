@@ -5,7 +5,8 @@ using UnityEngine;
 public class GemCombination : MonoBehaviour
 {
     private GemManager gemManager;
-    private ProjectilesScript projectilesScript;
+    public ProjectilesScript projectilesScript;
+    public GunTexture gunTexture;
 
     public int selectBulletNum; // 선택된 총알 번호
     public int selectAttributeNum; // 선택된 속성 번호
@@ -18,13 +19,14 @@ public class GemCombination : MonoBehaviour
     public int gemIndex; // 현재 보석 인덱스
 
     public Sprite[] crossHair; // 조준점 배열
-
+    
 
     private void Awake()
     {
         // GemManager를 찾아서 할당
         gemManager = FindObjectOfType<GemManager>();
         projectilesScript = GameObject.Find("GunManager").GetComponent<ProjectilesScript>();
+        gunTexture = GameObject.Find("Gun").GetComponent<GunTexture>();
     }
 
     private void Start()
@@ -83,6 +85,8 @@ public class GemCombination : MonoBehaviour
 
         // 보석 활성화
         ActivateGem(bullet, attribute, function);
+
+        gunTexture.TextuerSetting(); // 총 재질변경
     }
 
     private void ActivateDefaultGem()

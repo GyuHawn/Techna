@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ProjectilesScript : MonoBehaviour
 {
-    private MouseManager mouseManager;
+    public MouseManager mouseManager;
 
     public GameObject player;
     public Camera camera;
@@ -22,12 +22,6 @@ public class ProjectilesScript : MonoBehaviour
 
     private float timeToFire = 0f; // 발사 시간 추적
     public GameObject effectToSpawn; // 생성할 투사체
-
-    private void Awake()
-    {
-        if (!mouseManager)
-            mouseManager = GameObject.Find("MouseManager").GetComponent<MouseManager>();
-    }
 
     void Start()
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GemInfor : MonoBehaviour
 {
-    private GemManager gemManager;
+    public GemManager gemManager;
 
     public string infor; // 정보 
     public GameObject inforUI; // 정보 UI
@@ -18,11 +18,6 @@ public class GemInfor : MonoBehaviour
 
     public bool gemInfor; // 보석 정보 인지
     public bool gem; // 보석 인지
-
-    private void Awake()
-    {
-        gemManager = GameObject.Find("GemManager").GetComponent<GemManager>();
-    }
 
     private void Start()
     {

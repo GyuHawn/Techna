@@ -32,10 +32,8 @@ public class GemUI : MonoBehaviour
 
     private void Awake()
     {
-        if (!gemCombination)
-            gemCombination = FindObjectOfType<GemCombination>();
-        if (!gemManager)
-            gemManager = FindObjectOfType<GemManager>();
+        gemCombination = FindObjectOfType<GemCombination>();
+        gemManager = FindObjectOfType<GemManager>();
     }
 
     void Update()
