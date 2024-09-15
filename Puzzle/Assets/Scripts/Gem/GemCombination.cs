@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GemCombination : MonoBehaviour
 {
+    private GemUI gemUI;
     private GemManager gemManager;
     public ProjectilesScript projectilesScript;
     public GunTexture gunTexture;
@@ -19,12 +20,14 @@ public class GemCombination : MonoBehaviour
     public int gemIndex; // 현재 보석 인덱스
 
     public Sprite[] crossHair; // 조준점 배열
-    
+
+    public GameObject faileEffect;
+    public GameObject failePostion;
 
     private void Awake()
     {
-        // GemManager를 찾아서 할당
-        gemManager = FindObjectOfType<GemManager>();
+        gemUI = GetComponent<GemUI>();
+        gemManager = GetComponent<GemManager>();
         projectilesScript = GameObject.Find("GunManager").GetComponent<ProjectilesScript>();
         gunTexture = GameObject.Find("Gun").GetComponent<GunTexture>();
     }
@@ -74,8 +77,9 @@ public class GemCombination : MonoBehaviour
         // 보석 사용 가능 여부 체크
         if (!CheckGemAvailability(bullet, attribute, function))
         {
-            // 기본 보석 활성화
-            ActivateDefaultGem();
+            ActivateDefaultGem(); // 기본 보석 활성화
+            StartCoroutine(CombinationFailed()); // 실패 이펙트 생성
+            gemUI.CombinationFailedUI(); // UI 초기화
             return;
         }
 
@@ -99,6 +103,15 @@ public class GemCombination : MonoBehaviour
         selectAttributeNum = 0;
         selectFunctionNum = 0;
     }
+    IEnumerator CombinationFailed()
+    {
+        GameObject effect = Instantiate(faileEffect, failePostion.transform.position, Quaternion.identity, failePostion.transform);
+
+        yield return new WaitForSeconds(1f);
+
+        Destroy(effect);
+    }
+
 
     private void ActivateGem(int bullet, int attribute, int function)
     {

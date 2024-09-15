@@ -12,17 +12,17 @@ public class GemUI : MonoBehaviour
     public GameObject bulletUI; // 총알 보석 UI  
     public GameObject bulletMenuUI; // 총알 메뉴 UI  
     public GameObject bulletGemUI; // 개별 총알 보석 UI  
-    public GameObject[] currentBullet;
+    public GameObject[] currentBullet; // 현재 총알 UI
 
     public GameObject attributeUI; // 속성 보석
     public GameObject attributeMenuUI; // 속성 메뉴 UI
     public GameObject[] attributeGemUI; // 개별 속성 보석
-    public GameObject[] currentAttribute;
+    public GameObject[] currentAttribute; // 현재 속성 UI
 
     public GameObject functionUI; // 기능 보석
     public GameObject functionMenuUI; // 기능 메뉴 UI
     public GameObject[] functionGemUI; // 개별 기능 보석
-    public GameObject[] currentFunction;
+    public GameObject[] currentFunction; // 현재 기능 UI
 
     public int selectGemNum;
 
@@ -204,5 +204,20 @@ public class GemUI : MonoBehaviour
         bulletMenuUI.SetActive(false);
         attributeMenuUI.SetActive(false);
         functionMenuUI.SetActive(false);
+    }
+    
+    public void CombinationFailedUI() // 조합 실패시 UI 상태 처리
+    {
+        currentBullet[0].SetActive(true);
+        currentBullet[1].SetActive(false);
+        
+        foreach(var attribute in currentAttribute)
+        {
+            attribute.SetActive(false);
+        }
+        foreach (var function in currentFunction)
+        {
+            function.SetActive(false);
+        }
     }
 }

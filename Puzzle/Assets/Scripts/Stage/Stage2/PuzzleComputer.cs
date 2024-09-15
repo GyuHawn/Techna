@@ -7,6 +7,7 @@ public class PuzzleComputer : MonoBehaviour
 {
     public LineButton[] line_Button; // 이동 버튼(현재 값)
     public List<int> lineNum; // ( -1, 0, 1 ) 중심기준으로 설정
+    private bool allZero; // 모든 값이 0인지 여부
 
     public LEDNode computerLightLine; // 컴퓨터 전기선
     public LEDNode activateLightLine; // 활성화 전기선
@@ -28,29 +29,29 @@ public class PuzzleComputer : MonoBehaviour
         {
             lineNum.Add(button.curruntNum);
         }
+        allZero = false; // 처음엔 false로 설정
     }
 
     private void Update()
     {
-        if (on) 
+        // lightningRod.activate가 참이 되면 on을 true로 설정
+        if (lightningRod.activate)
         {
-            on = false;
-            barrier.SetActive(false); // 차단막 비활성 화
-            OnLight(); // 전기선 및 오브젝트 상태 업데이트 
+            on = true;
         }
-        else
+
+        // on이 true일 때, 즉 컴퓨터가 활성화된 경우에만 실행
+        if (on && !allZero)
         {
-            if (lightningRod.activate)
-            {
-                on = true;
-            }
+            barrier.SetActive(false); // 차단막 비활성화
+            OnLight(); // 전기선 및 오브젝트 상태 업데이트
         }
     }
 
     void OnLight()
     {
         // 모든 오브젝트 상태 확인 (전부 0인지)
-        bool allZero = lineNum.TrueForAll(num => num == 0);
+        allZero = lineNum.TrueForAll(num => num == 0);
 
         // 전기선 상태 업데이트
         computerLightLine.activate = allZero;
