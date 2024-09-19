@@ -93,7 +93,10 @@ public class CubeSpawnerPortal : MonoBehaviour
 
     void Open()
     {
-        portalEffect.SetActive(true);
+        if(portalEffect != null)
+        {
+            portalEffect.SetActive(true);
+        }
         spawnerDoor.SetActive(false);
     }
 }
