@@ -202,12 +202,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        // 함정
-        if (hit.gameObject.CompareTag("Thorn"))
-        {
-            TrapScript thorn = hit.gameObject.GetComponent<TrapScript>();
-            currentHealth -= thorn.damage;
-        }
     }
 
 
@@ -218,6 +212,13 @@ public class PlayerMovement : MonoBehaviour
         {
             checkLever = true;
             currentLever = other.gameObject;
+        }
+
+        // 함정
+        if (other.gameObject.CompareTag("Thorn"))
+        {
+            TrapScript thorn = other.gameObject.GetComponent<TrapScript>();
+            currentHealth -= thorn.damage;
         }
     }
 

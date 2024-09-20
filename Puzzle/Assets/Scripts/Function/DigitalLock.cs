@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DigitalLock : MonoBehaviour
 {
+    public GrabObject grabObject;
+
     public GameObject card; // 해제할 카드키
     public Transform activatedCard; 
 
@@ -14,18 +16,20 @@ public class DigitalLock : MonoBehaviour
         if(collision.gameObject == card)
         {
             activate = true;
-            activatedLock();
+            ActivatedLock();
         }
     }
 
-    void activatedLock()
+    void ActivatedLock()
     {
+        grabObject.grabbedObject = null;
+
         Rigidbody rb = card.GetComponent<Rigidbody>();
 
         rb.constraints = RigidbodyConstraints.FreezeAll;
         card.tag = "Untagged";
 
         card.transform.position = activatedCard.position;
-        card.transform.rotation = Quaternion.Euler(0, 0, 76.5f);
+        card.transform.rotation = Quaternion.Euler(84, -90, 0);
     }
 }
