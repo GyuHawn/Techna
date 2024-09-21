@@ -23,7 +23,11 @@ public class ButtonInfor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet")) // 총알 충돌시 재질 변경
         {
-            controller.currentCheckCount--;
+            if(controller != null) 
+            {
+                controller.currentCheckCount--;
+            }
+
             currentStatus = true;
             renderer.material = materials[1];
         }

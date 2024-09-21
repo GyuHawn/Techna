@@ -36,6 +36,7 @@ public class MovingObject : MonoBehaviour
     public bool controlMoving; // 제어 이동 (한번만 움직이도록)
     public bool controlAutoMoving; // 특정위치 제어 반복 이동(특정위치로 반복이동)
     public bool objectMoving; // 물체 이동 (다른 오브젝트를 이동시키도록)
+    public bool pointMoving; // 특정 위치로 이동
 
     private void Start()
     {
@@ -95,6 +96,10 @@ public class MovingObject : MonoBehaviour
             {
                 StartRepeatingMoveAtPosition(objectMovePos.position);
             }
+            else if (pointMoving)
+            {
+                StartMovingObject();
+            }
         }
     }
 
@@ -118,6 +123,7 @@ public class MovingObject : MonoBehaviour
         if (!isMoving)
         {
             isMoving = true;
+            Debug.Log(objectMovePos.position);
             StartCoroutine(MovePosition(movingObject, objectMovePos.position));
         }
     }
@@ -138,7 +144,8 @@ public class MovingObject : MonoBehaviour
         if (!isMoving)
         {
             isMoving = true;
-            StartCoroutine(RepeatMove(position));
+            Vector3 worldPosition = objectMovePos.TransformPoint(objectMovePos.localPosition);
+            StartCoroutine(MovePosition(movingObject, worldPosition));
         }
     }
 
@@ -200,17 +207,36 @@ public class MovingObject : MonoBehaviour
 
     public IEnumerator MovePosition(GameObject obj, Vector3 targetPos) // 이동
     {
-        Vector3 startPosition = obj.transform.localPosition;
+        bool isWorldSpace = pointMoving; // 월드 공간인지 확인
+        Vector3 startPosition = isWorldSpace ? obj.transform.position : obj.transform.localPosition; // 시작 위치 설정
         float elapsedTime = 0f;
 
         while (elapsedTime < moveDuration) // 천천히 이동
         {
-            obj.transform.localPosition = Vector3.MoveTowards(startPosition, targetPos, (targetPos - startPosition).magnitude * (elapsedTime / moveDuration));
+            Vector3 currentPosition = Vector3.MoveTowards(startPosition, targetPos, (targetPos - startPosition).magnitude * (elapsedTime / moveDuration));
+            if (isWorldSpace)
+            {
+                obj.transform.position = currentPosition; // 월드 공간에서 이동
+            }
+            else
+            {
+                obj.transform.localPosition = currentPosition; // 로컬 공간에서 이동
+            }
+
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        obj.transform.localPosition = targetPos; // 목표 도착
+        // 목표 도착
+        if (isWorldSpace)
+        {
+            obj.transform.position = targetPos; // 월드 공간에서 목표 위치 설정
+        }
+        else
+        {
+            obj.transform.localPosition = targetPos; // 로컬 공간에서 목표 위치 설정
+        }
+
         isMoving = false;
     }
 }
