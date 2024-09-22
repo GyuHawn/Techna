@@ -123,8 +123,11 @@ public class MovingObject : MonoBehaviour
         if (!isMoving)
         {
             isMoving = true;
-            Debug.Log(objectMovePos.position);
-            StartCoroutine(MovePosition(movingObject, objectMovePos.position));
+
+            // 로컬 좌표를 직접 사용하여 부모의 영향을 받지 않도록 함
+            Vector3 localPosition = objectMovePos.localPosition;
+
+            StartCoroutine(MovePosition(movingObject, localPosition));
         }
     }
 
@@ -134,7 +137,7 @@ public class MovingObject : MonoBehaviour
         if (!isMoving)
         {
             isMoving = true;
-            StartCoroutine(RepeatMove(targetPosition));
+            StartCoroutine(RepeatMove(gameObject, targetPosition));
         }
     }
 
@@ -144,8 +147,16 @@ public class MovingObject : MonoBehaviour
         if (!isMoving)
         {
             isMoving = true;
-            Vector3 worldPosition = objectMovePos.TransformPoint(objectMovePos.localPosition);
-            StartCoroutine(MovePosition(movingObject, worldPosition));
+
+            // 로컬 좌표를 직접 사용하여 부모의 영향을 받지 않도록 함
+            Vector3 localPosition = objectMovePos.localPosition;
+
+            if (movingObject == null)
+            {
+                movingObject = gameObject;
+            }
+
+            StartCoroutine(RepeatMove(movingObject, localPosition));
         }
     }
 
@@ -196,46 +207,33 @@ public class MovingObject : MonoBehaviour
         return currentPosition + new Vector3(x ? moveNum : 0, y ? moveNum : 0, z ? moveNum : 0);
     }
 
-    IEnumerator RepeatMove(Vector3 targetPosition) // 반복이동
+    IEnumerator RepeatMove(GameObject obj, Vector3 targetPosition) // 반복이동
     {
         while (true)
         {
-            yield return MovePosition(gameObject, targetPosition);
-            yield return MovePosition(gameObject, currentPosition);
+            yield return MovePosition(obj, targetPosition);
+            yield return MovePosition(obj, currentPosition);
         }
     }
 
     public IEnumerator MovePosition(GameObject obj, Vector3 targetPos) // 이동
     {
-        bool isWorldSpace = pointMoving; // 월드 공간인지 확인
-        Vector3 startPosition = isWorldSpace ? obj.transform.position : obj.transform.localPosition; // 시작 위치 설정
+        Vector3 startPosition = obj.transform.localPosition; // 시작 위치 설정
         float elapsedTime = 0f;
 
         while (elapsedTime < moveDuration) // 천천히 이동
         {
             Vector3 currentPosition = Vector3.MoveTowards(startPosition, targetPos, (targetPos - startPosition).magnitude * (elapsedTime / moveDuration));
-            if (isWorldSpace)
-            {
-                obj.transform.position = currentPosition; // 월드 공간에서 이동
-            }
-            else
-            {
-                obj.transform.localPosition = currentPosition; // 로컬 공간에서 이동
-            }
+
+            obj.transform.localPosition = currentPosition; // 로컬 공간에서 이동
+
 
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
         // 목표 도착
-        if (isWorldSpace)
-        {
-            obj.transform.position = targetPos; // 월드 공간에서 목표 위치 설정
-        }
-        else
-        {
-            obj.transform.localPosition = targetPos; // 로컬 공간에서 목표 위치 설정
-        }
+        obj.transform.localPosition = targetPos; // 로컬 공간에서 목표 위치 설정
 
         isMoving = false;
     }
