@@ -12,8 +12,8 @@ public class RemoteDevice : MonoBehaviour
 
     public GameObject[] objs; // 제어할 오브젝트 
 
-    public bool destroy; // 제거할지
     public bool activate; // 활성화 시킬지
+    public bool destroy; // 제거할지
     public bool stairs; // 계단 활성화
 
 
@@ -30,6 +30,11 @@ public class RemoteDevice : MonoBehaviour
         {
             activateNode.activationChanged += ActivatedCheck;
         }
+    }
+
+    void Update()
+    {
+        ActivatedCheck(false);
     }
 
     void ActivatedCheck(bool dummy)

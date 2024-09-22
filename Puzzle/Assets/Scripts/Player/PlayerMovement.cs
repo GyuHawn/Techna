@@ -155,7 +155,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FunctionLever()
     {
-        if (checkLever && Input.GetButtonDown("lever")) // 레버 작동
+        if (checkLever && Input.GetButtonDown("Lever")) // 레버 작동
         {
             if (currentLever != null)
             {

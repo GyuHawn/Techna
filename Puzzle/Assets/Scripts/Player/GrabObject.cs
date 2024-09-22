@@ -49,8 +49,17 @@ public class GrabObject : MonoBehaviour
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, grabRange))
         {
             if (hit.collider.CompareTag("GrabObject")) // 태그 확인
-            {
+            {             
                 grabbedObject = hit.transform; // 잡은 물체 설정
+
+                CheckObjectInfor obj = grabbedObject.GetComponent<CheckObjectInfor>();
+                
+                if(obj.weight >= 2) // 일정 무게 이상 들수 없도록
+                {
+                    grabbedObject = null;
+                    return;
+                }
+
                 SetObjectPosition(grabbedObject, holdOffset); // 물체 위치 설정
 
                 // 회전 고정

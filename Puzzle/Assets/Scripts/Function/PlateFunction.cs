@@ -41,7 +41,7 @@ public class PlateFunction : MonoBehaviour
                 UpdateColor();
             }
         }
-        else // 아닐시 태그 확인
+        else if(!checkPlate) // 아닐시 태그 확인
         {
             if (collision.gameObject.CompareTag("GrabObject"))
             {
