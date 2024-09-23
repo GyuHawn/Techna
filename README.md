@@ -1,1 +1,1 @@
-# GameProject
+# Techna
