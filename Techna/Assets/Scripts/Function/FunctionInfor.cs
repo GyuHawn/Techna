@@ -6,7 +6,6 @@ using TMPro;
 public class FunctionInfor : MonoBehaviour
 {
     public string infor; // 정보
-    public GameObject inforUI; // 정보 UI
     public TMP_Text inforText; // 정보 텍스트
     public int textSize; // 텍스트 사이즈
     public Color textColor; // 텍스트 색
@@ -50,7 +49,6 @@ public class FunctionInfor : MonoBehaviour
 
     private void DisplayInfoUI() // 정보 표시
     {
-        inforUI.SetActive(true);
         inforText.gameObject.SetActive(true);
         inforText.text = infor;
         inforText.fontSize = textSize;
@@ -58,7 +56,6 @@ public class FunctionInfor : MonoBehaviour
 
     private void HideInfoUI() // 정보 숨기기
     {
-        inforUI.SetActive(false);
         inforText.gameObject.SetActive(false);
         inforText.text = "";
     }
