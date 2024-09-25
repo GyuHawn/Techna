@@ -6,48 +6,26 @@ using UnityEngine.SceneManagement;
 
 public class GameStart : MonoBehaviour
 {
-    public TMP_Text continueText;
-    public TMP_Text newGameText;
-    public TMP_Text settingText;
-    public TMP_Text exitText;
+    public TMP_Text continueText; // 계속하기 텍스트
+    public TMP_Text newGameText; // 새게임 텍스트
+   
+    public TMP_Text exitText; // 종료 텍스트   
 
-    public GameObject settingUI;
-
-    public void NewGameStart()
+    public void NewGameStart() // 새게임 시작
     {
-        newGameText.color = Color.yellow;
-        SceneManager.LoadScene("Stage1");
+        newGameText.color = Color.yellow; // 색변경
+        SceneManager.LoadScene("Stage1"); // 씬 이동
     }
 
-    public void ContinueGame()
+    public void ContinueGame() // 계속하기
     {
         continueText.color = Color.yellow;
         // 세이브 파일 읽어와서 실행
     }
 
-    public void GameSetting()
-    {
-        settingText.color = Color.yellow;
-        settingUI.SetActive(true);
-        StartCoroutine(ResetTextColor(settingText));
-    }
-
-    public void CloseGameSetting()
-    {
-        settingUI.SetActive(false);
-    }
-
-    public void GameExit()
+    public void GameExit() // 게임 종료
     {
         exitText.color = Color.yellow;
         Application.Quit();
     }
-
-    IEnumerator ResetTextColor(TMP_Text text)
-    {
-        yield return new WaitForSeconds(1f);
-
-        text.color = Color.white;
-    }
-
 }

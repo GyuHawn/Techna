@@ -39,7 +39,7 @@ public class StageManager : MonoBehaviour
         switch (playerMovement.currentStage)
         {
             case 2:
-                StartCoroutine(LoadNextStageAsync("Stage2", new Vector3(1f, 4f, 35f), Quaternion.Euler(0, 180, 0)));
+                StartCoroutine(LoadNextStageAsync("Stage2", new Vector3(1f, 27f, 35f), Quaternion.Euler(0, 180, 0)));
                 previousStage = playerMovement.currentStage;
                 break;
                 // 다음 스테이지 추가 시 값 추가

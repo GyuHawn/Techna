@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: KGH
   productName: Techna
-  defaultCursor: {fileID: 2800000, guid: 17dabf789626827488a862b4439e3b82, type: 3}
+  defaultCursor: {fileID: 2800000, guid: ab5f2166e20852c4ba5ba5264a2bb89b, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
@@ -283,7 +283,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 17dabf789626827488a862b4439e3b82, type: 3}
+      m_Icon: {fileID: 2800000, guid: e7ef461c04b4dff41b5d99e111808e33, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0

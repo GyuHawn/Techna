@@ -7,11 +7,11 @@ public class ObjectExpansion : MonoBehaviour
     public ExpansionConversion gun; // 보석 상태 확인
     public float scaleChangeDuration; // 스케일 변화 시간
     public float freezeDuration; // 오브젝트 고정 시간
+    private bool isScaling = false; // 크기 변화 중인지 여부를 추적하는 변수
 
     private void Start()
     {
         gun = GameObject.Find("Gun").GetComponent<ExpansionConversion>();
-
         scaleChangeDuration = 2f;
         freezeDuration = 3f;
     }
@@ -26,12 +26,13 @@ public class ObjectExpansion : MonoBehaviour
                 // 오브젝트의 크기 증감
                 HandleCollision();
             }
-            else { }
         }
     }
 
-    void HandleCollision() // 크기 증감중 포지션 및 회전 고정, 오브젝트 최대 증감 값 확인
+    void HandleCollision() // 크기 증감 중 포지션 및 회전 고정, 오브젝트 최대 증감 값 확인
     {
+        if (isScaling) return; // 이미 크기 변화 중이면 함수 종료
+
         // 위치, 회전 저장
         Vector3 originalPosition = gameObject.transform.position;
         Quaternion originalRotation = gameObject.transform.rotation;
@@ -43,6 +44,7 @@ public class ObjectExpansion : MonoBehaviour
             if (check.currentValue < check.expansValue)
             {
                 check.currentValue++;
+                isScaling = true; // 크기 변화 시작
                 StartCoroutine(ScaleOverTime(gameObject, gameObject.transform.localScale * 2));
                 check.weight = check.weight * 2;
             }
@@ -52,6 +54,7 @@ public class ObjectExpansion : MonoBehaviour
             if (check.currentValue > check.reducedValue)
             {
                 check.currentValue--;
+                isScaling = true; // 크기 변화 시작
                 StartCoroutine(ScaleOverTime(gameObject, gameObject.transform.localScale * 0.5f));
                 check.weight = check.weight * 0.5f;
             }
@@ -79,6 +82,7 @@ public class ObjectExpansion : MonoBehaviour
 
         // 최종 스케일 설정
         obj.transform.localScale = targetScale;
+        isScaling = false; // 크기 변화 완료
     }
 
     IEnumerator FixedPostion() // 포지션 고정
@@ -110,4 +114,3 @@ public class ObjectExpansion : MonoBehaviour
         }
     }
 }
-   
