@@ -17,7 +17,7 @@ public class ExpansionConversion : MonoBehaviour
     void Update()
     {
         // 보석 상태가 확장 보석(1.3f)일 때만 상태 변환 가능
-        if (gem.currentGemNum == 1.3f && Input.GetButtonDown("Expansion"))
+        if (gem.currentGemNum == 1.3f && Input.GetButtonDown("Expansion")) //
         {
             plus = !plus; // 상태를 반전
             SetState(plus); // 상태 적용

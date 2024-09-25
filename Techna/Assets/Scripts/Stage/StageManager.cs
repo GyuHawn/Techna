@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviour
 {
@@ -24,37 +25,50 @@ public class StageManager : MonoBehaviour
         previousStage = playerMovement.currentStage; // 스테이지 값 초기화
     }
 
-    void Update()
+    private void Update()
     {
         if (playerMovement.currentStage != previousStage)
         {
-            NextStageSetting(); // 스테이지에 따른 플레이어 스테이지 값 설정 오브젝트 
-            previousStage = playerMovement.currentStage; // 이전 스테이지 값 갱신
+            NextStageSetting();
         }
     }
 
-    void NextStageSetting() // 다음 스테이지 이동시 스테이지 세팅
+    // 비동기적으로 씬을 로드하고, 로딩이 완료된 후 플레이어 이동
+    void NextStageSetting()
     {
         switch (playerMovement.currentStage)
         {
             case 2:
-                MovePlayer(new Vector3(-400f, 4, -375), Quaternion.Euler(0, 180, 0));
-                playerMovement.currentStage = 0;
-                stageSetting[0].SetActive(false);
-                stageSetting[1].SetActive(true);
+                StartCoroutine(LoadNextStageAsync("Stage2", new Vector3(1f, 4f, 35f), Quaternion.Euler(0, 180, 0)));
+                previousStage = playerMovement.currentStage;
                 break;
-             // 다음 스테이지 추가 시 값 추가
+                // 다음 스테이지 추가 시 값 추가
         }
+    }
+
+    // 비동기 씬 로딩 코루틴
+    IEnumerator LoadNextStageAsync(string sceneName, Vector3 position, Quaternion rotation)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+
+        // 씬 로딩이 완료될 때까지 대기
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        // 씬 로딩 완료 후 플레이어 이동
+        MovePlayer(position, rotation);
     }
 
     void MovePlayer(Vector3 position, Quaternion rotation)
     {
         if (controller != null)
         {
-            controller.enabled = false;
-            player.transform.position = position;
-            player.transform.rotation = rotation;
-            controller.enabled = true;
+            controller.enabled = false; // 이동 전에 CharacterController 비활성화
+            player.transform.position = position; // 새로운 위치 설정
+            player.transform.rotation = rotation; // 새로운 회전 설정
+            controller.enabled = true; // 위치 설정 후 CharacterController 다시 활성화
         }
     }
 }

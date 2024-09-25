@@ -16,7 +16,7 @@ public class GameStart : MonoBehaviour
     public void NewGameStart()
     {
         newGameText.color = Color.yellow;
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Stage1");
     }
 
     public void ContinueGame()

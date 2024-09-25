@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
+using System.Security.Cryptography;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -45,17 +47,26 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
     private float gravity = -9.81f; // 중력
 
-    private PlayableDirector pd;
+    public PlayableDirector pd;
     public GameObject canvasCamera;
+
+    private void Awake()
+    {
+        // 씬에 따라 타임라인 세팅
+        PlayableDirectorSetting();        
+    }
 
     void Start()
     {
-        pd = GetComponent<PlayableDirector>();
+        NullObjectFind(); // 오브젝트 찾기
+
         controller = GetComponent<CharacterController>();
 
         // 타임라인 종료 이벤트 추가
         pd.stopped += OnTimelineStopped;
         StartCinemachine();
+
+        currentStage = 1;
 
         moveSpeed = 12f;
         mouseSensitivity = 100f;
@@ -63,10 +74,25 @@ public class PlayerMovement : MonoBehaviour
 
         maxHealth = 100;
         currentHealth = maxHealth;
-
         damage = 3;
 
         gunOffset = new Vector3(0, 1.2f, 0);
+    }
+
+    void PlayableDirectorSetting()
+    {
+        // 현재 씬 이름 확인
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        // 씬 이름에 따라 타임라인 배열에서 타임라인 선택 및 재생/정지
+        if (currentScene == "Stage1")
+        {
+            pd.Play();  // Stage1일 경우 타임라인 시작
+        }
+        else
+        {
+            pd.Stop();  // 다른 스테이지에서는 타임라인 중지
+        }
     }
 
     void StartCinemachine()
@@ -74,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
         moving = false;
         canvasCamera.SetActive(false);
     }
+
     // 타임라인 종료 시 호출되는 함수
     void OnTimelineStopped(PlayableDirector director)
     {
@@ -84,8 +111,18 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void NullObjectFind() // 오브젝트 찾기
+    {
+        if (canvasCamera == null)
+        {
+            canvasCamera = GameObject.Find("CanvasCamera");
+        }
+    }
+
     void Update()
     {
+        NullObjectFind(); // 오브젝트 찾기
+
         if (moving)
         {
             GetInput(); // 키입력
@@ -199,7 +236,7 @@ public class PlayerMovement : MonoBehaviour
 
     void UPdateInfor()
     {
-        healthText.text = "HP " + currentHealth.ToString() + " / " + maxHealth.ToString();
+        healthText.text = "HP " + currentHealth.ToString() + " / " + maxHealth.ToString(); //
 
         // 현재 체력을 최대 체력으로 나눈 비율을 체력 바의 Fill Amount로 설정
         float healthPercentage = (float)currentHealth / maxHealth;
