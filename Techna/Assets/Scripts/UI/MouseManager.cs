@@ -1,27 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MouseManager : MonoBehaviour
 {
     public bool isCursorVisible; // 마우스 커서 활성화 여부
-    
     public Sprite[] crossHairs; // 조준점 배열
     public GameObject crossHair; // 조준점
 
-    void Start()
+    private PlayerInputActions inputActions; // Input Actions 
+
+    void Awake()
     {
-        // 커서 숨김 및 잠금 상태 설정
-        SetCursorState(false);
+        inputActions = new PlayerInputActions(); // Input Actions 초기화
     }
 
-    void Update()
+    private void Start()
     {
-        // 마우스 커서 활성화 여부를 토글
-        if (Input.GetButtonDown("CursorHide"))
-        {
-            SetCursorState(!isCursorVisible);
-        }
+        Cursor.visible = isCursorVisible;
+    }
+
+    void OnEnable()
+    {
+        inputActions.Enable(); // Input Actions 활성화
+        inputActions.UI.Cursor.performed += ctx => ToggleCursor(); // CursorHide 액션과 메서드 연결
+    }
+
+    void OnDisable()
+    {
+        inputActions.Disable(); // Input Actions 비활성화
+    }
+
+    // 커서 활성화 상태 토글 함수
+    private void ToggleCursor()
+    {
+        SetCursorState(!isCursorVisible);
     }
 
     // 커서 활성화 상태 설정 함수

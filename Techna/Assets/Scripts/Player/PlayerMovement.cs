@@ -5,8 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
-using System.Security.Cryptography;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -27,11 +27,10 @@ public class PlayerMovement : MonoBehaviour
     public bool hit; // 피격 가능 여부
 
     // 키입력
-    private float hAxis;
-    private float vAxis;
-    private float rotationY;
     private bool isGrounded; // 점프 여부
+    private Vector3 moveDirection; // 이동 관련
     private Vector3 velocity; // 중력 및 이동속도 관리
+    private float rotationY;
 
     // 총위치
     public Transform gunPos;
@@ -49,11 +48,26 @@ public class PlayerMovement : MonoBehaviour
 
     public PlayableDirector pd;
     public GameObject canvasCamera;
+    public MeshRenderer[] deactivateMesh; // 타임라인중 비활성화할 오브젝트
+
+    private PlayerInputActions inputActions; // Input Actions 변수
 
     private void Awake()
     {
+        inputActions = new PlayerInputActions(); // Input Actions 초기화
+
         // 씬에 따라 타임라인 세팅
-        PlayableDirectorSetting();        
+        PlayableDirectorSetting();
+    }
+
+    private void OnEnable()
+    {
+        inputActions.Enable(); // Input Actions 활성화
+    }
+
+    private void OnDisable()
+    {
+        inputActions.Disable(); // Input Actions 비활성화
     }
 
     void Start()
@@ -69,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
         currentStage = 1;
 
         moveSpeed = 12f;
-        mouseSensitivity = 100f;
+        mouseSensitivity = 10f;
         jumpPower = 2f;
 
         maxHealth = 100;
@@ -77,6 +91,11 @@ public class PlayerMovement : MonoBehaviour
         damage = 3;
 
         gunOffset = new Vector3(0, 1.2f, 0);
+
+        // Input Actions에 메서드 연결
+        inputActions.PlayerActions.Move.performed += OnMove; // Move 입력 연결
+        inputActions.PlayerActions.Look.performed += OnLook; // Look 입력 연결
+        inputActions.PlayerActions.Jump.performed += OnJump; // Jump 입력 연결
     }
 
     void PlayableDirectorSetting()
@@ -108,6 +127,15 @@ public class PlayerMovement : MonoBehaviour
         {
             moving = true; // 이동 가능 상태로 변경
             canvasCamera.SetActive(true); // 캔버스 카메라 활성화
+
+            // deactivateMesh의 메쉬 렌더러 활성화
+            foreach (MeshRenderer meshRenderer in deactivateMesh)
+            {
+                if (meshRenderer != null)
+                {
+                    meshRenderer.enabled = true; // 메쉬 렌더러 활성화
+                }
+            }
         }
     }
 
@@ -125,19 +153,49 @@ public class PlayerMovement : MonoBehaviour
 
         if (moving)
         {
-            GetInput(); // 키입력
             Move(); // 이동
-            Rotate(); // 회전
-            Jump(); // 점프 및 중력 처리
         }
 
         UpdateGunPosition(); // 총 위치 설정
-
         FunctionLever(); // 레버 작동
-
         UPdateInfor(); // 플레이어 정보 업데이트
-
         ApplyPlatformMovement(); // 이동 발판의 이동값 적용
+    }
+
+    // Input System을 통한 이동
+    private void OnMove(InputAction.CallbackContext context)
+    {
+        Vector2 input = context.ReadValue<Vector2>();
+
+        // 이동 방향 계산
+        moveDirection = transform.right * input.x + transform.forward * input.y;
+
+        if (context.canceled) // 입력이 해제되면
+        {
+            moveDirection = Vector3.zero; // 이동 방향을 0으로 설정
+        }
+    }
+
+    private void OnLook(InputAction.CallbackContext context)
+    {
+        Vector2 lookInput = context.ReadValue<Vector2>();
+
+        float mouseX = lookInput.x * mouseSensitivity * Time.deltaTime;
+        float mouseY = lookInput.y * mouseSensitivity * Time.deltaTime;
+
+        rotationY -= mouseY;
+        rotationY = Mathf.Clamp(rotationY, -90f, 90f); // 상하 회전 제한
+
+        transform.Rotate(Vector3.up * mouseX); // 좌우 회전
+        Camera.main.transform.localRotation = Quaternion.Euler(rotationY, 0f, 0f); // 카메라 상하 회전
+    }
+
+    private void OnJump(InputAction.CallbackContext context)
+    {
+        if (controller.isGrounded && context.performed)
+        {
+            velocity.y = Mathf.Sqrt(jumpPower * -2f * gravity);
+        }
     }
 
     public void ApplyJump(Vector3 jump)
@@ -150,17 +208,9 @@ public class PlayerMovement : MonoBehaviour
         // 만약 이동 발판 위에 있다면
         if (movingPlatform != null)
         {
-            // 이동 발판의 현재 위치와 이전 위치의 차이를 계산하여 이동 값으로 사용
             Vector3 platformMovement = movingPlatform.position - lastPlatformPosition;
-
-            // 플레이어에게 이동 발판의 이동 값을 추가
             controller.Move(platformMovement);
-
-            // 마지막 위치를 현재 위치로 갱신
-            if(movingPlatform != null)
-            {
-                lastPlatformPosition = movingPlatform.position;
-            }
+            lastPlatformPosition = movingPlatform.position;
         }
     }
 
@@ -169,59 +219,14 @@ public class PlayerMovement : MonoBehaviour
         gunPos.position = gameObject.transform.position + gunOffset; // 플레이어 위치에 오프셋 적용
     }
 
-    void GetInput() // 키입력
-    {
-        hAxis = Input.GetAxis("Horizontal");
-        vAxis = Input.GetAxis("Vertical");
-    }
-
     void Move() // 이동
     {
-        Vector3 moveDirection = transform.right * hAxis + transform.forward * vAxis;
         controller.Move(moveDirection * moveSpeed * Time.deltaTime);
-    }
-
-    void Rotate() // 회전
-    {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-
-        transform.Rotate(Vector3.up * mouseX);
-
-        rotationY -= mouseY;
-        rotationY = Mathf.Clamp(rotationY, -90f, 90f);
-        Camera.main.transform.localRotation = Quaternion.Euler(rotationY, 0f, 0f);
-
-        gunPos.localRotation = Camera.main.transform.localRotation;
-    }
-
-    void Jump() // 점프 및 중력 처리
-    {
-        if (controller.isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f; // 바닥에 닿으면 속도 초기화
-            isGrounded = true;
-        }
-
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpPower * -2f * gravity);
-            isGrounded = false;
-
-            if (movingPlatform != null)
-            {
-                movingPlatform = null;
-            }
-        }
-
-        velocity.y += gravity * Time.deltaTime; // 중력 적용
-        controller.Move(velocity * Time.deltaTime); // 중력에 따른 이동
-
     }
 
     void FunctionLever()
     {
-        if (checkLever && Input.GetButtonDown("Lever")) // 레버 작동
+        if (checkLever && Input.GetButtonDown("Function")) // 레버 작동
         {
             if (currentLever != null)
             {
@@ -262,12 +267,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if (movingPlatform != null)
-            {
-                movingPlatform = null;
-            }
+            movingPlatform = null;
         }
-
     }
 
 

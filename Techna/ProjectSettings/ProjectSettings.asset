@@ -158,7 +158,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Standalone: com.DefaultCompany.My-project
+    Standalone: com.KGH.Techna
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -957,7 +957,7 @@ PlayerSettings:
   hmiLogStartupTiming: 0
   hmiCpuConfiguration: 
   apiCompatibilityLevel: 6
-  activeInputHandler: 0
+  activeInputHandler: 1
   windowsGamepadBackendHint: 0
   cloudProjectId: 1e475635-a906-4124-9e9e-97bcf6e5ea13
   framebufferDepthMemorylessMode: 0
