@@ -1,64 +1,47 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class GemUI : MonoBehaviour
 {
     private GemCombination gemCombination;
     private GemManager gemManager;
 
-    public GameObject bulletUI;
-    public GameObject bulletMenuUI;
-    public GameObject bulletGemUI;
-    public GameObject[] currentBullet;
+    public GameObject bulletUI; // 총알 보석 UI  
+    public GameObject bulletMenuUI; // 총알 메뉴 UI  
+    public GameObject bulletGemUI; // 개별 총알 보석 UI  
+    public GameObject[] currentBullet; // 현재 총알 UI
 
-    public GameObject attributeUI;
-    public GameObject attributeMenuUI;
-    public GameObject[] attributeGemUI;
-    public GameObject[] currentAttribute;
+    public GameObject attributeUI; // 속성 보석
+    public GameObject attributeMenuUI; // 속성 메뉴 UI
+    public GameObject[] attributeGemUI; // 개별 속성 보석
+    public GameObject[] currentAttribute; // 현재 속성 UI
 
-    public GameObject functionUI;
-    public GameObject functionMenuUI;
-    public GameObject[] functionGemUI;
-    public GameObject[] currentFunction;
+    public GameObject functionUI; // 기능 보석
+    public GameObject functionMenuUI; // 기능 메뉴 UI
+    public GameObject[] functionGemUI; // 개별 기능 보석
+    public GameObject[] currentFunction; // 현재 기능 UI
 
     public int selectGemNum;
 
+    // 각 활성화 여부
     private bool selectBullet;
 
-    private PlayerInputActions inputActions; // Input System 액션
 
     private void Awake()
     {
         gemCombination = FindObjectOfType<GemCombination>();
         gemManager = FindObjectOfType<GemManager>();
-
-        // Input System 초기화
-        inputActions = new PlayerInputActions();
-    }
-
-    private void OnEnable()
-    {
-        inputActions.Enable();
-
-        // UI 액션 맵 내의 액션들과 연결
-        inputActions.UI.Menu1.performed += ctx => ToggleMenu(bulletMenuUI, 1);
-        inputActions.UI.Menu2.performed += ctx => ToggleMenu(attributeMenuUI, 2);
-        inputActions.UI.Menu3.performed += ctx => ToggleMenu(functionMenuUI, 3);
-    }
-
-
-    private void OnDisable()
-    {
-        inputActions.Disable();
     }
 
     void Update()
     {
         if (!selectBullet) // 총알, 속성, 기능 메뉴 중 선택
         {
-            // UI 열고 닫기
+            // 키 입력에 따른 UI 열고 닫기
+            OpenGemUI();
         }
         else if (selectBullet) // 선택한 메뉴 안에서 선택지 선택
         {
@@ -66,6 +49,15 @@ public class GemUI : MonoBehaviour
         }
     }
 
+    void OpenGemUI() // 1번키, 메뉴, 선택값
+    {
+        if (Input.GetButtonDown("1"))
+            ToggleMenu(bulletMenuUI, 1);
+        if (Input.GetButtonDown("2"))
+            ToggleMenu(attributeMenuUI, 2);
+        if (Input.GetButtonDown("3"))
+            ToggleMenu(functionMenuUI, 3);
+    }
     private void ToggleMenu(GameObject menuUI, int menuNum)
     {
         selectBullet = true;
@@ -74,7 +66,7 @@ public class GemUI : MonoBehaviour
         selectGemNum = menuNum; // 선택한 메뉴 값
     }
 
-    public void ActivateGemUI()
+    public void ActivateGemUI() // 상태에 따른 UI 활성화
     {
         bulletGemUI.SetActive(gemManager.onLarge);
 
@@ -90,11 +82,11 @@ public class GemUI : MonoBehaviour
         functionGemUI[4].SetActive(gemManager.onQuick);
     }
 
-    private void SelectFunction()
+    private void SelectFunction() // 기능 선택
     {
         if (selectGemNum == 1)
         {
-            SelectOption(ref gemCombination.selectBulletNum, 2);
+            SelectOption(ref gemCombination.selectBulletNum, 2); // 선택 메뉴, 전달할 변수, 선택지
         }
         else if (selectGemNum == 2)
         {
@@ -106,11 +98,11 @@ public class GemUI : MonoBehaviour
         }
     }
 
-    private void SelectOption(ref int selectedFunction, int choiceNum)
+    private void SelectOption(ref int selectedFunction, int choiceNum) // 메뉴 내 선택지 처리
     {
         for (int i = 1; i <= choiceNum; i++)
         {
-            if (inputActions.UI.SelectOption.triggered)
+            if (Input.GetKeyDown(KeyCode.Alpha1 + (i - 1)))
             {
                 selectedFunction = i;
                 CurrentGemUI(selectedFunction - 1);
@@ -118,6 +110,12 @@ public class GemUI : MonoBehaviour
                 ConfirmSelection();
                 return;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1 + choiceNum)) // 마지막 선택지를 0으로 처리
+        {
+            selectedFunction = 0;
+            ResetCurrentGemUI();
+            ConfirmSelection();
         }
     }
 
@@ -148,6 +146,31 @@ public class GemUI : MonoBehaviour
             currentFunction[num].SetActive(true);
         }
     }
+    void ResetCurrentGemUI()
+    {
+        if (selectGemNum == 1)
+        {
+            for (int i = 0; i < currentBullet.Length; i++)
+            {
+                currentBullet[i].SetActive(false);
+            }
+            currentBullet[0].SetActive(true);
+        }
+        else if (selectGemNum == 2)
+        {
+            for (int i = 0; i < currentAttribute.Length; i++)
+            {
+                currentAttribute[i].SetActive(false);
+            }
+        }
+        else if (selectGemNum == 3)
+        {
+            for (int i = 0; i < currentFunction.Length; i++)
+            {
+                currentFunction[i].SetActive(false);
+            }
+        }
+    }
 
     void CheckCurrentGem()
     {
@@ -169,20 +192,21 @@ public class GemUI : MonoBehaviour
         if (!gemManager.onQuick) currentFunction[4].SetActive(false);
     }
 
-    private void ConfirmSelection()
+    private void ConfirmSelection() // 선택 확인 처리
     {
         selectBullet = false;
         ResetUIStates();
     }
 
-    private void ResetUIStates()
+    private void ResetUIStates()  // 모든 UI 상태 초기화 및 닫기
     {
+        // 메뉴 초기화
         bulletMenuUI.SetActive(false);
         attributeMenuUI.SetActive(false);
         functionMenuUI.SetActive(false);
     }
 
-    public void CombinationFailedUI()
+    public void CombinationFailedUI() // 조합 실패시 UI 상태 처리
     {
         currentBullet[0].SetActive(true);
         currentBullet[1].SetActive(false);
@@ -191,7 +215,6 @@ public class GemUI : MonoBehaviour
         {
             attribute.SetActive(false);
         }
-
         foreach (var function in currentFunction)
         {
             function.SetActive(false);

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class ProjectilesScript : MonoBehaviour
 {
@@ -34,8 +33,7 @@ public class ProjectilesScript : MonoBehaviour
     {
         if (playerMovement.moving)
         {
-            // Input System을 사용하여 마우스 클릭 확인
-            if (Mouse.current.leftButton.isPressed && Time.time >= timeToFire && !mouseManager.isCursorVisible)
+            if (Input.GetMouseButton(0) && Time.time >= timeToFire && !mouseManager.isCursorVisible) // 마우스 클릭 & 발사시간o & 커서 비활성화 중
             {
                 timeToFire = Time.time + 1f / effectToSpawn.GetComponent<ProjectileMoveScript>().fireRate; // 발사 시간 업데이트
                 ShotBullet(); // 효과 생성
