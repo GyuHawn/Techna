@@ -23,11 +23,26 @@ public class GemInfor : MonoBehaviour
         {
             infor = infor.Replace(@"\n", "\n");
         }
+    }
 
-        if (inforText != null)
+    private void Update()
+    {
+        FindNullObject();
+    }
+
+    void FindNullObject()
+    {
+        if (gemManager == null)
         {
-            
-            inforText.gameObject.SetActive(false); // 시작 시 비활성화
+            gemManager = FindObjectOfType<GemManager>();
+        }
+
+        if (gemInfor)
+        {
+            if (inforText == null)
+            {
+                inforText = GameObject.Find("GemInforText").GetComponent<TMP_Text>();
+            }
         }
     }
 
@@ -63,7 +78,6 @@ public class GemInfor : MonoBehaviour
 
     private void DisplayInfoUI() // 정보 표시
     {
-        inforText.gameObject.SetActive(true);
         inforText.color = textColor; // 색상 설정
         inforText.text = infor;
         inforText.fontSize = textSize;
@@ -71,7 +85,6 @@ public class GemInfor : MonoBehaviour
 
     private void HideInfoUI() // 정보 숨기기
     {
-        inforText.gameObject.SetActive(false);
         inforText.color = Color.white;
         inforText.text = "";
     }

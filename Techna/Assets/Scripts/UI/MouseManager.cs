@@ -18,7 +18,7 @@ public class MouseManager : MonoBehaviour
 
     private void Start()
     {
-        Cursor.visible = isCursorVisible;
+        SetCursorState(isCursorVisible); // 시작 시 커서 상태 설정
     }
 
     void OnEnable()

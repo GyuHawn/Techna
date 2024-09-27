@@ -22,7 +22,6 @@ public class FunctionInfor : MonoBehaviour
         if (inforText != null)
         {
             inforText.color = textColor; // 색상 설정
-            inforText.gameObject.SetActive(false); // 시작 시 비활성화
         }
     }
 
@@ -49,14 +48,12 @@ public class FunctionInfor : MonoBehaviour
 
     private void DisplayInfoUI() // 정보 표시
     {
-        inforText.gameObject.SetActive(true);
         inforText.text = infor;
         inforText.fontSize = textSize;
     }
 
     private void HideInfoUI() // 정보 숨기기
     {
-        inforText.gameObject.SetActive(false);
         inforText.text = "";
     }
 }
