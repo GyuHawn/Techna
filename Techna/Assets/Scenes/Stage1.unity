@@ -17060,6 +17060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingManager: {fileID: 754743305}
+  mouseManager: {fileID: 454120421}
   pausedUI: {fileID: 1425589556}
   onPaused: 0
 --- !u!1001 &393995428

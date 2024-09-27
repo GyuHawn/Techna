@@ -119,7 +119,7 @@ public class GemUI : MonoBehaviour
         }
     }
 
-    void CurrentGemUI(int num)
+    void CurrentGemUI(int num) // 현재 보석 UI
     {
         if (selectGemNum == 1)
         {
@@ -146,7 +146,7 @@ public class GemUI : MonoBehaviour
             currentFunction[num].SetActive(true);
         }
     }
-    void ResetCurrentGemUI()
+    void ResetCurrentGemUI() // 현재 보석 초기화
     {
         if (selectGemNum == 1)
         {
@@ -172,7 +172,7 @@ public class GemUI : MonoBehaviour
         }
     }
 
-    void CheckCurrentGem()
+    void CheckCurrentGem() // 현재 보석 확인
     {
         if (!gemManager.onLarge)
         {

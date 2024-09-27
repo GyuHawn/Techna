@@ -27,10 +27,10 @@ public class GemInfor : MonoBehaviour
 
     private void Update()
     {
-        FindNullObject();
+        FindNullObject(); // 빠진 오브젝트 찾기
     }
 
-    void FindNullObject()
+    void FindNullObject() // 빠진 오브젝트 찾기
     {
         if (gemManager == null)
         {
