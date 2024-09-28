@@ -19,7 +19,7 @@ public class PausedManager : MonoBehaviour
             settingManager.settingUI.SetActive(false); // 세팅 메뉴 닫기
             onPaused = !onPaused; // 정지 여부 변경
 
-            mouseManager.isCursorVisible = true; // 커서 활성화
+            mouseManager.SetCursorState(!mouseManager.isCursorVisible); // 커서 활성화
 
             PauseGame(); // 게임 정지
         }
@@ -31,7 +31,7 @@ public class PausedManager : MonoBehaviour
         settingManager.settingUI.SetActive(false); // 세팅 메뉴 닫기
         onPaused = !onPaused; // 정지 여부 변경
 
-        mouseManager.isCursorVisible = false; // 커서 비활성화
+        mouseManager.SetCursorState(!mouseManager.isCursorVisible); // 커서 비활성화
 
         PauseGame(); // 게임 진행
     }

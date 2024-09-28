@@ -67,23 +67,53 @@ public class ObjectExpansion : MonoBehaviour
         gameObject.transform.rotation = originalRotation;
     }
 
-    IEnumerator ScaleOverTime(GameObject obj, Vector3 targetScale) // 크기 증감
+    IEnumerator ScaleOverTime(GameObject obj, Vector3 targetScale)
     {
-        Vector3 initialScale = obj.transform.localScale;
-        float elapsed = 0f;
+        Vector3 initialScale = obj.transform.localScale;  // 오브젝트 초기 스케일 저장
+        float initialYPos = obj.transform.position.y;  // 오브젝트 초기 Y 위치값 저장
+        float elapsed = 0f;  // 경과 시간을 추적
+
+        Rigidbody rb = obj.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = true;  // 물리 상호작용을 멈춤
+        }
 
         while (elapsed < scaleChangeDuration)
         {
-            float progress = elapsed / scaleChangeDuration;
+            float progress = elapsed / scaleChangeDuration;  // 스케일 변화 진행도 계산
+
+            // 스케일을 초기 스케일에서 목표 스케일까지 보간하여 점진적으로 변화
             obj.transform.localScale = Vector3.Lerp(initialScale, targetScale, progress);
-            elapsed += Time.deltaTime;
+
+            // 현재 스케일의 Y값을 가져와서 스케일 변화량을 계산
+            float currentScaleY = obj.transform.localScale.y;
+            float scaleChangeY = currentScaleY - initialScale.y;
+
+            // Y축 위치를 현재 스케일 변화에 맞춰서 절반+1 만큼 올림
+            obj.transform.position = new Vector3(obj.transform.position.x, initialYPos + ((scaleChangeY / 2) + 1), obj.transform.position.z);
+
+            elapsed += Time.deltaTime;  // 경과 시간 업데이트
             yield return null;
         }
 
-        // 최종 스케일 설정
+        // 최종 스케일을 목표 스케일로 설정
         obj.transform.localScale = targetScale;
-        isScaling = false; // 크기 변화 완료
+
+        // 최종 스케일 변화량을 기반으로 Y 위치를 조정
+        float finalScaleChangeY = targetScale.y - initialScale.y;
+        obj.transform.position = new Vector3(obj.transform.position.x, initialYPos + (finalScaleChangeY / 2), obj.transform.position.z);
+
+        // 물리 상호작용을 복원
+        if (rb != null)
+        {
+            rb.isKinematic = false;  // 물리 상호작용을 다시 활성화
+        }
+
+        isScaling = false;  // 스케일 변화가 완료 표시
     }
+
+
 
     IEnumerator FixedPostion() // 포지션 고정
     {

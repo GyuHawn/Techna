@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
         moveSpeed = 10f;
         mouseSensitivity = 100f;
-        jumpPower = 2f;
+        jumpPower = 1.5f;
 
         maxHealth = 100;
         currentHealth = maxHealth;
@@ -83,14 +83,13 @@ public class PlayerMovement : MonoBehaviour
         // 현재 씬 이름 확인
         string currentScene = SceneManager.GetActiveScene().name;
 
-        // 씬 이름에 따라 타임라인 배열에서 타임라인 선택 및 재생/정지
         if (currentScene == "Stage1")
         {
-            pd.Play();  // Stage1일 경우 타임라인 시작
+            pd.Play();  // 타임라인 시작
         }
         else
         {
-            pd.Stop();  // 다른 스테이지에서는 타임라인 중지
+            pd.Stop();  // 타임라인 중지
         }
     }
 
@@ -100,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
         canvasCamera.SetActive(false);
     }
 
-    // 타임라인 종료 시 호출되는 함수
+    // 타임라인 종료 시
     void OnTimelineStopped(PlayableDirector director)
     {
         if (director == pd)
@@ -144,18 +143,15 @@ public class PlayerMovement : MonoBehaviour
         velocity = jump;
     }
 
-    void ApplyPlatformMovement()
+    void ApplyPlatformMovement() // 이동 발판위에 있을 시 함께 이동
     {
-        // 만약 이동 발판 위에 있다면
         if (movingPlatform != null)
         {
-            // 이동 발판의 현재 위치와 이전 위치의 차이를 계산하여 이동 값으로 사용
+
             Vector3 platformMovement = movingPlatform.position - lastPlatformPosition;
 
-            // 플레이어에게 이동 발판의 이동 값을 추가
             controller.Move(platformMovement);
 
-            // 마지막 위치를 현재 위치로 갱신
             if (movingPlatform != null)
             {
                 lastPlatformPosition = movingPlatform.position;
@@ -176,8 +172,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Move() // 이동
     {
-        moveDirection = transform.right * hAxis + transform.forward * vAxis;
-         controller.Move(moveDirection * moveSpeed * Time.deltaTime);
+        moveDirection = (transform.right * hAxis + transform.forward * vAxis).normalized;
         controller.Move(moveDirection * moveSpeed * Time.deltaTime);
     }
 

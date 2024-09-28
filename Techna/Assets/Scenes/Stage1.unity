@@ -74490,11 +74490,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 3184062722826845371}
   onLarge: 0
-  onControl: 1
-  onElectricity: 1
+  onControl: 0
+  onElectricity: 0
   onExpansion: 1
-  onGravity: 1
-  onDestruction: 1
+  onGravity: 0
+  onDestruction: 0
   onPenetrate: 0
   onDiffusion: 0
   onUpgrade: 0
@@ -87046,7 +87046,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6224239875405620, guid: dfb992d285b3ac845ab946b8e363f18f, type: 3}
       propertyPath: m_StepOffset
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 117294451913188788, guid: dfb992d285b3ac845ab946b8e363f18f, type: 3}
       propertyPath: m_Enabled
@@ -87219,6 +87219,10 @@ PrefabInstance:
     - target: {fileID: 7555628364048250571, guid: dfb992d285b3ac845ab946b8e363f18f, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772416671682099070, guid: dfb992d285b3ac845ab946b8e363f18f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8889523289140647497, guid: dfb992d285b3ac845ab946b8e363f18f, type: 3}
       propertyPath: m_LocalPosition.y

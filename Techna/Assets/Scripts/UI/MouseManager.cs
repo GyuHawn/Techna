@@ -12,7 +12,7 @@ public class MouseManager : MonoBehaviour
     void Start()
     {
         // 커서 숨김 및 잠금 상태 설정
-        SetCursorState(false);
+        SetCursorState(isCursorVisible);
     }
 
     void Update()
@@ -25,7 +25,7 @@ public class MouseManager : MonoBehaviour
     }
 
     // 커서 활성화 상태 설정 함수
-    private void SetCursorState(bool isVisible)
+    public void SetCursorState(bool isVisible)
     {
         isCursorVisible = isVisible;
         Cursor.visible = isCursorVisible;
