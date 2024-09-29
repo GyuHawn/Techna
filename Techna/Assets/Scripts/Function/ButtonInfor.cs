@@ -21,7 +21,7 @@ public class ButtonInfor : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Bullet")) // 총알 충돌시 재질 변경
+        if (collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("Expansion")) // 총알 충돌시 재질 변경
         {
             if(controller != null) 
             {

@@ -22,6 +22,7 @@ public class MovingObject : MonoBehaviour
     public bool electrictyObj; // 전기 인지
     public bool digitalLockObj; // 전자 잠금장치 인지
     public bool keyLockObj; // 키 잠금장치 인지
+    public bool playerObj; // 플레이어 인지
 
     private Vector3 currentPosition; // 초기 위치
     private Vector3 targetPosition; // 목표 위치
@@ -187,6 +188,11 @@ public class MovingObject : MonoBehaviour
         {
             KeyLock keyLockFunction = checkObj.GetComponent<KeyLock>();
             return keyLockFunction != null && keyLockFunction.activate;
+        }
+        else if (playerObj)
+        {
+            PlayerCheck playerCheck = checkObj.GetComponent<PlayerCheck>();
+            return playerCheck != null && playerCheck.activate;
         }
         return false;
     }

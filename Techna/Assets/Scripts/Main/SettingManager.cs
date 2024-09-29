@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class SettingManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class SettingManager : MonoBehaviour
 
     public GameObject audioUI; // 오디오 메뉴
     public GameObject controlsUI; // 컨트롤 메뉴
+    public Scrollbar controlScrollbar; // 컨트롤 메뉴 스크롤 뷰
 
     private void Start()
     {
@@ -32,6 +34,7 @@ public class SettingManager : MonoBehaviour
                 settingText.color = Color.yellow; // 텍스트 색 변경
                 StartCoroutine(ResetTextColor(settingText)); // 텍스트 색 초기화
             }
+            
 
             onSettingUI = true; // 활성화
             settingUI.SetActive(true); // 세팅 메뉴 열기
@@ -72,5 +75,7 @@ public class SettingManager : MonoBehaviour
     {
         audioUI.SetActive(false);
         controlsUI.SetActive(true);
+
+        controlScrollbar.value = 1f;
     }  
 }

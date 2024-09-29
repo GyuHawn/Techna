@@ -10,8 +10,6 @@ public class StageManager : MonoBehaviour
 
     public GameObject player; // 플레이어
 
-    public GameObject[] stageSetting; // 스테이지 값 설정
-
     private int previousStage; // 이전 스테이지 값 저장
 
     private void Awake()
@@ -39,10 +37,14 @@ public class StageManager : MonoBehaviour
         switch (playerMovement.currentStage)
         {
             case 2:
-                StartCoroutine(LoadNextStageAsync("Stage2", new Vector3(1f, 27f, 35f), Quaternion.Euler(0, 180, 0)));
+               // StartCoroutine(LoadNextStageAsync("Stage2", new Vector3(1f, 27f, 35f), Quaternion.Euler(0, 180, 0)));
+                StartCoroutine(LoadNextStageAsync("Stage2", new Vector3(-64f, 16f, 88f), Quaternion.Euler(0, 180, 0)));
                 previousStage = playerMovement.currentStage;
                 break;
-                // 다음 스테이지 추가 시 값 추가
+            case 3:
+                StartCoroutine(LoadNextStageAsync("Stage3", new Vector3(0f, 4f, 0f), Quaternion.Euler(0, 180, 0)));
+                previousStage = playerMovement.currentStage;
+                break;
         }
     }
 
