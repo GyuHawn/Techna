@@ -134,8 +134,7 @@ public class AllCheckFunction : MonoBehaviour
         activate = false;
         if (!on)
         {
-            on = true;
-            
+            on = true;        
             MovingObject move = obj.GetComponent<MovingObject>();
             move.activated = true;
         }

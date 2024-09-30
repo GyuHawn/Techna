@@ -10,9 +10,11 @@ public class LineButton : MonoBehaviour
     public int curruntNum;
     public int line;
 
+    public string[] collisionBullet = new string[] { "Bullet", "Expansion", "Penetrate" };
+
     private void OnTriggerEnter(Collider other)
     {
-        if(computer.on && other.gameObject.CompareTag("Bullet")) // 전원이 켜져 있고 Bullet일 때
+        if (System.Array.Exists(collisionBullet, tag => tag == other.gameObject.tag)) // 전원이 켜져 있고 Bullet일 때
         {
             Debug.Log("1");
             // 배열 순서 변경 

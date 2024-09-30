@@ -11,6 +11,20 @@ public class DigitalLock : MonoBehaviour
 
     public bool activate; // 활성화 여부
 
+
+    private void Start()
+    {
+        NullObjectFind();
+    }
+
+    void NullObjectFind()
+    {
+        if (grabObject == null)
+        {
+            grabObject = GameObject.Find("Player").GetComponent<GrabObject>();
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject == card)

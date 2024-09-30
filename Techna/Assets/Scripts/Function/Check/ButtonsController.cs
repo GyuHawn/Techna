@@ -13,6 +13,7 @@ public class ButtonsController : MonoBehaviour
 
     private void Start()
     {
+        NullObjectFind();
         // 초기 카운트 설정
         currentCheckCount = checkCount;
     }
@@ -22,6 +23,14 @@ public class ButtonsController : MonoBehaviour
         if (currentCheckCount == 0)
         {
             CheckButtons();
+        }
+    }
+
+    void NullObjectFind()
+    {
+        if (player == null)
+        {
+            player = GameObject.Find("Player").GetComponent<PlayerMovement>();
         }
     }
 

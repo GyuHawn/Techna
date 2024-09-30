@@ -9,6 +9,8 @@ public class ButtonFunction : MonoBehaviour
 
     public bool activate; // 활성화
 
+    public string[] collisionBullet = new string[] { "Bullet", "Expansion", "Penetrate" };
+
     private void Update()
     {
         if (activate) // 활성화 시 작동
@@ -40,7 +42,7 @@ public class ButtonFunction : MonoBehaviour
     private void OnCollisionEnter(Collision collision) 
     {
         // 총알에 충돌시 3초간 작동
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (System.Array.Exists(collisionBullet, tag => tag == collision.gameObject.tag))
         {
             StartCoroutine(OnButton(3f));
         }

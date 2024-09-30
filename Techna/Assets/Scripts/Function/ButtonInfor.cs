@@ -12,6 +12,8 @@ public class ButtonInfor : MonoBehaviour
 
     public new Renderer renderer; // Material을 변경하기 위한 Renderer
 
+    public string[] collisionBullet = new string[] {"Bullet", "Expansion", "Penetrate" };
+
     private void Awake()
     {
         controller = GetComponentInParent<ButtonsController>();
@@ -21,9 +23,9 @@ public class ButtonInfor : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("Expansion")) // 총알 충돌시 재질 변경
+        if (System.Array.Exists(collisionBullet, tag => tag == collision.gameObject.tag)) // 총알 충돌시 재질 변경
         {
-            if(controller != null) 
+            if (controller != null) 
             {
                 controller.currentCheckCount--;
             }

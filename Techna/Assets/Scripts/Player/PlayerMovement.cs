@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public int damage; // 데미지
 
     public bool hit; // 피격 가능 여부
+    public GameObject dieUI;
 
     // 키입력
     private float hAxis;
@@ -48,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
 
     public PlayableDirector pd;
     public GameObject canvasCamera;
-
+    
     private void Awake()
     {
         // 씬에 따라 타임라인 세팅
@@ -119,8 +120,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        NullObjectFind(); // 오브젝트 찾기
-
         if (moving)
         {
             GetInput(); // 키입력
@@ -128,6 +127,8 @@ public class PlayerMovement : MonoBehaviour
             Rotate(); // 회전
             Jump(); // 점프 및 중력 처리
         }
+
+        Die(); // 사망
 
         UpdateGunPosition(); // 총 위치 설정
 
@@ -236,6 +237,22 @@ public class PlayerMovement : MonoBehaviour
         // 현재 체력을 최대 체력으로 나눈 비율을 체력 바의 Fill Amount로 설정
         float healthPercentage = (float)currentHealth / maxHealth;
         healthBar.fillAmount = healthPercentage;
+    }
+
+    void Die() // 사망시
+    {
+        if(currentHealth <= 0)
+        {
+            StartCoroutine(PlayerDie());
+        }
+    }
+
+    IEnumerator PlayerDie()
+    {
+        dieUI.SetActive(true);
+        yield return new WaitForSeconds(3f);
+
+        SceneManager.LoadScene("Main"); // 현재 돌아가는 기능X (일단 메인으로 이동)
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)

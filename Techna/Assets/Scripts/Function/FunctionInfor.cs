@@ -13,6 +13,8 @@ public class FunctionInfor : MonoBehaviour
 
     void Start()
     {
+        FindNullObject();
+
         // 줄바꿈 및 색상 설정
         if (!string.IsNullOrEmpty(infor))
         {
@@ -25,7 +27,13 @@ public class FunctionInfor : MonoBehaviour
         }
     }
 
-
+    void FindNullObject() // 빠진 오브젝트 찾기
+    {
+        if (inforText == null)
+        {
+            inforText = GameObject.Find("FunctionInforText").GetComponent<TMP_Text>();
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

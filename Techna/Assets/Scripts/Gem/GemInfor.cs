@@ -18,16 +18,13 @@ public class GemInfor : MonoBehaviour
 
     private void Start()
     {
+        FindNullObject(); // 빠진 오브젝트 찾기
+
         // 줄바꿈 및 색상 설정
         if (!string.IsNullOrEmpty(infor))
         {
             infor = infor.Replace(@"\n", "\n");
         }
-    }
-
-    private void Update()
-    {
-        FindNullObject(); // 빠진 오브젝트 찾기
     }
 
     void FindNullObject() // 빠진 오브젝트 찾기
