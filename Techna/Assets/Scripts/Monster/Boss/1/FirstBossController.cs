@@ -11,8 +11,16 @@ public class FirstBossController : MonoBehaviour
 
     public float speed; // 이동속도
     public float rotateSpeed; // 회전속도
+    public float rotateAttackSpeed; // 회전 공격속도
     public int maxHealth; // 최대 체력
     public int currentHealth; // 현재 체력
+    public int damage; // 데이지
+
+    public bool attackPose;
+
+    public GameObject attackBullet; // 공격총알
+    public Transform bulletPosition; // 총알 발사 위치
+    public int bulletSpeed; // 총알속도
 
     public GameObject shield; // 보호막
 
@@ -24,11 +32,30 @@ public class FirstBossController : MonoBehaviour
     private void Start()
     {
         speed = 10;
-
-        // animationController.Rest();
-
-        AttackPose();
+        rotateSpeed = 10;
+        bulletSpeed = 30;
+        
+        maxHealth = 50;
+        currentHealth = maxHealth;
+        damage = 10;
     }
+
+    private void Update()
+    {
+        WatchPlayer(); // 플레이어 주시
+    }
+
+    void WatchPlayer() // 플레이어 주시
+    {
+        // 플레이어 위치 기준 보스 방향 설정
+        Vector3 playerDirection = player.transform.position - transform.position;
+        playerDirection.y = 0; // Y축 회전 제외
+
+        // 부드럽게 회전
+        Quaternion targetRotation = Quaternion.LookRotation(playerDirection);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
+    }
+
 
     void CenterMove() // 중앙으로 이동
     {
@@ -80,7 +107,7 @@ public class FirstBossController : MonoBehaviour
 
     IEnumerator AttackCrouchRoutine() // 웅크린후 회전하여 돌진 후 돌아가기
     {
-        rotateSpeed = 1000f; // 회전속도 설정
+        rotateAttackSpeed = 1000f; // 회전속도 설정
         Quaternion initialRotation = transform.rotation; // 초기 회전 값 저장
 
         animationController.Crouch(); // 웅크리기 애니메이션 시작
@@ -122,13 +149,42 @@ public class FirstBossController : MonoBehaviour
         transform.rotation = finalRotation; // 마지막으로 원래 회전 값으로 설정
 
         // 웅크리기 해제
-        rotateSpeed = 0f; // 회전속도 설정
+        rotateAttackSpeed = 0f; // 회전속도 설정
         animationController.Crouch(); // 웅크리기 해제
     }
 
     void AttackPose() // 공격 자세
-    {
+    {      
         animationController.AttackPose();
+        StartCoroutine(AttackReady());
+    }
+
+    IEnumerator AttackReady() // 공격 준비
+    {
+        yield return new WaitForSeconds(2f);
+        attackPose = true;
+
+        StartCoroutine(RepeatBulletAttack());
+    }
+    IEnumerator RepeatBulletAttack() // 반복 총알 공격
+    {
+        while (attackPose)
+        {
+            BulletAttack(); // 공격 실행
+
+            yield return new WaitForSeconds(2f); // 대기
+        }
+    }
+
+    void BulletAttack() // 총알 공격
+    {
+        if (attackPose)
+        {
+            GameObject bullet = Instantiate(attackBullet, bulletPosition.position, Quaternion.identity);
+            Vector3 direction = (player.transform.position - bullet.transform.position).normalized;
+            bullet.transform.rotation = Quaternion.LookRotation(direction);
+            bullet.GetComponent<Rigidbody>().AddForce(direction * bulletSpeed, ForceMode.VelocityChange);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
