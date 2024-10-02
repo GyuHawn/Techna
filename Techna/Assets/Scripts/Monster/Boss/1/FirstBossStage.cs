@@ -4,17 +4,7 @@ using UnityEngine;
 
 public class FirstBossStage : MonoBehaviour
 {
-    public Transform[] bossMovePosition;
+    public Transform[] bossMapPosition;
 
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject[] SkillWalls;
 }
