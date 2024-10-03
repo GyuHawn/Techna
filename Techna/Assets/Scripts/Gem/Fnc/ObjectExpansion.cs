@@ -29,6 +29,19 @@ public class ObjectExpansion : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("ExpansionBullet"))
+        {
+            CheckObjectInfor cube = gameObject.GetComponent<CheckObjectInfor>();
+            if (cube.expansion)
+            {
+                // 오브젝트의 크기 증감
+                HandleCollision();
+            }
+        }
+    }
+
     void HandleCollision() // 크기 증감 중 포지션 및 회전 고정, 오브젝트 최대 증감 값 확인
     {
         if (isScaling) return; // 이미 크기 변화 중이면 함수 종료

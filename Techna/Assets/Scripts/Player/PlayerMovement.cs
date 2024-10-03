@@ -129,12 +129,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Die(); // 사망
-
+        
         UpdateGunPosition(); // 총 위치 설정
 
         FunctionLever(); // 레버 작동
 
-        UPdateInfor(); // 플레이어 정보 업데이트
+        HealthUpdate(); // 체략바 업데이트
 
         ApplyPlatformMovement(); // 이동 발판의 이동값 적용
     }
@@ -230,11 +230,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void UPdateInfor()
+    void HealthUpdate()  // 체력바 업데이트
     {
         healthText.text = "HP " + currentHealth.ToString() + " / " + maxHealth.ToString(); //
 
-        // 현재 체력을 최대 체력으로 나눈 비율을 체력 바의 Fill Amount로 설정
         float healthPercentage = (float)currentHealth / maxHealth;
         healthBar.fillAmount = healthPercentage;
     }
