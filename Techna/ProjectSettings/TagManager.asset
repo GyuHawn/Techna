@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Bullet
+  - Floor
+  - Gun
+  - GrabObject
+  - MovingObject
+  - RotateObject
+  - Wall
+  - ExpansionBullet
+  - BoardPuzzleCheck
+  - Lever
+  - Monster
+  - Thorn
+  - NextStage
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Camera
+  - Water
+  - UI
+  - Floor
+  - Player
+  - Gun
+  - Control
+  - Bullet
+  - GrabObject
+  - Penetrate
+  - PenetrateWall
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
