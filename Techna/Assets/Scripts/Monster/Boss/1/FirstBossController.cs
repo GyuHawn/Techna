@@ -26,7 +26,9 @@ public class FirstBossController : MonoBehaviour
     public Transform bulletPosition; // 총알 발사 위치
     public int bulletSpeed; // 총알속도
 
+    public bool onShield; // 보호막 활성화
     public GameObject shield; // 보호막
+    public int shieldCount; // 보호막 해체 카운트 
 
     public GameObject flooringEffect; // 바닥 장판 이펙트
     public GameObject explosionEffect; // 폭발 이펙트
@@ -59,6 +61,8 @@ public class FirstBossController : MonoBehaviour
         currentHealth = maxHealth;
 
         watching = true;
+
+        Crouch();
     }
 
     private void Update()
@@ -129,11 +133,19 @@ public class FirstBossController : MonoBehaviour
     IEnumerator UnCrouch() // 방어막 생성 잠시후 해제
     {
         yield return new WaitForSeconds(1);
-        shield.SetActive(true); // (보호막 활성화)
-        yield return new WaitForSeconds(5);
 
-        animationController.Halt();
-        shield.SetActive(false);
+        shield.SetActive(true); // (보호막 활성화)
+        onShield = true; // 보호막 활성화
+        shieldCount = 5; // 쉴드 카운트 설정
+
+        yield return new WaitForSeconds(100);
+
+        if (onShield)
+        {
+            animationController.Halt();
+            shield.SetActive(false);
+            onShield = false;
+        }
     }
     
     // (웅크리기 공격)
@@ -356,10 +368,6 @@ public class FirstBossController : MonoBehaviour
         }
     }
 
-    
-
-
-
     void Die() // 사망
     {
         dying = true; // 사망처리
@@ -373,7 +381,7 @@ public class FirstBossController : MonoBehaviour
     {
         yield return new WaitForSeconds(4f);
 
-        clearItem.SetActive(true);
+        clearItem.SetActive(true);  
 
         yield return new WaitForSeconds(2f);
 
@@ -382,12 +390,34 @@ public class FirstBossController : MonoBehaviour
 
     // (피격)
     private void OnTriggerEnter(Collider other)
-    { 
+    {
         string[] collisionBullet = new string[] { "Bullet", "Expansion", "Penetrate" };
 
-        if (System.Array.Exists(collisionBullet, tag => tag == other.gameObject.tag))
+        if (onShield)
         {
-            currentHealth -= playerMovement.damage;
+            if (other.gameObject.CompareTag("Penetrate"))
+            {
+                if (shieldCount > 0)
+                {
+                    shieldCount--;
+
+                    if (shieldCount == 0)
+                    {
+                        shield.SetActive(false);
+
+                        animationController.Halt();
+                        shield.SetActive(false);
+                        onShield = false;
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (System.Array.Exists(collisionBullet, tag => tag == other.gameObject.tag))
+            {
+                currentHealth -= playerMovement.damage;
+            }
         }
     }
 

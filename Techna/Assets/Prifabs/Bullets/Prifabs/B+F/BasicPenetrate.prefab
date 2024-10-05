@@ -9784,7 +9784,7 @@ GameObject:
   - component: {fileID: 6128330518617128031}
   m_Layer: 12
   m_Name: BasicPenetrate
-  m_TagString: Bullet
+  m_TagString: Penetrate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9830,7 +9830,6 @@ MonoBehaviour:
   - {fileID: 8570792121075728033}
   - {fileID: 8975802397870781335}
   - {fileID: 3583891332412694869}
-  penetrate: 1
 --- !u!65 &3208432373461644449
 BoxCollider:
   m_ObjectHideFlags: 0

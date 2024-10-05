@@ -9784,7 +9784,7 @@ GameObject:
   - component: {fileID: 6128330518617128031}
   m_Layer: 12
   m_Name: BasicExpansionPenetrate
-  m_TagString: Bullet
+  m_TagString: Penetrate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

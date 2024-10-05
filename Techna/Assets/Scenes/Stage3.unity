@@ -17643,6 +17643,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 1035233604454432597, guid: 74303b1a2d8ab724cb07ab46e81a99f3, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 1907707221620456616, guid: 74303b1a2d8ab724cb07ab46e81a99f3, type: 3}
       propertyPath: m_Size.x
       value: 1.3000003
