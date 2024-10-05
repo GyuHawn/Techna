@@ -40,6 +40,8 @@ public class FirstBossController : MonoBehaviour
 
     public GameObject clearItem; // 클리어 보상
 
+    public bool moving; // 움직이는중
+
     private void Awake()
     {
         animationController = GetComponent<FirstBossAnimationController>();
@@ -60,9 +62,7 @@ public class FirstBossController : MonoBehaviour
         maxHealth = 100;
         currentHealth = maxHealth;
 
-        watching = true;
-
-        Crouch();
+        watching = true;       
     }
 
     private void Update()
@@ -81,8 +81,31 @@ public class FirstBossController : MonoBehaviour
                 Die(); // 사망
             }
         }
+
+        if (!moving)
+        {
+            moving = true;
+            StartCoroutine(StartPattern());
+        }
     }
-    
+
+    IEnumerator StartPattern()
+    {
+        yield return new WaitForSeconds(2f);
+
+        int num = Random.Range(0, 2);
+        switch (num)
+        {
+            case 0:
+                NormalPose();
+                break;
+            case 1:
+                AttackPose();
+                break;
+        }
+    }
+
+
     void WatchPlayer() // 플레이어 주시
     {
         // 플레이어 위치 기준 보스 방향 설정
@@ -93,6 +116,36 @@ public class FirstBossController : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(playerDirection);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
     }
+
+    void NormalPose()
+    {
+        int num = Random.Range(0, 7);
+        switch (num)
+        {
+            case 0:
+                BossMoving(); // 보스 이동
+                break;
+            case 1: case 3: case 5:
+                Crouch(); // 웅크리기 (방어)
+                break;
+            case 2: case 4: case 6:
+                AttackCrouch(); // 웅크리기 (공격)
+                break;
+        }
+    }
+
+    void BossMoving()
+    {
+        if (bossCenterPosition)
+        {
+            PositionReset();
+        }
+        else
+        {
+            CenterMove();
+        }
+    }
+
 
     // (위치이동 1)
     void CenterMove() // 중앙으로 이동
@@ -120,6 +173,7 @@ public class FirstBossController : MonoBehaviour
         }
 
         animationController.Halt();
+        moving = false;
     }
 
     // (웅크리기 방어)
@@ -138,13 +192,14 @@ public class FirstBossController : MonoBehaviour
         onShield = true; // 보호막 활성화
         shieldCount = 5; // 쉴드 카운트 설정
 
-        yield return new WaitForSeconds(100);
+        yield return new WaitForSeconds(20);
 
         if (onShield)
         {
             animationController.Halt();
             shield.SetActive(false);
             onShield = false;
+            moving = false;
         }
     }
     
@@ -206,6 +261,7 @@ public class FirstBossController : MonoBehaviour
         rotateAttackSpeed = 0f; // 회전속도 설정
         animationController.Halt(); // 웅크리기 해제
         watching = true;
+        moving = false;
     }
 
     // (던지기 공격)
@@ -231,6 +287,7 @@ public class FirstBossController : MonoBehaviour
                 Destroy(cube, 12);
             }
         }
+        moving = false;
     }
 
     // ↑ 일반 자세 ------------ ↓ 공격자세
@@ -241,8 +298,7 @@ public class FirstBossController : MonoBehaviour
         animationController.AttackPose();
         attackPose = true;
 
-        //int num = Random.Range(0, 3);
-        int num = 2;
+        int num = Random.Range(0, 3);
         switch (num)
         {
             case 0:
@@ -284,6 +340,7 @@ public class FirstBossController : MonoBehaviour
             yield return new WaitForSeconds(time); // 대기
         }
         animationController.Halt(); // 공격 모드 해제
+        moving = false;
     }
 
     void BulletAttack() // 총알 공격
@@ -346,6 +403,7 @@ public class FirstBossController : MonoBehaviour
         StartCoroutine(MoveSkillWalls(-20)); // 스킬벽 리셋
 
         animationController.Halt(); // 공격 모드 해제
+        moving = false;
     }
 
     // 스킬벽 이동
@@ -408,6 +466,7 @@ public class FirstBossController : MonoBehaviour
                         animationController.Halt();
                         shield.SetActive(false);
                         onShield = false;
+                        moving = false;
                     }
                 }
             }

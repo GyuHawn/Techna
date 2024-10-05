@@ -18,6 +18,8 @@ TagManager:
   - Thorn
   - NextStage
   - Penetrate
+  - MonsterBullet
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -33,9 +35,9 @@ TagManager:
   - GrabObject
   - Penetrate
   - PenetrateWall
-  - 
-  - 
-  - 
+  - MonsterBullet
+  - Boss
+  - Wall
   - 
   - 
   - 
