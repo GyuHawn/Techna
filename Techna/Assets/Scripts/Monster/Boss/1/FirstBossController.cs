@@ -29,6 +29,7 @@ public class FirstBossController : MonoBehaviour
     public bool onShield; // 보호막 활성화
     public GameObject shield; // 보호막
     public int shieldCount; // 보호막 해체 카운트 
+    public Transform trapPosition; // 함정 공격 위치
 
     public GameObject flooringEffect; // 바닥 장판 이펙트
     public GameObject explosionEffect; // 폭발 이펙트
@@ -57,12 +58,11 @@ public class FirstBossController : MonoBehaviour
 
         speed = 10;
         rotateSpeed = 10;
-        bulletSpeed = 30;
         
-        maxHealth = 100;
+        maxHealth = 300;
         currentHealth = maxHealth;
 
-        watching = true;       
+        watching = true;
     }
 
     private void Update()
@@ -125,10 +125,10 @@ public class FirstBossController : MonoBehaviour
             case 0:
                 BossMoving(); // 보스 이동
                 break;
-            case 1: case 3: case 5:
+            case 1: case 3:
                 Crouch(); // 웅크리기 (방어)
                 break;
-            case 2: case 4: case 6:
+            case 2: case 4:
                 AttackCrouch(); // 웅크리기 (공격)
                 break;
         }
@@ -184,6 +184,15 @@ public class FirstBossController : MonoBehaviour
         StartCoroutine(UnCrouch()); // 웅크리기 해제
     }
 
+    IEnumerator TrapAttack(float time)
+    {
+        while (onShield)
+        {
+            BulletAttack(trapPosition.transform.position); // 공격 실행      
+            yield return new WaitForSeconds(time); // 대기
+        }
+    }
+
     IEnumerator UnCrouch() // 방어막 생성 잠시후 해제
     {
         yield return new WaitForSeconds(1);
@@ -191,6 +200,9 @@ public class FirstBossController : MonoBehaviour
         shield.SetActive(true); // (보호막 활성화)
         onShield = true; // 보호막 활성화
         shieldCount = 5; // 쉴드 카운트 설정
+
+        bulletSpeed = 30;
+        StartCoroutine(TrapAttack(2f));
 
         yield return new WaitForSeconds(20);
 
@@ -223,6 +235,11 @@ public class FirstBossController : MonoBehaviour
         // 이동 및 회전
         while (Vector3.Distance(transform.position, targetPosition) > 1f)
         {
+            if (dying)
+            {
+                break;
+            }
+
             // Y축 기준 회전
             transform.Rotate(0, rotateAttackSpeed * Time.deltaTime, 0);
 
@@ -237,6 +254,11 @@ public class FirstBossController : MonoBehaviour
         Vector3 originalPosition = new Vector3(firstBossStage.bossMapPositions[bossPosition].position.x, transform.position.y, firstBossStage.bossMapPositions[bossPosition].position.z);
         while (Vector3.Distance(transform.position, originalPosition) > 0.1f)
         {
+            if (dying)
+            {
+                break;
+            }
+
             // 돌아가면서 계속 회전
             transform.Rotate(0, rotateAttackSpeed * Time.deltaTime, 0);
             transform.position = Vector3.MoveTowards(transform.position, originalPosition, (speed * 2.5f) * Time.deltaTime);
@@ -250,6 +272,11 @@ public class FirstBossController : MonoBehaviour
 
         while (Quaternion.Angle(transform.rotation, finalRotation) > 0.01f)
         {
+            if (dying)
+            {
+                break;
+            }
+
             float t = (Time.time - decelerationStartTime) / decelerationDuration;
             transform.rotation = Quaternion.Slerp(transform.rotation, finalRotation, t);
             yield return null;
@@ -316,6 +343,7 @@ public class FirstBossController : MonoBehaviour
     // (기본 공격)
     IEnumerator BasicAttackReady() // 공격 준비
     {
+        bulletSpeed = 50;
         yield return new WaitForSeconds(2f);
         attackNum = 3;     
 
@@ -325,6 +353,7 @@ public class FirstBossController : MonoBehaviour
     // (빠른 공격)
     IEnumerator QuickAttackReady() // 빠른 공격 준비
     {
+        bulletSpeed = 30;
         yield return new WaitForSeconds(2f);
         attackNum = 10;
 
@@ -335,19 +364,27 @@ public class FirstBossController : MonoBehaviour
     {
         while (attackNum >= 0)
         {
-            BulletAttack(); // 공격 실행
-            
+            if(dying)
+            {
+                break;
+            }
+
+            BulletAttack(bulletPosition.transform.position); // 공격 실행      
             yield return new WaitForSeconds(time); // 대기
         }
         animationController.Halt(); // 공격 모드 해제
         moving = false;
     }
 
-    void BulletAttack() // 총알 공격
+    
+
+    void BulletAttack(Vector3 position) // 총알 공격
     {
         animationController.Attack();
         attackNum--;
-        GameObject bullet = Instantiate(attackBullet, bulletPosition.position, Quaternion.identity);
+        GameObject bullet = Instantiate(attackBullet, position, Quaternion.identity);
+        Destroy(bullet, 4f);
+
         Vector3 direction = (player.transform.position - bullet.transform.position).normalized;
         bullet.transform.rotation = Quaternion.LookRotation(direction);
         bullet.GetComponent<Rigidbody>().AddForce(direction * bulletSpeed, ForceMode.VelocityChange);
@@ -437,6 +474,8 @@ public class FirstBossController : MonoBehaviour
 
     IEnumerator DestroyBoss()
     {
+        firstBossStage.clearWall.SetActive(true);
+
         yield return new WaitForSeconds(4f);
 
         clearItem.SetActive(true);  
