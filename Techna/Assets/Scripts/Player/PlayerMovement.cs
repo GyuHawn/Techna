@@ -8,12 +8,15 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public SuitManager suitManager;
+
     public float moveSpeed; // 이동속도
     public float mouseSensitivity; // 마우스 감도
     public float jumpPower; // 점프력
 
     // 상태
     public bool moving; // 이동 가능 상태
+    public bool isMove; // 이동중 상태
     public int maxHealth; // 최대 체력
     public int currentHealth; // 현재 체력
     public Image healthBar; // 체력바
@@ -105,6 +108,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (director == pd)
         {
+            suitManager.progress = true; // 게이지 진행 시작
+
             moving = true; // 이동 가능 상태로 변경
             canvasCamera.SetActive(true); // 캔버스 카메라 활성화
         }
@@ -174,6 +179,16 @@ public class PlayerMovement : MonoBehaviour
     void Move() // 이동
     {
         moveDirection = (transform.right * hAxis + transform.forward * vAxis).normalized;
+
+        if (moveDirection.magnitude > 0) // 이동중 여부
+        {
+            isMove = true;
+        }
+        else
+        {
+            isMove = false;
+        }
+
         controller.Move(moveDirection * moveSpeed * Time.deltaTime);
     }
 
@@ -248,7 +263,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator PlayerDie()
     {
-       // dieUI.SetActive(true);
+       //  dieUI.SetActive(true);
         yield return new WaitForSeconds(3f);
 
         SceneManager.LoadScene("Main"); // 현재 돌아가는 기능X (일단 메인으로 이동)

@@ -11,7 +11,9 @@ public class SuitManager : MonoBehaviour
     public int maxGauge;
     public int currnetGauge;
 
-    private bool isDecreasingGauge = false; // 코루틴이 실행 중인지 확인하는 플래그
+    private bool isChangingGauge = false; // 게이지 변화 중
+
+    public bool progress; // 진행 가능 여부
 
     void Start()
     {
@@ -21,26 +23,42 @@ public class SuitManager : MonoBehaviour
 
     void Update()
     {
-        GaugeUpdate(); // 게이지바 업데이트
+        if (progress && !isChangingGauge)
+        {
+            GaugeUpdate(); // 게이지바 업데이트
 
-        if (currnetGauge > 0 && !isDecreasingGauge)
-        {
-            StartCoroutine(DecreaseGauge()); // 초당 게이지 감소
-        }
-        else if (currnetGauge <= 0) // 게이지 0 도달 시 체력 감소 후 게이지 소량 회복
-        {
-            playerMovement.currentHealth -= 5;
-            currnetGauge += 5;
+            if (currnetGauge < 100 && !playerMovement.isMove)
+            {
+                StartCoroutine(IncreaseGauge()); // 게이지 증가
+            }
+            else if(currnetGauge > 0 && playerMovement.isMove)
+            {
+                StartCoroutine(DecreaseGauge(3)); // 게이지 감소
+            }
+            else if (currnetGauge <= 0) // 게이지 0 도달 시 체력 감소 후 게이지 소량 회복
+            {
+                playerMovement.currentHealth -= 5;
+                currnetGauge += 5;
+            }
         }
     }
 
-    IEnumerator DecreaseGauge()
+    public IEnumerator DecreaseGauge(int num) // 게이지 감소
     {
-        isDecreasingGauge = true;
+        isChangingGauge = true;
         yield return new WaitForSeconds(1f);
 
-        currnetGauge--;
-        isDecreasingGauge = false;
+        currnetGauge -= num;
+        isChangingGauge = false;
+    }
+
+    IEnumerator IncreaseGauge() // 게이지 증가
+    {
+        isChangingGauge = true;
+        yield return new WaitForSeconds(0.5f);
+
+        currnetGauge++;
+        isChangingGauge = false;
     }
 
     void GaugeUpdate()  // 게이지바 업데이트
