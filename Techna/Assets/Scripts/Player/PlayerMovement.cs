@@ -248,7 +248,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator PlayerDie()
     {
-        dieUI.SetActive(true);
+       // dieUI.SetActive(true);
         yield return new WaitForSeconds(3f);
 
         SceneManager.LoadScene("Main"); // 현재 돌아가는 기능X (일단 메인으로 이동)
