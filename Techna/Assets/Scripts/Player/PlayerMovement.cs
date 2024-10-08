@@ -9,8 +9,6 @@ using Unity.VisualScripting;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public SuitManager suitManager;
-
     public float moveSpeed; // 이동속도
     public float mouseSensitivity; // 마우스 감도
     public float jumpPower; // 점프력
@@ -51,21 +49,13 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
     private float gravity = -9.81f; // 중력
 
-    public PlayableDirector pd;
-    public GameObject canvasCamera;
-
     private void Awake()
     {
-        NullObjectFind(); // Null 오브젝트 찾기
         controller = GetComponent<CharacterController>();
     }
 
     void Start()
-    {
-        // 타임라인 종료 이벤트 추가
-        pd.stopped += OnTimelineStopped;
-        StartCinemachine();
-        
+    {              
         currentStage = 1;
 
         moveSpeed = 10f;
@@ -78,36 +68,9 @@ public class PlayerMovement : MonoBehaviour
 
         gunOffset = new Vector3(0, 1.2f, 0);
     }
-    void StartCinemachine()
-    {
-        moving = false;
-        canvasCamera.SetActive(false);
-    }
-
-    // 타임라인 종료 시
-    void OnTimelineStopped(PlayableDirector director)
-    {
-        if (director == pd)
-        {
-            suitManager.progress = true; // 게이지 진행 시작
-
-            moving = true; // 이동 가능 상태로 변경
-            canvasCamera.SetActive(true); // 캔버스 카메라 활성화
-        }
-    }
-
-    void NullObjectFind() // Null 오브젝트 찾기
-    {
-        if (canvasCamera == null)
-        {
-            canvasCamera = GameObject.Find("CanvasCamera");
-        }
-    }
-
+    
     void Update()
     {
-        NullObjectFind(); // Null 오브젝트 찾기
-
         if (moving)
         {
             GetInput(); // 키입력

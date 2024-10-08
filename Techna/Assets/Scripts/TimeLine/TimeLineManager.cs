@@ -2,28 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class TimeLineManager : MonoBehaviour
 {
+    public PlayerMovement playerMovement;
+    public SuitManager suitManager;
+
     public PlayableDirector pd;
+    public GameObject canvasCamera;
 
     private void Start()
     {
-        pd = GetComponent<PlayableDirector>();
+        StartCinemachine();
+        pd.stopped += OnTimelineStopped; // 타임라인 종료 이벤트 추가
     }
 
-    private void OnTriggerEnter(Collider other)
+    // 타임라인 종료 시
+    void OnTimelineStopped(PlayableDirector director)
     {
-        if (pd != null)
+        if (director == pd)
         {
-            if (other.gameObject.CompareTag("Player"))
-            {
-                PlayerMovement player = other.GetComponent<PlayerMovement>();
-                player.pd = pd;
+            suitManager.progress = true; // 게이지 진행 시작
 
-                player.pd.Play();
-            }
+            playerMovement.moving = true; // 이동 가능 상태로 변경
+            canvasCamera.SetActive(true); // 캔버스 카메라 활성화
         }
-
     }
+
+    void StartCinemachine()
+    {
+        playerMovement.moving = false;
+        canvasCamera.SetActive(false);
+    }
+
 }
