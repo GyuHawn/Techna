@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -52,23 +53,19 @@ public class PlayerMovement : MonoBehaviour
 
     public PlayableDirector pd;
     public GameObject canvasCamera;
-    
+
     private void Awake()
     {
-        // 씬에 따라 타임라인 세팅
-        PlayableDirectorSetting();
+        NullObjectFind(); // Null 오브젝트 찾기
+        controller = GetComponent<CharacterController>();
     }
 
     void Start()
     {
-        NullObjectFind(); // 오브젝트 찾기
-
-        controller = GetComponent<CharacterController>();
-
         // 타임라인 종료 이벤트 추가
         pd.stopped += OnTimelineStopped;
         StartCinemachine();
-
+        
         currentStage = 1;
 
         moveSpeed = 10f;
@@ -81,22 +78,6 @@ public class PlayerMovement : MonoBehaviour
 
         gunOffset = new Vector3(0, 1.2f, 0);
     }
-
-    void PlayableDirectorSetting()
-    {
-        // 현재 씬 이름 확인
-        string currentScene = SceneManager.GetActiveScene().name;
-
-        if (currentScene == "Stage1")
-        {
-            pd.Play();  // 타임라인 시작
-        }
-        else
-        {
-            pd.Stop();  // 타임라인 중지
-        }
-    }
-
     void StartCinemachine()
     {
         moving = false;
@@ -115,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void NullObjectFind() // 오브젝트 찾기
+    void NullObjectFind() // Null 오브젝트 찾기
     {
         if (canvasCamera == null)
         {
@@ -125,6 +106,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        NullObjectFind(); // Null 오브젝트 찾기
+
         if (moving)
         {
             GetInput(); // 키입력
@@ -134,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Die(); // 사망
-        
+
         UpdateGunPosition(); // 총 위치 설정
 
         FunctionLever(); // 레버 작동
@@ -255,7 +238,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Die() // 사망시
     {
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             StartCoroutine(PlayerDie());
         }
@@ -263,7 +246,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator PlayerDie()
     {
-       //  dieUI.SetActive(true);
+        //  dieUI.SetActive(true);
         yield return new WaitForSeconds(3f);
 
         SceneManager.LoadScene("Main"); // 현재 돌아가는 기능X (일단 메인으로 이동)
