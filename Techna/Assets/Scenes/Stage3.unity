@@ -215,6 +215,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8970898640210095591, guid: a28e3688cbfe7a5448ac80c53230af35, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8983341639267874704, guid: a28e3688cbfe7a5448ac80c53230af35, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
@@ -773,6 +777,10 @@ PrefabInstance:
     - target: {fileID: 563262794335563974, guid: 588f7ffc526634d41bf38fc8c90ab1b5, type: 3}
       propertyPath: m_Color.r
       value: 0.27058828
+      objectReference: {fileID: 0}
+    - target: {fileID: 563262794335563974, guid: 588f7ffc526634d41bf38fc8c90ab1b5, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4701851960798079837, guid: 588f7ffc526634d41bf38fc8c90ab1b5, type: 3}
       propertyPath: m_Name
@@ -12593,6 +12601,10 @@ PrefabInstance:
     - target: {fileID: 8970898640210095591, guid: a28e3688cbfe7a5448ac80c53230af35, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8970898640210095591, guid: a28e3688cbfe7a5448ac80c53230af35, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8983341639267874704, guid: a28e3688cbfe7a5448ac80c53230af35, type: 3}
       propertyPath: m_Materials.Array.data[1]

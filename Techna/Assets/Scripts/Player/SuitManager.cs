@@ -33,7 +33,7 @@ public class SuitManager : MonoBehaviour
             }
             else if(currnetGauge > 0 && playerMovement.isMove)
             {
-                StartCoroutine(DecreaseGauge(3)); // 게이지 감소
+                StartCoroutine(DecreaseGauge(1)); // 게이지 감소
             }
             else if (currnetGauge <= 0) // 게이지 0 도달 시 체력 감소 후 게이지 소량 회복
             {
@@ -46,18 +46,18 @@ public class SuitManager : MonoBehaviour
     public IEnumerator DecreaseGauge(int num) // 게이지 감소
     {
         isChangingGauge = true;
-        yield return new WaitForSeconds(1f);
-
         currnetGauge -= num;
+
+        yield return new WaitForSeconds(1f);
         isChangingGauge = false;
     }
 
     IEnumerator IncreaseGauge() // 게이지 증가
     {
         isChangingGauge = true;
-        yield return new WaitForSeconds(0.5f);
-
         currnetGauge++;
+
+        yield return new WaitForSeconds(0.2f);
         isChangingGauge = false;
     }
 

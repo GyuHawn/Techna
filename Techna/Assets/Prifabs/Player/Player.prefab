@@ -2351,7 +2351,6 @@ GameObject:
   - component: {fileID: 6407792517600832009}
   - component: {fileID: 4390884208702424999}
   - component: {fileID: 6224239875405620}
-  - component: {fileID: 3276997585698836900}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -2391,6 +2390,7 @@ MonoBehaviour:
   mouseSensitivity: 0
   jumpPower: 0
   moving: 0
+  isMove: 0
   maxHealth: 0
   currentHealth: 0
   healthBar: {fileID: 0}
@@ -2398,11 +2398,10 @@ MonoBehaviour:
   currentStage: 0
   damage: 10
   hit: 0
+  dieUI: {fileID: 0}
   gunPos: {fileID: 7772416671682099070}
   gunOffset: {x: 0, y: 1.2, z: 0}
   movingPlatform: {fileID: 0}
-  pd: {fileID: 3276997585698836900}
-  canvasCamera: {fileID: 0}
 --- !u!114 &6407792517600832009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2457,33 +2456,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!320 &3276997585698836900
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3634729431055673026}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 49576059972c72f45bb9d4b8fb2946f6, type: 2}
-  m_InitialState: 0
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 3630727295258154912, guid: 49576059972c72f45bb9d4b8fb2946f6, type: 2}
-    value: {fileID: 6999781885134779061}
-  m_ExposedReferences:
-    m_References:
-    - 25ad53f72f8f17c4fb4ee8520faf8ef0: {fileID: 0}
-    - 004f6c992171d004784178ec06b6fa17: {fileID: 0}
-    - adbcc2d255e91b2429f0ddeeb653b10a: {fileID: 0}
-    - 838e2db7a1b7f6f4fb18b3b59ffa6a02: {fileID: 0}
-    - 3c2e1f4f82ca1da43b9f96f2d8feeeee: {fileID: 0}
-    - a126e2fc1fa296448a4ec09f13109012: {fileID: 0}
-    - 8dcb38f300f18554fb85c4a0756a4480: {fileID: 0}
-    - 8e46d62ae05ac6e49b3fc76534421255: {fileID: 0}
 --- !u!1 &3650169616665243685
 GameObject:
   m_ObjectHideFlags: 0
@@ -5611,7 +5583,7 @@ Transform:
   m_GameObject: {fileID: 8560183134688783610}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.005, z: -0.134}
+  m_LocalPosition: {x: 0, y: -0.34100008, z: 4.709}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

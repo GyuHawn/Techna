@@ -26,6 +26,8 @@ public class Repair : MonoBehaviour
             {
                 gauge.maxGauge += 10;
             }
+
+            Destroy(gameObject);
         }   
     }
 }
