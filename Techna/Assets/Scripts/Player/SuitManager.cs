@@ -27,7 +27,7 @@ public class SuitManager : MonoBehaviour
         {
             GaugeUpdate(); // 게이지바 업데이트
 
-            if (currnetGauge < 100 && !playerMovement.isMove)
+            if (currnetGauge < maxGauge && !playerMovement.isMove)
             {
                 StartCoroutine(IncreaseGauge()); // 게이지 증가
             }
