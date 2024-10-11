@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,6 +25,7 @@ public class Repair : MonoBehaviour
             else
             {
                 gauge.maxGauge += 10;
+                gauge.currnetGauge += 10;
             }
 
             Destroy(gameObject);

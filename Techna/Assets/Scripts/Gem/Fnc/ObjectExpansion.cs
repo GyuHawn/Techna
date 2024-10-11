@@ -46,6 +46,8 @@ public class ObjectExpansion : MonoBehaviour
     {
         if (isScaling) return; // 이미 크기 변화 중이면 함수 종료
 
+        gameObject.tag = "Untagged"; // 플레이어가 잡을수 없도록 태그 변경
+
         // 위치, 회전 저장
         Vector3 originalPosition = gameObject.transform.position;
         Quaternion originalRotation = gameObject.transform.rotation;
@@ -123,6 +125,7 @@ public class ObjectExpansion : MonoBehaviour
             rb.isKinematic = false;  // 물리 상호작용을 다시 활성화
         }
 
+        gameObject.tag = "GrabObject"; // 태그 복구
         isScaling = false;  // 스케일 변화가 완료 표시
     }
 
