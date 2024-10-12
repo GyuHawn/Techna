@@ -18322,7 +18322,7 @@ GameObject:
   - component: {fileID: 433450776}
   - component: {fileID: 433450778}
   - component: {fileID: 433450779}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: PointTimeLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22636,7 +22636,7 @@ GameObject:
   - component: {fileID: 553577471}
   - component: {fileID: 553577472}
   - component: {fileID: 553577473}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: ObjectWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29892,7 +29892,7 @@ PlayableDirector:
   m_GameObject: {fileID: 751987169}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 49576059972c72f45bb9d4b8fb2946f6, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 960f67ad98b7fb54a99158c9eff6be2d, type: 2}
   m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -58085,6 +58085,73 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 936499591658913473, guid: 025a2ddf2edb17b4ea4ac96f35321233, type: 3}
   m_PrefabInstance: {fileID: 1104123979}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1475216225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1475216226}
+  - component: {fileID: 1475216228}
+  - component: {fileID: 1475216227}
+  m_Layer: 0
+  m_Name: StageSetting (1)
+  m_TagString: NextStage
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1475216226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475216225}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: -3.78, y: 4, z: 24.88}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2067555060}
+  m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
+--- !u!65 &1475216227
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475216225}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 25, y: 25, z: 0.5}
+  m_Center: {x: -1.728653, y: -4.30805, z: 0}
+--- !u!114 &1475216228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475216225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a0b4d0145c5dad48a6327334b4b04cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageValue: 2
 --- !u!1001 &1477533857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65469,7 +65536,7 @@ GameObject:
   - component: {fileID: 1649821062}
   - component: {fileID: 1649821063}
   - component: {fileID: 1649821064}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: ObjectWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82649,6 +82716,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 46831124}
+  - {fileID: 1475216226}
   m_Father: {fileID: 1880806922}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2067855155
@@ -86701,6 +86769,10 @@ PrefabInstance:
     - target: {fileID: 441872610695194894, guid: dfb992d285b3ac845ab946b8e363f18f, type: 3}
       propertyPath: far clip plane
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 441872610695194894, guid: dfb992d285b3ac845ab946b8e363f18f, type: 3}
+      propertyPath: near clip plane
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1611369964411022691, guid: dfb992d285b3ac845ab946b8e363f18f, type: 3}
       propertyPath: m_LocalPosition.x

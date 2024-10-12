@@ -10,8 +10,8 @@ public class MonsterSummon : MonoBehaviour
     public Transform spawnPoint; // 소환 포인트
 
     // 소환 시간
-    public float currentSpawnTime; 
-    public float maxSpawnTime; 
+    public float currentSpawnTime;
+    public float maxSpawnTime;
 
     public bool activate; // 활성화 여부
 
