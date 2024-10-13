@@ -27,14 +27,14 @@ public class StageManager : MonoBehaviour
     {
         if (playerMovement.currentStage != previousStage)
         {
-            NextStageSetting();
+            NextStageSetting(); // 스테이지 이동
         }
     }
 
-    // 비동기적으로 씬을 로드하고, 로딩이 완료된 후 플레이어 이동
+    // 씬을 로드, 로딩이 완료 후 플레이어 이동
     void NextStageSetting()
     {
-        switch (playerMovement.currentStage)
+        switch (playerMovement.currentStage) // 씬 이동, 플레이어 위치 설정
         {
             case 2:
                 StartCoroutine(LoadNextStageAsync("Stage2", new Vector3(1f, 27f, 35f), Quaternion.Euler(0, 180, 0)));

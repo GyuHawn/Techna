@@ -39,7 +39,7 @@ public class ActivateGem : MonoBehaviour
         StartCoroutine(ElectricityUpdateColor(electricityTime));
     }
 
-    IEnumerator ElectricityUpdateColor(float time)
+    IEnumerator ElectricityUpdateColor(float time) // 일정시간 후 색상 변경
     {
         yield return new WaitForSeconds(time);
         UpdateColor();

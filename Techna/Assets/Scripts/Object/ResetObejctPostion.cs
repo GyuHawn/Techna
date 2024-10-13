@@ -9,9 +9,9 @@ public class ResetObjectPosition : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (objectRestrictions)
+        if (objectRestrictions) // 잡은 오브젝트를 다음 스테이지로 넘길수 없도록 제한
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag("Player")) // 플레이가 잡은 오브젝트 해제
             {  
                 GrabObject obj = other.gameObject.GetComponent<GrabObject>();
                 if (obj.grabbedObject != null)
@@ -37,22 +37,18 @@ public class ResetObjectPosition : MonoBehaviour
                 }
             }
         }
-        else
+        else // 특정 바닥으로 떨어졌을때 위치 리셋
         {
-            if (other.CompareTag("GrabObject") || other.CompareTag("Player"))
+            if (other.CompareTag("GrabObject")) // 오브젝트
             {
-                if (other.CompareTag("Player"))  // 플레이어
-                {
-                    CharacterController characterController = other.GetComponent<CharacterController>();
-                    characterController.enabled = false;
-                    other.transform.position = resetPos.position;
-                    characterController.enabled = true;
-                }
-                else // 오브젝트
-                {
-                    // 오브젝트 이동
-                    other.transform.position = resetPos.position;
-                }
+                other.transform.position = resetPos.position;
+            }
+            else if (other.CompareTag("Player")) // 플레이어
+            {
+                CharacterController characterController = other.GetComponent<CharacterController>();
+                characterController.enabled = false;
+                other.transform.position = resetPos.position;
+                characterController.enabled = true;
             }
         }
     }

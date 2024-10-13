@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class MonsterAttackDamage : MonoBehaviour
 {
-    public int damage;
+    public int damage; // 데미지
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player")) // 플레이어 충돌시 공격
         {
             PlayerMovement player = other.GetComponent<PlayerMovement>();
             player.currentHealth -= damage;

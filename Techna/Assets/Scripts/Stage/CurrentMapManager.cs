@@ -7,7 +7,7 @@ public class CurrentMapManager : MonoBehaviour
     public int currentMap; // 현재 맵
     public GameObject[] maps; // 전체 맵
 
-    public void SetMapActive()
+    public void SetMapActive() // 위치에 따른 다른 맵 비활성화
     {
         for (int i = 0; i < maps.Length; i++)
         {

@@ -9,7 +9,7 @@ public class MoveCommand : ICommand
         this.targetPosition = targetPosition;
     }
 
-    public void Execute(MovingObject movingObject) 
+    public void Execute(MovingObject movingObject) // ½ÇÇà
     {
         if (!movingObject.isMoving)
         {

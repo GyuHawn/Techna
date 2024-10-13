@@ -8,7 +8,7 @@ public class PlayerCheck : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player")) // 플레이어 충돌시 활성화
         {
             activate = true;
         }

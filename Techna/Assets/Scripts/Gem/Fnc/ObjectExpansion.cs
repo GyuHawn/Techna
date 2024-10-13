@@ -18,7 +18,7 @@ public class ObjectExpansion : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("ExpansionBullet"))
+        if (collision.gameObject.CompareTag("ExpansionBullet")) // 증감 속성 총알
         {
             CheckObjectInfor cube = gameObject.GetComponent<CheckObjectInfor>();
             if (cube.expansion)
@@ -31,7 +31,7 @@ public class ObjectExpansion : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("ExpansionBullet"))
+        if (other.gameObject.CompareTag("ExpansionBullet")) // 증감 속성 총알
         {
             CheckObjectInfor cube = gameObject.GetComponent<CheckObjectInfor>();
             if (cube.expansion)
@@ -53,8 +53,8 @@ public class ObjectExpansion : MonoBehaviour
         Quaternion originalRotation = gameObject.transform.rotation;
 
         CheckObjectInfor check = gameObject.GetComponent<CheckObjectInfor>();
-        // 크기 증감
-        if (gun.plus)
+
+        if (gun.plus) // 크기 증가
         {
             if (check.currentValue < check.expansValue)
             {
@@ -64,7 +64,7 @@ public class ObjectExpansion : MonoBehaviour
                 check.weight = check.weight * 2;
             }
         }
-        else
+        else // 크기 감소
         {
             if (check.currentValue > check.reducedValue)
             {

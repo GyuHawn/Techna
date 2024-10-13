@@ -7,9 +7,9 @@ public class SuitManager : MonoBehaviour
 {
     public PlayerMovement playerMovement;
 
-    public Image gaugeBar;
-    public int maxGauge;
-    public int currnetGauge;
+    public Image gaugeBar; // 게이지 바
+    public int maxGauge; // 최대 게이지
+    public int currnetGauge; // 현재 게이지
 
     private bool isChangingGauge = false; // 게이지 변화 중
 
@@ -27,11 +27,11 @@ public class SuitManager : MonoBehaviour
         {
             GaugeUpdate(); // 게이지바 업데이트
 
-            if (currnetGauge < maxGauge && !playerMovement.isMove)
+            if (currnetGauge < maxGauge && !playerMovement.isMove) // 가만히 있을시
             {
                 StartCoroutine(IncreaseGauge()); // 게이지 증가
             }
-            else if(currnetGauge > 0 && playerMovement.isMove)
+            else if(currnetGauge > 0 && playerMovement.isMove) // 이동 중
             {
                 StartCoroutine(DecreaseGauge(1)); // 게이지 감소
             }

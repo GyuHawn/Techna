@@ -14,10 +14,10 @@ public class DigitalLock : MonoBehaviour
 
     private void Start()
     {
-        NullObjectFind();
+        NullObjectFind(); // null 오브젝트 찾기
     }
 
-    void NullObjectFind()
+    void NullObjectFind() // null 오브젝트 찾기
     {
         if (grabObject == null)
         {
@@ -27,14 +27,14 @@ public class DigitalLock : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject == card)
+        if(collision.gameObject == card) // 오브젝트 체크
         {
             activate = true;
             ActivatedLock();
         }
     }
 
-    void ActivatedLock()
+    void ActivatedLock() // 카드를 잡을수 없도록 설정 및 정보 업데이트
     {
         grabObject.grabbedObject = null;
 

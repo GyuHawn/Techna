@@ -11,24 +11,25 @@ public class Repair : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             SuitManager gauge = GameObject.Find("SuitManager").GetComponent<SuitManager>();
-            if (!maximum)
+
+            if (!maximum) // 게이지 회복 아이템
             {
-                if(gauge.currnetGauge >= 90)
+                if(gauge.currnetGauge >= (gauge.maxGauge - 10)) // 최대량 보다 넘지않도록
                 {
                     gauge.currnetGauge = 100;
                 }
-                else
+                else // 게이지 회복
                 {
                     gauge.currnetGauge += 10;
                 }
             }
-            else
+            else // 최대량 증가 아이템
             {
                 gauge.maxGauge += 10;
                 gauge.currnetGauge += 10;
             }
 
-            Destroy(gameObject);
+            Destroy(gameObject); // 획득시 아이템 삭제
         }   
     }
 }

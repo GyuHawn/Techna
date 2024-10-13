@@ -6,7 +6,7 @@ public class ProjectilesScript : MonoBehaviour
     public MouseManager mouseManager;
     public PlayerMovement playerMovement;
 
-    public Camera camera;
+    public Camera camera; // 메인 카메라
     public GameObject firePoint; // 발사 위치
 
     public float gemIndex;
@@ -35,7 +35,7 @@ public class ProjectilesScript : MonoBehaviour
         {
             if (Input.GetMouseButton(0) && Time.time >= timeToFire && !mouseManager.isCursorVisible) // 마우스 클릭 & 발사시간o & 커서 비활성화 중
             {
-                timeToFire = Time.time + 1f / effectToSpawn.GetComponent<ProjectileMoveScript>().fireRate; // 발사 시간 업데이트
+                timeToFire = Time.time + 1.5f / effectToSpawn.GetComponent<ProjectileMoveScript>().fireRate; // 발사 시간 업데이트
                 ShotBullet(); // 효과 생성
             }
         }

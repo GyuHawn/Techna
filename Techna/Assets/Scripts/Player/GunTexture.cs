@@ -6,7 +6,7 @@ public class GunTexture : MonoBehaviour
 {
     public GemCombination gemCombination;
 
-    public Texture[] attributeTexture; 
+    public Texture[] attributeTexture; // 텍스쳐
     public Renderer render;
 
     void Start()
@@ -14,7 +14,7 @@ public class GunTexture : MonoBehaviour
         render = GetComponent<Renderer>();
     }
 
-    public void TextuerSetting() // 총 재질변경
+    public void TextuerSetting() // 속성에 따른 총 재질변경
     {
         if(gemCombination.selectAttributeNum == 0)
         {

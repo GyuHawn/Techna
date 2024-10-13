@@ -13,7 +13,6 @@ public class ActivatedController : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-
     void Update()
     {
         if (activated) // 활성화시 작동 및 애니메이션 실행

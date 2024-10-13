@@ -12,7 +12,7 @@ public class ButtonInfor : MonoBehaviour
 
     public new Renderer renderer; // Material을 변경하기 위한 Renderer
 
-    public string[] collisionBullet = new string[] {"Bullet", "Expansion", "Penetrate" };
+    public string[] collisionBullet = new string[] {"Bullet", "Expansion", "Penetrate" }; // 충돌 태그 
 
     private void Awake()
     {

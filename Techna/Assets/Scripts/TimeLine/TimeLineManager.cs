@@ -15,7 +15,11 @@ public class TimeLineManager : MonoBehaviour
     private void Start()
     {
         StartCinemachine();
-        pd.stopped += OnTimelineStopped; // 타임라인 종료 이벤트 추가
+
+        if (pd != null)
+        {
+            pd.stopped += OnTimelineStopped; // 타임라인 종료 이벤트 추가
+        }
     }
 
     // 타임라인 종료 시
@@ -24,7 +28,6 @@ public class TimeLineManager : MonoBehaviour
         if (director == pd)
         {
             suitManager.progress = true; // 게이지 진행 시작
-
             playerMovement.moving = true; // 이동 가능 상태로 변경
             canvasCamera.SetActive(true); // 캔버스 카메라 활성화
         }

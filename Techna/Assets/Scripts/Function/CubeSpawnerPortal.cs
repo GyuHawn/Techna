@@ -82,7 +82,6 @@ public class CubeSpawnerPortal : MonoBehaviour
             }
         }
 
-
         if (activated) // ¿ÀÇÂ
         {
             open = true;

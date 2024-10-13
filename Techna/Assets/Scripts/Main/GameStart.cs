@@ -17,10 +17,10 @@ public class GameStart : MonoBehaviour
         SceneManager.LoadScene("Stage1"); // 씬 이동
     }
 
-    public void ContinueGame() // 계속하기
+    public void ContinueGame() // 계속하기 (미구현)
     {
         continueText.color = Color.yellow;
-        // 세이브 파일 읽어와서 실행
+        // 세이브 파일 있을시 읽어와서 실행
     }
 
     public void GameExit() // 게임 종료

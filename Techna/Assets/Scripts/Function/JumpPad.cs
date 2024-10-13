@@ -14,14 +14,12 @@ public class JumpPad : MonoBehaviour
             CharacterController controller = other.GetComponent<CharacterController>();
             if (controller != null)
             {
-                // 점프력을 적용하기 위한 Vector3를 생성합니다.
-                Vector3 jump = jumpDirection * jumpPower;
-
-                // PlayerMovement 스크립트가 있다면, 점프 힘을 전달해줄 수 있습니다.
+                Vector3 jump = jumpDirection * jumpPower; // 점프력
+                                                          // 
                 PlayerMovement playerMovement = other.GetComponent<PlayerMovement>();
                 if (playerMovement != null)
                 {
-                    playerMovement.ApplyJump(jump);
+                    playerMovement.ApplyJump(jump);  // 플레이어 점프 기능 실행
                 }
             }
         }

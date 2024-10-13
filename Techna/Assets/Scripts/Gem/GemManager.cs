@@ -16,8 +16,8 @@ public class GemManager : MonoBehaviour
     public bool onGravity;
 
     // ±â´É È¹µæ ¿©ºÎ
-    public bool onDestruction;
     public bool onPenetrate;
+    public bool onDestruction;
     public bool onDiffusion;
     public bool onUpgrade;
     public bool onQuick;
@@ -28,7 +28,7 @@ public class GemManager : MonoBehaviour
         gemUI = FindObjectOfType<GemUI>();
     }
 
-    public void CollectGem(string gemName)
+    public void CollectGem(string gemName) // º¸¼® È¹µæ
     {
         switch (gemName)
         {

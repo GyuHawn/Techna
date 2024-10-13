@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class TrapScript : MonoBehaviour
 {
-    public int damage;
+    public int damage; // µ¥¹ÌÁö
 }

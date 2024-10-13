@@ -12,7 +12,6 @@ public class ActivatedStairs : MonoBehaviour
     {
         anim = GetComponent<Animator>();
     }
-
     
     void Update()
     {

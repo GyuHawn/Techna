@@ -56,16 +56,19 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {              
-        currentStage = 1;
+        currentStage = 1; // 현재 스테이지
 
-        moveSpeed = 10f;
+        // 이동관련
+        moveSpeed = 10f; 
         mouseSensitivity = 100f;
         jumpPower = 1.5f;
 
+        // 스테이터스
         maxHealth = 100;
         currentHealth = maxHealth;
         damage = 3;
 
+        // 총 위치
         gunOffset = new Vector3(0, 1.2f, 0);
     }
     
@@ -90,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
         ApplyPlatformMovement(); // 이동 발판의 이동값 적용
     }
 
-    public void ApplyJump(Vector3 jump)
+    public void ApplyJump(Vector3 jump) // 점프 패드 관련 코드
     {
         velocity = jump;
     }
@@ -207,12 +210,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    IEnumerator PlayerDie()
+    IEnumerator PlayerDie() // 플레이어 사망시 [현재 돌아가는 기능X (일단 메인으로 이동)]
     {
-        //  dieUI.SetActive(true);
+        dieUI.SetActive(true); 
         yield return new WaitForSeconds(3f);
 
-        SceneManager.LoadScene("Main"); // 현재 돌아가는 기능X (일단 메인으로 이동)
+        SceneManager.LoadScene("Main");
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StageSetting : MonoBehaviour
 {
-    public int stageValue;
+    public int stageValue; // 현제 스테이지
 
     private void OnTriggerEnter(Collider other)
     {
