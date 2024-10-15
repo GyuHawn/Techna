@@ -8,15 +8,20 @@ public class MovingObject : MonoBehaviour
     private ICommand command;
     public ActivateGem gem; // 보석 확인
 
-    // 이동관련
+    [Header("이동 관련")]
     public float moveNum; // 이동 거리
     public bool x; // x축 이동 여부
     public bool y; // y축 이동 여부
     public bool z; // z축 이동 여부
+    public float moveDuration; // 도착 시간
 
+    [Header("이동 준비")]
     public bool activated; // 그냥 이동 준비
+
+    [Header("체크할 오브젝트")]
     public GameObject checkObj; // 체크할 오브젝트
 
+    [Header("활성화 체크 오브젝트")]
     public bool plateObj; // 발판 인지
     public bool lightObj; // 라이트 인지
     public bool electrictyObj; // 전기 인지
@@ -26,13 +31,13 @@ public class MovingObject : MonoBehaviour
 
     private Vector3 currentPosition; // 초기 위치
     private Vector3 targetPosition; // 목표 위치
-    public float moveDuration; // 도착 시간
     public bool isMoving = false; // 이동 중 여부
 
-    // 물체이동 관련
+    [Header("특정 오브젝트 이동")]
     public GameObject movingObject; // 이동시킬 물체
     public Transform objectMovePos; // 이동시킬 위치
 
+    [Header("이동 방식")]
     public bool autoMoving; // 계속 이동 (반복 이동)
     public bool controlMoving; // 제어 이동 (한번만 움직이도록)
     public bool controlAutoMoving; // 특정위치 제어 반복 이동(특정위치로 반복이동)

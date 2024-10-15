@@ -7,10 +7,13 @@ public class CubeSpawnerPortal : MonoBehaviour
 {
     public GameObject portalEffect;
     public GameObject spawnerDoor; // 스포너 입구
-    public GameObject checkObj; // 작동 실행 오브젝트(발판 등..)
-    
+
     public bool open; // 활성화 여부
 
+    [Header("오브젝트 확인")]
+    public GameObject checkObj; // 작동 실행 오브젝트(발판 등..)
+
+    [Header("확인할 타입")]
     public bool plateObj;
     public bool lightObj;
     public bool lEDLine;

@@ -9,9 +9,12 @@ public class GemCombination : MonoBehaviour
     public ProjectilesScript projectilesScript;
     public GunTexture gunTexture;
 
+    [Header("선택한 번호")]
     public int selectBulletNum; // 선택된 총알 번호
     public int selectAttributeNum; // 선택된 속성 번호
     public int selectFunctionNum; // 선택된 기능 번호
+
+    [Header("총알 오브젝트")]
     public GameObject[] B_Gems; // 총알 오브젝트 배열
     public GameObject[] B_A_Gems; // 총알 + 속성 오브젝트 배열
     public GameObject[] B_F_Gems; // 총알 + 기능 오브젝트 배열
@@ -19,8 +22,10 @@ public class GemCombination : MonoBehaviour
     public float currentGemNum; // 현재 선택된 보석 값
     public int gemIndex; // 현재 보석 인덱스
 
+    [Header("조준점")]
     public Sprite[] crossHair; // 조준점 배열
 
+    [Header("조합 실패")]
     public GameObject faileEffect;
     public GameObject failePostion;
 

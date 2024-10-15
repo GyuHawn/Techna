@@ -7,14 +7,18 @@ public class GemInfor : MonoBehaviour
 {
     public GemManager gemManager;
 
+    [Header("정보")]
     public string infor; // 정보 
     public TMP_Text inforText; // 정보 텍스트
+
+    [Header("텍스트 설정")]
     public int textSize; // 텍스트 사이즈
     public Color textColor; // 색 
     public bool showUI; // 표시 중 여부
-    
-    public bool gemInfor; // 보석 정보 인지
+
+    [Header("보석 or 정보")]
     public bool gem; // 보석 인지
+    public bool gemInfor; // 보석 정보 인지
 
     private void Start()
     {

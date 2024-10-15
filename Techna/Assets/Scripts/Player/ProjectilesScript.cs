@@ -5,16 +5,18 @@ public class ProjectilesScript : MonoBehaviour
 {
     public MouseManager mouseManager;
     public PlayerMovement playerMovement;
-
+    
+    [Header("사격 관련")]
     public Camera camera; // 메인 카메라
     public GameObject firePoint; // 발사 위치
 
-    public float gemIndex;
-    public bool changeBullet;
+    [Header("총알")]
     public GameObject[] B_Bullets; // 총알 투사체 배열
     public GameObject[] B_A_Bullets; // 총알 + 속성 투사체 배열
     public GameObject[] B_F_Bullets; // 총알 + 기능 투사체 배열
     public GameObject[] B_A_F_Bullets; // 총알 + 속성 + 기능 투사체 배열
+
+    [Header("사용중인 총알 종류")]
     public bool b_Bullet;
     public bool b_A_Bullet;
     public bool b_F_Bullet;

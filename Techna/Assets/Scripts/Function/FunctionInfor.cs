@@ -5,10 +5,14 @@ using TMPro;
 
 public class FunctionInfor : MonoBehaviour
 {
+    [Header("정보")]
     public string infor; // 정보
     public TMP_Text inforText; // 정보 텍스트
+
+    [Header("텍스트 설정")]
     public int textSize; // 텍스트 사이즈
     public Color textColor; // 텍스트 색
+
     public bool showUI; // 표시 중 여부
 
     void Start()

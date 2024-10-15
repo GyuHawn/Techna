@@ -8,11 +8,13 @@ public class SuitManager : MonoBehaviour
     public PlayerMovement playerMovement;
 
     public Image gaugeBar; // 게이지 바
+    [Header("게이지")]
     public int maxGauge; // 최대 게이지
     public int currnetGauge; // 현재 게이지
 
     private bool isChangingGauge = false; // 게이지 변화 중
 
+    [Header("게이지 진행 여부")]
     public bool progress; // 진행 가능 여부
 
     void Start()

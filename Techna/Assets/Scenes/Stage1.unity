@@ -11584,6 +11584,7 @@ MonoBehaviour:
   x: 0
   y: 0
   z: 0
+  moveDuration: 5
   activated: 0
   checkObj: {fileID: 0}
   plateObj: 0
@@ -11592,7 +11593,6 @@ MonoBehaviour:
   digitalLockObj: 0
   keyLockObj: 0
   playerObj: 0
-  moveDuration: 5
   isMoving: 0
   movingObject: {fileID: 620910171}
   objectMovePos: {fileID: 496089121}
@@ -24851,6 +24851,7 @@ MonoBehaviour:
   x: 0
   y: 1
   z: 0
+  moveDuration: 2
   activated: 0
   checkObj: {fileID: 0}
   plateObj: 0
@@ -24859,7 +24860,6 @@ MonoBehaviour:
   digitalLockObj: 0
   keyLockObj: 0
   playerObj: 0
-  moveDuration: 2
   isMoving: 0
   movingObject: {fileID: 0}
   objectMovePos: {fileID: 0}
@@ -28256,6 +28256,7 @@ MonoBehaviour:
   x: 0
   y: 0
   z: 0
+  moveDuration: 3
   activated: 0
   checkObj: {fileID: 0}
   plateObj: 0
@@ -28264,7 +28265,6 @@ MonoBehaviour:
   digitalLockObj: 0
   keyLockObj: 0
   playerObj: 0
-  moveDuration: 3
   isMoving: 0
   movingObject: {fileID: 620910171}
   objectMovePos: {fileID: 1293342384}
@@ -32619,6 +32619,7 @@ MonoBehaviour:
   x: 1
   y: 0
   z: 0
+  moveDuration: 5
   activated: 0
   checkObj: {fileID: 0}
   plateObj: 0
@@ -32627,7 +32628,6 @@ MonoBehaviour:
   digitalLockObj: 0
   keyLockObj: 0
   playerObj: 0
-  moveDuration: 5
   isMoving: 0
   movingObject: {fileID: 0}
   objectMovePos: {fileID: 0}
@@ -36965,6 +36965,7 @@ MonoBehaviour:
   x: 0
   y: 1
   z: 0
+  moveDuration: 3
   activated: 0
   checkObj: {fileID: 0}
   plateObj: 0
@@ -36973,7 +36974,6 @@ MonoBehaviour:
   digitalLockObj: 0
   keyLockObj: 0
   playerObj: 0
-  moveDuration: 3
   isMoving: 0
   movingObject: {fileID: 0}
   objectMovePos: {fileID: 0}
@@ -40576,6 +40576,7 @@ MonoBehaviour:
   x: 0
   y: 0
   z: 1
+  moveDuration: 2.8
   activated: 0
   checkObj: {fileID: 0}
   plateObj: 0
@@ -40584,7 +40585,6 @@ MonoBehaviour:
   digitalLockObj: 0
   keyLockObj: 0
   playerObj: 0
-  moveDuration: 2.8
   isMoving: 0
   movingObject: {fileID: 0}
   objectMovePos: {fileID: 0}
@@ -45185,7 +45185,7 @@ PrefabInstance:
       addedObject: {fileID: 707292364}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3998147925666995834, guid: 11d5b7191e56f6245b89ecf2f4614e68, type: 3}
-      insertIndex: -1
+      insertIndex: 3
       addedObject: {fileID: 1687672676}
   m_SourcePrefab: {fileID: 100100000, guid: 11d5b7191e56f6245b89ecf2f4614e68, type: 3}
 --- !u!1001 &1159320558
@@ -46361,6 +46361,7 @@ MonoBehaviour:
   x: 0
   y: 1
   z: 0
+  moveDuration: 3
   activated: 0
   checkObj: {fileID: 0}
   plateObj: 0
@@ -46369,7 +46370,6 @@ MonoBehaviour:
   digitalLockObj: 0
   keyLockObj: 0
   playerObj: 0
-  moveDuration: 3
   isMoving: 0
   movingObject: {fileID: 0}
   objectMovePos: {fileID: 0}
@@ -46480,8 +46480,8 @@ MonoBehaviour:
   - {fileID: 1879379686}
   rotateObj: []
   checkObj: {fileID: 247368452}
-  activate: 0
   checkPlate: 1
+  activate: 0
 --- !u!64 &1187418296
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -48366,6 +48366,7 @@ MonoBehaviour:
   x: 1
   y: 0
   z: 0
+  moveDuration: 2
   activated: 0
   checkObj: {fileID: 0}
   plateObj: 0
@@ -48374,7 +48375,6 @@ MonoBehaviour:
   digitalLockObj: 0
   keyLockObj: 0
   playerObj: 0
-  moveDuration: 2
   isMoving: 0
   movingObject: {fileID: 0}
   objectMovePos: {fileID: 0}
@@ -52417,8 +52417,8 @@ MonoBehaviour:
   movingObj: []
   rotateObj: []
   checkObj: {fileID: 180139770}
-  activate: 0
   checkPlate: 1
+  activate: 0
 --- !u!64 &1321905595
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -67331,6 +67331,7 @@ MonoBehaviour:
   x: 1
   y: 0
   z: 0
+  moveDuration: 5
   activated: 0
   checkObj: {fileID: 0}
   plateObj: 0
@@ -67339,7 +67340,6 @@ MonoBehaviour:
   digitalLockObj: 0
   keyLockObj: 0
   playerObj: 0
-  moveDuration: 5
   isMoving: 0
   movingObject: {fileID: 0}
   objectMovePos: {fileID: 0}
@@ -67905,8 +67905,6 @@ MonoBehaviour:
   playerMovement: {fileID: 6900053835033048287}
   camera: {fileID: 1756667503865836407}
   firePoint: {fileID: 2473910039276442934}
-  gemIndex: 0
-  changeBullet: 0
   B_Bullets:
   - {fileID: 7749821134375633429, guid: a5418d9b684a95c449192c248229556c, type: 3}
   - {fileID: 405126570077106332, guid: a5db2f7bba566f644b130c59aed592fe, type: 3}
@@ -70604,8 +70602,8 @@ MonoBehaviour:
   textSize: 30
   textColor: {r: 0.8039216, g: 0.21176471, b: 1, a: 1}
   showUI: 0
-  gemInfor: 1
   gem: 0
+  gemInfor: 1
 --- !u!1001 &1761554017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73098,6 +73096,7 @@ MonoBehaviour:
   x: 0
   y: 0
   z: 1
+  moveDuration: 3
   activated: 0
   checkObj: {fileID: 0}
   plateObj: 0
@@ -73106,7 +73105,6 @@ MonoBehaviour:
   digitalLockObj: 0
   keyLockObj: 0
   playerObj: 0
-  moveDuration: 3
   isMoving: 0
   movingObject: {fileID: 0}
   objectMovePos: {fileID: 0}
@@ -74944,6 +74942,7 @@ MonoBehaviour:
   x: 0
   y: 1
   z: 0
+  moveDuration: 5
   activated: 0
   checkObj: {fileID: 1187418291}
   plateObj: 1
@@ -74952,7 +74951,6 @@ MonoBehaviour:
   digitalLockObj: 0
   keyLockObj: 0
   playerObj: 0
-  moveDuration: 5
   isMoving: 0
   movingObject: {fileID: 0}
   objectMovePos: {fileID: 0}
@@ -75873,8 +75871,8 @@ MonoBehaviour:
   movingObj: []
   rotateObj: []
   checkObj: {fileID: 1879541203}
-  activate: 0
   checkPlate: 1
+  activate: 0
 --- !u!64 &1898247922
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -76273,8 +76271,8 @@ MonoBehaviour:
   movingObj: []
   rotateObj: []
   checkObj: {fileID: 1665774614}
-  activate: 0
   checkPlate: 1
+  activate: 0
 --- !u!64 &1910374029
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -81436,6 +81434,7 @@ MonoBehaviour:
   x: 1
   y: 0
   z: 0
+  moveDuration: 2
   activated: 0
   checkObj: {fileID: 0}
   plateObj: 0
@@ -81444,7 +81443,6 @@ MonoBehaviour:
   digitalLockObj: 0
   keyLockObj: 0
   playerObj: 0
-  moveDuration: 2
   isMoving: 0
   movingObject: {fileID: 0}
   objectMovePos: {fileID: 0}
@@ -81745,6 +81743,7 @@ MonoBehaviour:
   x: 0
   y: 0
   z: 0
+  moveDuration: 3
   activated: 0
   checkObj: {fileID: 0}
   plateObj: 0
@@ -81753,7 +81752,6 @@ MonoBehaviour:
   digitalLockObj: 0
   keyLockObj: 0
   playerObj: 0
-  moveDuration: 3
   isMoving: 0
   movingObject: {fileID: 620910171}
   objectMovePos: {fileID: 1568182926}
@@ -86477,6 +86475,7 @@ MonoBehaviour:
   x: 0
   y: 0
   z: 0
+  moveDuration: 3
   activated: 0
   checkObj: {fileID: 0}
   plateObj: 0
@@ -86485,7 +86484,6 @@ MonoBehaviour:
   digitalLockObj: 0
   keyLockObj: 0
   playerObj: 0
-  moveDuration: 3
   isMoving: 0
   movingObject: {fileID: 620910171}
   objectMovePos: {fileID: 783229303}

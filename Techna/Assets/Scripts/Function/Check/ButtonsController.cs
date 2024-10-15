@@ -7,7 +7,10 @@ public class ButtonsController : MonoBehaviour
     public MovingObject movingObject;
     public PlayerMovement player; // 플레이어
 
+    [Header("버튼")]
     public GameObject[] buttons;  // 버튼들
+
+    [Header("확인할 횟수")]
     public int checkCount;  // 확인 수
     public int currentCheckCount;
 

@@ -5,12 +5,18 @@ using UnityEngine;
 public class LightningRod : MonoBehaviour
 {
     public Material[] gemMaterials; // 재질
+
+    [Header("라이트")]
     public GameObject lightObj; // 라이트 
     public bool activate; // 활성화 여부
 
+    [Header("시작 전선")]
     public LEDNode lightLine; // 전기 선
+
+    [Header("연결된 보석")]
     public ActivateGem gem; // 연결된 보석
-    
+
+    [Header("활성화시 오브젝트 재질 변경")]
     public GameObject changeMaterialObj; // 재직변경 할 오브젝트
     private Renderer render;
 

@@ -119,7 +119,7 @@ public class FirstBossController : MonoBehaviour
 
     void NormalPose()
     {
-        int num = Random.Range(0, 7);
+        int num = Random.Range(0, 5);
         switch (num)
         {
             case 0:

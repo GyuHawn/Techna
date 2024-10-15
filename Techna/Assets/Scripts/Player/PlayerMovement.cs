@@ -6,52 +6,74 @@ using UnityEngine.Playables;
 using UnityEngine.Timeline;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
+using static PlayerMovement;
+using System.ComponentModel;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("수치")]
     public float moveSpeed; // 이동속도
     public float mouseSensitivity; // 마우스 감도
     public float jumpPower; // 점프력
+    public int damage; // 데미지
 
-    // 상태
-    public bool moving; // 이동 가능 상태
-    public bool isMove; // 이동중 상태
+    [Header("체력")]
     public int maxHealth; // 최대 체력
     public int currentHealth; // 현재 체력
     public Image healthBar; // 체력바
     public TMP_Text healthText; // 체력 텍스트
+
+    // 체력 변화 이벤트
+    public delegate void HealthChanged(int currentHealth, int maxHealth);
+    public event HealthChanged healthChanged;
+
+    [Header("상태")]
     public int currentStage; // 현재 스테이지
+    public bool moving; // 이동 가능 상태
+    public bool isMove; // 이동중 상태
 
-    public int damage; // 데미지
-
+    [Header("피격")]
     public bool hit; // 피격 가능 여부
     public GameObject dieUI;
+    public bool isDie; // 사망 여부
 
-    // 키입력
+    [Header("키입력")]
     private float hAxis;
     private float vAxis;
     private float rotationY;
     private bool isGrounded; // 점프 여부
     private Vector3 moveDirection; // 이동 관련
-    private Vector3 velocity; // 중력 및 이동속도 관리
+    public Vector3 velocity; // 중력 및 이동속도 관리
 
-    // 총위치
+    [Header("총 위치")]
     public Transform gunPos;
     public Vector3 gunOffset;
 
+    [Header("이동 발판")]
     public Transform movingPlatform; // 이동 발판
     private Vector3 lastPlatformPosition; // 마지막으로 기록된 발판의 위치
 
-    // 레버 작동
+    [Header("러바")]
     private bool checkLever = false;
     private GameObject currentLever;
 
+    [Header("캐릭터 컨트롤러")]
     private CharacterController controller;
     private float gravity = -9.81f; // 중력
 
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
+    }
+
+    private void OnEnable()
+    {
+        healthChanged += UpdateHealthUI; // 체력 이벤트 구독
+    }
+
+    private void OnDisable()
+    {
+        healthChanged -= UpdateHealthUI; // 체력 이벤트 구독 해제
     }
 
     void Start()
@@ -74,6 +96,8 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
+        if (isDie) return;
+
         if (moving)
         {
             GetInput(); // 키입력
@@ -83,34 +107,19 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Die(); // 사망
-
         UpdateGunPosition(); // 총 위치 설정
-
         FunctionLever(); // 레버 작동
-
-        HealthUpdate(); // 체략바 업데이트
-
         ApplyPlatformMovement(); // 이동 발판의 이동값 적용
-    }
-
-    public void ApplyJump(Vector3 jump) // 점프 패드 관련 코드
-    {
-        velocity = jump;
     }
 
     void ApplyPlatformMovement() // 이동 발판위에 있을 시 함께 이동
     {
         if (movingPlatform != null)
         {
-
             Vector3 platformMovement = movingPlatform.position - lastPlatformPosition;
-
             controller.Move(platformMovement);
 
-            if (movingPlatform != null)
-            {
-                lastPlatformPosition = movingPlatform.position;
-            }
+            lastPlatformPosition = movingPlatform.position;
         }
     }
 
@@ -129,14 +138,7 @@ public class PlayerMovement : MonoBehaviour
     {
         moveDirection = (transform.right * hAxis + transform.forward * vAxis).normalized;
 
-        if (moveDirection.magnitude > 0) // 이동중 여부
-        {
-            isMove = true;
-        }
-        else
-        {
-            isMove = false;
-        }
+        isMove = moveDirection.magnitude > 0; // 이동중 확인
 
         controller.Move(moveDirection * moveSpeed * Time.deltaTime);
     }
@@ -181,31 +183,24 @@ public class PlayerMovement : MonoBehaviour
 
     void FunctionLever()
     {
-        if (checkLever && Input.GetButtonDown("Function")) // 레버 작동
+        if (checkLever && Input.GetButtonDown("Function") && currentLever) // 레버 작동
         {
-            if (currentLever != null)
-            {
-                LeverFunction lever = currentLever.GetComponent<LeverFunction>();
-                if (lever != null)
-                {
-                    lever.activate = true;
-                }
-            }
+            LeverFunction lever = currentLever.GetComponent<LeverFunction>();
+            lever.activate = true;
         }
     }
 
-    void HealthUpdate()  // 체력바 업데이트
+    private void UpdateHealthUI(int currentHealth, int maxHealth)
     {
-        healthText.text = "HP " + currentHealth.ToString() + " / " + maxHealth.ToString(); //
-
-        float healthPercentage = (float)currentHealth / maxHealth;
-        healthBar.fillAmount = healthPercentage;
+        healthText.text = $"HP {currentHealth} / {maxHealth}"; // 텍스트 업데이트
+        healthBar.fillAmount = (float)currentHealth / maxHealth; // 체력 바 업데이트
     }
 
     void Die() // 사망시
     {
         if (currentHealth <= 0)
         {
+            isDie = true;
             StartCoroutine(PlayerDie());
         }
     }
@@ -214,7 +209,6 @@ public class PlayerMovement : MonoBehaviour
     {
         dieUI.SetActive(true); 
         yield return new WaitForSeconds(3f);
-
         SceneManager.LoadScene("Main");
     }
 
@@ -245,7 +239,6 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
         // 레버 충돌, 레버 추가
@@ -259,7 +252,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Thorn"))
         {
             TrapScript thorn = other.gameObject.GetComponent<TrapScript>();
-            currentHealth -= thorn.damage;
+            StartCoroutine(HitDamage(thorn.damage));
         }
     }
 
@@ -269,7 +262,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Monster"))
         {
             MonsterController monster = other.gameObject.GetComponent<MonsterController>();
-            HitDamage(other.gameObject, monster.damage);
+            StartCoroutine(HitDamage(monster.damage));
         }
     }
 
@@ -283,20 +276,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void HitDamage(GameObject obj, int damage) // 피격
+    public IEnumerator HitDamage(int damage) // 피격
     {
         if (!hit)
         {
             hit = true;
-            currentHealth -= damage;
+            TakeDamage(damage);
+            yield return new WaitForSeconds(1f);
 
-            StartCoroutine(HitInterval());
+            hit = false;
         }
     }
-
-    IEnumerator HitInterval() // 피격 간격
+    public void TakeDamage(int damage)
     {
-        yield return new WaitForSeconds(1f);
-        hit = false;
+        currentHealth -= damage;
+        healthChanged?.Invoke(currentHealth, maxHealth);
     }
 }

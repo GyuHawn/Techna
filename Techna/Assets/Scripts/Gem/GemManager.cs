@@ -6,16 +6,16 @@ public class GemManager : MonoBehaviour
 
     public GameObject player;
 
-    // ÃÑ¾Ë È¹µæ ¿©ºÎ
+    [Header("ÃÑ¾Ë È¹µæ ¿©ºÎ")]
     public bool onLarge;
 
-    // ¼Ó¼® È¹µæ ¿©ºÎ
+    [Header("¼Ó¼º È¹µæ ¿©ºÎ")]
     public bool onControl;
     public bool onElectricity;
     public bool onExpansion;
     public bool onGravity;
 
-    // ±â´É È¹µæ ¿©ºÎ
+    [Header("±â´É È¹µæ ¿©ºÎ")]
     public bool onPenetrate;
     public bool onDestruction;
     public bool onDiffusion;

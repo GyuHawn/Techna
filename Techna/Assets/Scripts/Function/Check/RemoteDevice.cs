@@ -5,15 +5,21 @@ using UnityEngine;
 
 public class RemoteDevice : MonoBehaviour
 {
+    [Header("연결된 선")]
     public LEDNode activateNode; // 연결된 선
-    
+
+    [Header("재질")]
     public Material[] materials; // 재질
     public GameObject changeMaterialObj;  // 재직변경 할 오브젝트
 
+    [Header("제어할 오브젝트")]
     public GameObject[] objs; // 제어할 오브젝트 
 
-    public bool activate; // 활성화 시킬지
+    [Header("제거 or 활성화")]
     public bool destroy; // 제거할지
+    public bool activate; // 활성화 시킬지
+
+    [Header("활성화 타입")]
     public bool stairs; // 계단 활성화
 
 

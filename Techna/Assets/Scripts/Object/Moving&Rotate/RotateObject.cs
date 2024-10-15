@@ -7,17 +7,21 @@ public class RotateObject : MonoBehaviour
     public IRotateState currentState;
     public ActivateGem gem;
 
+    [Header("회전 설정")]
     public float rotateDuration; // 회전 시간
     public float rotateNum; // 회전 각도
     public bool x; // x축 회전 여부
     public bool y; // y축 회전 여부
     public bool z; // z축 회전 여부
 
+    [Header("대기시간")]
     public float waitTime; // 회전 후 대기 시간
 
+    [Header("회전여부")]
     public bool rotating; // 회전 중 여부
     public bool activate; // 일반 회전시 회전 시작 확인
 
+    [Header("회전타입")]
     public bool gamRotate; // 보석 관련
     public bool objRotate; // 무한 회전
     public bool objRotateSetting; // 정해진 위치로 회전

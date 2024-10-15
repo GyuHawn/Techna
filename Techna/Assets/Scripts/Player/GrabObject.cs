@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class GrabObject : MonoBehaviour
 {
+    [Header("잡은 오브젝트")]
     public Transform grabbedObject; // 현재 잡고 있는 물체
     public bool grab; // 잡았는지 여부
+
+    [Header("잡기 거리")]
     public float grabRange; // 잡을 수 있는 최대 거리
+
+    [Header("던지는 힘")]
     public float throwForce; // 던질 때 힘
     private Vector3 holdOffset = new Vector3(0, 4, 0); // 물체를 잡는 높이 오프셋
 

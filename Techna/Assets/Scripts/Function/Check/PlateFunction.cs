@@ -7,14 +7,15 @@ public class PlateFunction : MonoBehaviour
     public Material[] plateMaterials;
     private Renderer render;
 
+    [Header("이동 & 회전 오브젝트 ")]
     public GameObject[] movingObj; // 이동하는 오브젝트
     public GameObject[] rotateObj; // 회전하는 오브젝트
 
-   // public GameObject functionObj; // 제어할 오브젝트
+    [Header("특정 오브젝트 체크")]
     public GameObject checkObj; // 확인할 오브젝트
+    public bool checkPlate; // 특정 오브젝트에만 활성화 되도록 
 
     public bool activate; // 활성화
-    public bool checkPlate; // 특정 오브젝트에만 활성화 되도록 
     
     public delegate void CheckActivationChange(bool activate);
     public event CheckActivationChange activationChanged; // 이벤트 호출

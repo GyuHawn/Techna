@@ -5,13 +5,16 @@ using UnityEngine;
 public class ButtonInfor : MonoBehaviour
 {
     public ButtonsController controller;
+
+    [Header("진짜 or 가짜")]
     public bool trueButton; // 진짜 버튼
     public bool currentStatus; // 현재 상태
 
+    [Header("재질")]
     public Material[] materials; // 0: False, 1: True
-
     public new Renderer renderer; // Material을 변경하기 위한 Renderer
 
+    [Header("확인할 총알")]
     public string[] collisionBullet = new string[] {"Bullet", "Expansion", "Penetrate" }; // 충돌 태그 
 
     private void Awake()

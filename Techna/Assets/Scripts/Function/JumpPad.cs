@@ -15,11 +15,11 @@ public class JumpPad : MonoBehaviour
             if (controller != null)
             {
                 Vector3 jump = jumpDirection * jumpPower; // 점프력
-                                                          // 
+                                                            
                 PlayerMovement playerMovement = other.GetComponent<PlayerMovement>();
                 if (playerMovement != null)
                 {
-                    playerMovement.ApplyJump(jump);  // 플레이어 점프 기능 실행
+                    playerMovement.velocity = jump;  // 플레이어 점프
                 }
             }
         }

@@ -5,18 +5,24 @@ using UnityEngine;
 
 public class PuzzleComputer : MonoBehaviour
 {
+    [Header("제어 버튼")]
     public LineButton[] line_Button; // 이동 버튼(현재 값)
+
+    [Header("각 라인 값")]
     public List<int> lineNum; // ( -1, 0, 1 ) 중심기준으로 설정
     private bool allZero; // 모든 값이 0인지 여부
 
+    [Header("전선")]
     public LEDNode computerLightLine; // 컴퓨터 전기선
     public LEDNode activateLightLine; // 활성화 전기선
     public bool activate; // 활성화 
 
+    [Header("전원 관련")]
     public LightningRod lightningRod; // 전원공급 장치
     public bool on; // 컴퓨터 전원 상태
     public GameObject barrier; // 차단막
 
+    [Header("활성화시 제어할 오브젝트")]
     public RotateObject[] gears; // 회전 기어
     public GameObject jumpPad; // 점프패드
     public RotateObject[] RotateFloors; // 클리어 발판

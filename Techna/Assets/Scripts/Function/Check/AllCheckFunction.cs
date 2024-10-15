@@ -5,19 +5,22 @@ using UnityEngine;
 
 public class AllCheckFunction : MonoBehaviour
 {
+    [Header("체크할 오브젝트")]
     public GameObject[] checkObjects; // 확인할 발판
 
+    [Header("활성화 여부")]
     public bool activate; // 활성화 여부
     public bool on; // 오픈 여부 
 
-    // 확인할 타입
+    [Header("확인할 타입")]
     public bool plate; // 발판
 
-    // 제어할 타입
+    [Header("제어할 타입")]
     public bool obj; // 오브젝트
     public bool stairs; // 계단
     public bool controller; // 버튼
 
+    [Header("제어할 오브젝트")]
     public GameObject targetObj;
     public bool target; // 자신인지
 

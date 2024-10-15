@@ -9,6 +9,7 @@ public class ButtonFunction : MonoBehaviour
 
     public bool activate; // 활성화
 
+    [Header("확인할 총알")]
     public string[] collisionBullet = new string[] { "Bullet", "Expansion", "Penetrate" };
 
     private void Update()

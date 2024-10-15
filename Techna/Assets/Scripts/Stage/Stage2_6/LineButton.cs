@@ -6,10 +6,14 @@ public class LineButton : MonoBehaviour
 {
     public PuzzleComputer computer;
 
+    [Header("움직일 오브젝트")]
     public GameObject[] line_Blocks; // 움직일 블록
+
+    [Header("현재값")]
     public int curruntNum;
     public int line;
 
+    [Header("확인할 총알")]
     public string[] collisionBullet = new string[] { "Bullet", "Expansion", "Penetrate" };
 
     private void OnTriggerEnter(Collider other)
