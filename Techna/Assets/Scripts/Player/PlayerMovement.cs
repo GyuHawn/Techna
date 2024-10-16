@@ -61,9 +61,12 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
     private float gravity = -9.81f; // 중력
 
+    private Animator anim;
+
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -102,6 +105,7 @@ public class PlayerMovement : MonoBehaviour
         {
             GetInput(); // 키입력
             Move(); // 이동
+            MoveAnimation(); // 이동 애니메이션
             Rotate(); // 회전
             Jump(); // 점프 및 중력 처리
         }
@@ -141,6 +145,18 @@ public class PlayerMovement : MonoBehaviour
         isMove = moveDirection.magnitude > 0; // 이동중 확인
 
         controller.Move(moveDirection * moveSpeed * Time.deltaTime);
+    }
+
+    void MoveAnimation() // 이동 애니메이션
+    {
+        if(moveDirection.magnitude > 0)
+        {
+            anim.SetBool("Move", true);
+        }
+        else
+        {
+            anim.SetBool("Move", false);
+        }
     }
 
     void Rotate() // 회전
