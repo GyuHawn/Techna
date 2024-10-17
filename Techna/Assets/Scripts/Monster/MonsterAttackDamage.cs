@@ -11,7 +11,7 @@ public class MonsterAttackDamage : MonoBehaviour
         if (other.gameObject.CompareTag("Player")) // 플레이어 충돌시 공격
         {
             PlayerMovement player = other.GetComponent<PlayerMovement>();
-            StartCoroutine(player.HitDamage(damage));
+            player.TakeDamage(damage);
         }
     }
 }

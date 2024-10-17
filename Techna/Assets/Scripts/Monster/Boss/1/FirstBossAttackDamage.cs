@@ -11,7 +11,7 @@ public class FirstBossAttackDamage : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             PlayerMovement player = other.gameObject.GetComponent<PlayerMovement>();
-            StartCoroutine(player.HitDamage(damage));
+            player.TakeDamage(damage);
         }
     }
 
@@ -20,7 +20,7 @@ public class FirstBossAttackDamage : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerMovement player = collision.gameObject.GetComponent<PlayerMovement>();
-            StartCoroutine(player.HitDamage(damage));
+            player.TakeDamage(damage);
         }
     }
 }
