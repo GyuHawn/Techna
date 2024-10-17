@@ -37,6 +37,8 @@ public class ProjectilesScript : MonoBehaviour
         {
             if (Input.GetMouseButton(0) && Time.time >= timeToFire && !mouseManager.isCursorVisible) // 마우스 클릭 & 발사시간o & 커서 비활성화 중
             {
+                playerMovement.ShotAnimation();
+
                 timeToFire = Time.time + 1.5f / effectToSpawn.GetComponent<ProjectileMoveScript>().fireRate; // 발사 시간 업데이트
                 ShotBullet(); // 효과 생성
             }

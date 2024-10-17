@@ -158,6 +158,10 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("Move", false);
         }
     }
+    public void ShotAnimation() // 공격 애니메이션
+    {
+        anim.SetTrigger("Shot");
+    }
 
     void Rotate() // 회전
     {
