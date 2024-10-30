@@ -33,5 +33,4 @@ Unity 3D로 개발된 1인칭 퍼즐 어드벤처 게임입니다.
 * 다양한 퍼즐과 오브젝트, 조명 등이 점점 늘어나고, 스테이지마다 맵이 넓어지면서 프레임 저하 문제가 발생했습니다. 여러 시도를 거쳐 프레임 저하를 최소화했습니다.
 
 ## 영상
-* [![Video Label](http://img.youtube.com/vi4ccyiQvvC1A/0.jpg)]
 * (https://youtu.be/4ccyiQvvC1A)
