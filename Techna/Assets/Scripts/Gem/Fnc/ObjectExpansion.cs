@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ObjectExpansion : MonoBehaviour
 {
-    public ExpansionConversion gun; // º¸¼® »óÅÂ È®ÀÎ
-    public float scaleChangeDuration; // ½ºÄÉÀÏ º¯È­ ½Ã°£
-    public float freezeDuration; // ¿ÀºêÁ§Æ® °íÁ¤ ½Ã°£
-    private bool isScaling = false; // Å©±â º¯È­ ÁßÀÎÁö ¿©ºÎ¸¦ ÃßÀûÇÏ´Â º¯¼ö
+    public ExpansionConversion gun; // ë³´ì„ ìƒíƒœ í™•ì¸
+    public float scaleChangeDuration; // ìŠ¤ì¼€ì¼ ë³€í™” ì‹œê°„
+    public float freezeDuration; // ì˜¤ë¸Œì íŠ¸ ê³ ì • ì‹œê°„
+    private bool isScaling = false; // í¬ê¸° ë³€í™” ì¤‘ì¸ì§€ ì—¬ë¶€ë¥¼ ì¶”ì í•˜ëŠ” ë³€ìˆ˜
 
     private void Start()
     {
@@ -18,12 +18,12 @@ public class ObjectExpansion : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("ExpansionBullet")) // Áõ°¨ ¼Ó¼º ÃÑ¾Ë
+        if (collision.gameObject.CompareTag("ExpansionBullet")) // ì¦ê° ì†ì„± ì´ì•Œ
         {
             CheckObjectInfor cube = gameObject.GetComponent<CheckObjectInfor>();
             if (cube.expansion)
             {
-                // ¿ÀºêÁ§Æ®ÀÇ Å©±â Áõ°¨
+                // ì˜¤ë¸Œì íŠ¸ì˜ í¬ê¸° ì¦ê°
                 HandleCollision();
             }
         }
@@ -31,131 +31,131 @@ public class ObjectExpansion : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("ExpansionBullet")) // Áõ°¨ ¼Ó¼º ÃÑ¾Ë
+        if (other.gameObject.CompareTag("ExpansionBullet")) // ì¦ê° ì†ì„± ì´ì•Œ
         {
             CheckObjectInfor cube = gameObject.GetComponent<CheckObjectInfor>();
             if (cube.expansion)
             {
-                // ¿ÀºêÁ§Æ®ÀÇ Å©±â Áõ°¨
+                // ì˜¤ë¸Œì íŠ¸ì˜ í¬ê¸° ì¦ê°
                 HandleCollision();
             }
         }
     }
 
-    void HandleCollision() // Å©±â Áõ°¨ Áß Æ÷Áö¼Ç ¹× È¸Àü °íÁ¤, ¿ÀºêÁ§Æ® ÃÖ´ë Áõ°¨ °ª È®ÀÎ
+    void HandleCollision() // í¬ê¸° ì¦ê° ì¤‘ í¬ì§€ì…˜ ë° íšŒì „ ê³ ì •, ì˜¤ë¸Œì íŠ¸ ìµœëŒ€ ì¦ê° ê°’ í™•ì¸
     {
-        if (isScaling) return; // ÀÌ¹Ì Å©±â º¯È­ ÁßÀÌ¸é ÇÔ¼ö Á¾·á
+        if (isScaling) return; // ì´ë¯¸ í¬ê¸° ë³€í™” ì¤‘ì´ë©´ í•¨ìˆ˜ ì¢…ë£Œ
 
-        gameObject.tag = "Untagged"; // ÇÃ·¹ÀÌ¾î°¡ ÀâÀ»¼ö ¾øµµ·Ï ÅÂ±× º¯°æ
+        gameObject.tag = "Untagged"; // í”Œë ˆì´ì–´ê°€ ì¡ì„ìˆ˜ ì—†ë„ë¡ íƒœê·¸ ë³€ê²½
 
-        // À§Ä¡, È¸Àü ÀúÀå
+         // ìœ„ì¹˜, íšŒì „ ì €ì¥
         Vector3 originalPosition = gameObject.transform.position;
         Quaternion originalRotation = gameObject.transform.rotation;
 
         CheckObjectInfor check = gameObject.GetComponent<CheckObjectInfor>();
 
-        if (gun.plus) // Å©±â Áõ°¡
+        if (gun.plus) // í¬ê¸° ì¦ê°€
         {
             if (check.currentValue < check.expansValue)
             {
                 check.currentValue++;
-                isScaling = true; // Å©±â º¯È­ ½ÃÀÛ
+                isScaling = true; // í¬ê¸° ë³€í™” ì‹œì‘
                 StartCoroutine(ScaleOverTime(gameObject, gameObject.transform.localScale * 2));
                 check.weight = check.weight * 2;
             }
         }
-        else // Å©±â °¨¼Ò
+        else // í¬ê¸° ê°ì†Œ
         {
             if (check.currentValue > check.reducedValue)
             {
                 check.currentValue--;
-                isScaling = true; // Å©±â º¯È­ ½ÃÀÛ
+                isScaling = true; // í¬ê¸° ë³€í™” ì‹œì‘
                 StartCoroutine(ScaleOverTime(gameObject, gameObject.transform.localScale * 0.5f));
                 check.weight = check.weight * 0.5f;
             }
         }
 
-        StartCoroutine(FixedPostion()); // Æ÷Áö¼Ç °íÁ¤
+        StartCoroutine(FixedPostion()); // í¬ì§€ì…˜ ê³ ì •
 
-        // ÀúÀåµÈ À§Ä¡, È¸ÀüÀ¸·Î º¹¿ø
+        // ì €ì¥ëœ ìœ„ì¹˜, íšŒì „ìœ¼ë¡œ ë³µì›
         gameObject.transform.position = originalPosition;
         gameObject.transform.rotation = originalRotation;
     }
 
     IEnumerator ScaleOverTime(GameObject obj, Vector3 targetScale)
     {
-        Vector3 initialScale = obj.transform.localScale;  // ¿ÀºêÁ§Æ® ÃÊ±â ½ºÄÉÀÏ ÀúÀå
-        float initialYPos = obj.transform.position.y;  // ¿ÀºêÁ§Æ® ÃÊ±â Y À§Ä¡°ª ÀúÀå
-        float elapsed = 0f;  // °æ°ú ½Ã°£À» ÃßÀû
+        Vector3 initialScale = obj.transform.localScale;  // ì˜¤ë¸Œì íŠ¸ ì´ˆê¸° ìŠ¤ì¼€ì¼ ì €ì¥
+        float initialYPos = obj.transform.position.y;  // ì˜¤ë¸Œì íŠ¸ ì´ˆê¸° Y ìœ„ì¹˜ê°’ ì €ì¥
+        float elapsed = 0f;  // ê²½ê³¼ ì‹œê°„ì„ ì¶”ì 
 
         Rigidbody rb = obj.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.isKinematic = true;  // ¹°¸® »óÈ£ÀÛ¿ëÀ» ¸ØÃã
+            rb.isKinematic = true;  // ë¬¼ë¦¬ ìƒí˜¸ì‘ìš©ì„ ë©ˆì¶¤
         }
 
         while (elapsed < scaleChangeDuration)
         {
-            float progress = elapsed / scaleChangeDuration;  // ½ºÄÉÀÏ º¯È­ ÁøÇàµµ °è»ê
+            float progress = elapsed / scaleChangeDuration;  //ìŠ¤ì¼€ì¼ ë³€í™” ì§„í–‰ë„ ê³„ì‚°
 
-            // ½ºÄÉÀÏÀ» ÃÊ±â ½ºÄÉÀÏ¿¡¼­ ¸ñÇ¥ ½ºÄÉÀÏ±îÁö º¸°£ÇÏ¿© Á¡ÁøÀûÀ¸·Î º¯È­
+            // ìŠ¤ì¼€ì¼ì„ ì´ˆê¸° ìŠ¤ì¼€ì¼ì—ì„œ ëª©í‘œ ìŠ¤ì¼€ì¼ê¹Œì§€ ë³´ê°„í•˜ì—¬ ì ì§„ì ìœ¼ë¡œ ë³€í™”
             obj.transform.localScale = Vector3.Lerp(initialScale, targetScale, progress);
 
-            // ÇöÀç ½ºÄÉÀÏÀÇ Y°ªÀ» °¡Á®¿Í¼­ ½ºÄÉÀÏ º¯È­·®À» °è»ê
+           // í˜„ì¬ ìŠ¤ì¼€ì¼ì˜ Yê°’ì„ ê°€ì ¸ì™€ì„œ ìŠ¤ì¼€ì¼ ë³€í™”ëŸ‰ì„ ê³„ì‚°
             float currentScaleY = obj.transform.localScale.y;
             float scaleChangeY = currentScaleY - initialScale.y;
 
-            // YÃà À§Ä¡¸¦ ÇöÀç ½ºÄÉÀÏ º¯È­¿¡ ¸ÂÃç¼­ Àı¹İ+1 ¸¸Å­ ¿Ã¸²
+            // Yì¶• ìœ„ì¹˜ë¥¼ í˜„ì¬ ìŠ¤ì¼€ì¼ ë³€í™”ì— ë§ì¶°ì„œ ì ˆë°˜+1 ë§Œí¼ ì˜¬ë¦¼
             obj.transform.position = new Vector3(obj.transform.position.x, initialYPos + ((scaleChangeY / 2) + 1), obj.transform.position.z);
 
-            elapsed += Time.deltaTime;  // °æ°ú ½Ã°£ ¾÷µ¥ÀÌÆ®
+            elapsed += Time.deltaTime;  // ê²½ê³¼ ì‹œê°„ ì—…ë°ì´íŠ¸
             yield return null;
         }
 
-        // ÃÖÁ¾ ½ºÄÉÀÏÀ» ¸ñÇ¥ ½ºÄÉÀÏ·Î ¼³Á¤
+        // ìµœì¢… ìŠ¤ì¼€ì¼ì„ ëª©í‘œ ìŠ¤ì¼€ì¼ë¡œ ì„¤ì •
         obj.transform.localScale = targetScale;
 
-        // ÃÖÁ¾ ½ºÄÉÀÏ º¯È­·®À» ±â¹İÀ¸·Î Y À§Ä¡¸¦ Á¶Á¤
+        // ìµœì¢… ìŠ¤ì¼€ì¼ ë³€í™”ëŸ‰ì„ ê¸°ë°˜ìœ¼ë¡œ Y ìœ„ì¹˜ë¥¼ ì¡°ì •
         float finalScaleChangeY = targetScale.y - initialScale.y;
         obj.transform.position = new Vector3(obj.transform.position.x, initialYPos + (finalScaleChangeY / 2), obj.transform.position.z);
 
-        // ¹°¸® »óÈ£ÀÛ¿ëÀ» º¹¿ø
+        // ë¬¼ë¦¬ ìƒí˜¸ì‘ìš©ì„ ë³µì›
         if (rb != null)
         {
-            rb.isKinematic = false;  // ¹°¸® »óÈ£ÀÛ¿ëÀ» ´Ù½Ã È°¼ºÈ­
+            rb.isKinematic = false;  // ë¬¼ë¦¬ ìƒí˜¸ì‘ìš©ì„ ë‹¤ì‹œ í™œì„±í™”
         }
 
-        gameObject.tag = "GrabObject"; // ÅÂ±× º¹±¸
-        isScaling = false;  // ½ºÄÉÀÏ º¯È­°¡ ¿Ï·á Ç¥½Ã
+        gameObject.tag = "GrabObject"; // íƒœê·¸ ë³µêµ¬
+        isScaling = false;  // ìŠ¤ì¼€ì¼ ë³€í™”ê°€ ì™„ë£Œ í‘œì‹œ
     }
 
 
 
-    IEnumerator FixedPostion() // Æ÷Áö¼Ç °íÁ¤
+    IEnumerator FixedPostion() // í¬ì§€ì…˜ ê³ ì •
     {
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
 
-        // Æ÷Áö¼Ç°ú È¸ÀüÀ» °íÁ¤
+        // í¬ì§€ì…˜ê³¼ íšŒì „ì„ ê³ ì •
         if (rb != null)
         {
-            // ±âÁ¸ ¼Óµµ, È¸Àü·Â ÀúÀå
+            // ê¸°ì¡´ ì†ë„, íšŒì „ë ¥ ì €ì¥
             Vector3 originalVelocity = rb.velocity;
             Vector3 originalAngularVelocity = rb.angularVelocity;
 
-            // Æ÷Áö¼Ç, È¸Àü °íÁ¤ (¼Óµµ¿Í È¸Àü·ÂÀ» 0À¸·Î ¼³Á¤)
-            rb.velocity = Vector3.zero;
+            // í¬ì§€ì…˜, íšŒì „ ê³ ì • (ì†ë„ì™€ íšŒì „ë ¥ì„ 0ìœ¼ë¡œ ì„¤ì •)
+            rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
 
-            // ÀÏÁ¤ ½Ã°£ µ¿¾È Æ÷Áö¼Ç, È¸ÀüÀ» °íÁ¤
+            // ì¼ì • ì‹œê°„ ë™ì•ˆ í¬ì§€ì…˜, íšŒì „ì„ ê³ ì •
             yield return new WaitForSeconds(freezeDuration);
 
-            // ¿ø·¡ ¼Óµµ, È¸Àü·Â º¹¿ø
-            rb.velocity = originalVelocity;
+            // ì›ë˜ ì†ë„, íšŒì „ë ¥ ë³µì›
+            rb.linearVelocity = originalVelocity;
             rb.angularVelocity = originalAngularVelocity;
         }
         else
         {
-            // Kinematic »óÅÂÀÏ °æ¿ì
+            // Kinematic ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             yield return new WaitForSeconds(freezeDuration);
         }
     }

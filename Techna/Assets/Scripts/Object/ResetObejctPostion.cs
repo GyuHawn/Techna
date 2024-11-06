@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class ResetObjectPosition : MonoBehaviour
 {
-    public Transform resetPos; // ¸®¼Â À§Ä¡
-    public bool objectRestrictions; // ¿ÀºêÁ§Æ® ÀÌµ¿ Á¦ÇÑ
+    public Transform resetPos; // ë¦¬ì…‹ ìœ„ì¹˜
+    public bool objectRestrictions; // ì˜¤ë¸Œì íŠ¸ ì´ë™ ì œí•œ
 
     private void OnTriggerEnter(Collider other)
     {
-        if (objectRestrictions) // ÀâÀº ¿ÀºêÁ§Æ®¸¦ ´ÙÀ½ ½ºÅ×ÀÌÁö·Î ³Ñ±æ¼ö ¾øµµ·Ï Á¦ÇÑ
+        if (objectRestrictions) // ì¡ì€ ì˜¤ë¸Œì íŠ¸ë¥¼ ë‹¤ìŒ ìŠ¤í…Œì´ì§€ë¡œ ë„˜ê¸¸ìˆ˜ ì—†ë„ë¡ ì œí•œ
         {
-            if (other.CompareTag("Player")) // ÇÃ·¹ÀÌ°¡ ÀâÀº ¿ÀºêÁ§Æ® ÇØÁ¦
+            if (other.CompareTag("Player")) // í”Œë ˆì´ê°€ ì¡ì€ ì˜¤ë¸Œì íŠ¸ í•´ì œ
             {  
                 GrabObject obj = other.gameObject.GetComponent<GrabObject>();
                 if (obj.grabbedObject != null)
@@ -19,31 +19,31 @@ public class ResetObjectPosition : MonoBehaviour
                     Rigidbody grabbedRigidbody = obj.grabbedObject.GetComponent<Rigidbody>();
                     if (grabbedRigidbody != null)
                     {
-                        grabbedRigidbody.freezeRotation = false; // È¸Àü °íÁ¤ ÇØÁ¦
-                        grabbedRigidbody.isKinematic = false; // ¹°¸® È¿°ú ´Ù½Ã È°¼ºÈ­
+                        grabbedRigidbody.freezeRotation = false; // íšŒì „ ê³ ì • í•´ì œ
+                        grabbedRigidbody.isKinematic = false; // ë¬¼ë¦¬ íš¨ê³¼ ë‹¤ì‹œ í™œì„±í™”
                     }
 
                     obj.grab = false;
                     obj.grabbedObject = null;
                 }
             }
-            else if (other.CompareTag("GrabObject")) // ÀÏºÎ ¿ÀºêÁ§Æ®°¡ ´øÁ®¼­ ³Ñ¾î°¡´Â »óÈ² ´ëºñ
+            else if (other.CompareTag("GrabObject")) // ì¼ë¶€ ì˜¤ë¸Œì íŠ¸ê°€ ë˜ì ¸ì„œ ë„˜ì–´ê°€ëŠ” ìƒí™© ëŒ€ë¹„
             {
                 Rigidbody grabbedRigidbody = other.GetComponent<Rigidbody>();
                 if (grabbedRigidbody != null)
                 {
-                    grabbedRigidbody.velocity = Vector3.zero; // ¼Óµµ ÃÊ±âÈ­
-                    grabbedRigidbody.angularVelocity = Vector3.zero; // È¸Àü ÃÊ±âÈ­
+                    grabbedRigidbody.linearVelocity = Vector3.zero; // ì†ë„ ì´ˆê¸°í™”
+                    grabbedRigidbody.angularVelocity = Vector3.zero; // íšŒì „ ì´ˆê¸°í™”
                 }
             }
         }
-        else // Æ¯Á¤ ¹Ù´ÚÀ¸·Î ¶³¾îÁ³À»¶§ À§Ä¡ ¸®¼Â
+        else // íŠ¹ì • ë°”ë‹¥ìœ¼ë¡œ ë–¨ì–´ì¡Œì„ë•Œ ìœ„ì¹˜ ë¦¬ì…‹
         {
-            if (other.CompareTag("GrabObject")) // ¿ÀºêÁ§Æ®
+            if (other.CompareTag("GrabObject")) // ì˜¤ë¸Œì íŠ¸
             {
                 other.transform.position = resetPos.position;
             }
-            else if (other.CompareTag("Player")) // ÇÃ·¹ÀÌ¾î
+            else if (other.CompareTag("Player")) // í”Œë ˆì´ì–´
             {
                 CharacterController characterController = other.GetComponent<CharacterController>();
                 characterController.enabled = false;
