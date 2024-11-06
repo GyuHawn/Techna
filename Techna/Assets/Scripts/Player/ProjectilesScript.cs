@@ -64,7 +64,7 @@ public class ProjectilesScript : MonoBehaviour
             Rigidbody rb = shotBullet.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                rb.linearVelocity = direction * shotBullet.GetComponent<ProjectileMoveScript>().speed; // 총알 속도 설정
+                rb.velocity = direction * shotBullet.GetComponent<ProjectileMoveScript>().speed; // 총알 속도 설정
             }
         }
     }

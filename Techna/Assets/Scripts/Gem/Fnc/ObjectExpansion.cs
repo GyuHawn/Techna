@@ -139,18 +139,18 @@ public class ObjectExpansion : MonoBehaviour
         if (rb != null)
         {
             // 기존 속도, 회전력 저장
-            Vector3 originalVelocity = rb.linearVelocity;
+            Vector3 originalVelocity = rb.velocity;
             Vector3 originalAngularVelocity = rb.angularVelocity;
 
             // 포지션, 회전 고정 (속도와 회전력을 0으로 설정)
-            rb.linearVelocity = Vector3.zero;
+            rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
 
             // 일정 시간 동안 포지션, 회전을 고정
             yield return new WaitForSeconds(freezeDuration);
 
             // 원래 속도, 회전력 복원
-            rb.linearVelocity = originalVelocity;
+            rb.velocity = originalVelocity;
             rb.angularVelocity = originalAngularVelocity;
         }
         else

@@ -32,7 +32,7 @@ public class ResetObjectPosition : MonoBehaviour
                 Rigidbody grabbedRigidbody = other.GetComponent<Rigidbody>();
                 if (grabbedRigidbody != null)
                 {
-                    grabbedRigidbody.linearVelocity = Vector3.zero; // 속도 초기화
+                    grabbedRigidbody.velocity = Vector3.zero; // 속도 초기화
                     grabbedRigidbody.angularVelocity = Vector3.zero; // 회전 초기화
                 }
             }
