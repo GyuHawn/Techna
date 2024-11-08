@@ -6,8 +6,6 @@ using UnityEngine.Playables;
 using UnityEngine.Timeline;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
-using static PlayerMovement;
-using System.ComponentModel;
 
 public class PlayerMovement : MonoBehaviour
 {
