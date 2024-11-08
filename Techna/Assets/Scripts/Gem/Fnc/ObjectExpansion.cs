@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ObjectExpansion : MonoBehaviour
 {
-    public ExpansionConversion gun; // ë³´ì„ ìƒíƒœ í™•ì¸
-    public float scaleChangeDuration; // ìŠ¤ì¼€ì¼ ë³€í™” ì‹œê°„
-    public float freezeDuration; // ì˜¤ë¸Œì íŠ¸ ê³ ì • ì‹œê°„
-    private bool isScaling = false; // í¬ê¸° ë³€í™” ì¤‘ì¸ì§€ ì—¬ë¶€ë¥¼ ì¶”ì í•˜ëŠ” ë³€ìˆ˜
+    public ExpansionConversion gun; // º¸¼® »óÅÂ È®ÀÎ
+    public float scaleChangeDuration; // ½ºÄÉÀÏ º¯È­ ½Ã°£
+    public float freezeDuration; // ¿ÀºêÁ§Æ® °íÁ¤ ½Ã°£
+    private bool isScaling = false; // Å©±â º¯È­ ÁßÀÎÁö ¿©ºÎ¸¦ ÃßÀûÇÏ´Â º¯¼ö
 
     private void Start()
     {
@@ -18,12 +18,12 @@ public class ObjectExpansion : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("ExpansionBullet")) // ì¦ê° ì†ì„± ì´ì•Œ
+        if (collision.gameObject.CompareTag("ExpansionBullet")) // Áõ°¨ ¼Ó¼º ÃÑ¾Ë
         {
             CheckObjectInfor cube = gameObject.GetComponent<CheckObjectInfor>();
             if (cube.expansion)
             {
-                // ì˜¤ë¸Œì íŠ¸ì˜ í¬ê¸° ì¦ê°
+                // ¿ÀºêÁ§Æ®ÀÇ Å©±â Áõ°¨
                 HandleCollision();
             }
         }
@@ -31,131 +31,131 @@ public class ObjectExpansion : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("ExpansionBullet")) // ì¦ê° ì†ì„± ì´ì•Œ
+        if (other.gameObject.CompareTag("ExpansionBullet")) // Áõ°¨ ¼Ó¼º ÃÑ¾Ë
         {
             CheckObjectInfor cube = gameObject.GetComponent<CheckObjectInfor>();
             if (cube.expansion)
             {
-                // ì˜¤ë¸Œì íŠ¸ì˜ í¬ê¸° ì¦ê°
+                // ¿ÀºêÁ§Æ®ÀÇ Å©±â Áõ°¨
                 HandleCollision();
             }
         }
     }
 
-    void HandleCollision() // í¬ê¸° ì¦ê° ì¤‘ í¬ì§€ì…˜ ë° íšŒì „ ê³ ì •, ì˜¤ë¸Œì íŠ¸ ìµœëŒ€ ì¦ê° ê°’ í™•ì¸
+    void HandleCollision() // Å©±â Áõ°¨ Áß Æ÷Áö¼Ç ¹× È¸Àü °íÁ¤, ¿ÀºêÁ§Æ® ÃÖ´ë Áõ°¨ °ª È®ÀÎ
     {
-        if (isScaling) return; // ì´ë¯¸ í¬ê¸° ë³€í™” ì¤‘ì´ë©´ í•¨ìˆ˜ ì¢…ë£Œ
+        if (isScaling) return; // ÀÌ¹Ì Å©±â º¯È­ ÁßÀÌ¸é ÇÔ¼ö Á¾·á
 
-        gameObject.tag = "Untagged"; // í”Œë ˆì´ì–´ê°€ ì¡ì„ìˆ˜ ì—†ë„ë¡ íƒœê·¸ ë³€ê²½
+        gameObject.tag = "Untagged"; // ÇÃ·¹ÀÌ¾î°¡ ÀâÀ»¼ö ¾øµµ·Ï ÅÂ±× º¯°æ
 
-         // ìœ„ì¹˜, íšŒì „ ì €ì¥
+        // À§Ä¡, È¸Àü ÀúÀå
         Vector3 originalPosition = gameObject.transform.position;
         Quaternion originalRotation = gameObject.transform.rotation;
 
         CheckObjectInfor check = gameObject.GetComponent<CheckObjectInfor>();
 
-        if (gun.plus) // í¬ê¸° ì¦ê°€
+        if (gun.plus) // Å©±â Áõ°¡
         {
             if (check.currentValue < check.expansValue)
             {
                 check.currentValue++;
-                isScaling = true; // í¬ê¸° ë³€í™” ì‹œì‘
+                isScaling = true; // Å©±â º¯È­ ½ÃÀÛ
                 StartCoroutine(ScaleOverTime(gameObject, gameObject.transform.localScale * 2));
                 check.weight = check.weight * 2;
             }
         }
-        else // í¬ê¸° ê°ì†Œ
+        else // Å©±â °¨¼Ò
         {
             if (check.currentValue > check.reducedValue)
             {
                 check.currentValue--;
-                isScaling = true; // í¬ê¸° ë³€í™” ì‹œì‘
+                isScaling = true; // Å©±â º¯È­ ½ÃÀÛ
                 StartCoroutine(ScaleOverTime(gameObject, gameObject.transform.localScale * 0.5f));
                 check.weight = check.weight * 0.5f;
             }
         }
 
-        StartCoroutine(FixedPostion()); // í¬ì§€ì…˜ ê³ ì •
+        StartCoroutine(FixedPostion()); // Æ÷Áö¼Ç °íÁ¤
 
-        // ì €ì¥ëœ ìœ„ì¹˜, íšŒì „ìœ¼ë¡œ ë³µì›
+        // ÀúÀåµÈ À§Ä¡, È¸ÀüÀ¸·Î º¹¿ø
         gameObject.transform.position = originalPosition;
         gameObject.transform.rotation = originalRotation;
     }
 
     IEnumerator ScaleOverTime(GameObject obj, Vector3 targetScale)
     {
-        Vector3 initialScale = obj.transform.localScale;  // ì˜¤ë¸Œì íŠ¸ ì´ˆê¸° ìŠ¤ì¼€ì¼ ì €ì¥
-        float initialYPos = obj.transform.position.y;  // ì˜¤ë¸Œì íŠ¸ ì´ˆê¸° Y ìœ„ì¹˜ê°’ ì €ì¥
-        float elapsed = 0f;  // ê²½ê³¼ ì‹œê°„ì„ ì¶”ì 
+        Vector3 initialScale = obj.transform.localScale;  // ¿ÀºêÁ§Æ® ÃÊ±â ½ºÄÉÀÏ ÀúÀå
+        float initialYPos = obj.transform.position.y;  // ¿ÀºêÁ§Æ® ÃÊ±â Y À§Ä¡°ª ÀúÀå
+        float elapsed = 0f;  // °æ°ú ½Ã°£À» ÃßÀû
 
         Rigidbody rb = obj.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.isKinematic = true;  // ë¬¼ë¦¬ ìƒí˜¸ì‘ìš©ì„ ë©ˆì¶¤
+            rb.isKinematic = true;  // ¹°¸® »óÈ£ÀÛ¿ëÀ» ¸ØÃã
         }
 
         while (elapsed < scaleChangeDuration)
         {
-            float progress = elapsed / scaleChangeDuration;  //ìŠ¤ì¼€ì¼ ë³€í™” ì§„í–‰ë„ ê³„ì‚°
+            float progress = elapsed / scaleChangeDuration;  // ½ºÄÉÀÏ º¯È­ ÁøÇàµµ °è»ê
 
-            // ìŠ¤ì¼€ì¼ì„ ì´ˆê¸° ìŠ¤ì¼€ì¼ì—ì„œ ëª©í‘œ ìŠ¤ì¼€ì¼ê¹Œì§€ ë³´ê°„í•˜ì—¬ ì ì§„ì ìœ¼ë¡œ ë³€í™”
+            // ½ºÄÉÀÏÀ» ÃÊ±â ½ºÄÉÀÏ¿¡¼­ ¸ñÇ¥ ½ºÄÉÀÏ±îÁö º¸°£ÇÏ¿© Á¡ÁøÀûÀ¸·Î º¯È­
             obj.transform.localScale = Vector3.Lerp(initialScale, targetScale, progress);
 
-           // í˜„ì¬ ìŠ¤ì¼€ì¼ì˜ Yê°’ì„ ê°€ì ¸ì™€ì„œ ìŠ¤ì¼€ì¼ ë³€í™”ëŸ‰ì„ ê³„ì‚°
+            // ÇöÀç ½ºÄÉÀÏÀÇ Y°ªÀ» °¡Á®¿Í¼­ ½ºÄÉÀÏ º¯È­·®À» °è»ê
             float currentScaleY = obj.transform.localScale.y;
             float scaleChangeY = currentScaleY - initialScale.y;
 
-            // Yì¶• ìœ„ì¹˜ë¥¼ í˜„ì¬ ìŠ¤ì¼€ì¼ ë³€í™”ì— ë§ì¶°ì„œ ì ˆë°˜+1 ë§Œí¼ ì˜¬ë¦¼
+            // YÃà À§Ä¡¸¦ ÇöÀç ½ºÄÉÀÏ º¯È­¿¡ ¸ÂÃç¼­ Àı¹İ+1 ¸¸Å­ ¿Ã¸²
             obj.transform.position = new Vector3(obj.transform.position.x, initialYPos + ((scaleChangeY / 2) + 1), obj.transform.position.z);
 
-            elapsed += Time.deltaTime;  // ê²½ê³¼ ì‹œê°„ ì—…ë°ì´íŠ¸
+            elapsed += Time.deltaTime;  // °æ°ú ½Ã°£ ¾÷µ¥ÀÌÆ®
             yield return null;
         }
 
-        // ìµœì¢… ìŠ¤ì¼€ì¼ì„ ëª©í‘œ ìŠ¤ì¼€ì¼ë¡œ ì„¤ì •
+        // ÃÖÁ¾ ½ºÄÉÀÏÀ» ¸ñÇ¥ ½ºÄÉÀÏ·Î ¼³Á¤
         obj.transform.localScale = targetScale;
 
-        // ìµœì¢… ìŠ¤ì¼€ì¼ ë³€í™”ëŸ‰ì„ ê¸°ë°˜ìœ¼ë¡œ Y ìœ„ì¹˜ë¥¼ ì¡°ì •
+        // ÃÖÁ¾ ½ºÄÉÀÏ º¯È­·®À» ±â¹İÀ¸·Î Y À§Ä¡¸¦ Á¶Á¤
         float finalScaleChangeY = targetScale.y - initialScale.y;
         obj.transform.position = new Vector3(obj.transform.position.x, initialYPos + (finalScaleChangeY / 2), obj.transform.position.z);
 
-        // ë¬¼ë¦¬ ìƒí˜¸ì‘ìš©ì„ ë³µì›
+        // ¹°¸® »óÈ£ÀÛ¿ëÀ» º¹¿ø
         if (rb != null)
         {
-            rb.isKinematic = false;  // ë¬¼ë¦¬ ìƒí˜¸ì‘ìš©ì„ ë‹¤ì‹œ í™œì„±í™”
+            rb.isKinematic = false;  // ¹°¸® »óÈ£ÀÛ¿ëÀ» ´Ù½Ã È°¼ºÈ­
         }
 
-        gameObject.tag = "GrabObject"; // íƒœê·¸ ë³µêµ¬
-        isScaling = false;  // ìŠ¤ì¼€ì¼ ë³€í™”ê°€ ì™„ë£Œ í‘œì‹œ
+        gameObject.tag = "GrabObject"; // ÅÂ±× º¹±¸
+        isScaling = false;  // ½ºÄÉÀÏ º¯È­°¡ ¿Ï·á Ç¥½Ã
     }
 
 
 
-    IEnumerator FixedPostion() // í¬ì§€ì…˜ ê³ ì •
+    IEnumerator FixedPostion() // Æ÷Áö¼Ç °íÁ¤
     {
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
 
-        // í¬ì§€ì…˜ê³¼ íšŒì „ì„ ê³ ì •
+        // Æ÷Áö¼Ç°ú È¸ÀüÀ» °íÁ¤
         if (rb != null)
         {
-            // ê¸°ì¡´ ì†ë„, íšŒì „ë ¥ ì €ì¥
+            // ±âÁ¸ ¼Óµµ, È¸Àü·Â ÀúÀå
             Vector3 originalVelocity = rb.velocity;
             Vector3 originalAngularVelocity = rb.angularVelocity;
 
-            // í¬ì§€ì…˜, íšŒì „ ê³ ì • (ì†ë„ì™€ íšŒì „ë ¥ì„ 0ìœ¼ë¡œ ì„¤ì •)
+            // Æ÷Áö¼Ç, È¸Àü °íÁ¤ (¼Óµµ¿Í È¸Àü·ÂÀ» 0À¸·Î ¼³Á¤)
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
 
-            // ì¼ì • ì‹œê°„ ë™ì•ˆ í¬ì§€ì…˜, íšŒì „ì„ ê³ ì •
+            // ÀÏÁ¤ ½Ã°£ µ¿¾È Æ÷Áö¼Ç, È¸ÀüÀ» °íÁ¤
             yield return new WaitForSeconds(freezeDuration);
 
-            // ì›ë˜ ì†ë„, íšŒì „ë ¥ ë³µì›
+            // ¿ø·¡ ¼Óµµ, È¸Àü·Â º¹¿ø
             rb.velocity = originalVelocity;
             rb.angularVelocity = originalAngularVelocity;
         }
         else
         {
-            // Kinematic ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+            // Kinematic »óÅÂÀÏ °æ¿ì
             yield return new WaitForSeconds(freezeDuration);
         }
     }
