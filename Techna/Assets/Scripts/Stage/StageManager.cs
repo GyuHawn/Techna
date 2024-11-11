@@ -45,7 +45,11 @@ public class StageManager : MonoBehaviour
                 previousStage = playerMovement.currentStage;
                 break;
             case 4:
-                StartCoroutine(LoadNextStageAsync("Stage4", new Vector3(0f, 16f, 6f), Quaternion.Euler(0, 180, 0)));
+                StartCoroutine(LoadNextStageAsync("Stage4", new Vector3(0f, 16f, 20f), Quaternion.Euler(0, 180, 0)));
+                previousStage = playerMovement.currentStage;
+                break;
+            case 5:
+                StartCoroutine(LoadNextStageAsync("Stage5", new Vector3(75f, 26f, -29f), Quaternion.Euler(0, 180, 0)));
                 previousStage = playerMovement.currentStage;
                 break;
         }
