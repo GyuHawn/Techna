@@ -48798,7 +48798,7 @@ GameObject:
   - component: {fileID: 272082294461572442}
   m_Layer: 10
   m_Name: BasicDestruction
-  m_TagString: Bullet
+  m_TagString: Destruction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48846,6 +48846,7 @@ MonoBehaviour:
   fireRate: 5
   muzzlePrefab: {fileID: 6164502314871467723, guid: 16a8db6c2ea577a4dbb53780f8808b8a, type: 3}
   hitPrefab: {fileID: 2413048622540602857, guid: 8f45d96bdd4fcf64487b0e08eb9e1d62, type: 3}
+  hitEffect: {fileID: 358637981425055526, guid: acb39226f59e6cd4799c54ffce6e5b03, type: 3}
   trails:
   - {fileID: 422236918816984467}
   - {fileID: 8989126422574472881}
@@ -48853,6 +48854,7 @@ MonoBehaviour:
   - {fileID: 6346564631759988037}
   - {fileID: 4929239060848784722}
   - {fileID: 2094328806692088286}
+  destruction: 0
 --- !u!54 &6423704709750675637
 Rigidbody:
   m_ObjectHideFlags: 0

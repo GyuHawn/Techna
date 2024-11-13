@@ -13,10 +13,15 @@ public class ProjectileMoveScript : MonoBehaviour
     public float fireRate; // 발사 속도
     public GameObject muzzlePrefab; // 발사 이펙트 프리팹
     public GameObject hitPrefab; // 충돌 이펙트 프리팹
+    public GameObject hitEffect; // 충돌 효과;
     public List<GameObject> trails; // 총알 궤적 리스트
 
     private bool collided; // 충돌 여부
     private Rigidbody rb; // Rigidbody 컴포넌트
+
+    // 총알 상태
+    public bool destruction; // 파괴
+
 
     void Start()
     {
@@ -47,6 +52,7 @@ public class ProjectileMoveScript : MonoBehaviour
             // 충돌 지점 정보 전달
             ContactPoint contact = collision.contacts[0];
 
+            HitEffect();
             DestroyBullet(gameObject, contact.point, contact.normal); // 충돌 지점과 표면의 법선을 전달
         }
     }
@@ -61,7 +67,16 @@ public class ProjectileMoveScript : MonoBehaviour
             Vector3 contactPoint = other.ClosestPoint(transform.position);
             Vector3 normal = (transform.position - other.transform.position).normalized;
 
+            HitEffect();
             DestroyBullet(gameObject, contactPoint, normal); // 충돌한 위치와 법선을 전달
+        }
+    }
+    public void HitEffect()
+    {
+        if(hitEffect != null)
+        {             
+            GameObject effect = Instantiate(hitEffect, gameObject.transform.position, Quaternion.identity);
+            Destroy(effect, 1);
         }
     }
 
@@ -108,7 +123,7 @@ public class ProjectileMoveScript : MonoBehaviour
             }
         }
 
-        StartCoroutine(DestroyParticle(0f)); // 총알 파괴
+        StartCoroutine(DestroyParticle(0.1f)); // 총알 파괴
     }
 
 

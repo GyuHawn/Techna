@@ -20,6 +20,7 @@ TagManager:
   - Penetrate
   - MonsterBullet
   - Boss
+  - Destruction
   layers:
   - Default
   - TransparentFX
