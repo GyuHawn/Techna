@@ -12,7 +12,7 @@ public class ButtonInfor : MonoBehaviour
 
     [Header("재질")]
     public Material[] materials; // 0: False, 1: True
-    public new Renderer renderer; // Material을 변경하기 위한 Renderer
+    private new Renderer renderer; // Material을 변경하기 위한 Renderer
 
     [Header("확인할 총알")]
     public string[] collisionBullet = new string[] {"Bullet", "Expansion", "Penetrate" }; // 충돌 태그 

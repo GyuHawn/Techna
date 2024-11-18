@@ -5,19 +5,19 @@ using UnityEngine;
 public class ButtonsController : MonoBehaviour
 {
     public MovingObject movingObject;
-    public PlayerMovement player; // ÇÃ·¹ÀÌ¾î
+    public PlayerMovement player; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½
 
-    [Header("¹öÆ°")]
-    public GameObject[] buttons;  // ¹öÆ°µé
+    [Header("ï¿½ï¿½Æ°")]
+    public GameObject[] buttons;  // ï¿½ï¿½Æ°ï¿½ï¿½
 
-    [Header("È®ÀÎÇÒ È½¼ö")]
-    public int checkCount;  // È®ÀÎ ¼ö
+    [Header("È®ï¿½ï¿½ï¿½ï¿½ È½ï¿½ï¿½")]
+    public int checkCount;  // È®ï¿½ï¿½ ï¿½ï¿½
     public int currentCheckCount;
 
     private void Start()
     {
         NullObjectFind();
-        // ÃÊ±â Ä«¿îÆ® ¼³Á¤
+        // ï¿½Ê±ï¿½ Ä«ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
         currentCheckCount = checkCount;
     }
 
@@ -41,7 +41,7 @@ public class ButtonsController : MonoBehaviour
     {
         bool allMatch = true;
 
-        // ¸ðµç ¹öÆ° »óÅÂ È®ÀÎ
+        // ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
         foreach (GameObject buttonObj in buttons)
         {
             ButtonInfor buttonInfo = buttonObj.GetComponent<ButtonInfor>();
@@ -52,19 +52,19 @@ public class ButtonsController : MonoBehaviour
             }
         }
 
-        // ¸ðµç ¹öÆ° »óÅÂ°¡ ÀÏÄ¡ÇÏ´Â °æ¿ì
+        // ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½Â°ï¿½ ï¿½ï¿½Ä¡ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
         if (allMatch)
         {
             movingObject.activated = true;
         }
         else
         {
-            // »óÅÂ ºÒÀÏÄ¡ ½Ã Ä«¿îÆ® ¸®¼Â ¹× ÇÃ·¹ÀÌ¾î Ã¼·Â °¨¼Ò
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½ Ä«ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             currentCheckCount = checkCount;
             player.currentHealth -= 5;
         }
 
-        // ¸ðµç ¹öÆ° »óÅÂ false·Î ÃÊ±âÈ­
+        // ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ falseï¿½ï¿½ ï¿½Ê±ï¿½È­
         ResetButtonStates();
     }
 
@@ -73,8 +73,8 @@ public class ButtonsController : MonoBehaviour
         foreach (GameObject buttonObj in buttons)
         {
             ButtonInfor buttonInfo = buttonObj.GetComponent<ButtonInfor>();
-            buttonInfo.currentStatus = false; // ¹öÆ° »óÅÂ false·Î ¼³Á¤
-            buttonInfo.renderer.material = buttonInfo.materials[0]; // ¿ø·¡ ÀçÁú·Î º¹¿ø
+            buttonInfo.currentStatus = false; // ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ falseï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            buttonInfo.GetComponent<Renderer>().material = buttonInfo.materials[0]; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         }
     }
 }

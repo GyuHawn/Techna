@@ -26,6 +26,7 @@ public class LockedBox : MonoBehaviour
         if (!openedBox && IsCorrectKey(collision.gameObject.name))
         {
             OpenedBox(); // 박스 열기
+            Destroy(collision.gameObject);
         }
     }
 
