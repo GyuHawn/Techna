@@ -8,20 +8,22 @@ public class BookPuzzlePoint : MonoBehaviour
 
     public GameObject book;
 
-    private void Awake()
-    {
-        bookPuzzle = GetComponent<BookPuzzle>();
-    }
+    public bool active;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject == book)
+        if (!active)
         {
-            bookPuzzle.puzzleNumCheck++;
-
-            if(bookPuzzle.puzzleNumCheck == 4)
+            if (other.gameObject == book)
             {
-                bookPuzzle.activate = true;
+                active = true;
+
+                bookPuzzle.puzzleNumCheck++;
+
+                if (bookPuzzle.puzzleNumCheck == 4)
+                {
+                    bookPuzzle.activate = true;
+                }
             }
         }
     }
