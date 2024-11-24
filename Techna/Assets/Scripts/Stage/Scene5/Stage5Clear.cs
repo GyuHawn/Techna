@@ -6,6 +6,7 @@ public class Stage5Clear : MonoBehaviour
 {
     public int clearNum;
     public GameObject door;
+    public GameObject potal;
 
     public GameObject[] emptySkulls;
     public Transform[] skullPositions;
@@ -30,6 +31,7 @@ public class Stage5Clear : MonoBehaviour
                 if(clearNum >= 5)
                 {
                     door.SetActive(false);
+                    potal.SetActive(true);
                 }
             }
         }
