@@ -4117,7 +4117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0b4d0145c5dad48a6327334b4b04cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageValue: 5
+  stageValue: 4
 --- !u!1001 &96811644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8696,7 +8696,6 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: 39ccbbd8df4f3774c81882b0494ebc5f, type: 2}
   - {fileID: 2100000, guid: 82451cc0d187cd64eacfe6b8c79d34d0, type: 2}
-  renderer: {fileID: 0}
   collisionBullet:
   - Bullet
   - Expansion
@@ -28418,7 +28417,6 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: 39ccbbd8df4f3774c81882b0494ebc5f, type: 2}
   - {fileID: 2100000, guid: 82451cc0d187cd64eacfe6b8c79d34d0, type: 2}
-  renderer: {fileID: 0}
   collisionBullet:
   - Bullet
   - Expansion
