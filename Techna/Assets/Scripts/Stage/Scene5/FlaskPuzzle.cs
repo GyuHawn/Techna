@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -20,6 +21,9 @@ public class FlaskPuzzle : MonoBehaviour
     public int purpleNum;
 
     public GameObject flask; // 조합 물약
+
+    public TMP_Text failedUI; // 조합실패 UI
+    public bool showUI;
 
     private void Awake()
     {
@@ -66,16 +70,28 @@ public class FlaskPuzzle : MonoBehaviour
         }
         else
         {
-            RedFlaskMove();
-            GreenFlaskMove();
-            PurpleFlaskMove();
+            cauldronm.Failed();
+
+            if (other.gameObject == redFlask)
+            {
+                RedFlaskMove();
+            }
+            if (other.gameObject == greenFlask)
+            {
+                GreenFlaskMove();
+            }
+            if (other.gameObject == purpleFlask)
+            {
+                PurpleFlaskMove();
+            }
         }
     }
 
+    // 플라스크 위치 초기화
     void RedFlaskMove()
     {
         Rigidbody flask = redFlask.GetComponent<Rigidbody>();
-        // 플라스크 정지
+        // 움직임 정지
         flask.velocity = Vector3.zero;
         flask.angularVelocity = Vector3.zero;
 
@@ -98,6 +114,7 @@ public class FlaskPuzzle : MonoBehaviour
         purpleFlask.transform.position = purpleFlaskPosition;
     }
 
+    // 퍼즐 클리어
     void PuzzleClear()
     {
         if (redNum == 2 && greenNum == 1 && purpleNum == 1)
@@ -107,10 +124,31 @@ public class FlaskPuzzle : MonoBehaviour
         }
         else
         {
+            Failed();
+
             puzzleNum = 0;
             redNum = 0;
             greenNum = 0;
             purpleNum = 0;
         }
+    }
+
+    public void Failed()
+    {
+        if (!showUI)
+        {
+            showUI = true;
+            StartCoroutine(ShowFailedUI());
+        }
+    }
+
+    IEnumerator ShowFailedUI()
+    {
+        failedUI.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
+
+        failedUI.gameObject.SetActive(false);
+        showUI = false;
     }
 }
