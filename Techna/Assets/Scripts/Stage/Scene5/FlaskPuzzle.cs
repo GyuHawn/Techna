@@ -22,9 +22,6 @@ public class FlaskPuzzle : MonoBehaviour
 
     public GameObject flask; // 조합 물약
 
-    public TMP_Text failedUI; // 조합실패 UI
-    public bool showUI;
-
     private void Awake()
     {
         cauldronm = GetComponent<Cauldronm>();
@@ -41,81 +38,64 @@ public class FlaskPuzzle : MonoBehaviour
     {
         if (cauldronm.active)
         {
-            if (puzzleNum < 4)
-            {
-                if (other.gameObject == redFlask)
-                {
-                    redNum++;
-                    puzzleNum++;
-                    RedFlaskMove();
-                }
-                if (other.gameObject == greenFlask)
-                {
-                    greenNum++;
-                    puzzleNum++;
-                    GreenFlaskMove();
-                }
-                if (other.gameObject == purpleFlask)
-                {
-                    purpleNum++;
-                    puzzleNum++;
-                    PurpleFlaskMove();
-                }
-            }
-
-            if(puzzleNum >= 4)
-            {
-                PuzzleClear();
-            }
+            HandleFlaskCollision(other);
         }
         else
         {
-            cauldronm.Failed();
+            cauldronm.MixtureFailed();
+            ResetPuzzleState();
+        }
+    }
 
-            if (other.gameObject == redFlask)
+    private void HandleFlaskCollision(Collider other)
+    {
+        if (puzzleNum < 4)
+        {
+            if (other.gameObject == redFlask || other.gameObject == greenFlask || other.gameObject == purpleFlask)
             {
-                RedFlaskMove();
+                cauldronm.flaskStatus = true;
+
+                if (!cauldronm.keyStatus || cauldronm.flaskStatus)
+                {
+                    if (other.gameObject == redFlask) { redNum++; }
+                    else if (other.gameObject == greenFlask) { greenNum++; }
+                    else if (other.gameObject == purpleFlask) { purpleNum++; }
+
+                    puzzleNum++;
+                    MoveFlaskBack(other.gameObject);
+                }
+                else
+                {
+                    cauldronm.MixtureFailed();
+                    ResetPuzzleState();
+                }
             }
-            if (other.gameObject == greenFlask)
+            else
             {
-                GreenFlaskMove();
+                cauldronm.MixtureFailed();
+                ResetPuzzleState();
             }
-            if (other.gameObject == purpleFlask)
+
+            if (puzzleNum >= 4)
             {
-                PurpleFlaskMove();
+                PuzzleState();
             }
         }
     }
 
-    // 플라스크 위치 초기화
-    void RedFlaskMove()
+    private void MoveFlaskBack(GameObject flask)
     {
-        Rigidbody flask = redFlask.GetComponent<Rigidbody>();
-        // 움직임 정지
-        flask.velocity = Vector3.zero;
-        flask.angularVelocity = Vector3.zero;
+        Rigidbody rb = flask.GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
 
-        redFlask.transform.position = redFlaskPosition;
-    }
-    void GreenFlaskMove()
-    {
-        Rigidbody flask = greenFlask.GetComponent<Rigidbody>();
-        flask.velocity = Vector3.zero;
-        flask.angularVelocity = Vector3.zero;
-
-        greenFlask.transform.position = greenFlaskPosition;
-    }
-    void PurpleFlaskMove()
-    {
-        Rigidbody flask = purpleFlask.GetComponent<Rigidbody>();
-        flask.velocity = Vector3.zero;
-        flask.angularVelocity = Vector3.zero;
-
-        purpleFlask.transform.position = purpleFlaskPosition;
+        if (flask == redFlask) { redFlask.transform.position = redFlaskPosition; }
+        else if (flask == greenFlask) { greenFlask.transform.position = greenFlaskPosition; }
+        else if (flask == purpleFlask) { purpleFlask.transform.position = purpleFlaskPosition; }
     }
 
-    // 퍼즐 클리어
-    void PuzzleClear()
+    // 퍼즐 상태 확인 및 초기화
+    void PuzzleState()
     {
         if (redNum == 2 && greenNum == 1 && purpleNum == 1)
         {
@@ -124,31 +104,22 @@ public class FlaskPuzzle : MonoBehaviour
         }
         else
         {
-            Failed();
-
-            puzzleNum = 0;
-            redNum = 0;
-            greenNum = 0;
-            purpleNum = 0;
+            cauldronm.MixtureFailed();
+            ResetPuzzleState();
         }
     }
 
-    public void Failed()
+    private void ResetPuzzleState()
     {
-        if (!showUI)
-        {
-            showUI = true;
-            StartCoroutine(ShowFailedUI());
-        }
-    }
+        cauldronm.keyStatus = false;
 
-    IEnumerator ShowFailedUI()
-    {
-        failedUI.gameObject.SetActive(true);
+        puzzleNum = 0;
+        redNum = 0;
+        greenNum = 0;
+        purpleNum = 0;
 
-        yield return new WaitForSeconds(1f);
-
-        failedUI.gameObject.SetActive(false);
-        showUI = false;
-    }
+        MoveFlaskBack(redFlask);
+        MoveFlaskBack(greenFlask);
+        MoveFlaskBack(purpleFlask);
+    }   
 }

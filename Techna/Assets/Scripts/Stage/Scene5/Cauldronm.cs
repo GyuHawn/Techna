@@ -12,8 +12,13 @@ public class Cauldronm : MonoBehaviour
 
     public bool active; // 활성화
 
-    public TMP_Text failedUI;
-    public bool showUI;
+    public bool keyStatus; // 열쇠 조합 상태
+    public bool flaskStatus; // 플라스크 조합 상태
+
+    public TMP_Text failedUI; // 불이 붙지않았으때 실패 UI
+    public TMP_Text mixtureFailedUI; // 조합실패 UI
+    public bool showUI; // UI 표시여부
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -42,6 +47,23 @@ public class Cauldronm : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         failedUI.gameObject.SetActive(false);
+        showUI = false;
+    }
+
+    public void MixtureFailed()
+    {
+        if (!showUI)
+        {
+            showUI = true;
+            StartCoroutine(ShowMixtureFailedUI());
+        }
+    }
+
+    IEnumerator ShowMixtureFailedUI()
+    {
+        mixtureFailedUI.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        mixtureFailedUI.gameObject.SetActive(false);
         showUI = false;
     }
 }
