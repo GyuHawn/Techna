@@ -144,9 +144,33 @@ public class KeyMaking : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (cauldronm.active && !cauldronm.flaskStatus && cauldronm.keyStatus)
+        if (cauldronm.active)
         {
-            if (items.Contains(other.gameObject))
+            HandleKeyCollision(other);
+        }
+        else
+        {
+            ResetMakingState();
+        }
+    }
+
+    private void HandleKeyCollision(Collider other)
+    {
+        if (items.Contains(other.gameObject))
+        {
+            // 현재 조합법 관련 조건
+            if (!cauldronm.flaskStatus)
+            {
+                cauldronm.keyStatus = true;
+                cauldronm.keyStatusUI.gameObject.SetActive(true);
+            }
+            else
+            {
+                cauldronm.MixtureFailed();
+                ResetMakingState();
+            }
+
+            if (cauldronm.keyStatus)
             {
                 makingNum++;
 
@@ -176,8 +200,11 @@ public class KeyMaking : MonoBehaviour
         }
     }
 
-    private void ResetMakingState()
+
+        private void ResetMakingState()
     {
+        cauldronm.keyStatusUI.gameObject.SetActive(false);
+
         makingNum = 0;
         KeyMove();
         FlaskMove();

@@ -12,13 +12,15 @@ public class Cauldronm : MonoBehaviour
 
     public bool active; // 활성화
 
-    public bool keyStatus; // 열쇠 조합 상태
+    public bool keyStatus; // 열쇠 재작 상태
+    public TMP_Text keyStatusUI; // 열쇠 재작중 표시 UI
     public bool flaskStatus; // 플라스크 조합 상태
+    public TMP_Text flaskStatusUI; // 플라스크 조합중 표시 UI
 
     public TMP_Text failedUI; // 불이 붙지않았으때 실패 UI
     public TMP_Text mixtureFailedUI; // 조합실패 UI
-    public bool showUI; // UI 표시여부
 
+    public bool showUI; // UI 표시여부
 
     private void OnTriggerEnter(Collider other)
     {

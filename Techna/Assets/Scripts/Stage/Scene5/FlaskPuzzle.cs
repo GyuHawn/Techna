@@ -53,9 +53,19 @@ public class FlaskPuzzle : MonoBehaviour
         {
             if (other.gameObject == redFlask || other.gameObject == greenFlask || other.gameObject == purpleFlask)
             {
-                cauldronm.flaskStatus = true;
+                // 현재 조합법 관련 조건
+                if (!cauldronm.keyStatus)
+                {
+                    cauldronm.flaskStatus = true;
+                    cauldronm.flaskStatusUI.gameObject.SetActive(true);
+                }
+                else
+                {
+                    ResetPuzzleState();
+                }
 
-                if (!cauldronm.keyStatus || cauldronm.flaskStatus)
+                // 조합법이 맞을때
+                if (cauldronm.flaskStatus)
                 {
                     if (other.gameObject == redFlask) { redNum++; }
                     else if (other.gameObject == greenFlask) { greenNum++; }
@@ -112,6 +122,7 @@ public class FlaskPuzzle : MonoBehaviour
     private void ResetPuzzleState()
     {
         cauldronm.keyStatus = false;
+        cauldronm.flaskStatusUI.gameObject.SetActive(false);
 
         puzzleNum = 0;
         redNum = 0;
