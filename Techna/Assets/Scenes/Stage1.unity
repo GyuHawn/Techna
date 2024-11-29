@@ -74934,7 +74934,7 @@ MonoBehaviour:
   onExpansion: 1
   onGravity: 0
   onPenetrate: 1
-  onDestruction: 0
+  onDestruction: 1
   onDiffusion: 0
   onUpgrade: 0
   onQuick: 0
