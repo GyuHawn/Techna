@@ -42,7 +42,6 @@ public class FlaskPuzzle : MonoBehaviour
         }
         else
         {
-            cauldronm.MixtureFailed();
             ResetPuzzleState();
         }
     }
@@ -53,33 +52,17 @@ public class FlaskPuzzle : MonoBehaviour
         {
             if (other.gameObject == redFlask || other.gameObject == greenFlask || other.gameObject == purpleFlask)
             {
-                // 현재 조합법 관련 조건
-                if (!cauldronm.keyStatus)
-                {
-                    cauldronm.flaskStatus = true;
-                    cauldronm.flaskStatusUI.gameObject.SetActive(true);
-                }
-                else
-                {
-                    ResetPuzzleState();
-                }
+                cauldronm.flaskStatusUI.gameObject.SetActive(true);
 
                 // 조합법이 맞을때
-                if (cauldronm.flaskStatus)
-                {
-                    if (other.gameObject == redFlask) { redNum++; }
-                    else if (other.gameObject == greenFlask) { greenNum++; }
-                    else if (other.gameObject == purpleFlask) { purpleNum++; }
+                if (other.gameObject == redFlask) { redNum++; }
+                else if (other.gameObject == greenFlask) { greenNum++; }
+                else if (other.gameObject == purpleFlask) { purpleNum++; }
 
-                    puzzleNum++;
-                    MoveFlaskBack(other.gameObject);
-                }
-                else
-                {
-                    cauldronm.MixtureFailed();
-                    ResetPuzzleState();
-                }
+                puzzleNum++;
+                MoveFlaskBack(other.gameObject);
             }
+            else if (other.gameObject == cauldronm.fireWood) { }
             else
             {
                 cauldronm.MixtureFailed();
@@ -89,6 +72,7 @@ public class FlaskPuzzle : MonoBehaviour
             if (puzzleNum >= 4)
             {
                 PuzzleState();
+                ResetPuzzleState();
             }
         }
     }
@@ -121,7 +105,6 @@ public class FlaskPuzzle : MonoBehaviour
 
     private void ResetPuzzleState()
     {
-        cauldronm.keyStatus = false;
         cauldronm.flaskStatusUI.gameObject.SetActive(false);
 
         puzzleNum = 0;
