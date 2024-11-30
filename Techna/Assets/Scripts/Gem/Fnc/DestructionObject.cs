@@ -8,7 +8,7 @@ public class DestructionObject : MonoBehaviour
 
     public BoxCollider collider;
 
-    public void Braking()
+    public void Breaking()
     {
         collider.enabled = false;
 
@@ -24,7 +24,7 @@ public class DestructionObject : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Destruction"))
         {
-            Braking();
+            Breaking();
             Destroy(gameObject, 3f);
         }
     }
