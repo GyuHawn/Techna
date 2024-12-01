@@ -12,7 +12,7 @@ public class FireWall : MonoBehaviour
         if (other.gameObject == waterBucket)
         {
             Destroy(waterBucket);
-            Destroy(gameObject, 1f);
+            Destroy(gameObject, 0.5f);
         }
     }
 }
