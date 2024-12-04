@@ -82,7 +82,8 @@ public class PlayerMovement : MonoBehaviour
         currentStage = 1; // 현재 스테이지
 
         // 이동관련
-        moveSpeed = 10f; 
+        //moveSpeed = 10f; 
+        moveSpeed = 20f; 
         mouseSensitivity = 100f;
         jumpPower = 1.5f;
 
