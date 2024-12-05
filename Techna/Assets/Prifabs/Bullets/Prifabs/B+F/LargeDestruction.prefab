@@ -34596,7 +34596,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8628672874297357034}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.97181225, y: 1.2654524, z: -5.957523}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -34708,8 +34708,8 @@ MonoBehaviour:
   lights: 0
   trails: 0
   changeColor: 1
-  newMaxColor: {r: 0.11764705, g: 0.4158216, b: 1, a: 1}
-  newMinColor: {r: 0.31617647, g: 0.88681537, b: 1, a: 1}
+  newMaxColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+  newMinColor: {r: 0.75294125, g: 0.75294125, b: 0.75294125, a: 1}
   ParticleSystems:
   - {fileID: 4470131265016083453}
   - {fileID: 9144783185234322906}
