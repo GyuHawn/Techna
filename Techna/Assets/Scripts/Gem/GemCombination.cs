@@ -33,8 +33,6 @@ public class GemCombination : MonoBehaviour
     {
         gemUI = GetComponent<GemUI>();
         gemManager = GetComponent<GemManager>();
-        projectilesScript = GameObject.Find("GunManager").GetComponent<ProjectilesScript>();
-        gunTexture = GameObject.Find("Gun").GetComponent<GunTexture>();
     }
 
     private void Start()
@@ -96,6 +94,9 @@ public class GemCombination : MonoBehaviour
         ActivateGem(bullet, attribute, function);
 
         gunTexture.TextuerSetting(); // 총 재질변경
+
+        // 연사 보석일때 사격 속도 변경
+        ChangeShotSpeed();
     }
 
     private void ActivateDefaultGem()
@@ -239,5 +240,18 @@ public class GemCombination : MonoBehaviour
     {
         // 보석 값 계산
         return bullet + attribute * 0.1f + function * 0.01f;
+    }
+
+    // 연사 보석일때 사격 속도 변경
+    public void ChangeShotSpeed()
+    {
+        if (currentGemNum > 0 && Mathf.Abs(currentGemNum * 100 % 10 - 5) < 0.01f)
+        {
+            projectilesScript.fireSpeed = 1f;
+        }
+        else
+        {
+            projectilesScript.fireSpeed = 2f;
+        }
     }
 }

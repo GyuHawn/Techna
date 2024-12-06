@@ -1308,7 +1308,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.42322513, b: 0.1102941, a: 1}
+        key0: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
         key1: {r: 1, g: 0.9510142, b: 0.8455882, a: 1}
         key2: {r: 0.02838452, g: 0.08140288, b: 0.1544118, a: 0}
         key3: {r: 0.02838452, g: 0.08140288, b: 0.1544118, a: 0}
@@ -1333,7 +1333,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_ColorSpace: -1
+        m_ColorSpace: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -4790,7 +4790,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: cdaf8230cf63e564588ddac3ef58c964, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5066,7 +5065,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 0.18382353, g: 0.42586204, b: 1, a: 1}
-      maxColor: {r: 0.2352941, g: 0.122014076, b: 0.060553644, a: 0.3529412}
+      maxColor: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 0.3529412}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9633,7 +9632,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: f1f9767b6e5cac94786537415c301234, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9791,8 +9789,8 @@ TrailRenderer:
       m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.35172412, b: 0, a: 1}
-      key1: {r: 1, g: 0.7364098, b: 0.16911763, a: 0}
+      key0: {r: 0, g: 0, b: 0, a: 1}
+      key1: {r: 0.5, g: 0.5, b: 0.5, a: 0}
       key2: {r: 1, g: 0.16911763, b: 0.32383358, a: 0}
       key3: {r: 0.02838452, g: 0.08140288, b: 0.1544118, a: 0}
       key4: {r: 0.02838452, g: 0.08140288, b: 0.1544118, a: 0}
@@ -9816,7 +9814,7 @@ TrailRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
@@ -10054,7 +10052,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 0.18382353, g: 0.42586204, b: 1, a: 1}
-      maxColor: {r: 0.17647058, g: 0.078051545, b: 0.024653992, a: 1}
+      maxColor: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -14706,7 +14704,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: f1f9767b6e5cac94786537415c301234, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14787,7 +14784,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4000239076910600514}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.5084114, y: 2.1762142, z: -7.905691}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14818,12 +14815,14 @@ MonoBehaviour:
   fireRate: 2
   muzzlePrefab: {fileID: 3365855079267541003, guid: 7a617fa5d789be940b77873919b32cee, type: 3}
   hitPrefab: {fileID: 3021062008055387236, guid: e0e590920b770fb45bfe5c8d32f205ee, type: 3}
+  hitEffect: {fileID: 0}
   trails:
   - {fileID: 8173533649703772593}
   - {fileID: 7267706035293786278}
   - {fileID: 3004028652995074190}
   - {fileID: 1786561107316701911}
   - {fileID: 1636719174215580216}
+  destruction: 0
 --- !u!65 &2871313514731511783
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14892,8 +14891,8 @@ MonoBehaviour:
   lights: 0
   trails: 0
   changeColor: 1
-  newMaxColor: {r: 1, g: 0.42322513, b: 0.1102941, a: 1}
-  newMinColor: {r: 1, g: 0.75973636, b: 0.24264705, a: 1}
+  newMaxColor: {r: 0, g: 0, b: 0, a: 1}
+  newMinColor: {r: 0.82745105, g: 0.82745105, b: 0.82745105, a: 1}
   ParticleSystems:
   - {fileID: 8173533649703772593}
   - {fileID: 7267706035293786278}
@@ -15126,7 +15125,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 0.18382353, g: 0.42586204, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.41845837, b: 0.102941155, a: 1}
+      maxColor: {r: 0, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -19778,7 +19777,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: cdaf8230cf63e564588ddac3ef58c964, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19936,8 +19934,8 @@ TrailRenderer:
       m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.378, g: 0.1329517, b: 0, a: 1}
-      key1: {r: 0.328, g: 0.24154241, b: 0.055470586, a: 0}
+      key0: {r: 0, g: 0, b: 0, a: 1}
+      key1: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 0}
       key2: {r: 1, g: 0, b: 0, a: 0}
       key3: {r: 0.02838452, g: 0.08140288, b: 0.1544118, a: 0}
       key4: {r: 0.02838452, g: 0.08140288, b: 0.1544118, a: 0}
@@ -19961,7 +19959,7 @@ TrailRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
@@ -20081,8 +20079,8 @@ TrailRenderer:
       m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.378, g: 0.1329517, b: 0, a: 1}
-      key1: {r: 0.328, g: 0.24154241, b: 0.055470586, a: 0}
+      key0: {r: 0, g: 0, b: 0, a: 1}
+      key1: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 0}
       key2: {r: 1, g: 0, b: 0, a: 0}
       key3: {r: 0.02838452, g: 0.08140288, b: 0.1544118, a: 0}
       key4: {r: 0.02838452, g: 0.08140288, b: 0.1544118, a: 0}
@@ -20106,7 +20104,7 @@ TrailRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0

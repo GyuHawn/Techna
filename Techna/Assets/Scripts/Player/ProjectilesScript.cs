@@ -22,11 +22,13 @@ public class ProjectilesScript : MonoBehaviour
     public bool b_F_Bullet;
     public bool b_A_F_Bullet;
 
+    public float fireSpeed;
     private float timeToFire = 0f; // 발사 시간 추적
     public GameObject effectToSpawn; // 생성할 투사체
 
     void Start()
     {
+        fireSpeed = 2f;
         if (B_Bullets.Length > 0) // 총알 프리팹 확인
             effectToSpawn = B_Bullets[0]; // 첫 번째 효과 선택
     }
@@ -39,7 +41,7 @@ public class ProjectilesScript : MonoBehaviour
             {
                 playerMovement.ShotAnimation();
 
-                timeToFire = Time.time + 1.5f / effectToSpawn.GetComponent<ProjectileMoveScript>().fireRate; // 발사 시간 업데이트
+                timeToFire = Time.time + fireSpeed / effectToSpawn.GetComponent<ProjectileMoveScript>().fireRate; // 발사 시간 업데이트
                 ShotBullet(); // 효과 생성
             }
         }

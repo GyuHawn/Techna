@@ -4117,7 +4117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0b4d0145c5dad48a6327334b4b04cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageValue: 4
+  stageValue: 3
 --- !u!1001 &96811644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68227,6 +68227,7 @@ MonoBehaviour:
   b_A_Bullet: 0
   b_F_Bullet: 0
   b_A_F_Bullet: 0
+  fireSpeed: 0
   effectToSpawn: {fileID: 0}
 --- !u!4 &1695322066
 Transform:
@@ -74934,10 +74935,10 @@ MonoBehaviour:
   onExpansion: 1
   onGravity: 0
   onPenetrate: 1
-  onDestruction: 1
+  onDestruction: 0
   onDiffusion: 0
   onUpgrade: 0
-  onQuick: 0
+  onQuick: 1
 --- !u!1001 &1876730737
 PrefabInstance:
   m_ObjectHideFlags: 0
