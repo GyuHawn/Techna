@@ -40,7 +40,7 @@ public class Cauldronm : MonoBehaviour
         }
     }
 
-    public void Failed()
+    public void Failed() // 불이 켜지지 않았을시 실패 UI 표시
     {
         if (!showUI)
         {
@@ -59,7 +59,7 @@ public class Cauldronm : MonoBehaviour
         showUI = false;
     }
 
-    public void MixtureFailed()
+    public void MixtureFailed() // 조합법이 틀렸을시 실패 UI 표시
     {
         if (!showUI)
         {
@@ -76,7 +76,7 @@ public class Cauldronm : MonoBehaviour
         showUI = false;
     }
 
-    void FireWoodMove()
+    void FireWoodMove() // 불 붙일 장작사용시 재사용을 위해 다시 제자리로 이동
     {
         Rigidbody fireWoodObj = fireWood.GetComponent<Rigidbody>();
         fireWoodObj.velocity = Vector3.zero;

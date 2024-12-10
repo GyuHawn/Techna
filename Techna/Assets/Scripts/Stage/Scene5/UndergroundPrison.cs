@@ -13,11 +13,11 @@ public class UndergroundPrison : MonoBehaviour
         if (other.gameObject == bread)
         {
             Destroy(bread);
-            GetHint();
+            GetKey();
         }
     }
 
-    void GetHint()
+    void GetKey() // Å° È¹µæ
     {
         Rigidbody keyRigid = key.GetComponent<Rigidbody>();
         keyRigid.AddForce(new Vector3(10, 0, 0), ForceMode.Impulse);

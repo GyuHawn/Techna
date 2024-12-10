@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BookPuzzle : MonoBehaviour
 {
-    public GameObject flask;
-    public bool activate;
-    public int puzzleNumCheck;
+    public GameObject flask; // 클리어 보상 
+    public bool activate; // 활성화 여부
+    public int puzzleNumCheck; // 퍼즐 진행상황 체크
 
     public void Update()
     {

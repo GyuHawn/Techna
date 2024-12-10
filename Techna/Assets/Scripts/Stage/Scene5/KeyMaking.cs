@@ -5,6 +5,7 @@ public class KeyMaking : MonoBehaviour
 {
     public Cauldronm cauldronm;
 
+    [Header("필요 아이템 / 처음 위치")]
     public GameObject key;
     public Vector3 keyPosition;
     public GameObject flask;
@@ -16,6 +17,7 @@ public class KeyMaking : MonoBehaviour
 
     public int makingNum;
 
+    [Header("보상 아이템")]
     public GameObject goldenKey;
     public GameObject specialFlask;
 
@@ -26,7 +28,7 @@ public class KeyMaking : MonoBehaviour
         cauldronm = GetComponent<Cauldronm>();
     }
 
-    private void Start()
+    private void Start() // 아이템 리스트 설정 및 처음 위치 값 수정
     {
         items = new List<GameObject> { key, flask, bookpuzzleItem, flaskpuzzleItem };
 
@@ -36,18 +38,23 @@ public class KeyMaking : MonoBehaviour
         flaskpuzzleItemPosition = flaskpuzzleItem.transform.position + Vector3.up * 0.1f;
     }
 
+    // 아이템 충돌시
     private void OnTriggerEnter(Collider other)
     {
+        // 가마솥에 불이 켜져있는지 확인
         if (cauldronm.active)
         {
             HandleKeyCollision(other);
         }
         else
         {
-            ResetMakingState();
+            ResetMakingState(); 
         }
     }
 
+    // 알맞은 아이템인지 확인
+    // 조합시 UI표시
+    // 4개의 알맞은 레시피라면 보상 아이템 획득
     private void HandleKeyCollision(Collider other)
     {
         if (items.Contains(other.gameObject))
@@ -70,7 +77,7 @@ public class KeyMaking : MonoBehaviour
                 }
             }
         }
-        else if (other.gameObject == cauldronm.fireWood) {}
+        else if (other.gameObject == cauldronm.fireWood) {} // 장작은 제외
         else
         {
             // 실패 처리
@@ -79,6 +86,7 @@ public class KeyMaking : MonoBehaviour
         }
     }
 
+    // 실패시 상태 초기화
     private void ResetMakingState()
     {
         foreach (var item in items)
@@ -96,6 +104,7 @@ public class KeyMaking : MonoBehaviour
 
     }
 
+    // 아이템 사용시 위치 초기화
     void KeyMove()
     {
         Rigidbody keyObj = key.GetComponent<Rigidbody>();

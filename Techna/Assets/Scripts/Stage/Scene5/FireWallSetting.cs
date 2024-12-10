@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class FireWallSetting : MonoBehaviour
 {
-    public GameObject fireWall;
+    public GameObject fireWall; // 불 벽
 
-    public bool actived;
+    public bool actived; // 활성화 여부
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        // 플레이어 위치에 따라 비/활성화
+        if (other.gameObject.CompareTag("Player")) 
         {
             fireWall.SetActive(actived);           
         }
