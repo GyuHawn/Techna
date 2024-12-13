@@ -5,7 +5,7 @@ OcclusionCullingSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_OcclusionBakeSettings:
-    smallestOccluder: 3
+    smallestOccluder: 5
     smallestHole: 1
     backfaceThreshold: 100
   m_SceneGUID: 9fc0d4010bbf28b4594072e72b8655ab
@@ -4096,7 +4096,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &96491148
 Transform:
   m_ObjectHideFlags: 0
@@ -4145,7 +4145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0b4d0145c5dad48a6327334b4b04cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageValue: 5
+  stageValue: 2
 --- !u!1001 &96811644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76034,15 +76034,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 3184062722826845371}
   onLarge: 0
-  onControl: 1
-  onElectricity: 1
-  onExpansion: 1
+  onControl: 0
+  onElectricity: 0
+  onExpansion: 0
   onGravity: 0
-  onPenetrate: 1
+  onPenetrate: 0
   onDestruction: 0
   onDiffusion: 0
   onUpgrade: 0
-  onQuick: 1
+  onQuick: 0
 --- !u!1001 &1876730737
 PrefabInstance:
   m_ObjectHideFlags: 0

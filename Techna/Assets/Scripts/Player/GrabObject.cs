@@ -13,7 +13,7 @@ public class GrabObject : MonoBehaviour
 
     [Header("던지는 힘")]
     public float throwForce; // 던질 때 힘
-    private Vector3 holdOffset = new Vector3(0, 3, 0); // 물체를 잡는 높이 오프셋
+    private Vector3 holdOffset = new Vector3(0, 5, 0); // 물체를 잡는 높이 오프셋
 
     void Start()
     {

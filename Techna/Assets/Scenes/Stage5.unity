@@ -4560,7 +4560,7 @@ PlayableDirector:
   m_GameObject: {fileID: 107167075}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 960f67ad98b7fb54a99158c9eff6be2d, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: c25c624c9195f8b44a07d4c0585d23a9, type: 2}
   m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -12399,7 +12399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2e4a2eea5d6764fb7375c1c97bab94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearNum: 0
+  currentSkullNum: 0
   door: {fileID: 332122444}
   potal: {fileID: 184484279}
   emptySkulls:
