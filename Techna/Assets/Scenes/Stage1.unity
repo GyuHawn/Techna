@@ -76034,7 +76034,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 3184062722826845371}
   onLarge: 0
-  onControl: 0
+  onControl: 1
   onElectricity: 0
   onExpansion: 0
   onGravity: 0
