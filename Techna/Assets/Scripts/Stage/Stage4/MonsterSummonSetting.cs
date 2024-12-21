@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SummonManager : MonoBehaviour
+public class MonsterSummonSetting : MonoBehaviour
 {
     // 몬스터 프리팹
     public GameObject creep_Basic;

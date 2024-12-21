@@ -279,7 +279,7 @@ public class PlayerMovement : MonoBehaviour
         // ÇÇ°Ý
         if (other.gameObject.CompareTag("Monster"))
         {
-            MonsterController monster = other.gameObject.GetComponent<MonsterController>();
+            FireMonsterController monster = other.gameObject.GetComponent<FireMonsterController>();
             StartCoroutine(HitDamage(monster.damage));
         }
     }
