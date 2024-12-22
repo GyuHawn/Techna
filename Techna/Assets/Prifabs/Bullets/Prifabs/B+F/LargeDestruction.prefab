@@ -34583,7 +34583,7 @@ GameObject:
   - component: {fileID: 230822803607848282}
   m_Layer: 10
   m_Name: LargeDestruction
-  m_TagString: Bullet
+  m_TagString: Destruction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

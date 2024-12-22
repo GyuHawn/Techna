@@ -38,6 +38,7 @@ public class SummonMonster : MonoBehaviour
 
         if (start && totalMonsterCount == 0)
         {
+            Debug.Log("1");
             StartCoroutine(WaitingStage());
         }
 

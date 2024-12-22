@@ -14,6 +14,8 @@ public class FireMonsterController : MonoBehaviour
     public GameObject dropItem; // 드롭 아이템
     public int dropPercent; // 드롭 확률
 
+    private string[] collisionBullet = new string[] { "Bullet", "ExpansionBullet", "Penetrate", "Destruction" };
+
     void Start()
     {
         if(player == null)
@@ -56,7 +58,7 @@ public class FireMonsterController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // 총알에 충돌시 피격
-        if (other.gameObject.CompareTag("Bullet"))
+        if (System.Array.Exists(collisionBullet, tag => tag == other.gameObject.tag))
         {
             currentHealth -= player.damage;
         }
