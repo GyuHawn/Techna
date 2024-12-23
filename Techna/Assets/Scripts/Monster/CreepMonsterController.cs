@@ -37,7 +37,7 @@ public class CreepMonsterController : MonoBehaviour
 
     void Die()
     {
-        summonMonster.totalMonsterCount--;
+        summonMonster.currentMonsterCount--;
         Destroy(gameObject);
     }
 

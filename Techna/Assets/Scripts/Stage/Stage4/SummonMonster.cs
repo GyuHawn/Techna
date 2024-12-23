@@ -6,52 +6,21 @@ using UnityEngine;
 
 public class SummonMonster : MonoBehaviour
 {
+    public Stage4Manager stage4Manager;
     public MonsterSummonSetting monsterSummonSetting;
 
     // 몬스터 소환 위치
     public Transform[] creepSummonPositions;
     public Transform[] demonSummonPositions;
-
-    public int wave; // 웨이브
-    public float gameTime; // 시간
     public int creepCount; // 소환할 몬스터 수
     public int demonCount;
-    public int totalMonsterCount; // 전체 몬스터 수
-
-    public bool start; // 시작 여부
-    public bool waiting; // 대기 여부
-    public bool clear; // 클리어 여부
-
-    // UI
-    public TMP_Text waveText;
-    public TMP_Text timeText;
-    public TMP_Text guidText;
-
-    public GameObject portal; // 클리어 포탈
-
-    void Update()
-    {
-        if (!start)
-        {
-            GameStart();
-        }
-
-        if (start && totalMonsterCount == 0)
-        {
-            Debug.Log("1");
-            StartCoroutine(WaitingStage());
-        }
-
-        if(wave == 5 && totalMonsterCount <= 0 && !clear)
-        {
-            GameClear();
-        }
-    }
+    public int totalMonsterCount; // 전체 몬스터 수  
+    public int currentMonsterCount; // 현재 몬스터 수
 
     // 웨이브 당 소환할 몬스터 수 설정
     public void SummonCount()
     {
-        switch (wave)
+        switch (stage4Manager.wave)
         {
             case 1:
                 creepCount = 10;
@@ -77,46 +46,22 @@ public class SummonMonster : MonoBehaviour
                 demonCount = 3;
                 totalMonsterCount = 10;
                 break;
+            default:
+                creepCount = 0;
+                demonCount = 0;
+                totalMonsterCount = 0;
+                break;
         }
+        currentMonsterCount = totalMonsterCount;
     }
-
-    // 시작시 30초후 시작
-    void GameStart()
-    {
-        //if(gameTime < 30)
-        if(gameTime < 2)
-        {
-            StartCoroutine(ShowGuidText()); // 가이트 텍스트 표시
-            timeText.gameObject.SetActive(true); // 타임 텍스트 표시
-            gameTime += Time.deltaTime;
-        }
-
-        //if(gameTime >= 30)
-        if(gameTime >= 2)
-        {
-            Summon();
-            timeText.gameObject.SetActive(false); // 타임 텍스트 비표시
-            gameTime = 0;
-            start = true; // 시작 여부 변경전 토탈 몬스터 수 변경 되는지 확인 필요
-        }
-    }
-
-    // 가이트 텍스트 표시
-    IEnumerator ShowGuidText()
-    {
-        guidText.gameObject.SetActive(true);
-
-        yield return new WaitForSeconds(5f);
-
-        guidText.gameObject.SetActive(false);
-    }
-
+    
     // 몬스터 소환
-    void Summon()
+    public void Summon()
     {
-        if(wave <= 5)
+        if(stage4Manager.wave <= 5)
         {
-            wave++;
+            stage4Manager.wave++;
+            stage4Manager.UpdateWaveText();
         }
 
         SummonCount();
@@ -155,29 +100,5 @@ public class SummonMonster : MonoBehaviour
 
             yield return new WaitForSeconds(2f);
         }
-    }
-
-    // 몬스터 모두 사망시 20초 대기시간
-    IEnumerator WaitingStage()
-    {
-        if(wave == 0)
-        {
-            gameTime = 1f;
-        }
-        else if (wave > 0)
-        {
-            gameTime = 10f;
-        }
-
-        yield return new WaitForSeconds(gameTime);
-
-        Summon();
-    }
-
-    // 모든 웨이브 클리어시 포탈생성
-    void GameClear()
-    {
-        clear = true;
-        portal.SetActive(true);
     }
 }

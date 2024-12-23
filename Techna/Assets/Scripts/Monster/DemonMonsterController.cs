@@ -37,7 +37,7 @@ public class DemonMonsterController : MonoBehaviour
 
     void Die()
     {
-        summonMonster.totalMonsterCount--;
+        summonMonster.currentMonsterCount--;
         Destroy(gameObject);
     }
 
