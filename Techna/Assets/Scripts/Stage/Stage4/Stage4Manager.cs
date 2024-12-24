@@ -22,19 +22,35 @@ public class Stage4Manager : MonoBehaviour
 
     public GameObject portal; // 클리어 포탈
 
+    void Start()
+    {
+        //gameTime = 30f; // 게임 시작 시 30초로 초기화
+        gameTime = 2f; 
+    }
+
     void Update()
     {
         if (!start)
         {
             GameStart();
         }
-        if (start && summonMonster.currentMonsterCount == 0)
+        else if (start && summonMonster.currentMonsterCount == 0 && !waiting)
         {
             StartCoroutine(WaitingStage());
         }
 
         UpdateMonsterCount(); // 남은 몬스터 수 표시
         UpdateWaitingTime(); // 준비 시간 표시
+
+        if (Input.GetKeyDown(KeyCode.B)) // 테스트용
+        {
+            Attack();
+        }
+
+        if (wave >= 5 && summonMonster.currentMonsterCount <= 0 && !clear)
+        {
+            GameClear();
+        }
     }
 
     // 남은 몬스터 수 표시
@@ -51,40 +67,31 @@ public class Stage4Manager : MonoBehaviour
     {
         if (gameTime > 0)
         {
-            timeText.text = "준비 시간: " + gameTime.ToString("F2") + "초";
+            timeText.text = "준비 시간 : " + gameTime.ToString("F2") + "초";
         }
     }
 
     // 현재 웨이브 표시
     public void UpdateWaveText()
     {
-        waveText.text = "Wave : " + wave;
+        waveText.text = "Wave " + wave;
     }
 
     // 시작시 30초후 시작
     void GameStart()
     {
-        //if(gameTime < 30)
-        if (gameTime < 2)
+        if (gameTime > 0)
         {
             StartCoroutine(ShowGuidText()); // 가이트 텍스트 표시
             timeText.gameObject.SetActive(true); // 타임 텍스트 표시
-            gameTime += Time.deltaTime;
+            gameTime -= Time.deltaTime;
         }
-
-        //if(gameTime >= 30)
-        if (gameTime >= 2)
+        else
         {
             summonMonster.Summon();
             timeText.gameObject.SetActive(false); // 타임 텍스트 비표시
-            gameTime = 0;
             start = true; // 시작 여부 변경전 토탈 몬스터 수 변경 되는지 확인 필요
-        }
-
-        if (wave == 5 && summonMonster.currentMonsterCount <= 0 && !clear)
-        {
-            GameClear();
-        }
+        }      
     }
 
     // 가이트 텍스트 표시
@@ -100,18 +107,29 @@ public class Stage4Manager : MonoBehaviour
     // 몬스터 모두 사망시 20초 대기시간
     IEnumerator WaitingStage()
     {
+        waiting = true;
+        timeText.gameObject.SetActive(true);
+
         if (wave == 0)
         {
             gameTime = 1f;
         }
         else if (wave > 0)
         {
-            gameTime = 10f;
+            //gameTime = 10f;
+            gameTime = 2f;
         }
 
-        yield return new WaitForSeconds(gameTime);
+        while (gameTime > 0)
+        {
+            UpdateWaitingTime(); // 대기 시간 텍스트 업데이트
+            gameTime -= Time.deltaTime; // 남은 시간 감소
+            yield return null; // 다음 프레임까지 대기
+        }
 
         summonMonster.Summon();
+        timeText.gameObject.SetActive(false);
+        waiting = false;
     }
 
     // 모든 웨이브 클리어시 포탈생성
@@ -119,5 +137,27 @@ public class Stage4Manager : MonoBehaviour
     {
         clear = true;
         portal.SetActive(true);
+        
+        this.enabled = false; // 스크립트 비활성화
+    }
+
+
+    public void Attack()
+    {
+        GameObject[] monsters = GameObject.FindGameObjectsWithTag("Monster");
+
+        foreach (GameObject monster in monsters)
+        {
+            if (monster.name == "Creep")
+            {
+                CreepMonsterController creep = monster.GetComponent<CreepMonsterController>();
+                creep.currentHealth -= 100;
+            }
+            else if(monster.name == "Demon")
+            {
+                DemonMonsterController demon = monster.GetComponent<DemonMonsterController>();
+                demon.currentHealth -= 100;
+            }
+        }
     }
 }

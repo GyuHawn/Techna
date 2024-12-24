@@ -35,6 +35,7 @@ public class MonsterSummonSetting : MonoBehaviour
             // 두개의 프리팹 중 선택
             GameObject creep = Random.Range(0, 2) == 0 ? creep_Basic : creep_Crouch;
             GameObject obj = Instantiate(creep);
+            obj.name = "Creep";
             obj.SetActive(false); // 비활성화 상태로 생성
             creepQueue.Enqueue(obj); // 큐에 추가
         }
@@ -45,6 +46,7 @@ public class MonsterSummonSetting : MonoBehaviour
         {
             GameObject demon = Random.Range(0, 2) == 0 ? demon_Basic : demon_Attack;
             GameObject obj = Instantiate(demon);
+            obj.name = "Demon";
             obj.SetActive(false); // 비활성화 상태로 생성
             demonQueue.Enqueue(obj); // 큐에 추가
         }

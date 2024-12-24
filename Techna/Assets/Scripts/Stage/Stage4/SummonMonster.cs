@@ -53,11 +53,14 @@ public class SummonMonster : MonoBehaviour
                 break;
         }
         currentMonsterCount = totalMonsterCount;
+        // 몬스터 카운트 텍스트 설정
+        stage4Manager.monsterCountText.text = "남은 몬스터 수 : " + stage4Manager.summonMonster.currentMonsterCount;
     }
     
     // 몬스터 소환
     public void Summon()
     {
+        
         if(stage4Manager.wave <= 5)
         {
             stage4Manager.wave++;
@@ -85,7 +88,8 @@ public class SummonMonster : MonoBehaviour
             // 몬스터 이동
             creep.transform.position = randomPosition.position;
 
-            yield return new WaitForSeconds(2f);
+            //yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
     IEnumerator DemonSummon()
@@ -98,7 +102,8 @@ public class SummonMonster : MonoBehaviour
             // 몬스터 이동
             demon.transform.position = randomPosition.position;
 
-            yield return new WaitForSeconds(2f);
+            //yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }
