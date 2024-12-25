@@ -23,26 +23,26 @@ public class FireMonsterController : MonoBehaviour
             player = GameObject.Find("Player").GetComponent<PlayerMovement>();
         }
 
+        maxHealth = 5;
         currentHealth = maxHealth;
     }
 
     
     void Update()
     {
-        Die(); // »ç¸Á
+        if (currentHealth <= 0)
+        {
+            Die(); // »ç¸Á
+        }
     }
 
-    
     void Die() // »ç¸Á
     {
-        if(currentHealth <= 0)
+        if (dropItem != null)
         {
-            if (dropItem != null)
-            {
-                ItemDrop();
-            }
-            Destroy(gameObject);
+            ItemDrop();
         }
+        Destroy(gameObject);
     }
 
     void ItemDrop() // ¾ÆÀÌÅÛ µå·Ó
