@@ -34640,6 +34640,7 @@ MonoBehaviour:
   - {fileID: 1929735908864121934}
   - {fileID: 4231212274059595082}
   destruction: 0
+  damage: 5
 --- !u!65 &1011483175975682683
 BoxCollider:
   m_ObjectHideFlags: 0

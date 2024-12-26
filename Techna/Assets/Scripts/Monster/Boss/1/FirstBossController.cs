@@ -514,7 +514,8 @@ public class FirstBossController : MonoBehaviour
         {
             if (System.Array.Exists(collisionBullet, tag => tag == other.gameObject.tag))
             {
-                currentHealth -= playerMovement.damage;
+                ProjectileMoveScript bullet = other.gameObject.GetComponent<ProjectileMoveScript>();
+                currentHealth -= bullet.damage;
             }
         }
     }

@@ -22,6 +22,8 @@ public class ProjectileMoveScript : MonoBehaviour
     // 총알 상태
     public bool destruction; // 파괴
 
+    // 데미지
+    public int damage;
 
     void Start()
     {
@@ -43,9 +45,12 @@ public class ProjectileMoveScript : MonoBehaviour
         }
     }
 
+    private string[] collisionBullet = new string[] { "Bullet", "Penetrate", "Player" };
+
+
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "Penetrate" && !collided)
+        if (System.Array.Exists(collisionBullet, tag => tag == collision.gameObject.tag && !collided))
         {
             collided = true; // 충돌 상태 설정
 
@@ -59,7 +64,7 @@ public class ProjectileMoveScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != "Bullet" && other.gameObject.tag != "Penetrate" && !collided)
+        if (System.Array.Exists(collisionBullet, tag => tag == other.gameObject.tag && !collided))
         {
             collided = true; // 충돌 상태 설정
 

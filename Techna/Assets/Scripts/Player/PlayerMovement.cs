@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed; // 이동속도
     public float mouseSensitivity; // 마우스 감도
     public float jumpPower; // 점프력
-    public int damage; // 데미지
 
     [Header("체력")]
     public int maxHealth; // 최대 체력
@@ -82,14 +81,13 @@ public class PlayerMovement : MonoBehaviour
         currentStage = 1; // 현재 스테이지
 
         // 이동관련
-         moveSpeed = 10f; 
+        moveSpeed = 10f; 
         mouseSensitivity = 100f;
         jumpPower = 1.5f;
 
         // 스테이터스
         maxHealth = 100;
         currentHealth = maxHealth;
-        damage = 3;
 
         // 총 위치
         gunOffset = new Vector3(0, 1.2f, 0);
@@ -282,6 +280,12 @@ public class PlayerMovement : MonoBehaviour
             FireMonsterController monster = other.gameObject.GetComponent<FireMonsterController>();
             StartCoroutine(HitDamage(monster.damage));
         }
+        else if (other.gameObject.CompareTag("MonsterBullet"))
+        {
+            ProjectileMoveScript bullet = other.gameObject.GetComponent<ProjectileMoveScript>();
+            StartCoroutine(HitDamage(bullet.damage));
+        }
+
     }
 
     private void OnTriggerExit(Collider other)

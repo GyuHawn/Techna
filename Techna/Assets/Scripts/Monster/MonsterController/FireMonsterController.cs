@@ -60,7 +60,8 @@ public class FireMonsterController : MonoBehaviour
         // 총알에 충돌시 피격
         if (System.Array.Exists(collisionBullet, tag => tag == other.gameObject.tag))
         {
-            currentHealth -= player.damage;
+            ProjectileMoveScript bullet = other.gameObject.GetComponent<ProjectileMoveScript>();
+            currentHealth -= bullet.damage;
         }
     }
 }

@@ -24,8 +24,8 @@ public class SummonMonster : MonoBehaviour
         {
             case 1:
                 //creepCount = 10;
-                creepCount = 1;
-                demonCount = 1;
+                //creepCount = 1;
+                demonCount = 2;
                 totalMonsterCount = 2;
                 break;
             case 2:

@@ -39,7 +39,7 @@ public class PlayerTracking : MonoBehaviour
         if (IsPlayerInDetectionBox())
         {
             // 플레이어가 감지 범위 내에 있을 때
-            agent.SetDestination(player.transform.position);
+            //agent.SetDestination(player.transform.position);
         }
         else
         {

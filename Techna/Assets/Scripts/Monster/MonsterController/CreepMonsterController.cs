@@ -11,9 +11,9 @@ public class CreepMonsterController : MonoBehaviour
 
     public GameObject player;
 
+    [Header("수치")]
     public int maxHealth;
     public int currentHealth;
-
     public int speed;
     public int damage;
 
@@ -41,7 +41,7 @@ public class CreepMonsterController : MonoBehaviour
 
     void Update()
     {
-        if (player != null) // 특정 거리 이내에서 애니메이션 시작
+        if (player != null)
         {
             anim.SetBool("Move", true); // 이동 애니메이션 시작
         }
@@ -53,6 +53,7 @@ public class CreepMonsterController : MonoBehaviour
         Attack();
     }
 
+    // 공격
     void Attack()
     {
         // 플레이어와의 거리 계산
@@ -63,6 +64,7 @@ public class CreepMonsterController : MonoBehaviour
         }
     }
 
+    // 사망
     IEnumerator Die()
     {
         summonMonster.currentMonsterCount--;
@@ -75,6 +77,7 @@ public class CreepMonsterController : MonoBehaviour
         Destroy(gameObject);
     }
 
+    // 플레이어 추적 끝
     void EnabledScripts()
     {
         NavMeshAgent nav = GetComponent<NavMeshAgent>();
@@ -84,9 +87,11 @@ public class CreepMonsterController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // 총알 확인후 피격
         if (System.Array.Exists(collisionBullet, tag => tag == collision.gameObject.tag))
         {
-            currentHealth -= playerMovement.damage;
+            ProjectileMoveScript bullet = collision.gameObject.GetComponent<ProjectileMoveScript>();
+            currentHealth -= bullet.damage;
 
             if (currentHealth <= 0)
             {

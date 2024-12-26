@@ -19625,11 +19625,14 @@ MonoBehaviour:
   fireRate: 2
   muzzlePrefab: {fileID: 6926133581891389598, guid: 2c244d664952cca4794d9d878a755c6e, type: 3}
   hitPrefab: {fileID: 2875011907843142061, guid: 6a4d60db87ac8ab4ba03941c3511ba69, type: 3}
+  hitEffect: {fileID: 0}
   trails:
   - {fileID: 1840894118622126892}
   - {fileID: 2648459151988954263}
   - {fileID: 3726060883461660246}
   - {fileID: 8783793461019488546}
+  destruction: 0
+  damage: 3
 --- !u!65 &1052296131396507619
 BoxCollider:
   m_ObjectHideFlags: 0

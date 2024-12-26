@@ -14823,6 +14823,7 @@ MonoBehaviour:
   - {fileID: 1786561107316701911}
   - {fileID: 1636719174215580216}
   destruction: 0
+  damage: 3
 --- !u!65 &2871313514731511783
 BoxCollider:
   m_ObjectHideFlags: 0
