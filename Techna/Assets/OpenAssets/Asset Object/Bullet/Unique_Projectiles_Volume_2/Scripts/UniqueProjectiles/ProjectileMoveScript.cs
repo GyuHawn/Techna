@@ -25,6 +25,8 @@ public class ProjectileMoveScript : MonoBehaviour
     // 데미지
     public int damage;
 
+    public bool monsterBullet; // 플레이어 총알인지 몬스터 총알인지 구분
+
     void Start()
     {
         rb = GetComponent<Rigidbody>(); // Rigidbody 컴포넌트 가져오기
@@ -50,16 +52,31 @@ public class ProjectileMoveScript : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (System.Array.Exists(collisionBullet, tag => tag == collision.gameObject.tag && !collided))
+        if (!monsterBullet && !collided)
         {
-            collided = true; // 충돌 상태 설정
-
-            // 충돌 지점 정보 전달
-            ContactPoint contact = collision.contacts[0];
-
-            HitEffect();
-            DestroyBullet(gameObject, contact.point, contact.normal); // 충돌 지점과 표면의 법선을 전달
+            if (!System.Array.Exists(collisionBullet, tag => tag == collision.gameObject.tag))
+            {
+                BulettCollided(collision);
+            }
         }
+        else if (monsterBullet && !collided)
+        {
+            if (System.Array.Exists(collisionBullet, tag => tag == collision.gameObject.tag))
+            {
+                BulettCollided(collision);
+            }
+        }
+    }
+
+    void BulettCollided(Collision collision)
+    {
+        collided = true; // 충돌 상태 설정
+
+        // 충돌 지점 정보 전달
+        ContactPoint contact = collision.contacts[0];
+
+        HitEffect();
+        DestroyBullet(gameObject, contact.point, contact.normal); // 충돌 지점과 표면의 법선을 전달
     }
 
     private void OnTriggerEnter(Collider other)

@@ -11,6 +11,7 @@ public class DemonMonsterController : MonoBehaviour
     private PlayerTracking playerTracking;
 
     public GameObject player;
+    public NavMeshAgent navMeshAgent;
 
     [Header("수치")]
     public int maxHealth;
@@ -34,6 +35,7 @@ public class DemonMonsterController : MonoBehaviour
     {
         summonMonster = GameObject.Find("SummonManager").GetComponent<SummonMonster>();
         playerTracking = GetComponent<PlayerTracking>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     void Start()
@@ -44,9 +46,17 @@ public class DemonMonsterController : MonoBehaviour
             playerMovement = player.GetComponent<PlayerMovement>();
         }
 
+        StartCoroutine(StartPlayerTracking());
+
         maxHealth = 15;
         currentHealth = maxHealth;
         bulletSpeed = 20f;
+    }
+
+    IEnumerator StartPlayerTracking() // NavMeshAgent로 인한 소환위치 문제로 잠시후 활성화
+    {
+        yield return new WaitForSeconds(0.5f);
+        navMeshAgent.enabled = true;
     }
 
     void Update()
@@ -84,10 +94,10 @@ public class DemonMonsterController : MonoBehaviour
 
         RaycastHit hit;
 
-            Debug.DrawRay(rayOrigin, rayDirection * 50f, Color.red);
         // 레이 쏘기
         if (Physics.Raycast(rayOrigin, rayDirection, out hit, 50f)) // 30f는 레이의 길이
         {
+            playerTracking.tracking = true;
 
             if (hit.collider.CompareTag("Player") && !shooting)
             {
@@ -123,6 +133,7 @@ public class DemonMonsterController : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
+        playerTracking.tracking = false;
         shooting = false;
     }
 
@@ -146,6 +157,7 @@ public class DemonMonsterController : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
 
+        playerTracking.tracking = false;
         shooting = false;
     }
 
@@ -165,8 +177,7 @@ public class DemonMonsterController : MonoBehaviour
     // 플레이어 추적 끝
     void EnabledScripts()
     {
-        NavMeshAgent nav = GetComponent<NavMeshAgent>();
-        nav.enabled = false;    
+        navMeshAgent.enabled = false;    
         playerTracking.enabled = false;
     }
 

@@ -63,6 +63,8 @@ MonoBehaviour:
   - {fileID: 7499521145477016932}
   - {fileID: 2746264576618135938}
   destruction: 0
+  damage: 8
+  monsterBullet: 1
 --- !u!65 &8593767589288555812
 BoxCollider:
   m_ObjectHideFlags: 0

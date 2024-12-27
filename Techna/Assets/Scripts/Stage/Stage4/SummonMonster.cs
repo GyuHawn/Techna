@@ -24,9 +24,8 @@ public class SummonMonster : MonoBehaviour
         {
             case 1:
                 //creepCount = 10;
-                //creepCount = 1;
-                demonCount = 2;
-                totalMonsterCount = 2;
+                creepCount = 1;
+                totalMonsterCount = 1;
                 break;
             case 2:
                 creepCount = 12;
@@ -79,33 +78,43 @@ public class SummonMonster : MonoBehaviour
             StartCoroutine(DemonSummon());
         }
     }
-    
+
     IEnumerator CreepSummon()
     {
         for (int i = 0; i < creepCount; i++)
         {
-            GameObject creep = monsterSummonSetting.MonstetSummon(monsterSummonSetting.creepQueue);
             // 랜덤 위치 선택
             Transform randomPosition = creepSummonPositions[Random.Range(0, creepSummonPositions.Length)];
-            // 몬스터 이동
-            creep.transform.position = randomPosition.position;
 
-            //yield return new WaitForSeconds(1f);
-            yield return new WaitForSeconds(0.1f);
+            // 몬스터 소환
+            GameObject creep = monsterSummonSetting.MonstetSummon(monsterSummonSetting.creepQueue);
+            if (creep != null) // null 체크 추가
+            {
+                // 몬스터 이동
+                creep.transform.position = randomPosition.position;
+                creep.SetActive(true); // 활성화
+            }
+
+            yield return new WaitForSeconds(2f);
         }
     }
     IEnumerator DemonSummon()
     {
         for (int i = 0; i < demonCount; i++)
         {
-            GameObject demon = monsterSummonSetting.MonstetSummon(monsterSummonSetting.demonQueue);
             // 랜덤 위치 선택
-            Transform randomPosition = creepSummonPositions[Random.Range(0, demonSummonPositions.Length)];
-            // 몬스터 이동
-            demon.transform.position = randomPosition.position;
+            Transform randomPosition = demonSummonPositions[Random.Range(0, demonSummonPositions.Length)];
 
-            //yield return new WaitForSeconds(1f);
-            yield return new WaitForSeconds(0.1f);
+            // 몬스터 소환
+            GameObject demon = monsterSummonSetting.MonstetSummon(monsterSummonSetting.demonQueue);
+            if (demon != null) // null 체크 추가
+            {
+                // 몬스터 이동
+                demon.transform.position = randomPosition.position;
+                demon.SetActive(true); // 활성화
+            }
+
+            yield return new WaitForSeconds(2f);
         }
     }
 }

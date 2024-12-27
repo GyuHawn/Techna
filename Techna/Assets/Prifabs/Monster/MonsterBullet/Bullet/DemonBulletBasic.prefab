@@ -19746,6 +19746,8 @@ MonoBehaviour:
   - {fileID: 3425708631707181521}
   - {fileID: 3108729763488019221}
   destruction: 0
+  damage: 10
+  monsterBullet: 1
 --- !u!65 &1060349477771709523
 BoxCollider:
   m_ObjectHideFlags: 0

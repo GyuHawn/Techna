@@ -1,7 +1,8 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StageManager : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class StageManager : MonoBehaviour
     public GameObject player; // 플레이어
 
     private int previousStage; // 이전 스테이지 값 저장
+
+    public GameObject loadingUI; // 로딩 UI
+    public Image loadingBar; // 로딩바
 
     private void Awake()
     {
@@ -63,11 +67,33 @@ public class StageManager : MonoBehaviour
     IEnumerator LoadNextStageAsync(string sceneName, Vector3 position, Quaternion rotation)
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        asyncLoad.allowSceneActivation = false;
+        loadingUI.SetActive(true);
+        float timer = 0f;
 
         // 씬 로딩이 완료될 때까지 대기
         while (!asyncLoad.isDone)
         {
             yield return null;
+
+            if (asyncLoad.progress < 0.9f)
+            {
+                loadingBar.fillAmount = asyncLoad.progress;
+            }
+            else
+            {
+                timer += Time.unscaledDeltaTime;
+                loadingBar.fillAmount = Mathf.Lerp(0.9f, 1f, timer);
+
+                if (loadingBar.fillAmount >= 1f)
+                {
+                    asyncLoad.allowSceneActivation = true;
+
+                    loadingUI.SetActive(false); // 씬 이동후 UI 비활성화
+                    yield return new WaitForSeconds(3f);
+                    yield break;
+                }
+            }
         }
 
         // 씬 로딩 완료 후 플레이어 이동

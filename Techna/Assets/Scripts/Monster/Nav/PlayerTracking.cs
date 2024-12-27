@@ -12,12 +12,14 @@ public class PlayerTracking : MonoBehaviour
     public float wanderRadius = 20f; // 네비메시 범위 내에서 돌아다니는 반경
     public float wanderTimer = 5f; // 돌아다니는 타이머
 
-    private NavMeshAgent agent;  // 네비메시 에이전트
+    private NavMeshAgent navMeshAgent;  // 네비메시 에이전트
     private float timer; // 타이머
+
+    public bool tracking;
 
     private void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
 
         if (boxSize == null)
         {
@@ -35,22 +37,38 @@ public class PlayerTracking : MonoBehaviour
 
     private void Update()
     {
-        // 플레이어가 감지 범위 내에 있는지 확인
-        if (IsPlayerInDetectionBox())
+        if (!tracking)
         {
-            // 플레이어가 감지 범위 내에 있을 때
-            //agent.SetDestination(player.transform.position);
+            // 플레이어가 감지 범위 내에 있는지 확인
+            if (IsPlayerInDetectionBox())
+            {
+                if (navMeshAgent.enabled)
+                {
+                    //플레이어가 감지 범위 내에 있을 때
+                    navMeshAgent.SetDestination(player.transform.position);
+                }
+            }
+            else
+            {
+                // 플레이어가 감지 범위를 벗어났을 때
+                timer += Time.deltaTime;
+
+                if (timer >= wanderTimer)
+                {
+                    SetNewDestination();
+                    timer = 0f;
+
+                    if (tracking)
+                    {
+                        return;
+                    }
+                }
+            }
         }
         else
         {
-            // 플레이어가 감지 범위를 벗어났을 때
-            timer += Time.deltaTime;
-
-            if (timer >= wanderTimer)
-            {
-                SetNewDestination();
-                timer = 0f;
-            }
+            // tracking이 true일 때, 이동을 멈춤
+            navMeshAgent.SetDestination(transform.position); // 현재 위치로 이동 설정
         }
     }
 
@@ -84,6 +102,6 @@ public class PlayerTracking : MonoBehaviour
         NavMesh.SamplePosition(randomDirection, out hit, wanderRadius, 1);
         Vector3 finalPosition = hit.position;
 
-        agent.SetDestination(finalPosition);
+        navMeshAgent.SetDestination(finalPosition);
     }
 }

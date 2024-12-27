@@ -207,7 +207,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void UpdateHealthUI(int currentHealth, int maxHealth)
-    {
+    { 
         healthText.text = $"HP {currentHealth} / {maxHealth}"; // 텍스트 업데이트
         healthBar.fillAmount = (float)currentHealth / maxHealth; // 체력 바 업데이트
     }
@@ -275,12 +275,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         // 피격
-        if (other.gameObject.CompareTag("Monster"))
-        {
-            FireMonsterController monster = other.gameObject.GetComponent<FireMonsterController>();
-            StartCoroutine(HitDamage(monster.damage));
-        }
-        else if (other.gameObject.CompareTag("MonsterBullet"))
+        if (other.gameObject.CompareTag("MonsterBullet"))
         {
             ProjectileMoveScript bullet = other.gameObject.GetComponent<ProjectileMoveScript>();
             StartCoroutine(HitDamage(bullet.damage));
@@ -304,6 +299,7 @@ public class PlayerMovement : MonoBehaviour
         {
             hit = true;
             TakeDamage(damage);
+            currentHealth -= damage;
             yield return new WaitForSeconds(1f);
 
             hit = false;
@@ -311,7 +307,6 @@ public class PlayerMovement : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
         healthChanged?.Invoke(currentHealth, maxHealth);
     }
 }
