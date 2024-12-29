@@ -81,8 +81,8 @@ MonoBehaviour:
   playerMovement: {fileID: 0}
   player: {fileID: 0}
   navMeshAgent: {fileID: 0}
-  maxHealth: 0
-  currentHealth: 0
+  maxHealth: 6
+  currentHealth: 6
   speed: 0
   damage: 10
   attacked: 0

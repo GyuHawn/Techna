@@ -25,7 +25,7 @@ public class Stage4Manager : MonoBehaviour
     void Start()
     {
         //gameTime = 30f; // 게임 시작 시 30초로 초기화
-        gameTime = 2f; 
+        gameTime = 10f; 
     }
 
     void Update()
@@ -97,8 +97,6 @@ public class Stage4Manager : MonoBehaviour
     // 가이트 텍스트 표시
     IEnumerator ShowGuidText()
     {
-        guidText.gameObject.SetActive(true);
-
         yield return new WaitForSeconds(5f);
 
         guidText.gameObject.SetActive(false);

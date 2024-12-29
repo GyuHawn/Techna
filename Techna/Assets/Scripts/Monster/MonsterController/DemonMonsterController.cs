@@ -48,8 +48,6 @@ public class DemonMonsterController : MonoBehaviour
 
         StartCoroutine(StartPlayerTracking());
 
-        maxHealth = 15;
-        currentHealth = maxHealth;
         bulletSpeed = 20f;
     }
 

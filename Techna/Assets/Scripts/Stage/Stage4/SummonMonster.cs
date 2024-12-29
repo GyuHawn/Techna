@@ -23,9 +23,8 @@ public class SummonMonster : MonoBehaviour
         switch (stage4Manager.wave)
         {
             case 1:
-                //creepCount = 10;
-                creepCount = 1;
-                totalMonsterCount = 1;
+                creepCount = 10;
+                totalMonsterCount = 10;
                 break;
             case 2:
                 creepCount = 12;

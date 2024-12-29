@@ -407,8 +407,8 @@ MonoBehaviour:
   playerMovement: {fileID: 0}
   player: {fileID: 0}
   navMeshAgent: {fileID: 0}
-  maxHealth: 0
-  currentHealth: 0
+  maxHealth: 7
+  currentHealth: 7
   speed: 0
   damage: 15
   attacked: 0

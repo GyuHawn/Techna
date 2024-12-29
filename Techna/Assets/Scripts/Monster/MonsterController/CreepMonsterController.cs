@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -43,9 +42,6 @@ public class CreepMonsterController : MonoBehaviour
         }
 
         StartCoroutine(StartPlayerTracking());
-
-        maxHealth = 9;
-        currentHealth = maxHealth;
     }
     IEnumerator StartPlayerTracking() // NavMeshAgent로 인한 소환위치 문제로 잠시후 활성화
     {

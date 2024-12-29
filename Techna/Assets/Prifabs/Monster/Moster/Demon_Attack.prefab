@@ -80,8 +80,8 @@ MonoBehaviour:
   playerMovement: {fileID: 0}
   player: {fileID: 0}
   navMeshAgent: {fileID: 0}
-  maxHealth: 0
-  currentHealth: 0
+  maxHealth: 10
+  currentHealth: 10
   speed: 0
   damage: 0
   bullet: {fileID: 1792568584207633686, guid: 8b89df4159f557b42873e2108f4a7cce, type: 3}

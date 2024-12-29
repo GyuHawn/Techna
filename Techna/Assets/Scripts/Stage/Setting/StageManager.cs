@@ -67,7 +67,7 @@ public class StageManager : MonoBehaviour
     IEnumerator LoadNextStageAsync(string sceneName, Vector3 position, Quaternion rotation)
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
-        asyncLoad.allowSceneActivation = false;
+        asyncLoad.allowSceneActivation = false; // 씬 전환 비활성화
         loadingUI.SetActive(true);
         float timer = 0f;
 
@@ -87,17 +87,14 @@ public class StageManager : MonoBehaviour
 
                 if (loadingBar.fillAmount >= 1f)
                 {
-                    asyncLoad.allowSceneActivation = true;
-
-                    loadingUI.SetActive(false); // 씬 이동후 UI 비활성화
-                    yield return new WaitForSeconds(3f);
+                    asyncLoad.allowSceneActivation = true; // 씬 전환 허용
+                    yield return new WaitForSeconds(0.5f); // 약간의 지연 후 이동
+                    MovePlayer(position, rotation); // 이동 위치 설정
+                    loadingUI.SetActive(false); // UI 비활성화
                     yield break;
                 }
             }
         }
-
-        // 씬 로딩 완료 후 플레이어 이동
-        MovePlayer(position, rotation);
     }
 
     void MovePlayer(Vector3 position, Quaternion rotation)
