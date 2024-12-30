@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Project
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 321}
   m_MaxSize: {x: 10000, y: 10000}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 87236
+  controlID: 101
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 87104
+  controlID: 18
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -868,7 +868,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.08643395, y: 0.58819884, z: -0.06704501, w: -0.801997}
     speed: 2
-    m_Value: {x: -0.08638459, y: 0.58786297, z: -0.06700672, w: -0.801539}
+    m_Value: {x: -0.08643395, y: 0.58819884, z: -0.06704501, w: -0.801997}
   m_Size:
     m_Target: 10
     speed: 2
@@ -1305,9 +1305,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: e4140000
       m_LastClickedID: 0
-      m_ExpandedIDs: 2e99efff7299efffb2acefffa8dbefff72dcefff3ae2efff6822f0ff4c42f0ff9442f0ffbed7f0ffece8f0ff00fbf0ffd05ff1fffe82f1ff7297f1ff041ef2ff2231f2ffd8b8f2ff22daf2ff4841f3ffe669f3ff1c82f3ff8286f4ffaeacf4ff7ab2f4ff10cbf4ffd207f5ffc61ef5fff877f5ff5a94f5ffc0b6f5ffbaf4f5ff6409f6ff9438f6ff704ef6ff5a51f6ff5462f6ffe675f6ff00b3f6fff4c3f6ffc0e6f6ff2020f7ff9a31f7ff346cf7fff85cf8ff9a76f8ff9491f8ff2cd2f8ff7658fbfff47efbff82b4fbffe4cbfbff8cd2fbff46e3fbffa6fafbffe0fdfbff8a23fdff9223fdff2824fdff0674fdff14aefdffec3efeff542fffff1e6dffff78efffff8eeffffffeefffff22f0ffff70f0ffff9cf0ffffecf0ffff14f1ffff42f1ffff60f1ffff72f1ffffa6f1ffffd6f1fffff4f1ffff92f2ffffc0f2ffffd6f2fffffcf2ffff54f3ffff70f3ffff9cf3ffffc0f3ffff14f4ffff50f4ffff76f4ffff8ef4ffffacf4ffffc2f4ffff46f5ffffcaf5ffffe2f5ffff1ef6ffffaaf6ffffd0f6ffffe6f6ffff10f7ffff26f7ffff4cf7ffff64f7ffff98f7ffffb6f7ffffd0f7fffff0f7ffff0ef8ffff3ef8ffff64f8ffff8af8ffffb6f8ffffdaf8ffff10f9ffff5cf9ffff74f9ffff9af9ffff14faffff3cfaffff7cfaffffd6faffffe8fafffff4ffffff946100007e64000028670000fc670000e2690000b4890000968a000068970000b09a0000909f000030be01003459020074b6020076be0200543f0300e8410300ea4903004ef8030050000400749a0400669c0400daef0600645607000664070018d70700843d0800563e08007c600800b8a4080040b20800
+      m_ExpandedIDs: e8faffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1376,7 +1376,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Monster/MonsterController
+    - Assets/Scripts/Stage/Stage4
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1384,16 +1384,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 60
   m_LastFolders:
-  - Assets/Scripts/Monster/MonsterController
+  - Assets/Scripts/Stage/Stage4
   m_LastFoldersGridSize: 60
   m_LastProjectPath: C:\Users\knm12\Desktop\Techna\Techna
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 134}
-    m_SelectedIDs: 28790400
-    m_LastClickedID: 293160
-    m_ExpandedIDs: 0000000090770000927700009477000096770000987700009a7700009c7700009e770000a0770000a2770000a4770000a6770000a8770000aa770000ac770000ae770000067800000e7800001c78000024780000547800001e79040000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 2eb10000
+    m_LastClickedID: 45358
+    m_ExpandedIDs: 0000000090b0000092b0000094b0000096b0000098b000009ab000009cb000009eb00000a0b00000a2b00000a4b00000a6b00000a8b00000aab00000acb00000aeb00000dcb00000e4b0000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1421,7 +1421,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000090770000927700009477000096770000987700009a7700009c7700009e770000a0770000a2770000a4770000a6770000a8770000aa770000ac770000ae77000000ca9a3bffffff7f
+    m_ExpandedIDs: 0000000090b0000092b0000094b0000096b0000098b000009ab000009cb000009eb00000a0b00000a2b00000a4b00000a6b00000a8b00000aab00000acb00000aeb00000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

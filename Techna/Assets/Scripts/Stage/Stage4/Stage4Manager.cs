@@ -39,13 +39,7 @@ public class Stage4Manager : MonoBehaviour
             StartCoroutine(WaitingStage());
         }
 
-        UpdateMonsterCount(); // 남은 몬스터 수 표시
-        UpdateWaitingTime(); // 준비 시간 표시
-
-        if (Input.GetKeyDown(KeyCode.B)) // 테스트용
-        {
-            Attack();
-        }
+        UpdateUI();
 
         if (wave >= 5 && summonMonster.currentMonsterCount <= 0 && !clear)
         {
@@ -53,18 +47,9 @@ public class Stage4Manager : MonoBehaviour
         }
     }
 
-    // 남은 몬스터 수 표시
-    void UpdateMonsterCount()
+    private void UpdateUI() // UI 업데이트
     {
-        if(summonMonster.totalMonsterCount != summonMonster.currentMonsterCount)
-        {
-            monsterCountText.text = "남은 몬스터 수 : " + summonMonster.currentMonsterCount;
-        }
-    }
-
-    // 준비 시간 표시
-    void UpdateWaitingTime()
-    {
+        monsterCountText.text = "남은 몬스터 수 : " + summonMonster.currentMonsterCount;
         if (gameTime > 0)
         {
             timeText.text = "준비 시간 : " + gameTime.ToString("F2") + "초";
@@ -102,25 +87,16 @@ public class Stage4Manager : MonoBehaviour
         guidText.gameObject.SetActive(false);
     }
 
-    // 몬스터 모두 사망시 20초 대기시간
+    // 몬스터 모두 사망시 대기시간
     IEnumerator WaitingStage()
     {
         waiting = true;
         timeText.gameObject.SetActive(true);
-
-        if (wave == 0)
-        {
-            gameTime = 1f;
-        }
-        else if (wave > 0)
-        {
-            //gameTime = 10f;
-            gameTime = 2f;
-        }
+        gameTime = wave == 0 ? 1f : 2f;
 
         while (gameTime > 0)
         {
-            UpdateWaitingTime(); // 대기 시간 텍스트 업데이트
+            timeText.text = "대기 시간 : " + gameTime.ToString("F2") + "초";
             gameTime -= Time.deltaTime; // 남은 시간 감소
             yield return null; // 다음 프레임까지 대기
         }
@@ -135,27 +111,6 @@ public class Stage4Manager : MonoBehaviour
     {
         clear = true;
         portal.SetActive(true);
-        
         this.enabled = false; // 스크립트 비활성화
-    }
-
-
-    public void Attack()
-    {
-        GameObject[] monsters = GameObject.FindGameObjectsWithTag("Monster");
-
-        foreach (GameObject monster in monsters)
-        {
-            if (monster.name == "Creep")
-            {
-                CreepMonsterController creep = monster.GetComponent<CreepMonsterController>();
-                creep.currentHealth -= 100;
-            }
-            else if(monster.name == "Demon")
-            {
-                DemonMonsterController demon = monster.GetComponent<DemonMonsterController>();
-                demon.currentHealth -= 100;
-            }
-        }
     }
 }

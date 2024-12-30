@@ -35,14 +35,11 @@ public class CreepMonsterController : MonoBehaviour
 
     void Start()
     {
-        if (player == null)
-        {
-            player = GameObject.Find("Player");
-            playerMovement = player.GetComponent<PlayerMovement>();
-        }
-
+        player = GameObject.Find("Player");
+        playerMovement = player.GetComponent<PlayerMovement>();
         StartCoroutine(StartPlayerTracking());
     }
+
     IEnumerator StartPlayerTracking() // NavMeshAgent로 인한 소환위치 문제로 잠시후 활성화
     {
         yield return new WaitForSeconds(0.5f);
@@ -51,16 +48,11 @@ public class CreepMonsterController : MonoBehaviour
 
     void Update()
     {
+        anim.SetBool("Move", player != null); // 이동 애니메이션 설정
         if (player != null)
         {
-            anim.SetBool("Move", true); // 이동 애니메이션 시작
+            AttackReady();
         }
-        else
-        {
-            anim.SetBool("Move", false); // 이동 애니메이션 정지
-        }
-
-        AttackReady();
     }
 
     // 공격
@@ -68,15 +60,11 @@ public class CreepMonsterController : MonoBehaviour
     {
         // 플레이어와의 거리 계산
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-        if (distanceToPlayer < 10f) // 특정 거리 이내 애니메이션 시작
+        if (distanceToPlayer < 10f && !attacked) // 특정 거리 이내 애니메이션 시작
         {
-            if (!attacked)
-            {
-                Debug.Log("3");
-                attacked = true;
-                anim.SetTrigger("Attack"); // 공격 애니메이션 시작
-                StartCoroutine(Attack());
-            }
+            attacked = true;
+            anim.SetTrigger("Attack"); // 공격 애니메이션 시작
+            StartCoroutine(Attack());
         }
     }
 
@@ -88,7 +76,6 @@ public class CreepMonsterController : MonoBehaviour
         attackCollider.enabled = false;
         yield return new WaitForSeconds(1f);
         attacked = false;
-        Debug.Log("4");
     }
 
     // 사망
@@ -96,16 +83,14 @@ public class CreepMonsterController : MonoBehaviour
     {
         summonMonster.currentMonsterCount--;
         anim.SetTrigger("Die");
-
-        EnabledScripts();
+        DisableScripts();
 
         yield return new WaitForSeconds(2f);
-
         Destroy(gameObject);
     }
 
     // 플레이어 추적 끝
-    void EnabledScripts()
+    void DisableScripts()
     {
         navMeshAgent.enabled = false;
         playerTracking.enabled = false;
@@ -130,7 +115,6 @@ public class CreepMonsterController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("5");
             StartCoroutine(playerMovement.HitDamage(damage));
         }
     }

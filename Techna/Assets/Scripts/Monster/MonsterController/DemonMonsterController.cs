@@ -40,12 +40,8 @@ public class DemonMonsterController : MonoBehaviour
 
     void Start()
     {
-        if (player == null)
-        {
-            player = GameObject.Find("Player");
-            playerMovement = player.GetComponent<PlayerMovement>();
-        }
-
+        player = GameObject.Find("Player");
+        playerMovement = player.GetComponent<PlayerMovement>();
         StartCoroutine(StartPlayerTracking());
 
         bulletSpeed = 20f;
@@ -59,16 +55,11 @@ public class DemonMonsterController : MonoBehaviour
 
     void Update()
     {
+        anim.SetBool("Move", player != null); // 이동 애니메이션 설정
         if (player != null)
         {
-            anim.SetBool("Move", true); // 이동 애니메이션 시작
+            Attack();
         }
-        else
-        {
-            anim.SetBool("Move", false); // 이동 애니메이션 정지
-        }
-
-        Attack();
     }
 
     // 공격
@@ -83,80 +74,65 @@ public class DemonMonsterController : MonoBehaviour
     }
 
     // 공격 전 플레이어 확인
-    void AttackPlayerCheck()
+    private void AttackPlayerCheck()
     {
-        // 레이의 시작 위치, 방향 설정
-        Vector3 shotPosition = new Vector3(transform.position.x, transform.position.y + 3f, transform.position.z + 1);
-        Vector3 rayOrigin = shotPosition;
-        Vector3 rayDirection = transform.forward;
+        Vector3 shotPosition = transform.position + new Vector3(0, 3f, 1f);
+        Ray ray = new Ray(shotPosition, transform.forward);
 
-        RaycastHit hit;
-
-        // 레이 쏘기
-        if (Physics.Raycast(rayOrigin, rayDirection, out hit, 50f)) // 30f는 레이의 길이
+        if (Physics.Raycast(ray, out RaycastHit hit, 50f))
         {
             playerTracking.tracking = true;
 
             if (hit.collider.CompareTag("Player") && !shooting)
             {
-                shooting = true; // 사격 상태
-                
-                anim.SetTrigger("Attack"); // 공격 애니메이션 시작
+                shooting = true;
+                anim.SetTrigger("Attack");
 
-                if (!special)
+                if (special)
                 {
-                    StartCoroutine(BasicShootBullet(shotPosition)); // 사격
+                    StartCoroutine(ContinuousShootBullet(shotPosition));
                 }
                 else
                 {
-                    StartCoroutine(ContinuousShootBullet(shotPosition)); // 사격
+                    StartCoroutine(BasicShootBullet(shotPosition));
                 }
             }
         }
     }
 
     // 단일 총알 발사 
-    IEnumerator BasicShootBullet(Vector3 position)
+    private IEnumerator BasicShootBullet(Vector3 position)
     {
-        // 총알을 생성
-        GameObject bulletInstance = Instantiate(bullet, position + transform.forward, Quaternion.identity);
+        yield return ShootBullet(position);
+        playerTracking.tracking = false;
+        shooting = false;
+    }
 
+    // 연속 총알 발사 
+    private IEnumerator ContinuousShootBullet(Vector3 position)
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            yield return ShootBullet(position);
+        }
+        yield return new WaitForSeconds(1f);
+        playerTracking.tracking = false;
+        shooting = false;
+    }
+
+    // 총알 발사
+    private IEnumerator ShootBullet(Vector3 position)
+    {
+        GameObject bulletInstance = Instantiate(bullet, position + transform.forward, Quaternion.identity);
         Rigidbody bulletRigidbody = bulletInstance.GetComponent<Rigidbody>();
+
         if (bulletRigidbody != null)
         {
             bulletRigidbody.velocity = transform.forward * bulletSpeed;
         }
 
         Destroy(bulletInstance, 5);
-
-        yield return new WaitForSeconds(2f);
-
-        playerTracking.tracking = false;
-        shooting = false;
-    }
-
-    // 연속 총알 발사 
-    IEnumerator ContinuousShootBullet(Vector3 position)
-    {
-        for (int i = 0; i < 6; i++)
-        {
-            // 총알을 생성
-            GameObject bulletInstance = Instantiate(bullet, position + transform.forward, Quaternion.identity);
-
-            Rigidbody bulletRigidbody = bulletInstance.GetComponent<Rigidbody>();
-            if (bulletRigidbody != null)
-            {
-                bulletRigidbody.velocity = transform.forward * bulletSpeed;
-            }
-
-            Destroy(bulletInstance, 5);
-
-            yield return new WaitForSeconds(0.5f);
-        }
-        yield return new WaitForSeconds(1f);
-
-        playerTracking.tracking = false;
-        shooting = false;
+        yield return new WaitForSeconds(special ? 0.5f : 2f);
     }
 
     // 사망
@@ -165,7 +141,7 @@ public class DemonMonsterController : MonoBehaviour
         summonMonster.currentMonsterCount--;
         anim.SetTrigger("Die");
 
-        EnabledScripts();
+        DisableScripts();
 
         yield return new WaitForSeconds(2f);
 
@@ -173,7 +149,7 @@ public class DemonMonsterController : MonoBehaviour
     }
 
     // 플레이어 추적 끝
-    void EnabledScripts()
+    void DisableScripts()
     {
         navMeshAgent.enabled = false;    
         playerTracking.enabled = false;
