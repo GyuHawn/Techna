@@ -9,7 +9,7 @@ public class Stage2PortalSetting : MonoBehaviour
 
     void Awake()
     {
-        portalSetting = GameObject.Find("Stage2Manager").GetComponentInParent<PortalSetting>();
+       // portalSetting = GameObject.Find("Stage2Manager").GetComponentInParent<PortalSetting>();
     }
 
     // 맵 클리어후 돌아올시 다음 포탈 활성화

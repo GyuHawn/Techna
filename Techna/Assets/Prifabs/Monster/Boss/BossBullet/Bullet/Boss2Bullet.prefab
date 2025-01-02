@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6179636434515721016}
   - component: {fileID: 4609440581680291926}
   - component: {fileID: 4756466405365971133}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4938,7 +4938,7 @@ GameObject:
   - component: {fileID: 7108302089237765035}
   - component: {fileID: 4890129053590154950}
   - component: {fileID: 6196710656034248917}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: ParticlesAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9791,9 +9791,9 @@ GameObject:
   - component: {fileID: 5875677529484928884}
   - component: {fileID: 5603695313134664644}
   - component: {fileID: 2137766701234274747}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Boss2Bullet
-  m_TagString: Untagged
+  m_TagString: MonsterBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9806,7 +9806,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 767820677600624573}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.016024986, y: 0.649258, z: -0.013684958, w: 0.7602763}
   m_LocalPosition: {x: 5.65, y: 2, z: -3.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9846,8 +9846,8 @@ MonoBehaviour:
   - {fileID: 4496851620918634348}
   - {fileID: 738034842715139487}
   destruction: 0
-  damage: 0
-  monsterBullet: 0
+  damage: 20
+  monsterBullet: 1
 --- !u!65 &5875677529484928884
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9863,7 +9863,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -9941,7 +9941,7 @@ GameObject:
   - component: {fileID: 856381407544962818}
   - component: {fileID: 1665681655690404682}
   - component: {fileID: 2046667450946669250}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: GluieABLocal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14868,7 +14868,7 @@ GameObject:
   - component: {fileID: 8949072275673143473}
   - component: {fileID: 8280090427899004585}
   - component: {fileID: 2351000467011052546}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: GluieABWorld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19710,7 +19710,7 @@ GameObject:
   - component: {fileID: 1239965136851042355}
   - component: {fileID: 2512653028381352496}
   - component: {fileID: 6348627944768842194}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24637,7 +24637,7 @@ GameObject:
   - component: {fileID: 3064518032206352190}
   - component: {fileID: 6015454924414875656}
   - component: {fileID: 8961925147950419578}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: CircleOutter02AB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29564,7 +29564,7 @@ GameObject:
   - component: {fileID: 7420588239584017648}
   - component: {fileID: 2280278547985236883}
   - component: {fileID: 3896473123984578727}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: CircleOutterAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34491,7 +34491,7 @@ GameObject:
   - component: {fileID: 6768370044377655527}
   - component: {fileID: 7023956218005906968}
   - component: {fileID: 1280630541621409086}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: BallAdd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39418,7 +39418,7 @@ GameObject:
   - component: {fileID: 8570366672204083176}
   - component: {fileID: 993458304111481788}
   - component: {fileID: 1568440626722875471}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: BallAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44345,7 +44345,7 @@ GameObject:
   - component: {fileID: 7149689292064124955}
   - component: {fileID: 3622724255915349011}
   - component: {fileID: 7854054824360994156}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: ParticlesAdd
   m_TagString: Untagged
   m_Icon: {fileID: 0}

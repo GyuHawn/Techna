@@ -29250,12 +29250,16 @@ MonoBehaviour:
   fireRate: 5
   muzzlePrefab: {fileID: 8236575183501353269, guid: 1aa551fc2467a474280df8511d0e469a, type: 3}
   hitPrefab: {fileID: 1884617679886237900, guid: 8f1b899ce61326e4bb5050017677862f, type: 3}
+  hitEffect: {fileID: 0}
   trails:
   - {fileID: 3958959380737341749}
   - {fileID: 6038289317681107549}
   - {fileID: 624272763787885943}
   - {fileID: 7331471434324992548}
   - {fileID: 9213315865875115738}
+  destruction: 0
+  damage: 0
+  monsterBullet: 1
 --- !u!54 &6412092001440865290
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -29298,7 +29302,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

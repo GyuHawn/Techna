@@ -41,23 +41,23 @@ public class StageManager : MonoBehaviour
         switch (playerMovement.currentStage) // 씬 이동, 플레이어 위치 설정
         {
             case 2:
-                StartCoroutine(LoadNextStageAsync("Stage1_1", new Vector3(1f, 27f, 35f), Quaternion.Euler(0, 180, 0)));
+                StartCoroutine(LoadNextStageAsync("Stage1_1", new Vector3(1f, 27f, 35f), Quaternion.Euler(0, 180, 0))); // StageSetting.stageValue = 2
                 previousStage = playerMovement.currentStage;
                 break;
             case 3:
-                StartCoroutine(LoadNextStageAsync("Stage1_2", new Vector3(0f, 10f, 0f), Quaternion.Euler(0, 0, 0)));
+                StartCoroutine(LoadNextStageAsync("Stage1_2", new Vector3(0f, 10f, 0f), Quaternion.Euler(0, 0, 0))); // StageSetting.stageValue = 3
                 previousStage = playerMovement.currentStage;
                 break;
             case 4:
-                StartCoroutine(LoadNextStageAsync("Stage2", new Vector3(0f, 16f, 20f), Quaternion.Euler(0, 180, 0)));
+                StartCoroutine(LoadNextStageAsync("Stage2", new Vector3(0f, 16f, 20f), Quaternion.Euler(0, 180, 0))); // StageSetting.stageValue = 4
                 previousStage = playerMovement.currentStage;
                 break;
             case 5:
-                StartCoroutine(LoadNextStageAsync("Stage3", new Vector3(92f, 40f, -36.5f), Quaternion.Euler(0, 90, 0)));
+                StartCoroutine(LoadNextStageAsync("Stage3", new Vector3(92f, 40f, -36.5f), Quaternion.Euler(0, 90, 0))); // StageSetting.stageValue = 5
                 previousStage = playerMovement.currentStage;
                 break;
             case 6:
-                StartCoroutine(LoadNextStageAsync("Stage4", new Vector3(70f, 3f, 7f), Quaternion.Euler(0, -45f, 0)));
+                StartCoroutine(LoadNextStageAsync("Stage4", new Vector3(70f, 3f, 7f), Quaternion.Euler(0, -45f, 0))); // StageSetting.stageValue = 6
                 previousStage = playerMovement.currentStage;
                 break;
         }

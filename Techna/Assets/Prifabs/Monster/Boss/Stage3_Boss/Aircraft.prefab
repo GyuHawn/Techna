@@ -180,6 +180,8 @@ GameObject:
   - component: {fileID: 8498760155075209313}
   - component: {fileID: 2657829520766980218}
   - component: {fileID: 4801016100104846390}
+  - component: {fileID: 4100080371674735453}
+  - component: {fileID: 4314849611797632681}
   m_Layer: 0
   m_Name: Aircraft
   m_TagString: Untagged
@@ -215,9 +217,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c5f70995e717354289e4b2b00d658f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  motor: []
+  player: {fileID: 0}
   speed: 5
   areaSize: {x: 60, y: 0, z: 60}
+  bullet: {fileID: 767820677600624573, guid: b7d458b3d8994c242a24dcd39a8f9429, type: 3}
+  bulletSpeed: 0
+  dieEffect: {fileID: 0}
 --- !u!95 &4801016100104846390
 Animator:
   serializedVersion: 5
@@ -239,6 +244,54 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &4100080371674735453
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027219799061528334}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &4314849611797632681
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027219799061528334}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!1 &1106878527200291887
 GameObject:
   m_ObjectHideFlags: 0

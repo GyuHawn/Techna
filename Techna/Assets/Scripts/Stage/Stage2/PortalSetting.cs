@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PortalSetting : MonoBehaviour
 {
@@ -17,16 +18,28 @@ public class PortalSetting : MonoBehaviour
 
     public bool clear;
 
-    void Update()
+    void OnEnable()
     {
-        NullObjectFind(); // 오브젝트 찾기
-        PortalActivete(); // 포탈활성화
+        SceneManager.activeSceneChanged += OnSceneChanged; // 씬 변경 시 이벤트 등록
+    }
 
-        // 클리어
-        if (clear)
+    void OnDisable()
+    {
+        SceneManager.activeSceneChanged -= OnSceneChanged; // 씬 변경 시 이벤트 해제
+    }
+
+    void OnSceneChanged(Scene current, Scene next)
+    {
+        if (next.name == "Stage2")
         {
-            stage8Portal.SetActive(true);
-        }   
+            NullObjectFind(); // 오브젝트 찾기
+
+            // 클리어
+            if (clear)
+            {
+                stage8Portal.transform.position = new Vector3(0, 0, 0);
+            }
+        }
     }
 
     void NullObjectFind() // 오브젝트 찾기
@@ -55,29 +68,31 @@ public class PortalSetting : MonoBehaviour
         {
             stage8Portal = GameObject.Find("Stage8Portal");
         }
+
+        PortalActivete(); // 포탈 활성화
     }
 
     // 포탈 활성화
     void PortalActivete()
     {
-        if (stage4 && !stage4Portal.activeInHierarchy)
+        if (stage4)
         {
-            stage4Portal.SetActive(true);
+            stage4Portal.transform.localPosition = new Vector3(0, 1.3f, 0); // 로컬 좌표로 이동
         }
 
-        if (stage5 && !stage5Portal.activeInHierarchy)
+        if (stage5)
         {
-            stage5Portal.SetActive(true);
+            stage5Portal.transform.localPosition = new Vector3(0, 1.3f, 0); // 로컬 좌표로 이동
         }
-        
-        if (stage6 && !stage6Portal.activeInHierarchy)
+
+        if (stage6)
         {
-            stage6Portal.SetActive(true);
+            stage6Portal.transform.localPosition = new Vector3(0, 1.3f, 0); // 로컬 좌표로 이동
         }
-        
-        if (stage7 && !stage7Portal.activeInHierarchy)
+
+        if (stage7)
         {
-            stage7Portal.SetActive(true);
+            stage7Portal.transform.localPosition = new Vector3(0, 1.3f, 0); // 로컬 좌표로 이동
         }
     }
 }
