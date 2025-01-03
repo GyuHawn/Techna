@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
+using TMPro;
 
 public class GemCombination : MonoBehaviour
 {
@@ -22,12 +24,12 @@ public class GemCombination : MonoBehaviour
     public float currentGemNum; // 현재 선택된 보석 값
     public int gemIndex; // 현재 보석 인덱스
 
-    [Header("조준점")]
-    public Sprite[] crossHair; // 조준점 배열
+    public TMP_Text ExpansionText;
 
     [Header("조합 실패")]
     public GameObject faileEffect;
     public GameObject failePostion;
+
 
     private void Awake()
     {
@@ -89,6 +91,16 @@ public class GemCombination : MonoBehaviour
         // 보석 인덱스 및 값 계산
         gemIndex = GetGemIndex(bullet, attribute, function);
         currentGemNum = CalculateCurrentGem(bullet, attribute, function);
+
+        // 증감(기본, 대형 총알 시 텍스트 출력)
+        if((1.3f <= currentGemNum && currentGemNum < 1.4f) || (2.3f <= currentGemNum && currentGemNum < 2.4f))
+        {
+            ExpansionText.gameObject.SetActive(true);
+        }
+        else
+        {
+            ExpansionText.gameObject.SetActive(false);
+        }
 
         // 보석 활성화
         ActivateGem(bullet, attribute, function);
@@ -247,11 +259,11 @@ public class GemCombination : MonoBehaviour
     {
         if (currentGemNum > 0 && Mathf.Abs(currentGemNum * 100 % 10 - 5) < 0.01f)
         {
-            projectilesScript.fireSpeed = 1f;
+            projectilesScript.fireSpeed = 0.5f;
         }
         else
         {
-            projectilesScript.fireSpeed = 2f;
+            projectilesScript.fireSpeed = 1f;
         }
     }
 }

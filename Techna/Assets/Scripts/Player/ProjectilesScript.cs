@@ -28,7 +28,7 @@ public class ProjectilesScript : MonoBehaviour
 
     void Start()
     {
-        fireSpeed = 2f;
+        fireSpeed = 1f;
         if (B_Bullets.Length > 0) // 총알 프리팹 확인
             effectToSpawn = B_Bullets[0]; // 첫 번째 효과 선택
     }

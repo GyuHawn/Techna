@@ -20,13 +20,6 @@ public class Stage3BossMovenent : MonoBehaviour
     public GameObject dieEffect; // 사망 이펙트
     public bool die; // 사망여부
 
-    public Animator anim;
-
-    private void Awake()
-    {
-        anim = GetComponent<Animator>();
-    }
-
     void Start()
     {
         SetRandomTargetPosition(); // 시작 목표 위치 설정
@@ -35,7 +28,7 @@ public class Stage3BossMovenent : MonoBehaviour
         maxHealth = 300;
         currentHealth = maxHealth;
 
-        InvokeRepeating("Attack", 5, 4);
+        InvokeRepeating("Attack", 5, 3);
     }
 
     void Update()
@@ -44,37 +37,42 @@ public class Stage3BossMovenent : MonoBehaviour
         {
             player = GameObject.Find("Player");
         }
-        
-        Move();
         HealthUpdate();
     }
 
-    void Move()
-    {
-        // 목표 위치로 이동
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-
-        // 목표 위치에 도달시 새로운 목표 위치 설정
-        if (Vector3.Distance(transform.position, targetPosition) < 1f)
-        {
-            SetRandomTargetPosition();
-        }
-
-        // 이동 방향을 바라보도록 회전
-        Vector3 direction = (targetPosition - transform.position).normalized;
-        if (direction != Vector3.zero) // 방향이 0이 아닐 때만 회전
-        {
-            Quaternion lookRotation = Quaternion.LookRotation(direction);
-            lookRotation *= Quaternion.Euler(0, 90f, 0); // Y축에 90도 추가
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * speed);
-        }
-    }
-
-    void SetRandomTargetPosition() // 목표 위치 설정
+    void SetRandomTargetPosition() // 목표 위치 설정 후 회전
     {
         float randomX = Random.Range(-areaSize.x / 2, areaSize.x / 2);
         float randomZ = Random.Range(-areaSize.z / 2, areaSize.z / 2);
         targetPosition = new Vector3(randomX, 50f, randomZ); // Y축은 높이를 고려
+
+        // 이동 방향 계산
+        Vector3 direction = (targetPosition - transform.position).normalized;
+        if (direction != Vector3.zero) // 방향이 0이 아닐 때만 회전
+        {
+            // Y축 회전값 조정
+            float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            Quaternion lookRotation = Quaternion.Euler(270, 180, angle + 270); // Z축 회전
+
+            // 회전 적용 (즉시 적용)
+            transform.rotation = lookRotation; // Quaternion.Slerp 대신 즉시 적용
+        }
+
+        // 목표 위치로 이동
+        StartCoroutine(MoveToTarget());
+    }
+
+
+    private IEnumerator MoveToTarget() // 이동
+    {
+        while (Vector3.Distance(transform.position, targetPosition) >= 1f) // 목표 위치까지 이동
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+            yield return null;
+        }
+
+        // 목표 위치에 도달한 후 새로운 목표 위치 설정
+        SetRandomTargetPosition();
     }
 
     void Attack() // 공격
@@ -112,14 +110,9 @@ public class Stage3BossMovenent : MonoBehaviour
     // 보스 추락
     void BossCrash()
     {
-        anim.SetBool("Die", true);
-
         // 추락을 위한 프리즈 해제
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.None;
-
-        // 애니메이션 종료
-        anim.enabled = false;
     }
 
     // 사망 이펙트
