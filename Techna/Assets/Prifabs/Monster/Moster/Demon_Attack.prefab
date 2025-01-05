@@ -89,6 +89,7 @@ MonoBehaviour:
   shooting: 0
   special: 1
   anim: {fileID: 6822007269798613536}
+  collider: {fileID: 5080152479639827008}
 --- !u!195 &7584154478676392946
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -13037,7 +13037,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &354078139
 Transform:
   m_ObjectHideFlags: 0
@@ -27914,7 +27914,7 @@ MonoBehaviour:
   timeText: {fileID: 1196427035}
   guidText: {fileID: 212450865}
   monsterCountText: {fileID: 1651330961}
-  boss: {fileID: 0}
+  boss: {fileID: 4853755563431748664}
   bossUI: {fileID: 356021617}
   portal: {fileID: 1089616445}
 --- !u!4 &833456960
@@ -61621,10 +61621,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 1027219799061528334, guid: 40ee673a971e6754a928fb33b58c2316, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2657829520766980218, guid: 40ee673a971e6754a928fb33b58c2316, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 763007702}
+    - target: {fileID: 2657829520766980218, guid: 40ee673a971e6754a928fb33b58c2316, type: 3}
+      propertyPath: stage4Manager
+      value: 
+      objectReference: {fileID: 833456959}
     - target: {fileID: 8498760155075209313, guid: 40ee673a971e6754a928fb33b58c2316, type: 3}
       propertyPath: m_LocalPosition.x
       value: -30
@@ -61670,6 +61678,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40ee673a971e6754a928fb33b58c2316, type: 3}
+--- !u!1 &4853755563431748664 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1027219799061528334, guid: 40ee673a971e6754a928fb33b58c2316, type: 3}
+  m_PrefabInstance: {fileID: 4853755563431748663}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

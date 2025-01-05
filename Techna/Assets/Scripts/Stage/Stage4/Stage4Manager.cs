@@ -30,21 +30,21 @@ public class Stage4Manager : MonoBehaviour
     void Start()
     {
         //gameTime = 30f; // 게임 시작 시 30초로 초기화
-        gameTime = 10f; 
+        gameTime = 5f; 
     }
 
     void Update()
     {
-        if (!start)
+        UpdateUI();
+
+        if (!start) // 게임 시작
         {
             GameStart();
         }
-        else if (start && summonMonster.currentMonsterCount == 0 && !waiting)
+        else if (start && summonMonster.currentMonsterCount == 0 && !waiting) // 준비 및 몬스터 소환
         {
             StartCoroutine(WaitingStage());
         }
-
-        UpdateUI();
 
         if (wave >= 5 && summonMonster.currentMonsterCount <= 0 && !clear)
         {
@@ -75,14 +75,12 @@ public class Stage4Manager : MonoBehaviour
             StartCoroutine(ShowGuidText()); // 가이트 텍스트 표시
             timeText.gameObject.SetActive(true); // 타임 텍스트 표시
             gameTime -= Time.deltaTime;
-            BossStage();
         }
         else
         {
-            wave = 1;
+            start = true; // 시작 여부 변경전 토탈 몬스터 수 변경 되는지 확인 필요
             summonMonster.Summon();
             timeText.gameObject.SetActive(false); // 타임 텍스트 비표시
-            start = true; // 시작 여부 변경전 토탈 몬스터 수 변경 되는지 확인 필요
         }      
     }
 
@@ -130,7 +128,6 @@ public class Stage4Manager : MonoBehaviour
     void GameClear()
     {
         clear = true;
-        portal.SetActive(true);
         this.enabled = false; // 스크립트 비활성화
     }
 }

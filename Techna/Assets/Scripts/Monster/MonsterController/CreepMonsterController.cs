@@ -25,6 +25,7 @@ public class CreepMonsterController : MonoBehaviour
     private string[] collisionBullet = new string[] { "Bullet", "ExpansionBullet", "Penetrate", "Destruction" };
 
     public Animator anim;
+    public CapsuleCollider collider;
 
     void Awake()
     {
@@ -107,6 +108,7 @@ public class CreepMonsterController : MonoBehaviour
             if (currentHealth <= 0)
             {
                 StartCoroutine(Die());
+                collider.enabled = false;
             }
         }
     }

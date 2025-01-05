@@ -88,6 +88,7 @@ MonoBehaviour:
   attacked: 0
   attackCollider: {fileID: 5925655472815415287}
   anim: {fileID: 9025408708208795947}
+  collider: {fileID: 8745370481966899948}
 --- !u!195 &2478259763522607783
 NavMeshAgent:
   m_ObjectHideFlags: 0

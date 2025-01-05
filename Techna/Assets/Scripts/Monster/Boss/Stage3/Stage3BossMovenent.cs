@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Stage3BossMovenent : MonoBehaviour
 {
+    public Stage4Manager stage4Manager;
     public GameObject player;
 
     public float speed = 5f; // 보스 속도
@@ -101,9 +103,11 @@ public class Stage3BossMovenent : MonoBehaviour
             StartCoroutine(DieEffect()); // 사망 이펙트
             BossCrash(); // 보스 추락
 
+            stage4Manager.portal.SetActive(true);
+
             // 제거 및 스크립트 비활성화
             Destroy(gameObject, 10f);
-            this.enabled = false;
+            this.enabled = false;  
         }
     }
 

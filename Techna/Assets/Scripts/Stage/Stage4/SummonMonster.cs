@@ -20,31 +20,32 @@ public class SummonMonster : MonoBehaviour
     // 웨이브 당 소환할 몬스터 수 설정
     public void SummonCount()
     {
+            Debug.Log("wave = " + stage4Manager.wave);
         switch (stage4Manager.wave)
         {
             case 1:
-                creepCount = 10;
-                totalMonsterCount = 10;
+                creepCount = 5;
+                totalMonsterCount = 5;
                 break;
             case 2:
-                creepCount = 12;
+                creepCount = 5;
                 demonCount = 3;
-                totalMonsterCount = 15;
+                totalMonsterCount = 8;
                 break;
             case 3:
-                creepCount = 15;
+                creepCount = 7;
                 demonCount = 5;
-                totalMonsterCount = 20;
+                totalMonsterCount = 10;
                 break;
             case 4:
-                creepCount = 15;
-                demonCount = 10;
-                totalMonsterCount = 25;
+                creepCount = 10;
+                demonCount = 7;
+                totalMonsterCount = 17;
                 break;
             case 5:
-                creepCount = 7;
-                demonCount = 3;
-                totalMonsterCount = 10;
+                creepCount = 5;
+                demonCount = 2;
+                totalMonsterCount = 7;
                 break;
             default:
                 creepCount = 0;
@@ -59,7 +60,7 @@ public class SummonMonster : MonoBehaviour
     // 몬스터 카운트 텍스트 설정
     void UpdateMonsterCountText() 
     {
-        stage4Manager.monsterCountText.text = "남은 몬스터 수 : " + stage4Manager.summonMonster.currentMonsterCount;
+        stage4Manager.monsterCountText.text = "남은 몬스터 수 : " + currentMonsterCount;
     }
 
 
@@ -68,7 +69,6 @@ public class SummonMonster : MonoBehaviour
     {  
         if(stage4Manager.wave <= 5)
         {
-            stage4Manager.wave++;
             stage4Manager.UpdateWaveText();
         }
 
