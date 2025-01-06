@@ -61,6 +61,7 @@ public class ProjectilesScript : MonoBehaviour
             // 총구에서 카메라 중앙 방향으로 총알 생성
             GameObject shotBullet = Instantiate(effectToSpawn, firePoint.transform.position, Quaternion.LookRotation(direction));
             shotBullet.name = effectToSpawn.name;
+            Destroy(shotBullet, 5);
 
             // 총알 초기 속도 설정
             Rigidbody rb = shotBullet.GetComponent<Rigidbody>();

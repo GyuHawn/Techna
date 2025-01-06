@@ -19,6 +19,7 @@ public class CreepMonsterController : MonoBehaviour
     public int damage;
 
     public bool attacked; // 공격 대기 여부
+    public bool hit; // 피격 가능 여부
 
     public BoxCollider attackCollider;
 
@@ -26,6 +27,8 @@ public class CreepMonsterController : MonoBehaviour
 
     public Animator anim;
     public CapsuleCollider collider;
+    public Renderer renderer;
+    private Color originalColor;
 
     void Awake()
     {
@@ -39,6 +42,8 @@ public class CreepMonsterController : MonoBehaviour
         player = GameObject.Find("Player");
         playerMovement = player.GetComponent<PlayerMovement>();
         StartCoroutine(StartPlayerTracking());
+
+        originalColor = renderer.material.color;
     }
 
     IEnumerator StartPlayerTracking() // NavMeshAgent로 인한 소환위치 문제로 잠시후 활성화
@@ -103,11 +108,12 @@ public class CreepMonsterController : MonoBehaviour
         if (System.Array.Exists(collisionBullet, tag => tag == collision.gameObject.tag))
         {
             ProjectileMoveScript bullet = collision.gameObject.GetComponent<ProjectileMoveScript>();
-            currentHealth -= bullet.damage;
+            StartCoroutine(HitDamage(bullet.damage));
 
             if (currentHealth <= 0)
             {
                 StartCoroutine(Die());
+                StartCoroutine(ChangeColor());
                 collider.enabled = false;
             }
         }
@@ -119,5 +125,26 @@ public class CreepMonsterController : MonoBehaviour
         {
             StartCoroutine(playerMovement.HitDamage(damage));
         }
+    }
+
+    public IEnumerator HitDamage(int damage) // 피격
+    {
+        if (!hit)
+        {
+            hit = true;
+            currentHealth -= damage;
+            yield return new WaitForSeconds(0.5f);
+
+            hit = false;
+        }
+    }
+
+    public IEnumerator ChangeColor() // 피격시 색변경
+    {
+        renderer.material.color = Color.red;
+
+        yield return new WaitForSeconds(0.1f);
+
+        renderer.material.color = originalColor;
     }
 }

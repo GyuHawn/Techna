@@ -30,7 +30,6 @@ public class GemCombination : MonoBehaviour
     public GameObject faileEffect;
     public GameObject failePostion;
 
-
     private void Awake()
     {
         gemUI = GetComponent<GemUI>();
@@ -259,7 +258,7 @@ public class GemCombination : MonoBehaviour
     {
         if (currentGemNum > 0 && Mathf.Abs(currentGemNum * 100 % 10 - 5) < 0.01f)
         {
-            projectilesScript.fireSpeed = 0.5f;
+            projectilesScript.fireSpeed = 0.7f;
         }
         else
         {

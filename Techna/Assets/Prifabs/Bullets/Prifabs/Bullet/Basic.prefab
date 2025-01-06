@@ -15092,7 +15092,7 @@ MonoBehaviour:
   - {fileID: 6697387931041141316}
   - {fileID: 5176151672310951145}
   destruction: 0
-  damage: 500
+  damage: 3
   monsterBullet: 0
 --- !u!54 &5068680531244331658
 Rigidbody:

@@ -182,7 +182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4907239047242697930, guid: 82430f94fd1381c43878fce981a5aa43, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -3.97
       objectReference: {fileID: 0}
     - target: {fileID: 4907239047242697930, guid: 82430f94fd1381c43878fce981a5aa43, type: 3}
       propertyPath: m_LocalPosition.y
@@ -190,7 +190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4907239047242697930, guid: 82430f94fd1381c43878fce981a5aa43, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -38.7
       objectReference: {fileID: 0}
     - target: {fileID: 4907239047242697930, guid: 82430f94fd1381c43878fce981a5aa43, type: 3}
       propertyPath: m_LocalRotation.w
@@ -412,9 +412,11 @@ MonoBehaviour:
   speed: 0
   damage: 15
   attacked: 0
+  hit: 0
   attackCollider: {fileID: 1183803167235280922}
   anim: {fileID: 4761975680171314511}
   collider: {fileID: 6472943856103316639}
+  renderer: {fileID: 8642217370624372564}
 --- !u!195 &5424903225324350197
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -498,3 +500,8 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 3, z: 2.5}
+--- !u!137 &8642217370624372564 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5961565835661220755, guid: 82430f94fd1381c43878fce981a5aa43, type: 3}
+  m_PrefabInstance: {fileID: 2690036983404147911}
+  m_PrefabAsset: {fileID: 0}

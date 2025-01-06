@@ -86,9 +86,11 @@ MonoBehaviour:
   speed: 0
   damage: 10
   attacked: 0
+  hit: 0
   attackCollider: {fileID: 5925655472815415287}
   anim: {fileID: 9025408708208795947}
   collider: {fileID: 8745370481966899948}
+  renderer: {fileID: 7850257182931042078}
 --- !u!195 &2478259763522607783
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -484,6 +486,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 9025408708208795947}
   m_SourcePrefab: {fileID: 100100000, guid: 055d3fd7bd3901042a44bb13f3160e0e, type: 3}
+--- !u!137 &7850257182931042078 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1630794972795428178, guid: 055d3fd7bd3901042a44bb13f3160e0e, type: 3}
+  m_PrefabInstance: {fileID: 8813553489908523596}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8543717591572274973 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 055d3fd7bd3901042a44bb13f3160e0e, type: 3}

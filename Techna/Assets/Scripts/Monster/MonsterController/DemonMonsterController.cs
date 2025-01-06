@@ -19,6 +19,8 @@ public class DemonMonsterController : MonoBehaviour
     public int speed;
     public int damage;
 
+    public bool hit; // 피격 가능 여부
+
     [Header("총알")]
     public GameObject bullet;
     public float bulletSpeed;
@@ -31,6 +33,8 @@ public class DemonMonsterController : MonoBehaviour
 
     public Animator anim;
     public CapsuleCollider collider;
+    public Renderer renderer;
+    private Color originalColor;
 
     void Awake()
     {
@@ -43,6 +47,9 @@ public class DemonMonsterController : MonoBehaviour
     {
         player = GameObject.Find("Player");
         playerMovement = player.GetComponent<PlayerMovement>();
+
+        originalColor = renderer.material.color;
+
         StartCoroutine(StartPlayerTracking());
 
         bulletSpeed = 20f;
@@ -162,13 +169,35 @@ public class DemonMonsterController : MonoBehaviour
         if (System.Array.Exists(collisionBullet, tag => tag == collision.gameObject.tag))
         {
             ProjectileMoveScript bullet = collision.gameObject.GetComponent<ProjectileMoveScript>();
-            currentHealth -= bullet.damage;
+            StartCoroutine(HitDamage(bullet.damage));
 
             if (currentHealth <= 0)
             {
                 StartCoroutine(Die());
+                StartCoroutine(ChangeColor());
                 collider.enabled = false;
             }
         }
+    }
+
+    public IEnumerator HitDamage(int damage) // 피격
+    {
+        if (!hit)
+        {
+            hit = true;
+            currentHealth -= damage;
+            yield return new WaitForSeconds(0.5f);
+
+            hit = false;
+        }
+    }
+
+    public IEnumerator ChangeColor() // 피격시 색변경
+    {
+        renderer.material.color = Color.red;
+
+        yield return new WaitForSeconds(0.1f);
+
+        renderer.material.color = originalColor;
     }
 }
