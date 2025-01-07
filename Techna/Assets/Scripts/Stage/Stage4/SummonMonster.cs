@@ -14,8 +14,11 @@ public class SummonMonster : MonoBehaviour
     public Transform[] demonSummonPositions;
     public int creepCount; // 소환할 몬스터 수
     public int demonCount;
+
     public int totalMonsterCount; // 전체 몬스터 수  
     public int currentMonsterCount; // 현재 몬스터 수
+
+    public GameObject summonEffect;
 
     // 웨이브 당 소환할 몬스터 수 설정
     public void SummonCount()
@@ -93,7 +96,7 @@ public class SummonMonster : MonoBehaviour
             Transform randomPosition = summonPositions[Random.Range(0, summonPositions.Length)];
 
             // 몬스터 소환
-            GameObject monster = monsterSummonSetting.MonstetSummon(monsterQueue);
+            GameObject monster = monsterSummonSetting.Summon(monsterQueue);
             if (monster != null) // null 체크 추가
             {
                 // 몬스터 이동

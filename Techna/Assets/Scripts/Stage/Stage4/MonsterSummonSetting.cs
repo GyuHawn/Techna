@@ -14,12 +14,11 @@ public class MonsterSummonSetting : MonoBehaviour
     // 몬스터 큐
     public Queue<GameObject> creepQueue = new Queue<GameObject>();
     public Queue<GameObject> demonQueue = new Queue<GameObject>();
-    private Queue<GameObject> bossQueue = new Queue<GameObject>();
 
     // 총 몬스터 수
     public int creepCount = 59;
     public int demonCount = 21;
-    public int bossCount = 1;
+    public int effectCount = 80;
 
     private void Start()
     {
@@ -41,7 +40,7 @@ public class MonsterSummonSetting : MonoBehaviour
     }
 
     // 몬스터 소환
-    public GameObject MonstetSummon(Queue<GameObject> pool)
+    public GameObject Summon(Queue<GameObject> pool)
     {
         if (pool.Count > 0)
         {

@@ -18,6 +18,7 @@ public class DemonMonsterController : MonoBehaviour
     public int currentHealth;
     public int speed;
     public int damage;
+    public Image healthBar;
 
     public bool hit; // 피격 가능 여부
 
@@ -170,6 +171,7 @@ public class DemonMonsterController : MonoBehaviour
         {
             ProjectileMoveScript bullet = collision.gameObject.GetComponent<ProjectileMoveScript>();
             StartCoroutine(HitDamage(bullet.damage));
+            UpdateHealthUI(currentHealth, maxHealth);
 
             if (currentHealth <= 0)
             {
@@ -186,7 +188,7 @@ public class DemonMonsterController : MonoBehaviour
         {
             hit = true;
             currentHealth -= damage;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
 
             hit = false;
         }
@@ -199,5 +201,10 @@ public class DemonMonsterController : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         renderer.material.color = originalColor;
+    }
+
+    private void UpdateHealthUI(int currentHealth, int maxHealth)
+    {
+        healthBar.fillAmount = (float)currentHealth / maxHealth; // 체력 바 업데이트
     }
 }

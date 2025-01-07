@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class CreepMonsterController : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class CreepMonsterController : MonoBehaviour
     public int currentHealth;
     public int speed;
     public int damage;
+    public Image healthBar;
 
     public bool attacked; // 공격 대기 여부
     public bool hit; // 피격 가능 여부
@@ -109,6 +111,7 @@ public class CreepMonsterController : MonoBehaviour
         {
             ProjectileMoveScript bullet = collision.gameObject.GetComponent<ProjectileMoveScript>();
             StartCoroutine(HitDamage(bullet.damage));
+            UpdateHealthUI(currentHealth, maxHealth);
 
             if (currentHealth <= 0)
             {
@@ -133,7 +136,7 @@ public class CreepMonsterController : MonoBehaviour
         {
             hit = true;
             currentHealth -= damage;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
 
             hit = false;
         }
@@ -146,5 +149,10 @@ public class CreepMonsterController : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         renderer.material.color = originalColor;
+    }
+
+    private void UpdateHealthUI(int currentHealth, int maxHealth)
+    {
+        healthBar.fillAmount = (float)currentHealth / maxHealth; // 체력 바 업데이트
     }
 }
